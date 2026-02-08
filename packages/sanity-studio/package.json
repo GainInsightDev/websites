@@ -1,0 +1,15 @@
+{
+  "name": "@websites/sanity-studio",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "sanity": "^3",
+    "@sanity/vision": "^3"
+  }
+}
