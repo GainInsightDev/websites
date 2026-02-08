@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 45">
+  <g transform="translate(20, 22.5) scale(0.232)">
+    <path fill="#BF2FCF" d="M 0,-100 L 86.6,-50 L 86.6,50 L 0,100 L -86.6,50 L -86.6,-50 Z"/>
+    <path fill="white" d="M 0,-60 L 52,-30 L 52,30 L 0,60 L -52,30 L -52,-30 Z"/>
+  </g>
+  <g transform="translate(50, 30)">
+    <text font-family="Montserrat, sans-serif" font-size="34" font-weight="700" letter-spacing="0.5">
+      <tspan fill="#051966">pension</tspan><tspan fill="#BF2FCF">able</tspan><tspan fill="#3FBAD4">.ai</tspan>
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MermaidDiagram from '../components/MermaidDiagram.astro';
+import { logicETLDiagram, dataETLDiagram, analyticsDiagram, integrationDiagram, consultingDiagram } from '../data/diagrams';
+
+const solutions = [
+  {
+    id: 'logic-etl',
+    title: 'Logic ETL',
+    description: 'Intelligent interpretation and processing of scheme rules',
+    features: ['Automated rule extraction', 'Natural language processing', 'Rule validation and verification', 'Version control and audit trail'],
+    additionalHeader: 'Scheme Rule Interpretation',
+    additionalContent: "The Logic ETL component transforms complex pension scheme rules into precise, machine-executable code through advanced natural language processing. This automated rule extraction process identifies and resolves ambiguities in scheme documentation, ensuring mathematical certainty in all calculations.\n\nBy creating a digital twin of scheme rules with complete version control and audit capabilities, Logic ETL eliminates the inconsistencies that plague manual interpretation methods.\n\nWhat sets our Logic ETL apart is its integrated testing framework. After rule formalization, our Scheme Rule Assurance Agent automatically generates comprehensive test cases covering all possible execution paths. This ensures 100% coverage of rule variations and edge cases that would be missed in manual testing.\n\nThe system creates synthetic test data designed to exercise each rule variation, providing a complete validation suite without requiring actual member data. Our coverage verification process mathematically proves all scenarios are tested, eliminating the uncertainty of traditional sampling methods.\n\nFor pension schemes with complex benefit structures, our Logic ETL can handle intricate rule dependencies and conditional calculations that challenge conventional systems. The component can process both current and historical rule versions, enabling accurate back-calculations and rectification exercises.\n\nWhen regulatory changes occur, the impact on calculations can be quickly assessed by comparing rule versions and identifying affected member segments. This capability is particularly valuable for GMP equalization projects and scheme rule amendments.\n\nThis robust testing framework enables pension schemes to achieve unprecedented accuracy while maintaining complete transparency. By resolving ambiguities before they affect calculations, the Logic ETL component provides the mathematical certainty essential for critical pension operations like GMP rectification and pension risk transfers.",
+    diagram: logicETLDiagram,
+  },
+  {
+    id: 'data-etl',
+    title: 'Data ETL',
+    description: 'Efficient data extraction, transformation, and loading',
+    features: ['Automated data extraction', 'Smart data transformation', 'Quality validation', 'Secure data loading'],
+    additionalHeader: 'Data Processing Pipeline',
+    additionalContent: "Our Data ETL component bridges the gap between fragmented legacy data sources and modern calculation requirements. By implementing intelligent extraction processes that understand pension data structures, we transform inconsistent records into a unified, validated dataset.\n\nThe system automatically identifies data quality issues, applies appropriate transformations, and maintains lineage tracking for complete auditability. This comprehensive approach ensures that all downstream calculations are based on accurate, complete data.\n\nLegacy pension systems often store critical information in formats that are difficult to access and integrate. Our Data ETL component uses specialized connectors to extract this information without disrupting existing operations.\n\nOnce extracted, the data undergoes rigorous validation against scheme rules and industry standards. Anomalies are flagged for review, while valid data continues through the transformation pipeline.\n\nThe result is a secure, reliable data foundation that addresses one of the most fundamental challenges in pension management while supporting all analytical and operational needs across the organization.",
+    diagram: dataETLDiagram,
+  },
+  {
+    id: 'analytics',
+    title: 'Analytics',
+    description: 'Comprehensive insights and reporting capabilities',
+    features: ['Real-time analytics', 'Custom report generation', 'Trend analysis', 'Predictive modeling'],
+    additionalHeader: 'Advanced Reporting Solutions',
+    additionalContent: "The Analytics component converts raw pension data into actionable intelligence through sophisticated modeling and visualization capabilities. By integrating scheme data with market benchmarks and regulatory requirements, our system generates insights that support strategic decision-making.\n\nReal-time dashboards provide immediate visibility into key metrics, while predictive models help anticipate future scenarios and their potential impacts. Custom reporting capabilities ensure that stakeholders at all levels receive precisely the information they need in the format that best supports their role.\n\nFor pension trustees, our analytics provide clear visibility into funding levels, liability profiles, and investment performance. For administrators, operational metrics highlight process efficiencies and member service levels.\n\nActuaries benefit from sophisticated modeling tools that simplify complex calculations and scenario testing. Risk managers gain early warning indicators of potential compliance issues or financial exposures.\n\nThis comprehensive approach transforms pension data from a passive record into a strategic asset that drives better outcomes for schemes, sponsors, and ultimately, members.",
+    diagram: analyticsDiagram,
+  },
+  {
+    id: 'integration',
+    title: 'Integration',
+    description: 'Seamless API and system connections',
+    features: ['RESTful API support', 'Legacy system integration', 'Real-time synchronization', 'Secure data exchange'],
+    additionalHeader: 'System Connectivity',
+    additionalContent: "Our Integration component ensures seamless communication between pensionable.ai and your existing technology ecosystem. Through secure, standardized APIs, we connect with legacy administration systems, actuarial modeling tools, and third-party services without disrupting established workflows.\n\nReal-time synchronization capabilities maintain data consistency across platforms, while comprehensive security protocols protect sensitive information throughout the exchange process. This flexible architecture adapts to your specific system landscape, eliminating data silos.\n\nFor legacy systems with limited connectivity options, we provide specialized adapters that can extract and transform data without requiring modifications to the source systems. This approach minimizes implementation risk and accelerates time-to-value.\n\nOur integration layer includes robust error handling and reconciliation processes to ensure data integrity across all connected systems. Detailed audit logs track all data movements for compliance and troubleshooting purposes.\n\nThe result is a cohesive technology ecosystem that creates a unified environment where information flows securely between systems, maximizing the value of all your pension management tools.",
+    diagram: integrationDiagram,
+  },
+  {
+    id: 'consulting',
+    title: 'Consulting',
+    description: 'Expert professional services and guidance',
+    features: ['Implementation support', 'Custom solution design', 'Training and workshops', 'Ongoing maintenance'],
+    additionalHeader: 'Professional Services',
+    additionalContent: "The Consulting component provides expert guidance throughout your implementation journey and beyond. Our team combines deep pension domain knowledge with technical expertise to design solutions that address your specific challenges.\n\nFrom initial assessment and planning through implementation, training, and ongoing support, we ensure that you maximize the value of your pensionable.ai investment. Our consultants help identify optimization opportunities and develop custom solutions for unique requirements.\n\nWe begin with a comprehensive assessment of your current processes, systems, and challenges. This diagnostic phase identifies specific areas where our technology can deliver the greatest impact, creating a roadmap for implementation.\n\nDuring implementation, our consultants work alongside your team to ensure smooth deployment and knowledge transfer. We provide specialized training tailored to different user roles, from administrators to actuaries.\n\nThis collaborative approach ensures that technology implementation aligns with your strategic objectives and delivers measurable improvements in operational efficiency, compliance assurance, and mathematical certainty.",
+    diagram: consultingDiagram,
+  },
+];
+---
+
+<Layout title="Solution Components | pensionable.ai">
+  <!-- Overview Section -->
+  <section class="hero-section bg-gradient-brand-soft">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Solution Components</h1>
+        <p class="text-xl text-grey">Comprehensive capabilities designed to transform pension management through intelligent automation</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions Grid -->
+  <section class="section">
+    <div class="container">
+      <div class="space-y-16">
+        {solutions.map((solution) => (
+          <div class="relative">
+            <div id={solution.id} class="absolute" style="top: -120px;"></div>
+            <div class="grid md:grid-cols-2 gap-12 items-stretch">
+              <div class="space-y-8">
+                <h2 class="text-3xl font-bold mb-4">{solution.title}</h2>
+                <p class="text-xl text-grey mb-8">{solution.description}</p>
+                <div class="bg-white rounded-lg shadow-card p-8">
+                  <h3 class="text-xl font-bold mb-6">Key Features</h3>
+                  <ul class="space-y-4">
+                    {solution.features.map((feature) => (
+                      <li class="flex items-start">
+                        <span class="text-purple mr-3">•</span>
+                        <p class="text-grey">{feature}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div class="bg-white rounded-lg shadow-card p-8">
+                  <h3 class="text-xl font-bold mb-6">{solution.additionalHeader}</h3>
+                  <p class="text-grey whitespace-pre-line">{solution.additionalContent}</p>
+                </div>
+              </div>
+              <div class="bg-gradient-dark rounded-lg p-8 h-full flex items-center">
+                <div class="aspect-square bg-dark-purple rounded-lg shadow-card overflow-hidden w-full">
+                  <MermaidDiagram
+                    id={`${solution.id}-diagram`}
+                    definition={solution.diagram}
+                    className="w-full h-full flex items-center justify-center"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient-brand text-white">
+    <div class="container text-center">
+      <h2 class="text-3xl font-bold mb-6 text-white">Ready to explore our solution components?</h2>
+      <p class="text-xl mb-8 opacity-90">Contact us to learn more about how pensionable.ai can transform your pension management</p>
+      <a href="/contact" class="btn bg-white text-navy hover:bg-white/90">Get Started</a>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  import mermaid from 'mermaid';
+  mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+</script>

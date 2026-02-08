@@ -1,0 +1,15 @@
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="800" fill="#1B2838"/>
+  <path d="M242 240H558M242 240C242 240 150 336 150 400C150 464 242 560 242 560M242 240L400 400M558 240C558 240 650 336 650 400C650 464 558 560 558 560M558 240L400 400M558 560H242M558 560L400 400M242 560L400 400" stroke="white" stroke-width="12"/>
+  <path d="M630 400H590C590 360 620 320 550 310" stroke="#00C39A" stroke-width="12"/>
+  <circle cx="280" cy="280" r="20" stroke="white" stroke-width="12"/>
+  <circle cx="520" cy="280" r="20" stroke="white" stroke-width="12"/>
+  <circle cx="450" cy="350" r="20" stroke="white" stroke-width="12"/>
+  <circle cx="350" cy="350" r="20" stroke="white" stroke-width="12"/>
+  <circle cx="280" cy="520" r="20" stroke="white" stroke-width="12"/>
+  <circle cx="520" cy="520" r="20" stroke="white" stroke-width="12"/>
+  <circle cx="450" cy="450" r="20" stroke="white" stroke-width="12"/>
+  <circle cx="350" cy="450" r="20" stroke="white" stroke-width="12"/>
+  <path d="M590 430C590 430 590 470 590 490C590 510 610 530 630 530" stroke="#00C39A" stroke-width="12"/>
+  <path d="M650 470L610 430M650 470L650 510M650 470L630 470" stroke="#00C39A" stroke-width="12"/>
+</svg>

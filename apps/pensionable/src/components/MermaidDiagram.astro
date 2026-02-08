@@ -1,0 +1,25 @@
+---
+interface Props {
+  id: string;
+  definition: string;
+  className?: string;
+}
+
+const { id, definition, className = '' } = Astro.props;
+---
+
+<div class={`mermaid-container ${className}`} id={`${id}-container`}>
+  <pre class="mermaid" id={id}>{definition}</pre>
+</div>
+
+<style>
+  .mermaid-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mermaid svg {
+    max-width: 100%;
+    height: auto;
+  }
+</style>

@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@theme {
+  /* Primary Colors */
+  --color-navy: #051966;
+  --color-dark-purple: #2E2D42;
+
+  /* Secondary Colors */
+  --color-teal: #3FBAD4;
+  --color-purple: #BF2FCF;
+
+  /* Supporting Colors */
+  --color-grey: #4C4B4B;
+  --color-gold: #FAB515;
+  --color-mint: #00EDBE;
+
+  /* Functional Colors */
+  --color-success: #22C55E;
+  --color-alert: #EF4444;
+
+  /* Font Families */
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+
+  /* Box Shadows */
+  --shadow-card: 0 4px 6px rgba(0, 0, 0, 0.08);
+
+  /* Border Radius */
+  --radius-button: 6px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+    font-family: var(--font-inter);
+    color: var(--color-grey);
+    background-color: white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-montserrat);
+    color: var(--color-navy);
+  }
+}
+
+@layer components {
+  .btn {
+    border-radius: var(--radius-button);
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: color 0.15s, background-color 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary {
+    background-color: var(--color-teal);
+    color: white;
+  }
+  .btn-primary:hover {
+    background-color: color-mix(in srgb, var(--color-teal) 90%, transparent);
+  }
+
+  .btn-secondary {
+    background-color: var(--color-purple);
+    color: white;
+  }
+  .btn-secondary:hover {
+    background-color: color-mix(in srgb, var(--color-purple) 90%, transparent);
+  }
+
+  .card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-card);
+    padding: 1.5rem;
+  }
+
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 80rem;
+  }
+
+  .section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .hero-section {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  .hero-section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+/* Brand gradient backgrounds */
+.bg-gradient-brand {
+  background: linear-gradient(135deg, #051966 0%, #BF2FCF 50%, #3FBAD4 100%);
+}
+
+.bg-gradient-brand-soft {
+  background: linear-gradient(135deg, rgba(5,25,102,0.15) 0%, rgba(191,47,207,0.15) 50%, rgba(63,186,212,0.15) 100%);
+}
+
+.bg-gradient-light {
+  background: linear-gradient(135deg, rgba(5,25,102,0.05) 0%, rgba(191,47,207,0.05) 50%, rgba(63,186,212,0.05) 100%);
+}
+
+.bg-gradient-dark {
+  background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+}

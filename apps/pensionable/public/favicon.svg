@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Hexagonal Logo - smaller and closer to wordmark -->
+  <g transform="translate(45, 50) scale(0.5)">
+    <!-- Outer hexagon shape -->
+    <path fill="#BF2FCF" d="
+      M 0,-100 
+      L 86.6,-50 
+      L 86.6,50 
+      L 0,100 
+      L -86.6,50 
+      L -86.6,-50 
+      Z
+    "/>
+    
+    <!-- Inner hexagon (cutout) -->
+    <path fill="white" d="
+      M 0,-60
+      L 52,-30
+      L 52,30
+      L 0,60
+      L -52,30
+      L -52,-30
+      Z
+    "/>
+    
+  </g>
+</svg>
