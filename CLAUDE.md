@@ -38,6 +38,17 @@ Monorepo for GainInsight marketing websites, migrating from React to Astro with 
 - **Team:** Websites (WBS)
 - **Workflow:** Discovered > Refining > Approved > To Do > In Progress > In Review > Dev > Live
 
+## Credentials
+
+| Service | Location | Notes |
+|---------|----------|-------|
+| AWS (deploy) | Doppler `websites/prd` | Also set as GitHub Actions secrets |
+| Sanity CMS | Bitwarden | Account: `admins+wbs-sanity@gaininsight.global` |
+
+- Sanity project credentials are stored in Bitwarden under the WBS/Websites entry
+- AWS credentials are shared with the central `gi` Doppler project
+- GitHub Actions secrets are configured on the `GainInsightDev/websites` repo
+
 ## Development
 
 ```bash
