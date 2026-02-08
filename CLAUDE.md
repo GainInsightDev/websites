@@ -31,7 +31,7 @@ Monorepo for GainInsight marketing websites, migrating from React to Astro with 
 |------|-----------|---------------|
 | recon1.co.uk | `recon1.co.uk` | `E3JNPZRCHMTZGD` |
 | pensionable.ai | `pensionable.ai` | `E1NJGGB30XPJ7W` |
-| senti | TBD | TBD |
+| senti | TBD (ask user) | TBD (ask user) |
 
 ## Linear
 
@@ -58,10 +58,10 @@ The original React sites live on the GI Dev server. These are the source for mig
 |------|----------------|-----------|------------|
 | recon1 | `/srv/sites/recon1-app` | React 19 + Vite + TS | S3 + CloudFront (existing) |
 | pensionable | `/srv/sites/pensionable.ai` | React + Vite + TS | S3 + CloudFront (existing) |
-| senti | `/srv/sites/senti-website` | React (CRA) + Tailwind | **None** - needs new infrastructure |
+| senti | `/srv/sites/senti-website` | React (CRA) + Tailwind | S3 + CloudFront (exists, ask user for IDs) |
 
 - All use Tailwind CSS (good - carries over to Astro)
-- senti has NO S3 bucket, CloudFront distribution, or GitHub Actions pipeline - these must be created during WBS-4
+- senti S3/CloudFront infrastructure exists but bucket name and distribution ID are not in the current AWS account's CLI output — ask user for these details during WBS-4
 
 ## Documentation
 

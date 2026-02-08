@@ -95,7 +95,7 @@ Copy static assets (images, fonts, favicons) from the React `public/` directory 
 
 ### senti (WBS-4)
 - React (CRA) + Tailwind
-- **No existing deployment infrastructure** - needs S3 bucket, CloudFront distribution, and DNS configuration
+- S3 bucket and CloudFront distribution **exist** but IDs are not discoverable via CLI — ask user for bucket name and CloudFront distribution ID
 - Consider migrating to Vite patterns during Astro conversion (CRA-specific patterns won't carry over)
 
 ## Build and Deploy

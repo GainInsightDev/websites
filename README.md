@@ -8,7 +8,7 @@ Monorepo for GainInsight marketing websites, built with Astro and Sanity CMS.
 |------|-----------|--------|-----------|------------|
 | Recon1 | `apps/recon1` | recon1.co.uk | `recon1.co.uk` | `E3JNPZRCHMTZGD` |
 | Pensionable | `apps/pensionable` | pensionable.ai | `pensionable.ai` | `E1NJGGB30XPJ7W` |
-| Senti | `apps/senti` | TBD | TBD | TBD |
+| Senti | `apps/senti` | TBD | TBD (ask user) | TBD (ask user) |
 
 ## Structure
 
