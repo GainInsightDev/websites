@@ -50,6 +50,28 @@ Monorepo for GainInsight marketing websites, migrating from React to Astro with 
 - AWS credentials are shared with the central `gi` Doppler project
 - GitHub Actions secrets are configured on the `GainInsightDev/websites` repo
 
+## Existing Sites (Migration Source)
+
+The original React sites live on the GI Dev server. These are the source for migration:
+
+| Site | Source Location | Framework | Deployment |
+|------|----------------|-----------|------------|
+| recon1 | `/srv/sites/recon1-app` | React 19 + Vite + TS | S3 + CloudFront (existing) |
+| pensionable | `/srv/sites/pensionable.ai` | React + Vite + TS | S3 + CloudFront (existing) |
+| senti | `/srv/sites/senti-website` | React (CRA) + Tailwind | **None** - needs new infrastructure |
+
+- All use Tailwind CSS (good - carries over to Astro)
+- senti has NO S3 bucket, CloudFront distribution, or GitHub Actions pipeline - these must be created during WBS-4
+
+## Documentation
+
+See `docs/` for detailed guides:
+
+| Doc | Contents |
+|-----|----------|
+| `docs/README.md` | Documentation index |
+| `docs/migration-guide.md` | React → Astro migration patterns |
+
 ## Development
 
 ```bash
