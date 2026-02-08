@@ -7,8 +7,7 @@ export default defineConfig({
   name: 'websites',
   title: 'GainInsight Websites',
 
-  // TODO: Replace with actual Sanity project ID after creating project at sanity.io
-  projectId: 'REPLACE_ME',
+  projectId: 'qt7mj7sy',
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
