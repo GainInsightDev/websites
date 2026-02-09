@@ -14,12 +14,26 @@ const { id, definition, className = '' } = Astro.props;
 
 <style>
   .mermaid-container {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    background-color: #1A1A2E;
   }
-  .mermaid svg {
+  .mermaid-container :global(svg) {
+    width: 100% !important;
+    height: 100% !important;
     max-width: 100%;
-    height: auto;
+    max-height: 100%;
+    transform: scale(0.8);
+    transform-origin: center center;
+  }
+  .mermaid-container :global(.label text),
+  .mermaid-container :global(text) {
+    fill: white !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 80% !important;
   }
 </style>
