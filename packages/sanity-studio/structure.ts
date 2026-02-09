@@ -1,9 +1,19 @@
-import type { StructureResolver } from 'sanity/structure';
+import type { StructureResolver, StructureBuilder } from 'sanity/structure';
 
-// Singleton types have one document per site — show them directly (no list)
-const singletonTypes = ['homePage', 'technologyPage', 'contactPage', 'siteSettings'];
+const sites = [
+  { id: 'pensionable', title: 'Pensionable.ai' },
+  { id: 'recon1', title: 'Recon1.co.uk' },
+  { id: 'senti', title: 'Senti' },
+];
 
-// Collection types have multiple documents — show as lists
+// Singleton page types — one document per site
+const pageTypes = [
+  { type: 'homePage', title: 'Home Page' },
+  { type: 'technologyPage', title: 'Technology Page' },
+  { type: 'contactPage', title: 'Contact Page' },
+];
+
+// Collection types — multiple documents per site
 const collectionTypes = [
   { type: 'agent', title: 'Agents' },
   { type: 'solution', title: 'Solutions' },
@@ -14,38 +24,34 @@ const collectionTypes = [
   { type: 'page', title: 'Generic Pages' },
 ];
 
-export const structure: StructureResolver = (S) =>
-  S.list()
+function siteSection(S: StructureBuilder, siteId: string) {
+  const filter = `site == "${siteId}"`;
+
+  return S.list()
     .title('Content')
     .items([
-      // Pages group
+      // Pages
       S.listItem()
         .title('Pages')
         .child(
           S.list()
             .title('Pages')
-            .items([
-              S.listItem()
-                .title('Home Page')
-                .child(
-                  S.documentTypeList('homePage').title('Home Page'),
-                ),
-              S.listItem()
-                .title('Technology Page')
-                .child(
-                  S.documentTypeList('technologyPage').title('Technology Page'),
-                ),
-              S.listItem()
-                .title('Contact Page')
-                .child(
-                  S.documentTypeList('contactPage').title('Contact Page'),
-                ),
-            ]),
+            .items(
+              pageTypes.map(({ type, title }) =>
+                S.listItem()
+                  .title(title)
+                  .child(
+                    S.documentTypeList(type)
+                      .title(title)
+                      .filter(`_type == "${type}" && ${filter}`),
+                  ),
+              ),
+            ),
         ),
 
       S.divider(),
 
-      // Content group
+      // Content collections
       S.listItem()
         .title('Content')
         .child(
@@ -55,7 +61,11 @@ export const structure: StructureResolver = (S) =>
               collectionTypes.map(({ type, title }) =>
                 S.listItem()
                   .title(title)
-                  .child(S.documentTypeList(type).title(title)),
+                  .child(
+                    S.documentTypeList(type)
+                      .title(title)
+                      .filter(`_type == "${type}" && ${filter}`),
+                  ),
               ),
             ),
         ),
@@ -66,6 +76,20 @@ export const structure: StructureResolver = (S) =>
       S.listItem()
         .title('Settings')
         .child(
-          S.documentTypeList('siteSettings').title('Site Settings'),
+          S.documentTypeList('siteSettings')
+            .title('Site Settings')
+            .filter(`_type == "siteSettings" && ${filter}`),
         ),
     ]);
+}
+
+export const structure: StructureResolver = (S) =>
+  S.list()
+    .title('Websites')
+    .items(
+      sites.map(({ id, title }) =>
+        S.listItem()
+          .title(title)
+          .child(siteSection(S, id)),
+      ),
+    );

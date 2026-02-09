@@ -37,17 +37,21 @@ jobs:
       - name: Detect changed sites
         id: changes
         run: |
+          # Only include sites that are ready for deployment
+          # Add sites here as they complete migration
+          DEPLOYABLE_SITES=("pensionable")
+
           CHANGED=$(git diff --name-only HEAD~1 HEAD)
           SITES=()
-          if echo "$CHANGED" | grep -qE '^apps/recon1/|^packages/'; then
-            SITES+=("recon1")
+          SHARED_CHANGED=false
+          if echo "$CHANGED" | grep -qE '^packages/|^pnpm-lock.yaml'; then
+            SHARED_CHANGED=true
           fi
-          if echo "$CHANGED" | grep -qE '^apps/pensionable/|^packages/'; then
-            SITES+=("pensionable")
-          fi
-          if echo "$CHANGED" | grep -qE '^apps/senti/|^packages/'; then
-            SITES+=("senti")
-          fi
+          for SITE in "${DEPLOYABLE_SITES[@]}"; do
+            if echo "$CHANGED" | grep -qE "^apps/${SITE}/" || [ "$SHARED_CHANGED" = true ]; then
+              SITES+=("$SITE")
+            fi
+          done
           if [ ${#SITES[@]} -eq 0 ]; then
             echo "sites=[]" >> "$GITHUB_OUTPUT"
           else
