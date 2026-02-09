@@ -1,5 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { fetchOne, fetchAll } from '../lib/sanity';
+
+const homePage = await fetchOne('homePage');
+const useCases = await fetchAll('useCase');
+
+const useCaseLinks: Record<string, string> = {
+  'Defined Benefit PRT': '/defined-benefit-prt',
+  'ISP Value Data': '/isp-value-data',
+  'GMP Rectification': '/gmp-rectification',
+};
 ---
 
 <Layout>
@@ -8,13 +18,13 @@ import Layout from '../layouts/Layout.astro';
     <div class="container">
       <div class="max-w-3xl mx-auto text-center">
         <h1 class="text-4xl md:text-5xl font-bold mb-6 text-white">
-          Bringing mathematical certainty to pension management
+          {homePage.heroTitle}
         </h1>
         <p class="text-xl text-white/90 mb-8">
-          Transform complex pension schemes rules and data into actionable intelligence with our advanced AI tool stack
+          {homePage.heroSubtitle}
         </p>
-        <a href="/contact" class="btn btn-primary">
-          Start a conversation today!
+        <a href={homePage.heroCtaLink || '/contact'} class="btn btn-primary">
+          {homePage.heroCtaText || 'Start a conversation today!'}
         </a>
       </div>
     </div>
@@ -26,42 +36,22 @@ import Layout from '../layouts/Layout.astro';
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div>
           <h2 class="text-3xl font-bold mb-6">
-            1 in 3 benefit calculations provided by the industry to members are likely incorrect.
+            {homePage.problemTitle}
           </h2>
           <div class="space-y-4">
-            <p class="text-grey">
-              The same approach that caused these problems will not fix them.
-            </p>
-            <p class="text-grey">
-              We understand these problems: Capacity within the industry is at its limit. Many teams have so much Business As Usual work they cannot contemplate fixing these problems, and whilst AI is exploding many organisations are lacking a positive strategy that can exploit this revolution in technology.
-            </p>
-            <p class="text-grey">
-              Perhaps it's time for a sensible conversation with a team of pension industry veterans and AI experts who can help you understand how your organisation can take advantage of what can only be described as a paradigm shift in how we work.
-            </p>
+            {homePage.problemDescription?.split('\n\n').map((para: string) => (
+              <p class="text-grey">{para}</p>
+            ))}
           </div>
         </div>
         <div class="bg-white rounded-lg shadow-card p-8">
           <ul class="space-y-4">
-            <li class="flex items-start">
-              <span class="text-purple mr-3">•</span>
-              <p class="text-grey">Not enough capacity in your team</p>
-            </li>
-            <li class="flex items-start">
-              <span class="text-purple mr-3">•</span>
-              <p class="text-grey">Complex scheme rules interpretation requires your most experienced people</p>
-            </li>
-            <li class="flex items-start">
-              <span class="text-purple mr-3">•</span>
-              <p class="text-grey">Legacy systems and data are difficult to work with</p>
-            </li>
-            <li class="flex items-start">
-              <span class="text-purple mr-3">•</span>
-              <p class="text-grey">Many existing processes are non-repeatable leading to incorrect results and missed SLAs</p>
-            </li>
-            <li class="flex items-start">
-              <span class="text-purple mr-3">•</span>
-              <p class="text-grey">Risk of calculation errors</p>
-            </li>
+            {homePage.problemItems?.map((item: string) => (
+              <li class="flex items-start">
+                <span class="text-purple mr-3">&bull;</span>
+                <p class="text-grey">{item}</p>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
@@ -72,27 +62,17 @@ import Layout from '../layouts/Layout.astro';
   <section class="section bg-gradient-light">
     <div class="container">
       <h2 class="text-3xl font-bold text-center mb-12">
-        How pensionable.ai Addresses These Challenges
+        {homePage.solutionTitle}
       </h2>
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="card">
-          <h3 class="text-xl font-bold mb-4">Automated Reasoning</h3>
-          <p class="text-grey">
-            Our AI interprets complex pension rules with mathematical precision
-          </p>
-        </div>
-        <div class="card">
-          <h3 class="text-xl font-bold mb-4">Intelligent Processing</h3>
-          <p class="text-grey">
-            Streamlined data handling with advanced ETL capabilities
-          </p>
-        </div>
-        <div class="card">
-          <h3 class="text-xl font-bold mb-4">Enterprise Security</h3>
-          <p class="text-grey">
-            Bank-grade security and compliance built into every process
-          </p>
-        </div>
+        {homePage.solutionCards?.map((card: any) => (
+          <div class="card">
+            <h3 class="text-xl font-bold mb-4">{card.title}</h3>
+            <p class="text-grey">
+              {card.description}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -104,42 +84,18 @@ import Layout from '../layouts/Layout.astro';
         Featured Use Cases
       </h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="card">
-          <h3 class="text-xl font-bold mb-4">Defined Benefit PRT</h3>
-          <p class="text-grey mb-4">
-            Transform pension risk transfer processes with mathematical certainty in benefit valuations, eliminating interpretation errors and accelerating transactions.
-          </p>
-          <a href="/defined-benefit-prt" class="text-teal hover:text-teal/80 font-medium inline-flex items-center">
-            Learn More
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-        <div class="card">
-          <h3 class="text-xl font-bold mb-4">ISP Value Data</h3>
-          <p class="text-grey mb-4">
-            Ensure members receive precise information about their pension benefits and entitlements through automated validation and real-time processing.
-          </p>
-          <a href="/isp-value-data" class="text-teal hover:text-teal/80 font-medium inline-flex items-center">
-            Learn More
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-        <div class="card">
-          <h3 class="text-xl font-bold mb-4">GMP Rectification</h3>
-          <p class="text-grey mb-4">
-            Address Guaranteed Minimum Pension compliance requirements with automated calculation and reconciliation, reducing risk and enhancing data quality.
-          </p>
-          <a href="/gmp-rectification" class="text-teal hover:text-teal/80 font-medium inline-flex items-center">
-            Learn More
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
+        {useCases.map((uc: any) => (
+          <div class="card">
+            <h3 class="text-xl font-bold mb-4">{uc.title}</h3>
+            <p class="text-grey mb-4">{uc.subtitle}</p>
+            <a href={useCaseLinks[uc.title] || `/use-cases/${uc.slug?.current}`} class="text-teal hover:text-teal/80 font-medium inline-flex items-center">
+              Learn More
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -148,10 +104,10 @@ import Layout from '../layouts/Layout.astro';
   <section class="section bg-gradient-brand text-white">
     <div class="container text-center">
       <h2 class="text-3xl font-bold mb-6 text-white">
-        Ready to transform your pension management?
+        {homePage.ctaTitle}
       </h2>
       <p class="text-xl mb-8 opacity-90">
-        Get in touch to schedule a demo and see pensionable.ai in action
+        {homePage.ctaDescription}
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/contact" class="btn bg-white text-navy hover:bg-white/90">

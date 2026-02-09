@@ -1,5 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { fetchAll } from '../lib/sanity';
+
+const stakeholders = await fetchAll('stakeholder');
+
+const imageMap: Record<string, string> = {
+  'Pension Scheme Trustees': '/images/stakeholders/CRO.jpg',
+  'Pension Scheme Administrators': '/images/stakeholders/CA.jpg',
+  'Insurance Companies': '/images/stakeholders/PA.jpg',
+  'Pension System Providers': '/images/stakeholders/CTO.jpg',
+};
 ---
 
 <Layout title="Stakeholder Perspective | pensionable.ai">
@@ -15,149 +25,40 @@ import Layout from '../layouts/Layout.astro';
   <section class="section">
     <div class="container">
       <div class="space-y-24">
-        <!-- Pension Scheme Trustees -->
-        <div class="relative">
-          <div id="stakeholder-1" class="absolute" style="top: -100px;"></div>
-          <div class="card">
-            <h2 class="text-3xl font-bold mb-8">Pension Scheme Trustees</h2>
-            <div class="flex flex-col md:flex-row gap-8 mb-12">
-              <div class="w-full md:w-1/2">
-                <h3 class="text-xl font-bold mb-6">Key Challenges</h3>
-                <ul class="space-y-4">
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Ensuring proper management of scheme funds and member interests</p></li>
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Monitoring compliance with increasingly complex regulations</p></li>
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Ensuring data accuracy without having direct control over administration</p></li>
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Managing the risk of incorrect benefit calculations</p></li>
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Balancing member interests with practicalities of scheme management</p></li>
-                </ul>
+        {stakeholders.map((stakeholder, i) => (
+          <div class="relative">
+            <div id={`stakeholder-${i + 1}`} class="absolute" style="top: -100px;"></div>
+            <div class="card">
+              <h2 class="text-3xl font-bold mb-8">{stakeholder.title}</h2>
+              <div class="flex flex-col md:flex-row gap-8 mb-12">
+                <div class="w-full md:w-1/2">
+                  <h3 class="text-xl font-bold mb-6">Key Challenges</h3>
+                  <ul class="space-y-4">
+                    {stakeholder.challenges?.map((challenge: string) => (
+                      <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">{challenge}</p></li>
+                    ))}
+                  </ul>
+                </div>
+                <div class="w-full md:w-1/2 h-96 flex-shrink-0 rounded-lg overflow-hidden order-first md:order-last">
+                  <img src={imageMap[stakeholder.title] || ''} alt={stakeholder.title} class="w-full h-full object-cover" />
+                </div>
               </div>
-              <div class="w-full md:w-1/2 h-96 flex-shrink-0 rounded-lg overflow-hidden order-first md:order-last">
-                <img src="/images/stakeholders/CRO.jpg" alt="Pension Scheme Trustees" class="w-full h-full object-cover" />
+              <div class="mb-12">
+                <h3 class="text-xl font-bold mb-6">How pensionable.ai Helps</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                  {stakeholder.howWeHelp?.map((item: any) => (
+                    <div class="bg-gradient-light rounded-lg p-6"><h4 class="text-lg font-bold mb-3">{item.title}</h4><p class="text-grey">{item.description}</p></div>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div class="mb-12">
-              <h3 class="text-xl font-bold mb-6">How pensionable.ai Helps</h3>
-              <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-gradient-light rounded-lg p-6"><h4 class="text-lg font-bold mb-3">Enhanced Governance</h4><p class="text-grey">AI-powered verification of scheme rule interpretation and application, providing mathematical certainty and clear audit trails for trustee decision-making.</p></div>
-                <div class="bg-gradient-light rounded-lg p-6"><h4 class="text-lg font-bold mb-3">Risk Reduction</h4><p class="text-grey">Comprehensive verification of benefit calculations and data quality, significantly reducing the risk of errors and regulatory non-compliance.</p></div>
-                <div class="bg-gradient-light rounded-lg p-6"><h4 class="text-lg font-bold mb-3">Improved Oversight</h4><p class="text-grey">Better visibility into scheme administration and calculations with detailed impact analysis for different approaches to scheme management.</p></div>
+              <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div><h3 class="text-xl font-bold mb-4">Key Benefits</h3><ul class="space-y-3">{stakeholder.benefits?.map((b: string) => (<li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">{b}</p></li>))}</ul></div>
+                <div><h3 class="text-xl font-bold mb-4">Related Industry Issues</h3><ul class="space-y-3">{stakeholder.relatedIssues?.map((r: string) => (<li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">{r}</p></li>))}</ul></div>
               </div>
+              <div><h3 class="text-xl font-bold mb-6">Organisation Overview</h3><div class="bg-gradient-light rounded-lg p-6"><p class="text-grey">{stakeholder.overview}</p></div></div>
             </div>
-            <div class="grid md:grid-cols-2 gap-8 mb-12">
-              <div><h3 class="text-xl font-bold mb-4">Key Benefits</h3><ul class="space-y-3"><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Greater confidence in benefit calculations</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Enhanced data quality and completeness</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Improved regulatory compliance</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Cost efficiency through reduced actuarial reviews</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Better-informed decision making</p></li></ul></div>
-              <div><h3 class="text-xl font-bold mb-4">Related Industry Issues</h3><ul class="space-y-3"><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">GMP Rectification</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Pension Risk Transfer</p></li></ul></div>
-            </div>
-            <div><h3 class="text-xl font-bold mb-6">Organisation Overview</h3><div class="bg-gradient-light rounded-lg p-6"><p class="text-grey">Pension Scheme Trustees are responsible for ensuring proper governance of pension schemes, separated from the company that established the scheme. They include both internal trustees (company employees) and professional trustees from specialised firms. Their key responsibilities include managing scheme funds, monitoring regulatory compliance, safeguarding member interests, and appointing administrators and other service providers.</p></div></div>
           </div>
-        </div>
-
-        <!-- Pension Scheme Administrators -->
-        <div class="relative">
-          <div id="stakeholder-2" class="absolute" style="top: -100px;"></div>
-          <div class="card">
-            <h2 class="text-3xl font-bold mb-8">Pension Scheme Administrators</h2>
-            <div class="flex flex-col md:flex-row gap-8 mb-12">
-              <div class="w-full md:w-1/2">
-                <h3 class="text-xl font-bold mb-6">Key Challenges</h3>
-                <ul class="space-y-4">
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Maintaining and operating legacy administration systems</p></li>
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Managing increasingly complex regulatory compliance</p></li>
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Dealing with historical data quality issues</p></li>
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Addressing the shortage of specialized pension expertise</p></li>
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Implementing complex scheme rules consistently and accurately</p></li>
-                </ul>
-              </div>
-              <div class="w-full md:w-1/2 h-96 flex-shrink-0 rounded-lg overflow-hidden order-first md:order-last">
-                <img src="/images/stakeholders/CA.jpg" alt="Pension Scheme Administrators" class="w-full h-full object-cover" />
-              </div>
-            </div>
-            <div class="mb-12">
-              <h3 class="text-xl font-bold mb-6">How pensionable.ai Helps</h3>
-              <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-gradient-light rounded-lg p-6"><h4 class="text-lg font-bold mb-3">Modern Architecture Integration</h4><p class="text-grey">Our API-first approach allows integration without replacing legacy systems, using microservices architecture for flexibility and gradual migration paths.</p></div>
-                <div class="bg-gradient-light rounded-lg p-6"><h4 class="text-lg font-bold mb-3">Automated Rule Interpretation</h4><p class="text-grey">The Scheme Rule Encoding Agent (RCA) eliminates ambiguity in scheme rules with machine-executable code ensuring consistent application across all calculations.</p></div>
-                <div class="bg-gradient-light rounded-lg p-6"><h4 class="text-lg font-bold mb-3">Efficient Data Management</h4><p class="text-grey">The Scheme Data Transport Agent (DTA) handles complex data integration with automated cleansing and validation to improve quality across systems.</p></div>
-              </div>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8 mb-12">
-              <div><h3 class="text-xl font-bold mb-4">Key Benefits</h3><ul class="space-y-3"><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Significant reduction in calculation errors</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Improved data quality and consistency</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Enhanced processing efficiency</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Faster implementation of regulatory changes</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Reduced dependency on scarce specialist resources</p></li></ul></div>
-              <div><h3 class="text-xl font-bold mb-4">Related Industry Issues</h3><ul class="space-y-3"><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">ISP Value Data</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">GMP Rectification</p></li></ul></div>
-            </div>
-            <div><h3 class="text-xl font-bold mb-6">Organisation Overview</h3><div class="bg-gradient-light rounded-lg p-6"><p class="text-grey">Pension Scheme Administrators handle the day-to-day operations of pension schemes, including calculations, benefit statements, and member communications. This includes both in-house administration teams (approximately 20% of schemes) and third-party administrators (TPAs) and employee benefit consultancies (EBCs) that manage the remaining 80%. The market includes several major providers along with numerous boutique administrators serving different segments of the market.</p></div></div>
-          </div>
-        </div>
-
-        <!-- Insurance Companies -->
-        <div class="relative">
-          <div id="stakeholder-3" class="absolute" style="top: -100px;"></div>
-          <div class="card">
-            <h2 class="text-3xl font-bold mb-8">Insurance Companies</h2>
-            <div class="flex flex-col md:flex-row gap-8 mb-12">
-              <div class="w-full md:w-1/2">
-                <h3 class="text-xl font-bold mb-6">Key Challenges</h3>
-                <ul class="space-y-4">
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Ensuring data accuracy during pension risk transfer due diligence</p></li>
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Interpreting complex scheme rules for benefit valuation</p></li>
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Verifying historical benefit calculations</p></li>
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Managing transaction timelines and efficiency</p></li>
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Balancing competitive pricing with prudent risk margins</p></li>
-                </ul>
-              </div>
-              <div class="w-full md:w-1/2 h-96 flex-shrink-0 rounded-lg overflow-hidden order-first md:order-last">
-                <img src="/images/stakeholders/PA.jpg" alt="Insurance Companies" class="w-full h-full object-cover" />
-              </div>
-            </div>
-            <div class="mb-12">
-              <h3 class="text-xl font-bold mb-6">How pensionable.ai Helps</h3>
-              <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-gradient-light rounded-lg p-6"><h4 class="text-lg font-bold mb-3">Enhanced Due Diligence</h4><p class="text-grey">AI-powered verification of scheme rule interpretation and application, ensuring comprehensive understanding of all liability components.</p></div>
-                <div class="bg-gradient-light rounded-lg p-6"><h4 class="text-lg font-bold mb-3">Data Validation</h4><p class="text-grey">Advanced data cleansing and validation capabilities to ensure accurate member information and identify potential issues early in the transaction process.</p></div>
-                <div class="bg-gradient-light rounded-lg p-6"><h4 class="text-lg font-bold mb-3">Calculation Accuracy</h4><p class="text-grey">The Scheme Rule Execution Agent (REA) ensures consistent and accurate application of scheme rules, with comprehensive test case coverage for all benefit scenarios.</p></div>
-              </div>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8 mb-12">
-              <div><h3 class="text-xl font-bold mb-4">Key Benefits</h3><ul class="space-y-3"><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">More accurate pricing and risk assessment</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Reduced transaction timelines</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Comprehensive identification of edge cases</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Better quantification of data quality issues</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Enhanced competitive position through efficiency</p></li></ul></div>
-              <div><h3 class="text-xl font-bold mb-4">Related Industry Issues</h3><ul class="space-y-3"><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Pension Risk Transfer</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Data Quality</p></li></ul></div>
-            </div>
-            <div><h3 class="text-xl font-bold mb-6">Organisation Overview</h3><div class="bg-gradient-light rounded-lg p-6"><p class="text-grey">Insurance companies play a crucial role in pension risk transfer (PRT), where they take on pension liabilities from corporate schemes. The UK PRT market has grown substantially since 2022 due to improved scheme funding levels. Insurance companies perform comprehensive due diligence on scheme data, rules, and benefit structures before pricing and accepting pension liabilities.</p></div></div>
-          </div>
-        </div>
-
-        <!-- Pension System Providers -->
-        <div class="relative">
-          <div id="stakeholder-4" class="absolute" style="top: -100px;"></div>
-          <div class="card">
-            <h2 class="text-3xl font-bold mb-8">Pension System Providers</h2>
-            <div class="flex flex-col md:flex-row gap-8 mb-12">
-              <div class="w-full md:w-1/2">
-                <h3 class="text-xl font-bold mb-6">Key Challenges</h3>
-                <ul class="space-y-4">
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Maintaining legacy systems with significant technical debt</p></li>
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Implementing constant regulatory updates</p></li>
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Addressing the shortage of developers familiar with older technologies</p></li>
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Supporting complex scheme rule implementation</p></li>
-                  <li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Meeting modern integration requirements</p></li>
-                </ul>
-              </div>
-              <div class="w-full md:w-1/2 h-96 flex-shrink-0 rounded-lg overflow-hidden order-first md:order-last">
-                <img src="/images/stakeholders/CTO.jpg" alt="Pension System Providers" class="w-full h-full object-cover" />
-              </div>
-            </div>
-            <div class="mb-12">
-              <h3 class="text-xl font-bold mb-6">How pensionable.ai Helps</h3>
-              <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-gradient-light rounded-lg p-6"><h4 class="text-lg font-bold mb-3">Enhanced Capabilities</h4><p class="text-grey">Our AI-powered solution complements existing systems by adding advanced rule interpretation and validation capabilities without replacement.</p></div>
-                <div class="bg-gradient-light rounded-lg p-6"><h4 class="text-lg font-bold mb-3">Regulatory Support</h4><p class="text-grey">Automated implementation of regulatory changes through flexible rule engines that adapt to new requirements without extensive reprogramming.</p></div>
-                <div class="bg-gradient-light rounded-lg p-6"><h4 class="text-lg font-bold mb-3">Simplified Integration</h4><p class="text-grey">Modern API-first architecture that easily connects with existing systems to enhance specific high-value functions while preserving core functionality.</p></div>
-              </div>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8 mb-12">
-              <div><h3 class="text-xl font-bold mb-4">Key Benefits</h3><ul class="space-y-3"><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Extended lifespan of existing systems</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Reduced development burden for complex features</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">More efficient response to regulatory changes</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">Improved client satisfaction and retention</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">New value-added capabilities without full replacement</p></li></ul></div>
-              <div><h3 class="text-xl font-bold mb-4">Related Industry Issues</h3><ul class="space-y-3"><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">ISP Value Data</p></li><li class="flex items-start"><span class="text-purple mr-3">•</span><p class="text-grey">System Integration</p></li></ul></div>
-            </div>
-            <div><h3 class="text-xl font-bold mb-6">Organisation Overview</h3><div class="bg-gradient-light rounded-lg p-6"><p class="text-grey">Pension System Providers develop and maintain the software platforms used by pension administrators. This market has high concentration with few major players and significant consolidation through M&A activity. Most systems originated 20+ years ago with ongoing updates and face challenges with technical debt, regulatory changes, and diminishing technical expertise.</p></div></div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>

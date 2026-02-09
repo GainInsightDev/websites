@@ -1,126 +1,131 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { fetchBySlug } from '../lib/sanity';
+
+const uc = await fetchBySlug('useCase', 'gmp-rectification');
 ---
 
-<Layout title="GMP Rectification | pensionable.ai">
+<Layout title={`${uc?.title || 'GMP Rectification'} | pensionable.ai`}>
+  <!-- Hero Section -->
   <section class="hero-section bg-gradient-brand-soft">
     <div class="container">
       <div class="max-w-3xl mx-auto text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">GMP Rectification</h1>
-        <p class="text-xl text-grey mb-8">Automated compliance and accuracy for complex historical pension calculations</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">{uc?.title}</h1>
+        <p class="text-xl text-grey mb-8">{uc?.subtitle}</p>
         <a href="/contact" class="btn btn-primary">Start a conversation today!</a>
       </div>
     </div>
   </section>
 
+  <!-- Problem & Approach Section -->
   <section class="section">
     <div class="container">
       <div class="grid md:grid-cols-2 gap-12">
         <div>
           <h2 class="text-3xl font-bold mb-6">The Challenge</h2>
           <div class="space-y-4">
-            <p class="text-grey">Guaranteed Minimum Pension (GMP) Rectification is a critical compliance challenge for pension schemes. GMPs were accrued between 1978 and 1997, and schemes must now correct historical errors in calculations and records.</p>
-            <p class="text-grey">This process involves reconciling scheme data with HMRC records, identifying discrepancies, and making complex adjustments. Challenges include poor data quality, intricate calculation rules that vary by time period, legacy system limitations, and resource constraints.</p>
-            <p class="text-grey">Additionally, discovering historical payment errors creates difficult decisions about recovery or compensation, and explaining these technical changes to members adds further complexity.</p>
+            {uc?.challenge?.split('\n\n').map((p: string) => (
+              <p class="text-grey">{p}</p>
+            ))}
           </div>
         </div>
         <div>
           <h2 class="text-3xl font-bold mb-6">Our Approach</h2>
           <div class="space-y-4">
-            <p class="text-grey">pensionable.ai transforms GMP Rectification with our integrated agent-based solution. We automate the interpretation of complex GMP legislation and scheme rules into precise, executable code.</p>
-            <p class="text-grey">Our technology extracts and structures data from legacy formats, identifies patterns in incomplete data, and cross-references multiple sources to validate information.</p>
-            <p class="text-grey">We generate comprehensive test cases covering all calculation scenarios, automatically compare scheme records with HMRC data, and provide detailed financial impact analysis. This approach converts a resource-intensive compliance exercise into a manageable, accurate, and efficient process.</p>
+            {uc?.approach?.split('\n\n').map((p: string) => (
+              <p class="text-grey">{p}</p>
+            ))}
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Solution Architecture Section -->
   <section class="section bg-white">
     <div class="container">
       <h2 class="text-3xl font-bold text-center mb-12">Solution Architecture</h2>
       <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-gradient-light rounded-lg p-8">
-          <h3 class="text-xl font-bold mb-4">Data Analysis Phase</h3>
-          <ul class="space-y-4">
-            <li class="flex items-start"><span class="text-purple mr-3">•</span><div><p class="font-medium">Scheme Rule Encoding</p><p class="text-grey">Converts complex GMP legislation and scheme rules into precise, executable code</p></div></li>
-            <li class="flex items-start"><span class="text-purple mr-3">•</span><div><p class="font-medium">Legacy Data Extraction</p><p class="text-grey">Advanced data archaeology to recover and reconstruct historical records</p></div></li>
-            <li class="flex items-start"><span class="text-purple mr-3">•</span><div><p class="font-medium">HMRC Data Integration</p><p class="text-grey">Secure import and normalisation of HMRC GMP data</p></div></li>
-          </ul>
-        </div>
-        <div class="bg-gradient-light rounded-lg p-8">
-          <h3 class="text-xl font-bold mb-4">Processing & Resolution Phase</h3>
-          <ul class="space-y-4">
-            <li class="flex items-start"><span class="text-purple mr-3">•</span><div><p class="font-medium">Automated Reconciliation</p><p class="text-grey">AI-driven comparison and categorisation of discrepancies</p></div></li>
-            <li class="flex items-start"><span class="text-purple mr-3">•</span><div><p class="font-medium">Impact Assessment</p><p class="text-grey">Detailed analysis of financial implications at scheme and member levels</p></div></li>
-            <li class="flex items-start"><span class="text-purple mr-3">•</span><div><p class="font-medium">Implementation Support</p><p class="text-grey">Generation of correction instructions and member communications</p></div></li>
-          </ul>
-        </div>
+        {uc?.solutionArchitecture?.map((section: any) => (
+          <div class="bg-gradient-light rounded-lg p-8">
+            <h3 class="text-xl font-bold mb-4">{section.title}</h3>
+            <ul class="space-y-4">
+              {section.items?.map((item: any) => (
+                <li class="flex items-start">
+                  <span class="text-purple mr-3">&bull;</span>
+                  <div>
+                    <p class="font-medium">{item.title}</p>
+                    <p class="text-grey">{item.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
+  <!-- Benefits Section -->
   <section class="section">
     <div class="container">
       <h2 class="text-3xl font-bold text-center mb-12">Key Benefits</h2>
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="card text-center">
-          <div class="bg-purple/10 inline-flex items-center justify-center w-16 h-16 rounded-full mb-6 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
-          <h3 class="text-xl font-bold mb-4">Accelerated Compliance</h3>
-          <p class="text-grey">Complete GMP reconciliation projects in a fraction of the time required by traditional methods</p>
-        </div>
-        <div class="card text-center">
-          <div class="bg-purple/10 inline-flex items-center justify-center w-16 h-16 rounded-full mb-6 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div>
-          <h3 class="text-xl font-bold mb-4">Enhanced Accuracy</h3>
-          <p class="text-grey">Mathematical certainty in calculations with comprehensive validation and testing</p>
-        </div>
-        <div class="card text-center">
-          <div class="bg-purple/10 inline-flex items-center justify-center w-16 h-16 rounded-full mb-6 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg></div>
-          <h3 class="text-xl font-bold mb-4">Comprehensive Reporting</h3>
-          <p class="text-grey">Detailed impact assessments and audit trails for trustee and regulatory reporting</p>
-        </div>
+        {uc?.benefits?.map((benefit: any) => (
+          <div class="card text-center">
+            <div class="bg-purple/10 inline-flex items-center justify-center w-16 h-16 rounded-full mb-6 mx-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-4">{benefit.title}</h3>
+            <p class="text-grey">{benefit.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
+  <!-- FAQ Section -->
   <section class="section">
     <div class="container">
       <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
       <div class="max-w-3xl mx-auto space-y-8">
-        <div class="card"><h3 class="text-xl font-bold mb-4">What is GMP Rectification?</h3><p class="text-grey">Guaranteed Minimum Pension (GMP) Rectification is the process of correcting historical errors in GMP calculations and records to ensure compliance with legislative requirements. GMPs were accrued between 1978 and 1997 when schemes were contracted out of the State Earnings-Related Pension Scheme.</p></div>
-        <div class="card"><h3 class="text-xl font-bold mb-4">Why is GMP Rectification necessary?</h3><p class="text-grey">GMP Rectification is necessary to comply with legal obligations, ensure members receive the correct benefits, and to avoid potential regulatory penalties. Following the end of contracting out in 2016, schemes must reconcile their GMP data with HMRC records and make necessary corrections.</p></div>
-        <div class="card"><h3 class="text-xl font-bold mb-4">How does pensionable.ai approach GMP Rectification differently?</h3><p class="text-grey">While traditional approaches rely on manual checking and limited automation, pensionable.ai uses AI to interpret complex GMP legislation, extract data from legacy systems, and automate the reconciliation process. Our agent-based architecture ensures accuracy, consistency, and significant time savings.</p></div>
+        {uc?.faqs?.map((faq: any) => (
+          <div class="card">
+            <h3 class="text-xl font-bold mb-4">{faq.question}</h3>
+            <p class="text-grey">{faq.answer}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
+  <!-- Who Benefits Section -->
   <section class="section bg-gradient-light">
     <div class="container">
       <h2 class="text-3xl font-bold text-center mb-12">Who Benefits</h2>
       <div class="grid md:grid-cols-3 gap-8 text-center">
-        <div class="card">
-          <div class="bg-purple/10 inline-flex items-center justify-center w-16 h-16 rounded-full mb-6 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg></div>
-          <h3 class="text-xl font-bold mb-4">Trustee Boards</h3>
-          <p class="text-grey">Gain confidence in compliance and transparency in decision-making for complex GMP issues</p>
-        </div>
-        <div class="card">
-          <div class="bg-purple/10 inline-flex items-center justify-center w-16 h-16 rounded-full mb-6 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg></div>
-          <h3 class="text-xl font-bold mb-4">Compliance Managers</h3>
-          <p class="text-grey">Complete regulatory requirements efficiently with robust audit trails and documentation</p>
-        </div>
-        <div class="card">
-          <div class="bg-purple/10 inline-flex items-center justify-center w-16 h-16 rounded-full mb-6 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div>
-          <h3 class="text-xl font-bold mb-4">Finance Directors</h3>
-          <p class="text-grey">Reduce costs and resource requirements while improving financial accuracy and planning</p>
-        </div>
+        {uc?.whoBenefits?.map((item: any) => (
+          <div class="card">
+            <div class="bg-purple/10 inline-flex items-center justify-center w-16 h-16 rounded-full mb-6 mx-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-4">{item.title}</h3>
+            <p class="text-grey">{item.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
+  <!-- CTA Section -->
   <section class="section bg-gradient-brand text-white">
     <div class="container text-center">
-      <h2 class="text-3xl font-bold mb-6 text-white">Ready to transform your GMP Rectification process?</h2>
-      <p class="text-xl mb-8 opacity-90">Contact us today to discuss your specific GMP challenges and see how our solution can help</p>
+      <h2 class="text-3xl font-bold mb-6 text-white">{uc?.ctaTitle}</h2>
+      <p class="text-xl mb-8 opacity-90">{uc?.ctaDescription}</p>
       <div class="flex flex-wrap justify-center gap-4">
         <a href="/contact" class="btn bg-white text-navy hover:bg-white/90">Start a conversation today!</a>
       </div>
