@@ -5,4 +5,5 @@ export default defineCliConfig({
     projectId: 'qt7mj7sy',
     dataset: 'production',
   },
+  studioHost: 'gaininsight-websites',
 });

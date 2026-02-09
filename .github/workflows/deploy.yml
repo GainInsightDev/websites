@@ -7,6 +7,8 @@ on:
       - 'apps/**'
       - 'packages/**'
       - 'pnpm-lock.yaml'
+  repository_dispatch:
+    types: [sanity_content_update]
   workflow_dispatch:
     inputs:
       site:
@@ -62,6 +64,69 @@ jobs:
       matrix:
         site: ${{ fromJson(needs.detect-changes.outputs.sites) }}
     name: Deploy ${{ matrix.site }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @websites/${{ matrix.site }} build
+
+      - name: Set deployment config
+        id: config
+        run: |
+          case "${{ matrix.site }}" in
+            recon1)
+              echo "bucket=${{ secrets.RECON1_S3_BUCKET }}" >> "$GITHUB_OUTPUT"
+              echo "cf_id=${{ secrets.RECON1_CLOUDFRONT_ID }}" >> "$GITHUB_OUTPUT"
+              ;;
+            pensionable)
+              echo "bucket=${{ secrets.PENSIONABLE_S3_BUCKET }}" >> "$GITHUB_OUTPUT"
+              echo "cf_id=${{ secrets.PENSIONABLE_CLOUDFRONT_ID }}" >> "$GITHUB_OUTPUT"
+              ;;
+            senti)
+              echo "bucket=${{ secrets.SENTI_S3_BUCKET }}" >> "$GITHUB_OUTPUT"
+              echo "cf_id=${{ secrets.SENTI_CLOUDFRONT_ID }}" >> "$GITHUB_OUTPUT"
+              ;;
+          esac
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy static files to S3
+        run: |
+          aws s3 sync apps/${{ matrix.site }}/dist/ s3://${{ steps.config.outputs.bucket }} \
+            --delete \
+            --cache-control "max-age=31536000,public" \
+            --exclude "index.html" \
+            --exclude "*.html"
+
+      - name: Deploy HTML files to S3
+        run: |
+          aws s3 sync apps/${{ matrix.site }}/dist/ s3://${{ steps.config.outputs.bucket }} \
+            --delete \
+            --cache-control "no-cache,no-store,must-revalidate" \
+            --include "*.html"
+
+      - name: Invalidate CloudFront
+        if: steps.config.outputs.cf_id != ''
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ steps.config.outputs.cf_id }}" \
+            --paths "/*"
+
+  deploy-webhook:
+    if: github.event_name == 'repository_dispatch'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        site: ${{ github.event.client_payload.site && fromJson(format('["{0}"]', github.event.client_payload.site)) || fromJson('["pensionable"]') }}
+    name: Deploy ${{ matrix.site }} (webhook)
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4

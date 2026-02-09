@@ -75,9 +75,12 @@ See `docs/` for detailed guides:
 ## Sanity CMS
 
 - **Project ID:** `qt7mj7sy`, **Dataset:** `production`
+- **Studio URL:** https://gaininsight-websites.sanity.studio/ (login: `admins@gaininsight.global`, creds in Bitwarden)
 - Use `createImageUrlBuilder` (named export) from `@sanity/image-url`, NOT the deprecated default export
 - Shared client in each app's `src/lib/sanity.ts` with `fetchOne(type)` and `fetchAll(type)` helpers
 - Schemas live in `packages/sanity-studio/schemas/`
+- **Auto-deploy:** A Sanity webhook triggers GitHub Actions on content publish. Flow: Sanity webhook → `webhooks.gaininsight.co.uk/webhooks/sanity-deploy/pensionable` → GitHub `repository_dispatch` → deploy workflow rebuilds and deploys the site
+- To deploy the Studio: `cd packages/sanity-studio && npx sanity deploy`
 
 ## Development Conventions
 
