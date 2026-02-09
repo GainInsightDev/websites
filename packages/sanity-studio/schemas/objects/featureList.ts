@@ -12,6 +12,11 @@ export const featureList = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+    }),
+    defineField({
       name: 'items',
       title: 'Items',
       type: 'array',

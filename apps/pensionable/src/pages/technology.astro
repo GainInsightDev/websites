@@ -18,12 +18,7 @@ const partnerLogoClass: Record<string, string> = {
   'default': 'max-h-36 max-w-36 object-contain',
 };
 
-const aiCapabilities = [
-  { title: 'Automated Reasoning', description: 'Advanced logical processing for complex pension calculations', features: ['Formal verification of calculations', 'Logical consistency checking', 'Automated problem solving', 'Decision support systems'] },
-  { title: 'Machine Learning', description: 'Intelligent pattern recognition and prediction capabilities', features: ['Pattern recognition in scheme rules', 'Anomaly detection', 'Predictive analytics', 'Continuous learning and improvement'] },
-  { title: 'Natural Language Processing', description: 'Sophisticated text analysis and understanding', features: ['Document understanding', 'Context-aware interpretation', 'Semantic analysis', 'Multi-document correlation'] },
-  { title: 'Data Extraction', description: 'Intelligent data capture and processing', features: ['Automated document processing', 'Structured data extraction', 'Format recognition', 'Quality assurance'] },
-];
+const aiCapabilities = techPage.aiCapabilities || [];
 ---
 
 <Layout title="Technology | pensionable.ai">
@@ -103,15 +98,15 @@ const aiCapabilities = [
       <div class="container">
         <h2 class="text-3xl font-bold text-center mb-12">AI Capabilities</h2>
         <div class="grid md:grid-cols-2 gap-8">
-          {aiCapabilities.map((capability) => (
+          {aiCapabilities.map((capability: any) => (
             <div class="card">
               <h3 class="text-2xl font-bold mb-4">{capability.title}</h3>
               <p class="text-grey mb-6">{capability.description}</p>
               <ul class="space-y-3">
-                {capability.features.map((feature) => (
+                {capability.items?.map((item: any) => (
                   <li class="flex items-start">
                     <span class="text-purple mr-3">&bull;</span>
-                    <p class="text-grey">{feature}</p>
+                    <p class="text-grey">{item.title}</p>
                   </li>
                 ))}
               </ul>
