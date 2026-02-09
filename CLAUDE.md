@@ -72,6 +72,34 @@ See `docs/` for detailed guides:
 | `docs/README.md` | Documentation index |
 | `docs/migration-guide.md` | React → Astro migration patterns |
 
+## Sanity CMS
+
+- **Project ID:** `qt7mj7sy`, **Dataset:** `production`
+- Use `createImageUrlBuilder` (named export) from `@sanity/image-url`, NOT the deprecated default export
+- Shared client in each app's `src/lib/sanity.ts` with `fetchOne(type)` and `fetchAll(type)` helpers
+- Schemas live in `packages/sanity-studio/schemas/`
+
+## Development Conventions
+
+### Port Allocation
+Each worktree gets a port from the server registry. **Never use framework defaults** (e.g. Astro 4321).
+
+```bash
+project-registry find-by-team WBS       # "websites"
+project-registry websites port_base     # 18000
+/srv/gidev/bin/port-slot lookup websites <issue>  # slot number
+# Port = port_base + slot. Both astro.config.mjs and Caddy must use this port.
+```
+
+### Fonts
+Self-host fonts in `public/fonts/` with `@font-face` in `global.css`. Do NOT use Google Fonts CDN — it causes visible FOUT (Flash of Unstyled Text).
+
+### Diagrams
+Use static PNG images in `public/images/diagrams/` instead of client-side JS rendering (Mermaid, etc.). Static images eliminate FOUC, reduce JS bundle size, and render instantly.
+
+### Images
+All `<img>` tags must have explicit `width` and `height` attributes to prevent CLS. Use `loading="lazy"` for below-the-fold images.
+
 ## Development
 
 ```bash

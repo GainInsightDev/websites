@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import MermaidDiagram from '../components/MermaidDiagram.astro';
 import { fetchOne, fetchAll } from '../lib/sanity';
 
 const techPage = await fetchOne('technologyPage');
@@ -75,14 +74,15 @@ const aiCapabilities = techPage.aiCapabilities || [];
                   </ul>
                 </div>
               </div>
-              <div class="md:w-1/2 flex items-center justify-center p-4 rounded-lg" style="background-color: #1E1E2F;">
-                <div class="w-full aspect-square max-w-md">
-                  <MermaidDiagram
-                    id={`${agent.slug?.current || agent.abbreviation?.toLowerCase()}-diagram`}
-                    definition={agent.diagramDefinition || ''}
-                    className="w-full h-full"
-                  />
-                </div>
+              <div class="md:w-1/2 flex items-center justify-center rounded-lg overflow-hidden">
+                <img
+                  src={`/images/diagrams/${agent.slug?.current || agent.abbreviation?.toLowerCase()}-diagram.png`}
+                  alt={`${agent.name} architecture diagram`}
+                  class="w-full h-full object-cover rounded-lg"
+                  width="600"
+                  height="400"
+                  loading="lazy"
+                />
               </div>
             </div>
           ))}
@@ -182,14 +182,3 @@ const aiCapabilities = techPage.aiCapabilities || [];
     </div>
   </section>
 </Layout>
-
-<script>
-  import mermaid from 'mermaid';
-  mermaid.initialize({
-    startOnLoad: true,
-    theme: 'dark',
-    securityLevel: 'loose',
-    fontSize: 14,
-    fontFamily: 'Inter, sans-serif',
-  });
-</script>
