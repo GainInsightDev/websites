@@ -12,7 +12,7 @@ const imageMap: Record<string, string> = {
 };
 ---
 
-<Layout title="Stakeholder Perspective | pensionable.ai">
+<Layout title="Stakeholder Perspective | pensionable.ai" description="How pensionable.ai serves trustees, administrators, insurance companies, and pension system providers with tailored AI solutions.">
   <section class="hero-section bg-gradient-brand-soft">
     <div class="container">
       <div class="max-w-3xl mx-auto text-center">
@@ -40,7 +40,7 @@ const imageMap: Record<string, string> = {
                   </ul>
                 </div>
                 <div class="w-full md:w-1/2 h-96 flex-shrink-0 rounded-lg overflow-hidden order-first md:order-last">
-                  <img src={imageMap[stakeholder.title] || ''} alt={stakeholder.title} class="w-full h-full object-cover" />
+                  <img src={imageMap[stakeholder.title] || ''} alt={stakeholder.title} class="w-full h-full object-cover" width="600" height="384" loading="lazy" />
                 </div>
               </div>
               <div class="mb-12">

@@ -1,0 +1,35 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-navy text-white py-12">
+  <div class="container mx-auto px-4">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-lg font-bold text-white mb-4">pensionable.ai</h3>
+        <p class="text-gray-300 text-sm">AI-powered pension administration solutions. Automated reasoning, intelligent data processing, and expert consulting for pension schemes.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-bold text-white mb-4">Quick Links</h3>
+        <nav aria-label="Footer navigation">
+          <ul class="space-y-2 text-sm">
+            <li><a href="/solutions" class="text-gray-300 hover:text-teal transition-colors">Solutions</a></li>
+            <li><a href="/technology" class="text-gray-300 hover:text-teal transition-colors">Technology</a></li>
+            <li><a href="/team" class="text-gray-300 hover:text-teal transition-colors">Team</a></li>
+            <li><a href="/contact" class="text-gray-300 hover:text-teal transition-colors">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div>
+        <h3 class="text-lg font-bold text-white mb-4">Contact</h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li>Liverpool, United Kingdom</li>
+          <li><a href="mailto:info@pensionable.ai" class="hover:text-teal transition-colors">info@pensionable.ai</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
+      <p>&copy; {currentYear} pensionable.ai. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

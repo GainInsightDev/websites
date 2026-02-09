@@ -1,12 +1,21 @@
 ---
 import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
 interface Props {
   title?: string;
+  description?: string;
+  ogImage?: string;
 }
 
-const { title = 'pensionable.ai | Intelligent Pension Solutions' } = Astro.props;
+const {
+  title = 'pensionable.ai | Intelligent Pension Solutions',
+  description = 'AI-powered pension administration solutions. Automated reasoning, intelligent data processing, and expert consulting for pension schemes.',
+  ogImage = '/images/og-default.png',
+} = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, 'https://pensionable.ai').href;
 ---
 
 <!DOCTYPE html>
@@ -16,8 +25,27 @@ const { title = 'pensionable.ai | Intelligent Pension Solutions' } = Astro.props
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="pensionable.ai" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@400;500;600;700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
@@ -25,5 +53,6 @@ const { title = 'pensionable.ai | Intelligent Pension Solutions' } = Astro.props
     <main class="pt-[70px]">
       <slot />
     </main>
+    <Footer />
   </body>
 </html>

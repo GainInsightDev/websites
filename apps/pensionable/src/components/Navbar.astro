@@ -2,84 +2,84 @@
 // Navbar component - converted from React to Astro with vanilla JS for interactivity
 ---
 
-<nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+<nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50" aria-label="Main navigation">
   <div class="container mx-auto px-4">
     <div class="flex justify-between items-center h-[70px]">
       <a href="/" class="flex-shrink-0">
-        <img src="/images/logos/CompanyNameAndLogo.svg" alt="Pensionable.ai" class="h-[40px]" />
+        <img src="/images/logos/CompanyNameAndLogo.svg" alt="Pensionable.ai home" class="h-[40px]" width="200" height="40" />
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex">
-        <div class="nav-dropdown relative py-2 px-4 flex-shrink-0" data-dropdown="burningIssues">
-          <span class="text-lg cursor-pointer hover:text-teal">Industry Issues</span>
-          <div class="dropdown-menu absolute top-[calc(100%-4px)] left-0 w-64 bg-white shadow-lg rounded-md py-2 z-50 hidden">
-            <a href="/defined-benefit-prt" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Defined Benefit PRT</a>
-            <a href="/isp-value-data" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">ISP Value Data</a>
-            <a href="/gmp-rectification" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">GMP Rectification</a>
-          </div>
-        </div>
+      <ul class="hidden md:flex" role="menubar">
+        <li class="nav-dropdown relative py-2 px-4 flex-shrink-0" role="none" data-dropdown="burningIssues">
+          <button class="text-lg cursor-pointer hover:text-teal bg-transparent border-0" role="menuitem" aria-haspopup="true" aria-expanded="false">Industry Issues</button>
+          <ul class="dropdown-menu absolute top-[calc(100%-4px)] left-0 w-64 bg-white shadow-lg rounded-md py-2 z-50 hidden" role="menu">
+            <li role="none"><a href="/defined-benefit-prt" role="menuitem" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Defined Benefit PRT</a></li>
+            <li role="none"><a href="/isp-value-data" role="menuitem" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">ISP Value Data</a></li>
+            <li role="none"><a href="/gmp-rectification" role="menuitem" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">GMP Rectification</a></li>
+          </ul>
+        </li>
 
-        <div class="nav-dropdown relative py-2 px-4 flex-shrink-0" data-dropdown="stakeholders">
-          <a href="/stakeholder-perspective" class="text-lg hover:text-teal">Stakeholder Perspective</a>
-          <div class="dropdown-menu absolute top-[calc(100%-4px)] left-0 w-64 bg-white shadow-lg rounded-md py-2 z-50 hidden">
-            <a href="/stakeholder-perspective#stakeholder-1" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Pension Scheme Trustees</a>
-            <a href="/stakeholder-perspective#stakeholder-2" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Pension Scheme Administrators</a>
-            <a href="/stakeholder-perspective#stakeholder-3" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Insurance Companies</a>
-            <a href="/stakeholder-perspective#stakeholder-4" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Pension System Providers</a>
-          </div>
-        </div>
+        <li class="nav-dropdown relative py-2 px-4 flex-shrink-0" role="none" data-dropdown="stakeholders">
+          <a href="/stakeholder-perspective" class="text-lg hover:text-teal" role="menuitem" aria-haspopup="true" aria-expanded="false">Stakeholder Perspective</a>
+          <ul class="dropdown-menu absolute top-[calc(100%-4px)] left-0 w-64 bg-white shadow-lg rounded-md py-2 z-50 hidden" role="menu">
+            <li role="none"><a href="/stakeholder-perspective#stakeholder-1" role="menuitem" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Pension Scheme Trustees</a></li>
+            <li role="none"><a href="/stakeholder-perspective#stakeholder-2" role="menuitem" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Pension Scheme Administrators</a></li>
+            <li role="none"><a href="/stakeholder-perspective#stakeholder-3" role="menuitem" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Insurance Companies</a></li>
+            <li role="none"><a href="/stakeholder-perspective#stakeholder-4" role="menuitem" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Pension System Providers</a></li>
+          </ul>
+        </li>
 
-        <div class="nav-dropdown relative py-2 px-4 flex-shrink-0" data-dropdown="solutions">
-          <a href="/solutions" class="text-lg hover:text-teal">Solution Components</a>
-          <div class="dropdown-menu absolute top-[calc(100%-4px)] left-0 w-64 bg-white shadow-lg rounded-md py-2 z-50 hidden">
-            <a href="/solutions#logic-etl" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Logic ETL</a>
-            <a href="/solutions#data-etl" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Data ETL</a>
-            <a href="/solutions#analytics" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Analytics</a>
-            <a href="/solutions#integration" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Integration</a>
-            <a href="/solutions#consulting" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Consulting</a>
-          </div>
-        </div>
+        <li class="nav-dropdown relative py-2 px-4 flex-shrink-0" role="none" data-dropdown="solutions">
+          <a href="/solutions" class="text-lg hover:text-teal" role="menuitem" aria-haspopup="true" aria-expanded="false">Solution Components</a>
+          <ul class="dropdown-menu absolute top-[calc(100%-4px)] left-0 w-64 bg-white shadow-lg rounded-md py-2 z-50 hidden" role="menu">
+            <li role="none"><a href="/solutions#logic-etl" role="menuitem" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Logic ETL</a></li>
+            <li role="none"><a href="/solutions#data-etl" role="menuitem" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Data ETL</a></li>
+            <li role="none"><a href="/solutions#analytics" role="menuitem" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Analytics</a></li>
+            <li role="none"><a href="/solutions#integration" role="menuitem" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Integration</a></li>
+            <li role="none"><a href="/solutions#consulting" role="menuitem" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Consulting</a></li>
+          </ul>
+        </li>
 
-        <div class="nav-dropdown relative py-2 px-4 flex-shrink-0" data-dropdown="technology">
-          <a href="/technology" class="text-lg hover:text-teal">Technology</a>
-          <div class="dropdown-menu absolute top-[calc(100%-4px)] left-0 w-64 bg-white shadow-lg rounded-md py-2 z-50 hidden">
-            <a href="/technology#approach" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Our Approach</a>
-            <a href="/technology#agent-fleet" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Agent Fleet</a>
-            <a href="/technology#ai-capabilities" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">AI Capabilities</a>
-            <a href="/technology#partners" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Partners</a>
-            <a href="/technology#security" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Security</a>
-          </div>
-        </div>
+        <li class="nav-dropdown relative py-2 px-4 flex-shrink-0" role="none" data-dropdown="technology">
+          <a href="/technology" class="text-lg hover:text-teal" role="menuitem" aria-haspopup="true" aria-expanded="false">Technology</a>
+          <ul class="dropdown-menu absolute top-[calc(100%-4px)] left-0 w-64 bg-white shadow-lg rounded-md py-2 z-50 hidden" role="menu">
+            <li role="none"><a href="/technology#approach" role="menuitem" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Our Approach</a></li>
+            <li role="none"><a href="/technology#agent-fleet" role="menuitem" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Agent Fleet</a></li>
+            <li role="none"><a href="/technology#ai-capabilities" role="menuitem" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">AI Capabilities</a></li>
+            <li role="none"><a href="/technology#partners" role="menuitem" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Partners</a></li>
+            <li role="none"><a href="/technology#security" role="menuitem" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-teal">Security</a></li>
+          </ul>
+        </li>
 
-        <div class="relative py-2 px-4 flex-shrink-0">
-          <a href="/team" class="text-lg hover:text-teal">Team</a>
-        </div>
+        <li class="relative py-2 px-4 flex-shrink-0" role="none">
+          <a href="/team" class="text-lg hover:text-teal" role="menuitem">Team</a>
+        </li>
 
-        <div class="relative py-2 px-4 flex-shrink-0">
-          <a href="/contact" class="text-lg hover:text-teal">Contact</a>
-        </div>
-      </div>
+        <li class="relative py-2 px-4 flex-shrink-0" role="none">
+          <a href="/contact" class="text-lg hover:text-teal" role="menuitem">Contact</a>
+        </li>
+      </ul>
 
       <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="md:hidden" aria-label="Toggle mobile menu">
-        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button id="mobile-menu-btn" class="md:hidden" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden py-4 border-t border-gray-200 hidden">
+    <div id="mobile-menu" class="md:hidden py-4 border-t border-gray-200 hidden" role="menu">
       <div class="space-y-2">
         <div>
-          <button class="mobile-section-toggle w-full flex justify-between items-center px-4 py-2 text-lg hover:text-teal" data-section="burningIssues">
+          <button class="mobile-section-toggle w-full flex justify-between items-center px-4 py-2 text-lg hover:text-teal" data-section="burningIssues" aria-expanded="false">
             Industry Issues
-            <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div class="mobile-section-content hidden bg-gray-50 py-2" data-content="burningIssues">
+          <div class="mobile-section-content hidden bg-gray-50 py-2" data-content="burningIssues" role="group">
             <a href="/defined-benefit-prt" class="block px-8 py-2 text-gray-800 hover:text-teal">Defined Benefit PRT</a>
             <a href="/isp-value-data" class="block px-8 py-2 text-gray-800 hover:text-teal">ISP Value Data</a>
             <a href="/gmp-rectification" class="block px-8 py-2 text-gray-800 hover:text-teal">GMP Rectification</a>
@@ -87,13 +87,13 @@
         </div>
 
         <div>
-          <button class="mobile-section-toggle w-full flex justify-between items-center px-4 py-2 text-lg hover:text-teal" data-section="stakeholders">
+          <button class="mobile-section-toggle w-full flex justify-between items-center px-4 py-2 text-lg hover:text-teal" data-section="stakeholders" aria-expanded="false">
             Stakeholder Perspective
-            <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div class="mobile-section-content hidden bg-gray-50 py-2" data-content="stakeholders">
+          <div class="mobile-section-content hidden bg-gray-50 py-2" data-content="stakeholders" role="group">
             <a href="/stakeholder-perspective#stakeholder-1" class="block px-8 py-2 text-gray-800 hover:text-teal">Pension Scheme Trustees</a>
             <a href="/stakeholder-perspective#stakeholder-2" class="block px-8 py-2 text-gray-800 hover:text-teal">Pension Scheme Administrators</a>
             <a href="/stakeholder-perspective#stakeholder-3" class="block px-8 py-2 text-gray-800 hover:text-teal">Insurance Companies</a>
@@ -102,13 +102,13 @@
         </div>
 
         <div>
-          <button class="mobile-section-toggle w-full flex justify-between items-center px-4 py-2 text-lg hover:text-teal" data-section="solutions">
+          <button class="mobile-section-toggle w-full flex justify-between items-center px-4 py-2 text-lg hover:text-teal" data-section="solutions" aria-expanded="false">
             Solution Components
-            <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div class="mobile-section-content hidden bg-gray-50 py-2" data-content="solutions">
+          <div class="mobile-section-content hidden bg-gray-50 py-2" data-content="solutions" role="group">
             <a href="/solutions#logic-etl" class="block px-8 py-2 text-gray-800 hover:text-teal">Logic ETL</a>
             <a href="/solutions#data-etl" class="block px-8 py-2 text-gray-800 hover:text-teal">Data ETL</a>
             <a href="/solutions#analytics" class="block px-8 py-2 text-gray-800 hover:text-teal">Analytics</a>
@@ -118,13 +118,13 @@
         </div>
 
         <div>
-          <button class="mobile-section-toggle w-full flex justify-between items-center px-4 py-2 text-lg hover:text-teal" data-section="technology">
+          <button class="mobile-section-toggle w-full flex justify-between items-center px-4 py-2 text-lg hover:text-teal" data-section="technology" aria-expanded="false">
             Technology
-            <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div class="mobile-section-content hidden bg-gray-50 py-2" data-content="technology">
+          <div class="mobile-section-content hidden bg-gray-50 py-2" data-content="technology" role="group">
             <a href="/technology#approach" class="block px-8 py-2 text-gray-800 hover:text-teal">Our Approach</a>
             <a href="/technology#agent-fleet" class="block px-8 py-2 text-gray-800 hover:text-teal">Agent Fleet</a>
             <a href="/technology#ai-capabilities" class="block px-8 py-2 text-gray-800 hover:text-teal">AI Capabilities</a>
@@ -146,39 +146,79 @@
   const mobileMenu = document.getElementById('mobile-menu');
 
   mobileMenuBtn?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
+    const isHidden = mobileMenu?.classList.toggle('hidden');
+    mobileMenuBtn.setAttribute('aria-expanded', String(!isHidden));
   });
 
   // Mobile section toggles
   document.querySelectorAll('.mobile-section-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
-      const section = btn.getAttribute('data-section');
+      const section = btn.getAttribute('data-section') ?? '';
       const content = document.querySelector(`[data-content="${section}"]`);
       const arrow = btn.querySelector('svg');
-      content?.classList.toggle('hidden');
+      const isHidden = content?.classList.toggle('hidden');
       arrow?.classList.toggle('rotate-180');
+      btn.setAttribute('aria-expanded', String(!isHidden));
     });
   });
 
-  // Desktop dropdown hover
+  // Desktop dropdown hover + keyboard
   let closeTimeout: ReturnType<typeof setTimeout>;
 
   document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
     const menu = dropdown.querySelector('.dropdown-menu');
+    const trigger = dropdown.querySelector<HTMLElement>('button, a');
 
-    dropdown.addEventListener('mouseenter', () => {
+    function openMenu() {
       clearTimeout(closeTimeout);
-      // Close all other dropdowns
       document.querySelectorAll('.dropdown-menu').forEach(m => {
-        if (m !== menu) m.classList.add('hidden');
+        if (m !== menu) {
+          m.classList.add('hidden');
+          m.closest('.nav-dropdown')?.querySelector('button, a')?.setAttribute('aria-expanded', 'false');
+        }
       });
       menu?.classList.remove('hidden');
-    });
+      trigger?.setAttribute('aria-expanded', 'true');
+    }
 
-    dropdown.addEventListener('mouseleave', () => {
+    function closeMenu() {
       closeTimeout = setTimeout(() => {
         menu?.classList.add('hidden');
+        trigger?.setAttribute('aria-expanded', 'false');
       }, 150);
+    }
+
+    dropdown.addEventListener('mouseenter', openMenu);
+    dropdown.addEventListener('mouseleave', closeMenu);
+
+    // Keyboard: Enter/Space opens dropdown, Escape closes
+    trigger?.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        openMenu();
+        const firstItem = menu?.querySelector<HTMLElement>('a');
+        firstItem?.focus();
+      } else if (e.key === 'Escape') {
+        closeMenu();
+      }
+    });
+
+    // Arrow key navigation within dropdown
+    menu?.addEventListener('keydown', (e: KeyboardEvent) => {
+      const items = Array.from(menu.querySelectorAll<HTMLElement>('a'));
+      const idx = items.indexOf(document.activeElement as HTMLElement);
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        items[(idx + 1) % items.length]?.focus();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        items[(idx - 1 + items.length) % items.length]?.focus();
+      } else if (e.key === 'Escape') {
+        menu.classList.add('hidden');
+        trigger?.setAttribute('aria-expanded', 'false');
+        trigger?.focus();
+      }
     });
   });
 
@@ -186,6 +226,7 @@
   mobileMenu?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu?.classList.add('hidden');
+      mobileMenuBtn?.setAttribute('aria-expanded', 'false');
     });
   });
 

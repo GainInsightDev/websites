@@ -21,7 +21,7 @@ const partnerLogoClass: Record<string, string> = {
 const aiCapabilities = techPage.aiCapabilities || [];
 ---
 
-<Layout title="Technology | pensionable.ai">
+<Layout title="Technology | pensionable.ai" description="Discover the technology behind pensionable.ai. Our AI agent fleet, automated reasoning capabilities, and technology partnerships.">
   <!-- Overview Section -->
   <section class="hero-section bg-gradient-brand-soft">
     <div class="container">
@@ -130,12 +130,12 @@ const aiCapabilities = techPage.aiCapabilities || [];
                 {partner.name === 'AWS Bedrock Guardrails' ? (
                   <a href={partner.url} target="_blank" rel="noopener noreferrer" class="bg-white flex items-center justify-center h-full w-full relative overflow-hidden" aria-label={`Visit ${partner.name} website`}>
                     <div class="w-36 h-36 relative overflow-hidden">
-                      <img src={partnerLogoMap[partner.name]} alt={`${partner.name} Logo`} class="absolute top-1/2 left-1/2" style="transform: translate(-46%, -50%) scale(1.5);" />
+                      <img src={partnerLogoMap[partner.name]} alt={`${partner.name} Logo`} class="absolute top-1/2 left-1/2" style="transform: translate(-46%, -50%) scale(1.5);" width="144" height="144" loading="lazy" />
                     </div>
                   </a>
                 ) : (
                   <a href={partner.url} target="_blank" rel="noopener noreferrer" class="bg-white flex items-center justify-center h-full w-full" aria-label={`Visit ${partner.name} website`}>
-                    <img src={partnerLogoMap[partner.name]} alt={`${partner.name} Logo`} class={partnerLogoClass[partner.name] || partnerLogoClass['default']} />
+                    <img src={partnerLogoMap[partner.name]} alt={`${partner.name} Logo`} class={partnerLogoClass[partner.name] || partnerLogoClass['default']} width="144" height="144" loading="lazy" />
                   </a>
                 )}
               </div>

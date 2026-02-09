@@ -18,9 +18,10 @@
   --color-success: #22C55E;
   --color-alert: #EF4444;
 
-  /* Font Families */
+  /* Font Families - size-adjust reduces FOUT layout shift */
   --font-montserrat: 'Montserrat', sans-serif;
   --font-inter: 'Inter', sans-serif;
+  --font-size-adjust: 0.9;
 
   /* Box Shadows */
   --shadow-card: 0 4px 6px rgba(0, 0, 0, 0.08);
