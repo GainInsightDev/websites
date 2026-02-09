@@ -1,42 +1,28 @@
-name: Deploy to S3
+name: Deploy Sites
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      site:
+        description: 'Site to deploy'
+        required: true
+        type: choice
+        options:
+          - recon1
+          - pensionable
+          - senti
+          - all
 
 env:
   NODE_VERSION: '20'
 
 jobs:
-  detect-changes:
+  deploy:
     runs-on: ubuntu-latest
-    outputs:
-      recon1: ${{ steps.changes.outputs.recon1 }}
-      pensionable: ${{ steps.changes.outputs.pensionable }}
-      senti: ${{ steps.changes.outputs.senti }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
-      - uses: dorny/paths-filter@v3
-        id: changes
-        with:
-          filters: |
-            recon1:
-              - 'apps/recon1/**'
-              - 'packages/shared/**'
-            pensionable:
-              - 'apps/pensionable/**'
-              - 'packages/shared/**'
-            senti:
-              - 'apps/senti/**'
-              - 'packages/shared/**'
-
-  deploy-recon1:
-    needs: detect-changes
-    if: needs.detect-changes.outputs.recon1 == 'true'
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        site: ${{ inputs.site == 'all' && fromJson('["recon1","pensionable","senti"]') || fromJson(format('["{0}"]', inputs.site)) }}
+    name: Deploy ${{ matrix.site }}
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -45,102 +31,50 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter @websites/recon1 build
-      - uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-      - name: Deploy static files to S3
-        run: |
-          aws s3 sync apps/recon1/dist/ s3://${{ secrets.RECON1_S3_BUCKET }} \
-            --delete \
-            --cache-control "max-age=31536000,public" \
-            --exclude "index.html" \
-            --exclude "*.html"
-      - name: Deploy HTML files to S3
-        run: |
-          aws s3 sync apps/recon1/dist/ s3://${{ secrets.RECON1_S3_BUCKET }} \
-            --delete \
-            --cache-control "no-cache,no-store,must-revalidate" \
-            --include "*.html"
-      - name: Invalidate CloudFront
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.RECON1_CLOUDFRONT_ID }} \
-            --paths "/*"
+      - run: pnpm --filter @websites/${{ matrix.site }} build
 
-  deploy-pensionable:
-    needs: detect-changes
-    if: needs.detect-changes.outputs.pensionable == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter @websites/pensionable build
-      - uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-      - name: Deploy static files to S3
+      - name: Set deployment config
+        id: config
         run: |
-          aws s3 sync apps/pensionable/dist/ s3://${{ secrets.PENSIONABLE_S3_BUCKET }} \
-            --delete \
-            --cache-control "max-age=31536000,public" \
-            --exclude "index.html" \
-            --exclude "*.html"
-      - name: Deploy HTML files to S3
-        run: |
-          aws s3 sync apps/pensionable/dist/ s3://${{ secrets.PENSIONABLE_S3_BUCKET }} \
-            --delete \
-            --cache-control "no-cache,no-store,must-revalidate" \
-            --include "*.html"
-      - name: Invalidate CloudFront
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.PENSIONABLE_CLOUDFRONT_ID }} \
-            --paths "/*"
+          case "${{ matrix.site }}" in
+            recon1)
+              echo "bucket=${{ secrets.RECON1_S3_BUCKET }}" >> "$GITHUB_OUTPUT"
+              echo "cf_id=${{ secrets.RECON1_CLOUDFRONT_ID }}" >> "$GITHUB_OUTPUT"
+              ;;
+            pensionable)
+              echo "bucket=${{ secrets.PENSIONABLE_S3_BUCKET }}" >> "$GITHUB_OUTPUT"
+              echo "cf_id=${{ secrets.PENSIONABLE_CLOUDFRONT_ID }}" >> "$GITHUB_OUTPUT"
+              ;;
+            senti)
+              echo "bucket=${{ secrets.SENTI_S3_BUCKET }}" >> "$GITHUB_OUTPUT"
+              echo "cf_id=${{ secrets.SENTI_CLOUDFRONT_ID }}" >> "$GITHUB_OUTPUT"
+              ;;
+          esac
 
-  deploy-senti:
-    needs: detect-changes
-    if: needs.detect-changes.outputs.senti == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter @websites/senti build
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
+
       - name: Deploy static files to S3
         run: |
-          aws s3 sync apps/senti/dist/ s3://${{ secrets.SENTI_S3_BUCKET }} \
+          aws s3 sync apps/${{ matrix.site }}/dist/ s3://${{ steps.config.outputs.bucket }} \
             --delete \
             --cache-control "max-age=31536000,public" \
             --exclude "index.html" \
             --exclude "*.html"
+
       - name: Deploy HTML files to S3
         run: |
-          aws s3 sync apps/senti/dist/ s3://${{ secrets.SENTI_S3_BUCKET }} \
+          aws s3 sync apps/${{ matrix.site }}/dist/ s3://${{ steps.config.outputs.bucket }} \
             --delete \
             --cache-control "no-cache,no-store,must-revalidate" \
             --include "*.html"
+
       - name: Invalidate CloudFront
-        if: ${{ secrets.SENTI_CLOUDFRONT_ID != '' }}
+        if: steps.config.outputs.cf_id != ''
         run: |
           aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.SENTI_CLOUDFRONT_ID }} \
+            --distribution-id "${{ steps.config.outputs.cf_id }}" \
             --paths "/*"

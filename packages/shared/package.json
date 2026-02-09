@@ -8,6 +8,9 @@
     "lint": "tsc --noEmit",
     "clean": "rm -rf dist"
   },
+  "dependencies": {
+    "@sanity/client": "^6"
+  },
   "devDependencies": {
     "typescript": "^5"
   }
