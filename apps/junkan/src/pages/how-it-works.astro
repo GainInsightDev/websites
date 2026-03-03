@@ -1,0 +1,128 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { fetchOne } from '../lib/sanity';
+
+const techPage = await fetchOne('technologyPage');
+
+const steps = [
+  {
+    number: 1,
+    title: 'Identify',
+    subtitle: 'Know exactly what you have',
+    description: 'Junkan guides users through optimal photography techniques based on item type, then uses AI image recognition to identify brand, model, variant, condition, and authenticity signals.',
+    details: [
+      'Guided photography for optimal results',
+      'AI-powered brand and model identification',
+      'Condition assessment and grading',
+      'Authenticity signal detection',
+    ],
+  },
+  {
+    number: 2,
+    title: 'Research',
+    subtitle: 'Deep market intelligence, in seconds',
+    description: 'Every item gets deep research in seconds, not hours. The system analyses seasonality, demand fluctuations, and marketplace variation to build a complete market picture.',
+    details: [
+      'Real-time sold price analysis',
+      'Active listing comparison',
+      'Demand signal tracking',
+      'Seasonal trend awareness',
+    ],
+  },
+  {
+    number: 3,
+    title: 'Price',
+    subtitle: 'Optimised for net profit',
+    description: 'Our proprietary pricing agent combines algorithms, machine learning, and AI with live and historic sales data to calculate the optimal pricing strategy and true net profit after all fees and shipping.',
+    details: [
+      'Platform-specific fee calculation',
+      'Shipping cost estimation',
+      'Net profit optimisation',
+      'Dynamic pricing recommendations',
+    ],
+  },
+  {
+    number: 4,
+    title: 'Sell',
+    subtitle: 'A unique strategy for every item',
+    description: 'The result: a unique, data-driven sales strategy for every item. Optimal platform selection, pricing, markdown schedules, and offer limits — all tailored to maximise return.',
+    details: [
+      'Optimal marketplace selection',
+      'Automated listing creation',
+      'Markdown schedule management',
+      'Offer limit recommendations',
+    ],
+  },
+];
+---
+
+<Layout
+  title="How It Works | Junkan"
+  description="Discover how Junkan's 4-step AI process helps charity retailers identify, research, price, and sell every donated item with data-driven precision."
+>
+  <!-- Hero -->
+  <section class="hero-section bg-text text-white">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-semibold mb-6">
+          {techPage?.heroTitle || 'How Junkan Works'}
+        </h1>
+        <p class="text-lg text-white/80 leading-relaxed max-w-2xl mx-auto">
+          {techPage?.heroSubtitle || 'Four intelligent steps that transform every donated item into maximum value for your cause.'}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  {steps.map((step, i) => (
+    <section class:list={['section', i % 2 === 1 ? 'bg-surface' : '']}>
+      <div class="container">
+        <div class:list={['grid md:grid-cols-2 gap-12 items-center', i % 2 === 1 ? 'md:direction-rtl' : '']}>
+          <div class={i % 2 === 1 ? 'md:order-2' : ''}>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-10 h-10 bg-ai text-white rounded-full flex items-center justify-center text-lg font-semibold">
+                {step.number}
+              </span>
+              <span class="text-sm font-medium text-ai uppercase tracking-wide">Step {step.number}</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-semibold mb-2">{step.title}</h2>
+            <p class="text-text-muted text-lg mb-6">{step.subtitle}</p>
+            <p class="text-text-muted leading-relaxed mb-6">{step.description}</p>
+          </div>
+          <div class={i % 2 === 1 ? 'md:order-1' : ''}>
+            <div class="card card-lg p-8">
+              <ul class="space-y-4">
+                {step.details.map((detail) => (
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-matcha shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-text-muted">{detail}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- CTA -->
+  <section class="section bg-text text-white">
+    <div class="container">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-semibold mb-6">
+          Ready to see it in action?
+        </h2>
+        <p class="text-white/70 mb-8 leading-relaxed">
+          Get a personalised demo and see how Junkan can transform your charity retail operation.
+        </p>
+        <a href="/contact" class="btn btn-primary text-base px-8">
+          Request a Demo
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

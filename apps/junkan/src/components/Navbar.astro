@@ -1,0 +1,85 @@
+---
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'How It Works', href: '/how-it-works' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-sm border-b border-border" aria-label="Main navigation">
+  <div class="container flex items-center justify-between h-[70px]">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3" aria-label="Junkan home">
+      <img src="/images/logos/junkan_logo_transparent.png" alt="Junkan" width="120" height="42" />
+    </a>
+
+    <!-- Desktop Navigation -->
+    <div class="hidden md:flex items-center gap-8">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'text-sm font-medium transition-colors',
+            currentPath === link.href ? 'text-ai' : 'text-text-muted hover:text-text',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a href="/contact" class="btn btn-primary text-sm">Request Demo</a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden p-2 text-text"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6" class="menu-line-1" />
+        <line x1="3" y1="12" x2="21" y2="12" class="menu-line-2" />
+        <line x1="3" y1="18" x2="21" y2="18" class="menu-line-3" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden border-t border-border bg-surface">
+    <div class="container py-4 flex flex-col gap-4">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'text-sm font-medium py-2 transition-colors',
+            currentPath === link.href ? 'text-ai' : 'text-text-muted hover:text-text',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a href="/contact" class="btn btn-primary text-sm w-full">Request Demo</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !menu?.classList.contains('hidden')) {
+      menu?.classList.add('hidden');
+      btn?.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>

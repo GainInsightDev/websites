@@ -1,6 +1,8 @@
 import type { StructureResolver, StructureBuilder } from 'sanity/structure';
 
 const sites = [
+  { id: 'clik', title: 'CLIK' },
+  { id: 'junkan', title: 'Junkan' },
   { id: 'pensionable', title: 'Pensionable.ai' },
   { id: 'recon1', title: 'Recon1.co.uk' },
   { id: 'senti', title: 'Senti' },

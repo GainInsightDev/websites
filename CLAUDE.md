@@ -13,6 +13,8 @@ Monorepo for GainInsight marketing websites, migrating from React to Astro with 
 | `apps/recon1/` | recon1.co.uk - Astro site |
 | `apps/pensionable/` | pensionable.ai - Astro site |
 | `apps/senti/` | Senti website - Astro site |
+| `apps/clik/` | clik.audio - Astro site |
+| `apps/junkan/` | junkan.ai - Astro site |
 | `packages/sanity-studio/` | Shared Sanity CMS Studio |
 | `packages/shared/` | Shared utilities and site config |
 
@@ -32,6 +34,8 @@ Monorepo for GainInsight marketing websites, migrating from React to Astro with 
 | recon1.co.uk | `recon1.co.uk` | `E3JNPZRCHMTZGD` |
 | pensionable.ai | `pensionable.ai` | `E1NJGGB30XPJ7W` |
 | senti | TBD (ask user) | TBD (ask user) |
+| clik.audio | `clik.audio` | `E2MN4CE4PG7QAR` |
+| junkan.ai | `junkan.ai` | `E2RK3RXTOQXX61` |
 
 ## Linear
 

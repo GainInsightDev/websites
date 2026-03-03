@@ -1,0 +1,120 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { fetchOne } from '../lib/sanity';
+
+const homePage = await fetchOne('homePage');
+
+const heroTitle = homePage?.heroTitle || 'Circular Retail Intelligence';
+const heroSubtitle = homePage?.heroSubtitle || 'AI-powered inventory management for charity retailers. Identify, research, price, and sell every item with data-driven precision.';
+const heroCtaText = homePage?.heroCtaText || 'Request a Demo';
+const heroCtaLink = homePage?.heroCtaLink || '/contact';
+const problemTitle = homePage?.problemTitle || 'Every resale item is different';
+const problemDescription = homePage?.problemDescription || 'Selling new is easy. Fixed price, fixed specs, fixed margin.\n\nSecondhand? Every item is a puzzle. Brand, condition, timing, platform, buyers, fees, trends — all shifting, all different, every single time. It\'s the hardest sales job there is.';
+const problemItems = homePage?.problemItems || [
+  'Countless item variations',
+  'Any condition, any brand',
+  'Multiple marketplaces to consider',
+  'Dynamic pricing and demand',
+  'Different buyers on every platform',
+];
+const solutionTitle = homePage?.solutionTitle || 'What if you didn\'t have to figure it out?';
+const solutionCards = homePage?.solutionCards || [
+  { title: 'Identify', description: 'AI image recognition identifies brand, model, variant, condition, and authenticity signals from a simple photograph.' },
+  { title: 'Research', description: 'Every item gets deep research in seconds — sold prices, active listings, demand signals, and seasonality patterns.' },
+  { title: 'Price', description: 'Proprietary pricing combines algorithms, machine learning, and live sales data to optimise net profit per platform.' },
+  { title: 'Sell', description: 'A unique, data-driven sales strategy for every item — optimal platform, price, markdown schedule, and offer limits.' },
+];
+const ctaTitle = homePage?.ctaTitle || 'Ready to transform your charity retail?';
+const ctaDescription = homePage?.ctaDescription || 'See how Junkan can help your organisation process donations faster and maximise value for your cause.';
+---
+
+<Layout>
+  <!-- Hero Section -->
+  <section class="hero-section bg-text text-white relative">
+    <!-- Ensō background element -->
+    <div class="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
+      <img src="/images/logos/junkan_enso.png" alt="" width="500" height="500" class="w-[600px] h-[600px] object-contain brightness-0 invert" aria-hidden="true" />
+    </div>
+    <div class="container relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 leading-tight">
+          {heroTitle}
+        </h1>
+        <p class="text-lg md:text-xl text-white/80 mb-10 leading-relaxed max-w-2xl mx-auto">
+          {heroSubtitle}
+        </p>
+        <a href={heroCtaLink} class="btn btn-primary text-base px-8">
+          {heroCtaText}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Statement -->
+  <section class="section">
+    <div class="container">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-semibold mb-6">
+            {problemTitle}
+          </h2>
+          <div class="space-y-4">
+            {problemDescription.split('\n\n').map((para: string) => (
+              <p class="text-text-muted leading-relaxed">{para}</p>
+            ))}
+          </div>
+        </div>
+        <div class="card card-lg p-8">
+          <ul class="space-y-4">
+            {problemItems.map((item: string) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-1.5 w-2 h-2 bg-ai rounded-full shrink-0"></span>
+                <p class="text-text-muted">{item}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution: 4-Step Process -->
+  <section class="section bg-surface">
+    <div class="container">
+      <h2 class="text-3xl md:text-4xl font-semibold text-center mb-4">
+        {solutionTitle}
+      </h2>
+      <p class="text-text-muted text-center mb-12 max-w-2xl mx-auto">
+        Imagine just photographing the item. Your expert AI sales team handles the rest.
+      </p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {solutionCards.map((card: any, i: number) => (
+          <div class="card card-lg text-center">
+            <div class="w-12 h-12 bg-ai-muted text-ai rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-semibold">
+              {i + 1}
+            </div>
+            <h3 class="text-lg font-medium mb-3">{card.title}</h3>
+            <p class="text-text-muted text-sm leading-relaxed">{card.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section">
+    <div class="container">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-semibold mb-6">
+          {ctaTitle}
+        </h2>
+        <p class="text-text-muted mb-8 leading-relaxed">
+          {ctaDescription}
+        </p>
+        <a href="/contact" class="btn btn-primary text-base px-8">
+          Get Started
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

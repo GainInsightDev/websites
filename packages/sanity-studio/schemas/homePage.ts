@@ -75,6 +75,8 @@ export const homePage = defineType({
       type: 'string',
       options: {
         list: [
+          { title: 'CLIK', value: 'clik' },
+          { title: 'Junkan', value: 'junkan' },
           { title: 'Recon1', value: 'recon1' },
           { title: 'Pensionable', value: 'pensionable' },
           { title: 'Senti', value: 'senti' },

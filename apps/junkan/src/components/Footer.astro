@@ -1,0 +1,55 @@
+---
+const currentYear = new Date().getFullYear();
+
+const quickLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'How It Works', href: '/how-it-works' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<footer class="bg-text text-white">
+  <div class="container py-12 md:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+      <!-- Brand -->
+      <div>
+        <img src="/images/logos/junkan_logo_transparent.png" alt="Junkan" width="120" height="42" class="brightness-0 invert mb-4" />
+        <p class="text-white/70 text-sm leading-relaxed max-w-xs">
+          Empowering charity retailers through circular retail intelligence. Where every item continues its journey.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-sm font-medium mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          {quickLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-white/70 hover:text-white transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-sm font-medium mb-4">Get in Touch</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="mailto:hello@junkan.ai" class="text-sm text-white/70 hover:text-white transition-colors">
+              hello@junkan.ai
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 mt-12 pt-8 text-center">
+      <p class="text-sm text-white/50">
+        &copy; {currentYear} Junkan. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

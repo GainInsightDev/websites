@@ -5,7 +5,13 @@
     "dev": "turbo dev",
     "build": "turbo build",
     "lint": "turbo lint",
-    "clean": "turbo clean"
+    "clean": "turbo clean",
+    "agentflow:push": "npx ts-node .claude/scripts/sync/push-to-projects.ts",
+    "agentflow:push:dry-run": "npx ts-node .claude/scripts/sync/push-to-projects.ts --dry-run",
+    "agentflow:sync": "npx ts-node .claude/scripts/sync/sync-from-agentflow.ts",
+    "agentflow:sync:dry-run": "npx ts-node .claude/scripts/sync/sync-from-agentflow.ts --dry-run",
+    "agentflow:validate": "npx ts-node .claude/scripts/documentation/validate-frontmatter.ts",
+    "agentflow:check-stale": "npx ts-node .claude/scripts/documentation/check-stale-docs.ts"
   },
   "devDependencies": {
     "turbo": "^2"
