@@ -1,0 +1,31 @@
+{
+  "name": "module-validation",
+  "version": "2.0.0",
+  "description": "Validation tests for AgentFlow setup modules",
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:agentflow": "playwright test --project=agentflow",
+    "test:linear": "playwright test --project=linear",
+    "test:git": "playwright test --project=git",
+    "test:docs": "playwright test --project=docs",
+    "test:doppler": "playwright test --project=doppler",
+    "test:aws-infrastructure": "playwright test --project=aws-infrastructure",
+    "test:amplify": "playwright test --project=amplify",
+    "test:auth": "playwright test --project=auth",
+    "test:email": "playwright test --project=email",
+    "test:testing": "playwright test --project=testing",
+    "test:ui-styling": "playwright test --project=ui-styling",
+    "test:cicd": "playwright test --project=cicd",
+    "test:posthog": "playwright test --project=posthog",
+    "test:flutter": "playwright test --project=flutter",
+    "test:security": "playwright test --project=security",
+    "test:core": "playwright test --project=agentflow --project=linear --project=git --project=docs --project=doppler",
+    "test:gi-standard": "playwright test --project=aws-infrastructure --project=amplify --project=auth --project=email --project=testing --project=ui-styling --project=cicd --project=posthog --project=security"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "js-yaml": "^4.1.0",
+    "@types/js-yaml": "^4.0.9"
+  }
+}

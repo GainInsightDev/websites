@@ -1,0 +1,25 @@
+{
+  "_comment": "Merge these scripts into your package.json",
+  "scripts": {
+    "test": "jest",
+    "test:unit": "jest --selectProjects unit",
+    "test:unit:watch": "jest --selectProjects unit --watch",
+    "test:coverage": "jest --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "test:all": "npm run test:unit && npm run test:e2e"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "@playwright/test": "^1.40.0"
+  },
+  "_doppler_variants": {
+    "_comment": "Use these if project uses Doppler for credentials",
+    "test:e2e:local": "doppler run --project {project} --config dev -- npm run test:e2e",
+    "test:coverage:local": "doppler run --project {project} --config dev -- npm run test:coverage",
+    "test:all:local": "npm run test:unit && npm run test:e2e:local"
+  }
+}

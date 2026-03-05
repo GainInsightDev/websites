@@ -1,0 +1,201 @@
+---
+title: Module Registry
+created: 2026-02-18
+updated: 2026-02-19
+last_checked: 2026-02-19
+tags: [reference, modules, setup, registry]
+parent: ./README.md
+---
+
+# Module Registry
+#
+# Composable modules for AgentFlow's setup process. After Discovery, projects
+# select the modules they need instead of following a monolithic setup checklist.
+# Each module declares its skill, guide, dependencies, validation spec, and
+# cross-module integration guides so the setup orchestrator can assemble the
+# right plan.
+#
+# Validation specs: Playwright specs in templates/setup/validation/specs/
+# Run: PROJECT_ROOT=/path/to/project npx playwright test --project={module-name}
+
+# =============================================================================
+# Core Modules — always included in a minimal setup
+# =============================================================================
+core_modules:
+  - name: agentflow
+    description: AgentFlow framework sync (.claude/ directory)
+    skill: af-agentflow-framework-development
+    validation_spec: agentflow.spec.ts
+    depends_on: []
+
+  - name: linear
+    description: Linear team, workflow states, project registry
+    skill: af-linear-api-expertise
+    validation_spec: linear.spec.ts
+    depends_on: []
+
+  - name: git
+    description: Git repo, bare repo on gidev, worktree, CLAUDE.md
+    skill: af-gidev-server
+    validation_spec: git.spec.ts
+    depends_on: []
+
+  - name: documentation
+    description: Documentation framework, frontmatter, standards
+    skill: af-documentation-standards
+    validation_spec: docs.spec.ts
+    depends_on: []
+
+  - name: doppler
+    description: Doppler secrets management project and environment configs
+    skill: af-environment-infrastructure
+    validation_spec: doppler.spec.ts
+    depends_on: []
+
+# =============================================================================
+# Infrastructure Modules
+# =============================================================================
+infrastructure_modules:
+  - name: aws-infrastructure
+    description: AWS Organization, accounts (dev/test/prod), IAM, DNS/Route53 (adds credentials to Doppler)
+    skill: af-environment-infrastructure
+    guide: guides/gaininsight-standard/layer-1-infrastructure.md
+    validation_spec: aws-infrastructure.spec.ts
+    depends_on:
+      - git
+      - doppler
+
+  - name: amplify
+    description: Amplify Gen 2, AppSync, DynamoDB, CDK, hosting
+    skill: af-amplify-expertise
+    guide: guides/gaininsight-standard/layer-1-infrastructure.md
+    validation_spec: amplify.spec.ts
+    depends_on:
+      - aws-infrastructure
+    integrations:
+      - when: [amplify, testing]
+        guide: guides/integrations/amplify-esm.md
+
+# =============================================================================
+# Auth & Email Modules
+# =============================================================================
+auth_email_modules:
+  - name: auth
+    description: Cognito User Pools, custom attributes, auth triggers
+    skill: af-cognito-expertise
+    guide: guides/gaininsight-standard/auth-setup.md
+    validation_spec: auth.spec.ts
+    depends_on:
+      - aws-infrastructure
+      - amplify
+    integrations:
+      - when: [auth, email]
+        guide: guides/integrations/cognito-ses.md
+      - when: [auth, testing]
+        guide: guides/integrations/auth-testing.md
+
+  - name: email
+    description: SES domain verification, DKIM, sandbox/production
+    skill: af-ses-expertise
+    guide: guides/gaininsight-standard/auth-setup.md
+    validation_spec: email.spec.ts
+    depends_on:
+      - aws-infrastructure
+    integrations:
+      - when: [email, testing]
+        guide: guides/integrations/auth-testing.md
+
+# =============================================================================
+# Testing Module
+# =============================================================================
+testing_modules:
+  - name: testing
+    description: Jest, Playwright, RTL, email E2E, selector contracts
+    skill: af-testing-expertise
+    guide: guides/gaininsight-standard/layer-2-testing.md
+    validation_spec: testing.spec.ts
+    depends_on:
+      - git
+
+# =============================================================================
+# UI Module
+# =============================================================================
+ui_modules:
+  - name: ui-styling
+    description: shadcn/ui, Tailwind, Storybook, design tokens
+    skill: af-ux-design-expertise
+    guide: guides/gaininsight-standard/layer-3-ui-styling.md
+    validation_spec: ui-styling.spec.ts
+    depends_on:
+      - git
+
+# =============================================================================
+# CI/CD Module
+# =============================================================================
+cicd_modules:
+  - name: cicd
+    description: GitHub Actions, Claude Code review, branch protection
+    skill: af-delivery-process
+    guide: guides/gaininsight-standard/layer-4-cicd.md
+    validation_spec: cicd.spec.ts
+    depends_on:
+      - git
+      - testing
+    integrations:
+      - when: [cicd, amplify]
+        guide: guides/integrations/cicd-amplify-polling.md
+
+# =============================================================================
+# Analytics Module
+# =============================================================================
+analytics_modules:
+  - name: posthog
+    description: PostHog analytics, feature flags, session replay
+    skill: af-posthog-expertise
+    validation_spec: posthog.spec.ts
+    depends_on:
+      - git
+
+# =============================================================================
+# Mobile Module
+# =============================================================================
+mobile_modules:
+  - name: flutter
+    description: Flutter SDK, Widgetbook, monorepo structure
+    skill: af-flutter-expertise
+    guide: guides/gaininsight-standard/flutter-mobile-setup.md
+    validation_spec: flutter.spec.ts
+    depends_on:
+      - amplify
+    integrations:
+      - when: [flutter, amplify]
+        guide: guides/integrations/flutter-monorepo.md
+
+# =============================================================================
+# Security Module
+# =============================================================================
+security_modules:
+  - name: security
+    description: Dependabot, npm audit, secret scanning
+    skill: af-security-expertise
+    validation_spec: security.spec.ts
+    depends_on:
+      - git
+
+# =============================================================================
+# Combinations — known-good module sets
+# =============================================================================
+combinations:
+  gaininsight-standard:
+    description: "Full-stack web app with auth, email, analytics — battle-tested on Juncan"
+    modules:
+      - aws-infrastructure
+      - amplify
+      - auth
+      - email
+      - testing
+      - ui-styling
+      - cicd
+      - posthog
+      - security
+    notes: "All integration guides apply. See layer guides for step-by-step setup."

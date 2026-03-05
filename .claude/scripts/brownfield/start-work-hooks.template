@@ -1,0 +1,70 @@
+#!/bin/bash
+# .start-work-hooks - AgentFlow Brownfield Setup
+# Copy this file to your project root as .start-work-hooks
+# Auto-executed by start-work when creating/resuming a worktree
+#
+# This is a minimal template - add project-specific setup below
+
+set -euo pipefail
+
+# Arguments from start-work script
+WORKTREE_PATH="$1"
+ISSUE_KEY="$2"
+
+# Configuration
+AGENTFLOW_PATH="/srv/worktrees/agentflow/main"
+
+cd "$WORKTREE_PATH"
+
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "  Setting up: $ISSUE_KEY"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+
+# ============================================================================
+# AGENTFLOW SETUP (always runs, idempotent)
+# ============================================================================
+
+if [ -f "$AGENTFLOW_PATH/.claude/scripts/brownfield/agentflow-setup.sh" ]; then
+    bash "$AGENTFLOW_PATH/.claude/scripts/brownfield/agentflow-setup.sh" "$WORKTREE_PATH" "$AGENTFLOW_PATH"
+else
+    echo "[Warning] AgentFlow setup script not found at $AGENTFLOW_PATH"
+    echo "         Skipping AgentFlow setup"
+fi
+
+# ============================================================================
+# PROJECT-SPECIFIC SETUP (add your customizations below)
+# ============================================================================
+
+# Example: Install dependencies if node_modules missing
+# if [ -f "package.json" ] && [ ! -d "node_modules" ]; then
+#     echo "[Setup] Installing dependencies..."
+#     npm install
+# fi
+
+# Example: Set up environment
+# if [ -f ".env.example" ] && [ ! -f ".env" ]; then
+#     echo "[Setup] Creating .env from example..."
+#     cp .env.example .env
+# fi
+
+# Example: Run database migrations
+# if [ -f "prisma/schema.prisma" ]; then
+#     echo "[Setup] Running database migrations..."
+#     npx prisma migrate dev
+# fi
+
+# ============================================================================
+# SUMMARY
+# ============================================================================
+
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "  Ready to work on: $ISSUE_KEY"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+echo "  Helpful commands:"
+echo "    claudedev          - Start Claude Code"
+echo "    cat PORT_INFO.md   - View dev server setup"
+echo ""

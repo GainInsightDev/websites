@@ -1,0 +1,35 @@
+{
+  "name": "gaininsight-stack-tests",
+  "version": "1.0.0",
+  "description": "Playwright tests for GainInsight Standard stack validation",
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+
+    "test:layer-1": "playwright test --project=layer-1",
+    "test:layer-1:quick": "playwright test --project=layer-1 --grep-invert @runtime",
+
+    "test:layer-2": "playwright test --project=layer-2",
+    "test:layer-2:quick": "playwright test --project=layer-2 --grep-invert @runtime",
+
+    "test:layer-3": "playwright test --project=layer-3",
+    "test:layer-3:quick": "playwright test --project=layer-3 --grep-invert @runtime",
+
+    "test:layer-4": "playwright test --project=layer-4",
+    "test:layer-4:quick": "playwright test --project=layer-4 --grep-invert @runtime",
+
+    "test:sandbox": "playwright test --project=sandbox",
+
+    "test:quick": "playwright test --grep-invert @runtime",
+    "test:all": "playwright test"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.40.0",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0"
+  }
+}

@@ -1,0 +1,55 @@
+#!/bin/bash
+# Cleanup when stop-work removes a worktree
+# Called by stop-work with: $1 = worktree path, $2 = issue key
+
+WORKTREE_PATH="$1"
+ISSUE_KEY="$2"
+STATE_FILE="/tmp/.hooks-state-${ISSUE_KEY}"
+
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "  Cleaning up {{project-name}} development environment"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+# Load state if exists
+if [ -f "$STATE_FILE" ]; then
+    source "$STATE_FILE"
+    echo "  Loaded state from $STATE_FILE"
+else
+    echo "  No state file found, attempting cleanup anyway..."
+    cd "$WORKTREE_PATH" 2>/dev/null || exit 0
+    source .git-hook-helpers.sh 2>/dev/null || true
+    SANDBOX_ID=$(get_sandbox_identifier 2>/dev/null || echo "")
+fi
+
+# Kill sandbox process if running
+if [ -n "$SANDBOX_PID" ]; then
+    echo ""
+    echo "→ Stopping sandbox process (PID: $SANDBOX_PID)..."
+    kill $SANDBOX_PID 2>/dev/null && echo "  ✓ Process killed" || echo "  (Process not running)"
+fi
+
+# Delete sandbox CloudFormation stack
+if [ -n "$SANDBOX_ID" ]; then
+    echo ""
+    echo "→ Deleting sandbox stack..."
+    cd "$WORKTREE_PATH" 2>/dev/null || true
+    doppler run --project {{project-name}} --config dev -- \
+        npx ampx sandbox delete --identifier "$SANDBOX_ID" -y 2>/dev/null \
+        && echo "  ✓ Sandbox deleted" \
+        || echo "  (Sandbox may already be deleted)"
+fi
+
+# Clean up artifacts
+echo ""
+echo "→ Cleaning up artifacts..."
+cd "$WORKTREE_PATH" 2>/dev/null || true
+rm -rf .next 2>/dev/null && echo "  ✓ Removed .next"
+rm -f amplify_outputs.json 2>/dev/null && echo "  ✓ Removed amplify_outputs.json"
+
+# Remove state file
+rm -f "$STATE_FILE" 2>/dev/null && echo "  ✓ Removed state file"
+
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "  ✓ Cleanup complete!"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

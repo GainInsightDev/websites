@@ -1,0 +1,24 @@
+---
+title: Brownfield Setup Handoff Message
+created: 2026-01-02
+updated: 2026-01-02
+last_checked: 2026-01-02
+tags: [template, setup, brownfield, handoff]
+parent: ./README.md
+---
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✓ Brownfield setup complete!
+
+Your resources:
+  Linear:     https://linear.app/gaininsight/issue/{ISSUE-ID}
+  Worktree:   /srv/worktrees/{repo-name}/{branch}
+  Docs sync:  Added to docs portal
+
+Next steps:
+  1. Pick up {ISSUE-ID} to complete documentation:
+     - start-work {repo-name} {ISSUE-ID}
+     - Run af-docs-retrofit-agent
+     - Commit and mark Done
+  2. Use start-work {repo-name} NEW-ISSUE for future features
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

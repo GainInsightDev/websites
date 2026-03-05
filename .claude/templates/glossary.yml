@@ -1,0 +1,200 @@
+# AgentFlow Glossary
+# This file defines the approved vocabulary for the project
+# All BDD scenarios and documentation must use these terms
+
+# Format:
+# term:
+#   definition: What this means in our domain
+#   synonyms: [other terms that should be replaced with this]
+#   forbidden: [terms that should never be used]
+
+# Example terms for an e-commerce domain:
+
+customer:
+  definition: A user who can browse and purchase products
+  synonyms: [user, shopper, buyer]
+  forbidden: [client, consumer]
+
+cart:
+  definition: Temporary storage for items a customer intends to purchase
+  synonyms: [basket, shopping cart]
+  forbidden: [bag]
+
+promo_code:
+  definition: A code that provides a discount when applied at checkout
+  synonyms: [promotional code, discount code, coupon]
+  forbidden: [voucher, rebate]
+
+order_total:
+  definition: The final amount to be paid including all items, taxes, and discounts
+  synonyms: [total, final amount]
+  forbidden: [sum, bill]
+
+checkout:
+  definition: The process of completing a purchase
+  synonyms: [purchase process]
+  forbidden: [cashout, payment]
+
+signed-in:
+  definition: Authenticated and identified in the system
+  synonyms: [logged in, authenticated]
+  forbidden: [online]
+
+# Add your domain-specific terms below:
+
+# ===========================================
+# Juncan Domain Terms
+# ===========================================
+
+# Entity Terms
+
+organisation:
+  definition: A charity or business using the Juncan platform; the top-level tenant boundary for data isolation
+  synonyms: [org, charity, business]
+  forbidden: [tenant, company, account]
+  replaces: tenant
+
+tenant:
+  deprecated: true
+  replaced_by: organisation
+  removal_version: "1.0"
+  definition: DEPRECATED - Use 'organisation' instead
+
+shop:
+  definition: A physical retail location within an organisation where items are processed
+  synonyms: [store, location, branch]
+  forbidden: [warehouse, outlet]
+
+item:
+  definition: A donated good being processed through the platform for resale
+  synonyms: [product, donation]
+  forbidden: [inventory, stock, sku]
+
+marketplace_credentials:
+  definition: OAuth tokens and connection status for a marketplace (eBay, Vinted) stored securely
+  synonyms: [marketplace connection, platform credentials]
+  forbidden: [api keys, secrets]
+
+# Role Terms
+
+org_admin:
+  definition: Organisation-wide administrator with full access to all shops and settings
+  synonyms: [organisation admin, org administrator]
+  forbidden: [owner, super user]
+  replaces: owner
+
+shop_manager:
+  definition: Manager of one or more shops; can manage shop settings and staff but not organisation settings
+  synonyms: [store manager]
+  forbidden: [admin, administrator]
+  replaces: admin
+
+shop_staff:
+  definition: Staff member who processes items in assigned shops; cannot access settings
+  synonyms: [volunteer, staff, team member]
+  forbidden: [member, user, worker]
+  replaces: member
+
+super_admin:
+  definition: Platform-level administrator who can manage all organisations (Juncan staff only)
+  synonyms: [platform admin]
+  forbidden: [god mode, root]
+
+# Deprecated role terms
+owner:
+  deprecated: true
+  replaced_by: org_admin
+  removal_version: "1.0"
+
+admin:
+  deprecated: true
+  replaced_by: shop_manager
+  removal_version: "1.0"
+
+member:
+  deprecated: true
+  replaced_by: shop_staff
+  removal_version: "1.0"
+
+# Item Status Terms
+
+item_status_draft:
+  definition: Initial item state when photos are being captured
+  synonyms: []
+  forbidden: [new, created]
+
+item_status_identified:
+  definition: Item has been processed by AI identification
+  synonyms: [ai_complete, identified]
+  forbidden: [processed, analyzed]
+
+item_status_priced:
+  definition: Item has received pricing from Thrift API
+  synonyms: [priced, valued]
+  forbidden: [costed, estimated]
+
+item_status_ready:
+  definition: Item is ready to be listed on marketplaces
+  synonyms: [ready_to_list]
+  forbidden: [active, approved]
+
+item_status_listed:
+  definition: Item has been successfully listed on all selected marketplaces
+  synonyms: [live, published]
+  forbidden: [active, online]
+
+item_status_listed_partial:
+  definition: Item listed on some but not all selected marketplaces (partial success)
+  synonyms: [partially_listed]
+  forbidden: [failed, error]
+
+# Marketplace Terms
+
+ebay:
+  definition: eBay marketplace for listing items
+  synonyms: []
+  forbidden: [e-bay]
+
+vinted:
+  definition: Vinted marketplace for listing fashion items
+  synonyms: []
+  forbidden: []
+
+selling_profile:
+  definition: Organisation's pricing strategy configuration (velocity vs profit weighting)
+  synonyms: [pricing strategy, selling strategy]
+  forbidden: [config, settings]
+
+# ===========================================
+# AgentFlow Framework Terms
+# ===========================================
+
+epic:
+  definition: A capability area containing multiple related features; represented as a Linear Issue with "epic" label
+  synonyms: [capability, capability area]
+  forbidden: [project, initiative]
+
+feature:
+  definition: One atomic unit of functionality, front-to-back, including all edge cases; represented as a Linear Issue
+  synonyms: [user story]
+  forbidden: [task, ticket, item]
+
+scenario:
+  definition: A single test case within a feature covering happy path, error case, or edge case; lives in Mini-PRD Section 4
+  synonyms: [test case, acceptance criterion]
+  forbidden: [spec, requirement]
+
+mini-prd:
+  definition: Product Requirements Document for a single atomic feature containing scenarios, visual specs, and technical details
+  synonyms: [PRD, feature spec]
+  forbidden: [ticket, story]
+
+selector_contract:
+  definition: TypeScript file mapping UI elements to data-testid values, bridging design, implementation, and testing
+  synonyms: [selector map, test IDs]
+  forbidden: [locators]
+
+outside-in:
+  definition: Development approach starting with what the user can DO, working backwards to create dependencies as needed
+  synonyms: [user-first]
+  forbidden: [inside-out, bottom-up]

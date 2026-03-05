@@ -1,0 +1,27 @@
+---
+title: Greenfield Setup Handoff Message
+created: 2026-01-02
+updated: 2026-01-02
+last_checked: 2026-01-02
+tags: [template, setup, greenfield, handoff]
+parent: ./README.md
+---
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✓ Greenfield setup complete!
+
+Your resources:
+  GitHub:     https://github.com/GainInsight/{repo-name}
+  Linear:     https://linear.app/gaininsight/issue/{ISSUE-ID}
+  Stable:     /srv/worktrees/{repo-name}/develop
+  Docs:       /srv/worktrees/{repo-name}/develop/docs (synced to docs portal)
+
+Next steps:
+  1. End this session
+  2. Run: start-work {repo-name} {ISSUE-ID}
+  3. In {ISSUE-ID} worktree, scaffold your stack
+  4. Commit and push
+
+The stable worktree (develop) is set up for docs sync.
+Use feature worktrees for all development work.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -1,0 +1,121 @@
+#!/bin/bash
+# Project-specific setup when start-work creates a worktree
+# Called by start-work with: $1 = worktree path, $2 = issue key
+
+set -e
+
+WORKTREE_PATH="$1"
+ISSUE_KEY="$2"
+STATE_FILE="/tmp/.hooks-state-${ISSUE_KEY}"
+
+cd "$WORKTREE_PATH"
+
+# Source helper functions
+source .git-hook-helpers.sh
+
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "  Setting up {{project-name}} development environment"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+# Pre-flight checks
+echo ""
+echo "→ Running pre-flight checks..."
+
+if ! doppler run --project {{project-name}} --config dev -- echo "Doppler OK" > /dev/null 2>&1; then
+    echo "✗ Doppler authentication failed"
+    echo "  Run: doppler login"
+    exit 1
+fi
+echo "  ✓ Doppler authenticated"
+
+if ! doppler run --project {{project-name}} --config dev -- aws sts get-caller-identity > /dev/null 2>&1; then
+    echo "✗ AWS authentication failed"
+    exit 1
+fi
+echo "  ✓ AWS authenticated"
+
+# Install dependencies
+echo ""
+echo "→ Installing dependencies..."
+npm install --silent
+echo "  ✓ Dependencies installed"
+
+# Get sandbox identifier from branch name
+SANDBOX_ID=$(get_sandbox_identifier)
+echo ""
+echo "→ Sandbox identifier: $SANDBOX_ID"
+
+# Deploy Amplify sandbox
+echo ""
+echo "→ Deploying Amplify sandbox..."
+echo "  This may take 2-5 minutes on first run..."
+
+# Run sandbox in background, capture PID
+doppler run --project {{project-name}} --config dev -- \
+    npx ampx sandbox --identifier "$SANDBOX_ID" &
+SANDBOX_PID=$!
+
+# Wait for amplify_outputs.json to be created (timeout after 5 minutes)
+echo "  Waiting for amplify_outputs.json..."
+TIMEOUT=300
+ELAPSED=0
+while [ ! -f "amplify_outputs.json" ] && [ $ELAPSED -lt $TIMEOUT ]; do
+    sleep 5
+    ELAPSED=$((ELAPSED + 5))
+    echo "  ... waiting ($ELAPSED seconds)"
+done
+
+if [ ! -f "amplify_outputs.json" ]; then
+    echo "✗ Timeout waiting for amplify_outputs.json"
+    kill $SANDBOX_PID 2>/dev/null || true
+    exit 1
+fi
+echo "  ✓ Sandbox deployed"
+
+# Get port from PORT_INFO.md or use default
+if [ -f "PORT_INFO.md" ]; then
+    PORT=$(grep "Allocated Port:" PORT_INFO.md | head -1 | awk '{print $3}')
+    PORT=${PORT:-3000}
+else
+    PORT=3000
+fi
+STORYBOOK_PORT=$((PORT + 1))
+
+# Start dev server in background
+echo ""
+echo "→ Starting dev server on port $PORT..."
+npm run dev -- --port "$PORT" > "/tmp/${ISSUE_KEY}-dev.log" 2>&1 &
+DEV_PID=$!
+
+# Start Storybook in background
+echo "→ Starting Storybook on port $STORYBOOK_PORT..."
+npm run storybook -- --port "$STORYBOOK_PORT" --no-open > "/tmp/${ISSUE_KEY}-storybook.log" 2>&1 &
+STORYBOOK_PID=$!
+
+# Save state for stop-work-hooks
+cat > "$STATE_FILE" <<EOF
+SANDBOX_PID=$SANDBOX_PID
+DEV_PID=$DEV_PID
+STORYBOOK_PID=$STORYBOOK_PID
+SANDBOX_ID=$SANDBOX_ID
+WORKTREE_PATH=$WORKTREE_PATH
+PORT=$PORT
+STORYBOOK_PORT=$STORYBOOK_PORT
+EOF
+
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "  ✓ Setup complete!"
+echo ""
+echo "  Sandbox PID:    $SANDBOX_PID"
+echo "  Dev Server PID: $DEV_PID (port $PORT)"
+echo "  Storybook PID:  $STORYBOOK_PID (port $STORYBOOK_PORT)"
+echo ""
+echo "  URLs:"
+echo "    Dev:       http://localhost:$PORT"
+echo "    Storybook: http://localhost:$STORYBOOK_PORT"
+echo ""
+echo "  Logs:"
+echo "    Dev:       tail -f /tmp/${ISSUE_KEY}-dev.log"
+echo "    Storybook: tail -f /tmp/${ISSUE_KEY}-storybook.log"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

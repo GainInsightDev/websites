@@ -1,0 +1,214 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1550">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; }
+      .title { font-family: system-ui, -apple-system, sans-serif; font-size: 28px; font-weight: bold; fill: #fb923c; }
+      .subtitle { font-family: system-ui, sans-serif; font-size: 14px; fill: #94a3b8; }
+      .box-title { font-family: system-ui, sans-serif; font-size: 22px; font-weight: bold; }
+      .box-label { font-family: system-ui, sans-serif; font-size: 11px; font-weight: bold; }
+      .box-desc { font-family: system-ui, sans-serif; font-size: 13px; fill: #94a3b8; }
+      .item-title { font-family: system-ui, sans-serif; font-size: 14px; font-weight: 600; }
+      .item-desc { font-family: system-ui, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .item-small { font-family: system-ui, sans-serif; font-size: 11px; fill: #64748b; }
+      .badge { font-family: system-ui, sans-serif; font-size: 10px; fill: #bfdbfe; }
+      .check { fill: #4ade80; }
+      .cross { fill: #f87171; }
+      .warning { fill: #facc15; }
+      .table-header { font-family: system-ui, sans-serif; font-size: 13px; font-weight: 600; }
+      .table-cell { font-family: system-ui, sans-serif; font-size: 13px; }
+      .note-title { font-family: system-ui, sans-serif; font-size: 13px; font-weight: 600; fill: #94a3b8; }
+      .note-text { font-family: system-ui, sans-serif; font-size: 11px; fill: #64748b; }
+      .insight-title { font-family: system-ui, sans-serif; font-size: 18px; font-weight: bold; fill: #fb923c; }
+      .insight-text { font-family: system-ui, sans-serif; font-size: 14px; fill: #cbd5e1; }
+      .insight-sub { font-family: system-ui, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .footer { font-family: system-ui, sans-serif; font-size: 11px; fill: #475569; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect class="bg" width="1200" height="1550"/>
+
+  <!-- Title -->
+  <text class="title" x="600" y="45" text-anchor="middle">Claude Code Capabilities Framework</text>
+  <text class="subtitle" x="600" y="70" text-anchor="middle">A mental model for when to use what</text>
+
+  <!-- CONTEXT Box (New - Full Width at Top) -->
+  <rect x="40" y="90" width="1120" height="130" rx="12" fill="#065f46" fill-opacity="0.5" stroke="#10b981" stroke-width="2"/>
+  <text class="box-label" x="60" y="115" fill="#6ee7b7">CONTEXT (Always Present)</text>
+  <text class="box-title" x="60" y="145" fill="#34d399">Always-Loaded State</text>
+  <text class="box-desc" x="60" y="165">What's present before any interaction begins — the foundation for all agent behavior</text>
+
+  <!-- Context items in a row -->
+  <rect x="60" y="180" width="260" height="30" rx="6" fill="#064e3b" fill-opacity="0.5"/>
+  <text class="item-title" x="80" y="200" fill="#6ee7b7">CLAUDE.md</text>
+  <text class="item-small" x="175" y="200">Project rules</text>
+
+  <rect x="340" y="180" width="320" height="30" rx="6" fill="#064e3b" fill-opacity="0.5"/>
+  <text class="item-title" x="360" y="200" fill="#6ee7b7">CLAUDE-agentflow.md</text>
+  <text class="item-small" x="510" y="200">Framework + Orchestrator</text>
+
+  <rect x="680" y="180" width="260" height="30" rx="6" fill="#064e3b" fill-opacity="0.5"/>
+  <text class="item-title" x="700" y="200" fill="#6ee7b7">current-task.md</text>
+  <text class="item-small" x="830" y="200">Persistent state</text>
+
+  <rect x="960" y="180" width="180" height="30" rx="6" fill="#064e3b" fill-opacity="0.5"/>
+  <text class="item-title" x="980" y="200" fill="#6ee7b7">Plan files</text>
+  <text class="item-small" x="1055" y="200">Steps</text>
+
+  <!-- WHO Box (Left) -->
+  <rect x="40" y="235" width="555" height="250" rx="12" fill="#1e3a5f" fill-opacity="0.5" stroke="#3b82f6" stroke-width="2"/>
+  <text class="box-label" x="60" y="260" fill="#93c5fd">WHO + EXECUTION</text>
+  <text class="box-title" x="60" y="290" fill="#60a5fa">Agent / Sub-agent</text>
+  <text class="box-desc" x="60" y="310">Who performs the work and what happens to the context?</text>
+
+  <!-- Main Agent item -->
+  <rect x="60" y="325" width="515" height="45" rx="8" fill="#172554" fill-opacity="0.5"/>
+  <text class="item-title" x="80" y="350" fill="#93c5fd">Main Agent (Orchestrator)</text>
+  <text class="item-desc" x="80" y="365">Primary context window, session-bound, drives work forward</text>
+
+  <!-- Sub-agent item -->
+  <rect x="60" y="380" width="515" height="90" rx="8" fill="#172554" fill-opacity="0.5"/>
+  <text class="item-title" x="80" y="405" fill="#93c5fd">Sub-agent</text>
+  <rect x="175" y="392" width="120" height="18" rx="4" fill="#1e40af"/>
+  <text class="badge" x="235" y="405" text-anchor="middle">Can use Skills + MCP</text>
+  <text class="item-desc" x="80" y="425">Isolated context, parallelizable</text>
+  <circle cx="90" cy="445" r="4" class="check"/>
+  <text class="item-small" x="100" y="449">Resumable with previous context</text>
+  <circle cx="300" cy="445" r="4" class="cross"/>
+  <text class="item-small" x="310" y="449">Cannot spawn other sub-agents</text>
+
+  <!-- HOW Box (Right) -->
+  <rect x="605" y="235" width="555" height="250" rx="12" fill="#4a1d6a" fill-opacity="0.5" stroke="#a855f7" stroke-width="2"/>
+  <text class="box-label" x="625" y="260" fill="#d8b4fe">HOW</text>
+  <text class="box-title" x="625" y="290" fill="#c084fc">Skills</text>
+  <text class="box-desc" x="625" y="310">Methodology, expertise, recommended approaches</text>
+
+  <rect x="625" y="325" width="515" height="45" rx="8" fill="#3b0764" fill-opacity="0.5"/>
+  <text class="item-title" x="645" y="350" fill="#d8b4fe">Domain Expertise</text>
+  <text class="item-desc" x="645" y="365">Best practices, workflows, patterns</text>
+
+  <rect x="625" y="380" width="515" height="45" rx="8" fill="#3b0764" fill-opacity="0.5"/>
+  <text class="item-title" x="645" y="405" fill="#d8b4fe">Composable</text>
+  <text class="item-desc" x="645" y="420">Can reference MCP, prompts, sub-agents, other skills</text>
+
+  <rect x="625" y="435" width="515" height="45" rx="8" fill="#3b0764" fill-opacity="0.5"/>
+  <text class="item-title" x="645" y="460" fill="#d8b4fe">Agent-Invoked (Progressive Disclosure)</text>
+  <text class="item-desc" x="645" y="475">Loaded when needed, not always present</text>
+
+  <!-- AGENCY Box (Bottom Left) -->
+  <rect x="40" y="500" width="555" height="220" rx="12" fill="#14532d" fill-opacity="0.5" stroke="#22c55e" stroke-width="2"/>
+  <text class="box-label" x="60" y="525" fill="#86efac">AGENCY</text>
+  <text class="box-title" x="60" y="555" fill="#4ade80">MCP / Tools</text>
+  <text class="box-desc" x="60" y="575">Extends what the agent can actually do</text>
+
+  <rect x="60" y="590" width="515" height="40" rx="8" fill="#052e16" fill-opacity="0.5"/>
+  <text class="item-title" x="80" y="615" fill="#86efac">External Integrations</text>
+  <text class="item-desc" x="260" y="615">Databases, APIs, Linear, GitHub, Slack</text>
+
+  <rect x="60" y="640" width="515" height="40" rx="8" fill="#052e16" fill-opacity="0.5"/>
+  <text class="item-title" x="80" y="665" fill="#86efac">Tool Execution</text>
+  <text class="item-desc" x="220" y="665">Search, read, write, query capabilities</text>
+
+  <rect x="60" y="690" width="515" height="25" rx="6" fill="#052e16" fill-opacity="0.5" stroke="#ca8a04" stroke-width="1"/>
+  <text class="item-small" x="80" y="707" fill="#facc15">Context Cost: All enabled tools load into context window</text>
+
+  <!-- ENTRY POINT Box (Bottom Right) -->
+  <rect x="605" y="500" width="555" height="220" rx="12" fill="#78350f" fill-opacity="0.5" stroke="#f59e0b" stroke-width="2"/>
+  <text class="box-label" x="625" y="525" fill="#fcd34d">ENTRY POINT</text>
+  <text class="box-title" x="625" y="555" fill="#fbbf24">Prompts / Slash Commands</text>
+  <text class="box-desc" x="625" y="575">The fundamental primitive — everything starts here</text>
+
+  <rect x="625" y="590" width="515" height="40" rx="8" fill="#451a03" fill-opacity="0.5"/>
+  <text class="item-title" x="645" y="615" fill="#fcd34d">Reusable &amp; Shareable</text>
+  <text class="item-desc" x="815" y="615">Composable building blocks</text>
+
+  <rect x="625" y="640" width="515" height="40" rx="8" fill="#451a03" fill-opacity="0.5"/>
+  <text class="item-title" x="645" y="665" fill="#fcd34d">Can Invoke Everything</text>
+  <text class="item-desc" x="835" y="665">Skills, sub-agents, MCP, other prompts</text>
+
+  <rect x="625" y="690" width="515" height="25" rx="6" fill="#451a03" fill-opacity="0.5"/>
+  <text class="item-small" x="645" y="707" fill="#fcd34d">Manual Trigger: You control when they run</text>
+
+  <!-- WHEN - Hooks Section -->
+  <rect x="40" y="735" width="1120" height="180" rx="12" fill="#4c0519" fill-opacity="0.5" stroke="#f43f5e" stroke-width="2"/>
+  <text class="box-label" x="60" y="760" fill="#fda4af">WHEN (Deterministic Triggers)</text>
+  <text class="box-title" x="60" y="790" fill="#fb7185">Hooks</text>
+  <text class="box-desc" x="60" y="810">Event-driven automation — output text to context, agent reads and responds</text>
+
+  <!-- Claude Code Hooks -->
+  <rect x="60" y="825" width="340" height="75" rx="8" fill="#881337" fill-opacity="0.5"/>
+  <circle cx="80" cy="850" r="6" fill="#fb7185"/>
+  <text class="item-title" x="95" y="855" fill="#fda4af">Claude Code Hooks</text>
+  <text class="item-desc" x="80" y="875">SessionStart, PreCompact</text>
+  <text class="item-desc" x="80" y="893">PreToolUse, PostToolUse, Stop</text>
+
+  <!-- External + Feedback -->
+  <rect x="420" y="825" width="340" height="75" rx="8" fill="#881337" fill-opacity="0.5"/>
+  <circle cx="440" cy="850" r="6" fill="#facc15"/>
+  <text class="item-title" x="455" y="855" fill="#fda4af">External + Feedback</text>
+  <text class="item-desc" x="440" y="875">Git hooks (via Bash tool)</text>
+  <text class="item-desc" x="440" y="893">Filesystem watchers</text>
+
+  <!-- External No Feedback -->
+  <rect x="780" y="825" width="360" height="75" rx="8" fill="#881337" fill-opacity="0.5"/>
+  <circle cx="800" cy="850" r="6" fill="#64748b"/>
+  <text class="item-title" x="815" y="855" fill="#fda4af">External (SDK Required)</text>
+  <text class="item-desc" x="800" y="875">CI/CD, webhooks, cron</text>
+  <text class="item-desc" x="800" y="893">Spawns new session via SDK</text>
+
+  <!-- Composition Matrix -->
+  <rect x="40" y="930" width="1120" height="200" rx="12" fill="#1e293b" fill-opacity="0.5" stroke="#475569" stroke-width="1"/>
+  <text class="box-title" x="60" y="965" fill="#cbd5e1">Composition Matrix — What Can Use What</text>
+
+  <!-- Table Headers -->
+  <text class="table-header" x="200" y="1000" fill="#94a3b8"></text>
+  <text class="table-header" x="400" y="1000" fill="#c084fc" text-anchor="middle">Skills</text>
+  <text class="table-header" x="550" y="1000" fill="#4ade80" text-anchor="middle">MCP</text>
+  <text class="table-header" x="700" y="1000" fill="#fbbf24" text-anchor="middle">Prompts</text>
+  <text class="table-header" x="850" y="1000" fill="#60a5fa" text-anchor="middle">Sub-agents</text>
+
+  <!-- Table Rows -->
+  <line x1="60" y1="1015" x2="1100" y2="1015" stroke="#334155" stroke-width="1"/>
+  <text class="table-cell" x="80" y="1040" fill="#60a5fa" font-weight="600">Main Agent</text>
+  <text class="table-cell" x="400" y="1040" fill="#4ade80" text-anchor="middle">✓</text>
+  <text class="table-cell" x="550" y="1040" fill="#4ade80" text-anchor="middle">✓</text>
+  <text class="table-cell" x="700" y="1040" fill="#4ade80" text-anchor="middle">✓</text>
+  <text class="table-cell" x="850" y="1040" fill="#4ade80" text-anchor="middle">✓</text>
+
+  <line x1="60" y1="1055" x2="1100" y2="1055" stroke="#334155" stroke-width="1"/>
+  <text class="table-cell" x="80" y="1080" fill="#60a5fa" font-weight="600">Sub-agent</text>
+  <text class="table-cell" x="400" y="1080" fill="#4ade80" text-anchor="middle">✓</text>
+  <text class="table-cell" x="550" y="1080" fill="#4ade80" text-anchor="middle">✓</text>
+  <text class="table-cell" x="700" y="1080" fill="#4ade80" text-anchor="middle">✓</text>
+  <text class="table-cell" x="850" y="1080" fill="#f87171" text-anchor="middle">✗</text>
+
+  <line x1="60" y1="1095" x2="1100" y2="1095" stroke="#334155" stroke-width="1"/>
+  <text class="table-cell" x="80" y="1120" fill="#c084fc" font-weight="600">Skill</text>
+  <text class="table-cell" x="400" y="1120" fill="#4ade80" text-anchor="middle">✓</text>
+  <text class="table-cell" x="550" y="1120" fill="#4ade80" text-anchor="middle">✓</text>
+  <text class="table-cell" x="700" y="1120" fill="#4ade80" text-anchor="middle">✓</text>
+  <text class="table-cell" x="850" y="1120" fill="#4ade80" text-anchor="middle">✓</text>
+
+  <!-- Future Direction Note -->
+  <rect x="40" y="1145" width="1120" height="55" rx="8" fill="#1e293b" fill-opacity="0.3" stroke="#334155" stroke-width="1"/>
+  <text class="note-title" x="80" y="1172">Future Direction: MCP Code Execution</text>
+  <text class="note-text" x="80" y="1190">Cloudflare and Docker exploring "code mode" — agents write code against MCP APIs instead of individual tool calls. Could reduce context overhead.</text>
+
+  <!-- Key Insight -->
+  <rect x="40" y="1215" width="1120" height="100" rx="12" fill="url(#insightGradient)" stroke="#ea580c" stroke-opacity="0.5" stroke-width="1"/>
+  <defs>
+    <linearGradient id="insightGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7c2d12;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#78350f;stop-opacity:0.3"/>
+    </linearGradient>
+  </defs>
+  <text class="insight-title" x="600" y="1255" text-anchor="middle">The Core Insight</text>
+  <text class="insight-text" x="600" y="1280" text-anchor="middle">CONTEXT (always-loaded) • WHO (agent/sub-agent) • HOW (skills) • AGENCY (MCP/tools) • WHEN (hooks)</text>
+  <text class="insight-sub" x="600" y="1303" text-anchor="middle">These are dimensions, not layers. Prompts are the primitive interface into all of it.</text>
+
+  <!-- Footer -->
+  <text class="footer" x="600" y="1380" text-anchor="middle">Framework synthesized from Claude Code capabilities + AgentFlow patterns</text>
+
+  <!-- AgentFlow attribution -->
+  <text class="footer" x="600" y="1400" text-anchor="middle">Extended with CONTEXT dimension for AgentFlow orchestrator pattern</text>
+</svg>

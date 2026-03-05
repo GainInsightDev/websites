@@ -1,0 +1,106 @@
+# Claude Code Review Workflow
+# Template from AgentFlow - GainInsight Standard
+#
+# Required Secrets:
+#   - CLAUDE_CODE_OAUTH_TOKEN: Your Anthropic OAuth token for Claude Code
+#
+# Optional Secrets (for Linear integration):
+#   - LINEAR_API_KEY: Linear API key for creating issues
+#   - LINEAR_TEAM_ID: Your Linear team UUID
+#
+# Template Variables:
+#   - {{base-branch}}: Target branch for PRs (default: develop)
+
+name: Claude Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches: [{{base-branch}}]
+
+jobs:
+  claude-review:
+    name: Claude Review
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Claude Code Review
+        uses: anthropics/claude-code-action@v1
+        env:
+          LINEAR_API_KEY: ${{ secrets.LINEAR_API_KEY }}
+          LINEAR_TEAM_ID: ${{ secrets.LINEAR_TEAM_ID }}
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            Please review this pull request and provide feedback on:
+            - Code quality and best practices
+            - Potential bugs or issues
+            - Performance considerations
+            - Security concerns
+            - Test coverage
+
+            Use the repository's CLAUDE.md for guidance on style and conventions. Be constructive and helpful in your feedback.
+
+            Use `gh pr comment` with your Bash tool to leave your review as a comment on the PR.
+
+            **For significant issues**, create a Linear issue to track the fix.
+
+            ## Linear API Configuration
+
+            **Linear API IS CONFIGURED** - the following environment variables are already set and ready to use:
+            - `$LINEAR_API_KEY` - API key (already set, use directly in curl)
+            - `$LINEAR_TEAM_ID` - Team ID (already set, use directly in curl)
+
+            Use the GraphQL API directly with curl commands below (Linear API is the standard approach - see af-linear-api-expertise skill).
+
+            First, get available labels for the team:
+            ```bash
+            curl -s -X POST https://api.linear.app/graphql \
+              -H "Authorization: $LINEAR_API_KEY" \
+              -H "Content-Type: application/json" \
+              -d '{"query": "{ team(id: \"'"$LINEAR_TEAM_ID"'\") { labels { nodes { id name } } } }"}' \
+              | jq '.data.team.labels.nodes'
+            ```
+
+            Then create the issue with appropriate label:
+            - **Bugs** (incorrect behavior, errors, crashes) -> apply "bug" label
+            - **Technical debt** (code quality, maintainability, security concerns) -> apply "debt" label
+
+            ```bash
+            curl -X POST https://api.linear.app/graphql \
+              -H "Authorization: $LINEAR_API_KEY" \
+              -H "Content-Type: application/json" \
+              -d '{
+                "query": "mutation($input: IssueCreateInput!) { issueCreate(input: $input) { issue { id identifier url } } }",
+                "variables": {
+                  "input": {
+                    "teamId": "'"$LINEAR_TEAM_ID"'",
+                    "title": "PR Review: <brief issue title>",
+                    "description": "Found in PR #${{ github.event.pull_request.number }}\n\n<detailed description>\n\n---\nPR: ${{ github.event.pull_request.html_url }}",
+                    "labelIds": ["<label-id-from-above>"]
+                  }
+                }
+              }'
+            ```
+
+            Include the Linear issue link in your PR comment.
+          settings: |
+            {
+              "permissions": {
+                "allow": [
+                  "Bash(gh *)",
+                  "Bash(curl *)",
+                  "Bash(jq *)"
+                ],
+                "deny": []
+              }
+            }

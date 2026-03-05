@@ -1,0 +1,351 @@
+#!/bin/bash
+# .start-work-hooks - GainInsight Standard Environment Setup
+# Auto-executed by start-work if found in worktree
+#
+# Variables to replace:
+#   {{project-name}} - Doppler project name
+#   {{doppler-config}} - Doppler config (dev/stg/prd)
+#   {{region}} - AWS region (e.g., eu-west-2)
+
+set -euo pipefail
+
+# Get worktree path and issue key
+WORKTREE_PATH="$1"
+ISSUE_KEY="$2"
+
+# Set umask for group write permissions
+umask 002
+
+cd "$WORKTREE_PATH"
+
+# DOPPLER_TOKEN is exported by start-work script (read from /etc/doppler/.doppler.yaml)
+
+# Source helper library
+SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
+source "${SCRIPT_DIR}/.git-hook-helpers.sh"
+
+# Setup cleanup trap
+trap cleanup_on_failure ERR
+
+# ============================================================================
+# BANNER
+# ============================================================================
+
+echo ""
+echo "╔════════════════════════════════════════════════════════════════╗"
+echo "║               {{project-name}} Environment Setup               ║"
+echo "║                     Issue: ${ISSUE_KEY}                             ║"
+echo "╚════════════════════════════════════════════════════════════════╝"
+echo ""
+
+# ============================================================================
+# PHASE 0: INITIALIZE STATE TRACKING
+# ============================================================================
+
+log_step "Initializing state tracking"
+
+STATE_FILE="/tmp/.hooks-state-${ISSUE_KEY}"
+
+if [ -f "$STATE_FILE" ]; then
+    log_info "Found existing state file (resuming previous run)"
+    load_state
+else
+    log_info "Creating new state file"
+    init_state_file "$ISSUE_KEY"
+    save_state "WORKTREE_PATH" "$WORKTREE_PATH"
+    save_state "PHASE" "pre-flight"
+fi
+
+# ============================================================================
+# PHASE 1: PRE-FLIGHT CHECKS
+# ============================================================================
+
+log_step "Running pre-flight checks"
+
+# 1.1 Check authentication
+check_doppler_auth || exit 1
+check_aws_auth || exit 1
+
+# 1.2 Get region
+REGION="{{region}}"
+save_state "REGION" "$REGION"
+log_info "Using AWS region: $REGION"
+
+# 1.3 Calculate sandbox identifier
+BRANCH_NAME=$(git branch --show-current)
+if [ -z "$BRANCH_NAME" ]; then
+    log_error "Could not determine branch name"
+    exit 1
+fi
+
+SANDBOX_ID=$(get_sandbox_identifier "$BRANCH_NAME")
+save_state "SANDBOX_ID" "$SANDBOX_ID"
+log_info "Sandbox identifier: $SANDBOX_ID (from branch: $BRANCH_NAME)"
+
+# 1.4 Check for existing sandbox (informational only)
+if find_existing_sandbox "$SANDBOX_ID"; then
+    log_warn "Found existing sandbox process - continuing anyway"
+fi
+
+# 1.5 Check disk space
+check_disk_space
+
+# 1.6 Get/check port
+if [ -f "PORT_INFO.md" ]; then
+    PORT=$(grep "Allocated Port:" PORT_INFO.md | head -1 | awk '{print $3}')
+    if [ -z "$PORT" ]; then
+        log_warn "PORT_INFO.md exists but no port found, using default 3000"
+        PORT=3000
+    fi
+else
+    log_warn "No PORT_INFO.md found, using default port 3000"
+    PORT=3000
+fi
+
+save_state "PORT" "$PORT"
+log_info "Using port: $PORT"
+
+# 1.7 Check if port is in use
+PORT_OCCUPANT=$(find_process_by_port "$PORT")
+if [ -n "$PORT_OCCUPANT" ]; then
+    PROC_NAME=$(ps -p "$PORT_OCCUPANT" -o comm= 2>/dev/null || echo "unknown")
+    if echo "$PROC_NAME" | grep -qE "node|npm|next"; then
+        log_warn "Port $PORT occupied by previous dev server (PID: $PORT_OCCUPANT)"
+        kill_by_port "$PORT"
+        log_success "Previous dev server killed"
+    else
+        log_warn "Port $PORT is in use by external process: $PROC_NAME"
+        log_info "Skipping dev server phase (port conflict)"
+        save_state "SKIP_DEV_SERVER" "true"
+    fi
+fi
+
+log_success "Pre-flight checks complete"
+
+# ============================================================================
+# PHASE 2: INSTALL DEPENDENCIES
+# ============================================================================
+
+log_step "Checking dependencies"
+save_state "PHASE" "dependencies"
+
+if [ ! -d "node_modules" ]; then
+    log_info "Installing dependencies..."
+    npm install --silent
+    log_success "Dependencies installed"
+else
+    log_success "Dependencies already installed (skipping)"
+fi
+
+# ============================================================================
+# PHASE 3: DEPLOY AMPLIFY SANDBOX
+# ============================================================================
+
+log_step "Deploying Amplify sandbox"
+save_state "PHASE" "sandbox"
+
+# Check if sandbox already deployed (resume from previous run)
+load_state
+if [ "${SANDBOX_READY:-false}" = "true" ] && [ -f "amplify_outputs.json" ] && validate_json_file "amplify_outputs.json"; then
+    log_success "Sandbox already deployed (resuming from previous run)"
+
+    APPSYNC_ENDPOINT=$(jq -r '.data.url // empty' amplify_outputs.json)
+    log_info "AppSync endpoint: $APPSYNC_ENDPOINT"
+
+    if [ -n "${SANDBOX_PID:-}" ] && check_process_running "$SANDBOX_PID"; then
+        log_info "Sandbox process still running (PID: $SANDBOX_PID)"
+    else
+        log_info "Restarting sandbox process..."
+        doppler run --config {{doppler-config}} --project {{project-name}} -- \
+            npx ampx sandbox --identifier "$SANDBOX_ID" > "/tmp/${ISSUE_KEY}-sandbox.log" 2>&1 &
+        SANDBOX_PID=$!
+        store_pid "SANDBOX" "$SANDBOX_PID"
+        log_info "Sandbox process restarted (PID: $SANDBOX_PID)"
+    fi
+else
+    # Fresh deployment
+    log_info "Starting sandbox deployment..."
+    doppler run --config {{doppler-config}} --project {{project-name}} -- \
+        npx ampx sandbox --identifier "$SANDBOX_ID" > "/tmp/${ISSUE_KEY}-sandbox.log" 2>&1 &
+    SANDBOX_PID=$!
+    store_pid "SANDBOX" "$SANDBOX_PID"
+    log_info "Sandbox deploying (PID: $SANDBOX_PID, log: /tmp/${ISSUE_KEY}-sandbox.log)"
+
+    # Wait for amplify_outputs.json and AppSync endpoint
+    log_info "Waiting for amplify_outputs.json..."
+
+    WAIT_ELAPSED=0
+    WAIT_TIMEOUT=600
+    while [ $WAIT_ELAPSED -lt $WAIT_TIMEOUT ]; do
+        if [ -f "amplify_outputs.json" ]; then
+            APPSYNC_ENDPOINT=$(jq -r '.data.url // empty' amplify_outputs.json 2>/dev/null || echo "")
+            if [ -n "$APPSYNC_ENDPOINT" ] && [ "$APPSYNC_ENDPOINT" != "null" ]; then
+                log_success "AppSync endpoint ready: $APPSYNC_ENDPOINT"
+                break
+            fi
+        fi
+
+        sleep 2
+        WAIT_ELAPSED=$((WAIT_ELAPSED + 2))
+
+        if [ $((WAIT_ELAPSED % 30)) -eq 0 ]; then
+            log_info "Still waiting for sandbox deployment... (${WAIT_ELAPSED}s elapsed)"
+        fi
+    done
+
+    if [ -z "$APPSYNC_ENDPOINT" ] || [ "$APPSYNC_ENDPOINT" = "null" ]; then
+        log_error "Timeout waiting for AppSync endpoint"
+        log_error "Check logs: tail -f /tmp/${ISSUE_KEY}-sandbox.log"
+        exit 1
+    fi
+
+    save_state "APPSYNC_ENDPOINT" "$APPSYNC_ENDPOINT"
+    save_state "SANDBOX_READY" "true"
+    log_success "Sandbox deployed successfully"
+fi
+
+# ============================================================================
+# PHASE 4: START FRONTEND DEV SERVER
+# ============================================================================
+
+log_step "Starting frontend dev server"
+save_state "PHASE" "frontend"
+
+load_state
+if [ "${SKIP_DEV_SERVER:-false}" = "true" ]; then
+    log_warn "Skipping dev server (port conflict detected earlier)"
+    log_info "To start manually: doppler run --config {{doppler-config}} --project {{project-name}} -- npm run dev -- --port $PORT"
+elif [ "${DEV_READY:-false}" = "true" ] && [ -n "${DEV_PID:-}" ] && check_process_running "$DEV_PID"; then
+    log_success "Dev server already running (PID: $DEV_PID)"
+else
+    log_info "Starting Next.js dev server on port $PORT..."
+    doppler run --config {{doppler-config}} --project {{project-name}} -- \
+        npm run dev -- --port "$PORT" > "/tmp/${ISSUE_KEY}-dev.log" 2>&1 &
+    DEV_PID=$!
+    store_pid "DEV" "$DEV_PID"
+    log_info "Dev server starting (PID: $DEV_PID, log: /tmp/${ISSUE_KEY}-dev.log)"
+
+    # Wait for dev server to be ready
+    log_info "Waiting for dev server to respond..."
+    if ! wait_for_url "http://localhost:${PORT}" 120; then
+        log_error "Dev server failed to start"
+        log_error "Check logs: tail -f /tmp/${ISSUE_KEY}-dev.log"
+        exit 1
+    fi
+
+    save_state "DEV_READY" "true"
+    log_success "Dev server ready"
+fi
+
+# ============================================================================
+# PHASE 5: START STORYBOOK
+# ============================================================================
+
+log_step "Starting Storybook"
+save_state "PHASE" "storybook"
+
+# Storybook port matches start-work allocation using project-specific port_base
+ISSUE_NUM="${ISSUE_KEY##*-}"
+TEAM_KEY="${ISSUE_KEY%%-*}"
+
+# Look up port_base from project registry (prevents cross-project port collisions)
+PORT_BASE=""
+PROJECT=$(project-registry find-by-team "$TEAM_KEY" 2>/dev/null) && {
+    PORT_BASE=$(project-registry "$PROJECT" port_base 2>/dev/null)
+}
+# Fallback to default if lookup fails or port_base is null/empty
+if [[ -z "$PORT_BASE" || "$PORT_BASE" == "null" ]]; then
+    log_warn "Could not find port_base for team '$TEAM_KEY', using default 3000"
+    PORT_BASE=3000
+fi
+
+STORYBOOK_PORT=$((PORT_BASE + 3000 + ISSUE_NUM))
+save_state "STORYBOOK_PORT" "$STORYBOOK_PORT"
+
+load_state
+if [ "${STORYBOOK_READY:-false}" = "true" ] && [ -n "${STORYBOOK_PID:-}" ] && check_process_running "$STORYBOOK_PID"; then
+    log_success "Storybook already running (PID: $STORYBOOK_PID)"
+else
+    # Check if Storybook port is in use
+    STORYBOOK_OCCUPANT=$(find_process_by_port "$STORYBOOK_PORT")
+    if [ -n "$STORYBOOK_OCCUPANT" ]; then
+        PROC_NAME=$(ps -p "$STORYBOOK_OCCUPANT" -o comm= 2>/dev/null || echo "unknown")
+        if echo "$PROC_NAME" | grep -qE "node|npm|storybook"; then
+            log_warn "Storybook port $STORYBOOK_PORT occupied by previous process (PID: $STORYBOOK_OCCUPANT)"
+            kill_by_port "$STORYBOOK_PORT"
+            log_success "Previous process killed"
+        else
+            log_warn "Storybook port $STORYBOOK_PORT is in use by: $PROC_NAME"
+            log_info "Skipping Storybook (port conflict)"
+            save_state "SKIP_STORYBOOK" "true"
+        fi
+    fi
+
+    if [ "${SKIP_STORYBOOK:-false}" != "true" ]; then
+        log_info "Starting Storybook on port $STORYBOOK_PORT..."
+        npm run storybook -- --port "$STORYBOOK_PORT" --no-open > "/tmp/${ISSUE_KEY}-storybook.log" 2>&1 &
+        STORYBOOK_PID=$!
+        store_pid "STORYBOOK" "$STORYBOOK_PID"
+        log_info "Storybook starting (PID: $STORYBOOK_PID, log: /tmp/${ISSUE_KEY}-storybook.log)"
+
+        # Wait for Storybook to be ready (shorter timeout - it's faster than dev server)
+        log_info "Waiting for Storybook to respond..."
+        if ! wait_for_url "http://localhost:${STORYBOOK_PORT}" 60; then
+            log_warn "Storybook may still be starting - check logs if needed"
+        else
+            save_state "STORYBOOK_READY" "true"
+            log_success "Storybook ready"
+        fi
+    fi
+fi
+
+# ============================================================================
+# FINAL SUMMARY
+# ============================================================================
+
+log_step "Environment Ready!"
+save_state "PHASE" "complete"
+
+echo ""
+echo "╔════════════════════════════════════════════════════════════════╗"
+echo "║                     ENVIRONMENT READY                          ║"
+echo "╚════════════════════════════════════════════════════════════════╝"
+echo ""
+
+log_success "Sandbox deployed (identifier: $SANDBOX_ID)"
+log_success "Frontend dev server running"
+if [ "${SKIP_STORYBOOK:-false}" != "true" ]; then
+    log_success "Storybook running"
+fi
+
+echo ""
+echo "📍 URLs:"
+echo "   Dev Server:  http://localhost:${PORT}"
+echo "   Storybook:   http://localhost:${STORYBOOK_PORT}"
+
+if [ -f "PORT_INFO.md" ]; then
+    DEV_URL=$(grep "Public URL:" PORT_INFO.md | awk '{print $3}' || echo "")
+    if [ -n "$DEV_URL" ]; then
+        echo "   Public: ${DEV_URL}"
+    fi
+fi
+
+echo ""
+echo "📋 Processes:"
+echo "   Sandbox PID:    $SANDBOX_PID"
+echo "   Dev Server PID: ${DEV_PID:-N/A}"
+echo "   Storybook PID:  ${STORYBOOK_PID:-N/A}"
+
+echo ""
+echo "📄 Logs:"
+echo "   Sandbox:   tail -f /tmp/${ISSUE_KEY}-sandbox.log"
+echo "   Dev:       tail -f /tmp/${ISSUE_KEY}-dev.log"
+echo "   Storybook: tail -f /tmp/${ISSUE_KEY}-storybook.log"
+
+echo ""
+echo "💾 State file: ${STATE_FILE}"
+echo ""
+
+log_info "All processes are running in the background"
+log_info "Use 'stop-work' or tmux to manage them"
+echo ""

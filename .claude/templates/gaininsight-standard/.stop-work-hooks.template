@@ -1,0 +1,234 @@
+#!/bin/bash
+# .stop-work-hooks - GainInsight Standard Environment Cleanup
+# Auto-executed by stop-work before worktree removal
+#
+# Variables to replace:
+#   {{project-name}} - Doppler project name
+#   {{doppler-config}} - Doppler config (dev/stg/prd)
+#   {{region}} - AWS region (e.g., eu-west-2)
+
+set -euo pipefail
+
+# Get worktree path and issue key
+WORKTREE_PATH="$1"
+ISSUE_KEY="$2"
+
+cd "$WORKTREE_PATH"
+
+# DOPPLER_TOKEN is exported by stop-work script (read from /etc/doppler/.doppler.yaml)
+
+# Source helper library
+SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
+source "${SCRIPT_DIR}/.git-hook-helpers.sh"
+
+# Setup trap to continue on errors (we want to clean up as much as possible)
+trap 'log_warn "Error during cleanup, continuing..."' ERR
+
+# ============================================================================
+# BANNER
+# ============================================================================
+
+echo ""
+echo "╔════════════════════════════════════════════════════════════════╗"
+echo "║               {{project-name}} Environment Cleanup             ║"
+echo "║                     Issue: ${ISSUE_KEY}                             ║"
+echo "╚════════════════════════════════════════════════════════════════╝"
+echo ""
+
+# ============================================================================
+# PHASE 1: LOAD STATE
+# ============================================================================
+
+log_step "Loading environment state"
+
+STATE_FILE="/tmp/.hooks-state-${ISSUE_KEY}"
+if [ ! -f "$STATE_FILE" ]; then
+    log_warn "No state file found, will use defaults"
+else
+    load_state
+    log_info "Loaded state from: $STATE_FILE"
+fi
+
+# Get region from amplify_outputs.json first, then state file
+if [ -f "amplify_outputs.json" ]; then
+    REGION=$(jq -r '.data.aws_region // empty' amplify_outputs.json 2>/dev/null || echo "")
+    if [ -n "$REGION" ]; then
+        log_info "Region from amplify_outputs.json: $REGION"
+    fi
+fi
+REGION="${REGION:-{{region}}}"
+log_info "Using region: $REGION"
+
+# Get sandbox identifier
+BRANCH_NAME=$(git branch --show-current 2>/dev/null || echo "")
+if [ -z "$BRANCH_NAME" ]; then
+    log_warn "Could not determine branch name, sandbox cleanup may be incomplete"
+    SANDBOX_ID="${SANDBOX_ID:-}"
+else
+    SANDBOX_ID=$(get_sandbox_identifier "$BRANCH_NAME")
+    log_info "Sandbox identifier: $SANDBOX_ID"
+fi
+
+# ============================================================================
+# PHASE 2: KILL ALL PROCESSES
+# ============================================================================
+
+log_step "Stopping all processes"
+
+# 2.1 Kill dev server
+if [ -n "${DEV_PID:-}" ]; then
+    log_info "Killing dev server (PID: $DEV_PID)..."
+    kill_process_tree "$DEV_PID"
+    log_success "Dev server stopped"
+else
+    log_info "No dev server PID in state file"
+
+    # Try to kill by port
+    PORT="${PORT:-3000}"
+    if [ -f "PORT_INFO.md" ]; then
+        PORT=$(grep "Allocated Port:" PORT_INFO.md | awk '{print $3}' || echo "$PORT")
+    fi
+
+    if kill_by_port "$PORT"; then
+        log_success "Killed process on port $PORT"
+    else
+        log_info "No process found on port $PORT"
+    fi
+fi
+
+# 2.2 Kill sandbox process
+if [ -n "${SANDBOX_PID:-}" ]; then
+    log_info "Killing sandbox process (PID: $SANDBOX_PID)..."
+    kill_process_tree "$SANDBOX_PID"
+    log_success "Sandbox process stopped"
+else
+    log_info "No sandbox PID in state file"
+
+    # Try to find and kill sandbox by name
+    if [ -n "$SANDBOX_ID" ]; then
+        SANDBOX_PIDS=$(pgrep -f "ampx sandbox.*${SANDBOX_ID}" 2>/dev/null || true)
+        if [ -n "$SANDBOX_PIDS" ]; then
+            log_info "Found sandbox process(es): $SANDBOX_PIDS"
+            for pid in $SANDBOX_PIDS; do
+                kill_process_tree "$pid"
+            done
+            log_success "Sandbox processes killed"
+        else
+            log_info "No running sandbox processes found"
+        fi
+    fi
+fi
+
+log_success "All processes stopped"
+
+# ============================================================================
+# PHASE 3: DELETE CLOUDFORMATION STACK
+# ============================================================================
+
+log_step "Deleting Amplify sandbox"
+
+if [ -z "$SANDBOX_ID" ]; then
+    log_warn "No sandbox identifier, skipping CloudFormation cleanup"
+else
+    # Find root stack
+    ROOT_STACK=$(find_cf_stack "$SANDBOX_ID" "$REGION")
+
+    if [ -z "$ROOT_STACK" ] || [ "$ROOT_STACK" = "None" ]; then
+        log_info "No CloudFormation stack found with identifier: $SANDBOX_ID"
+        log_info "Stack may already be deleted"
+    else
+        log_info "Found root stack: $ROOT_STACK"
+
+        # Delete stack with extended timeout (10 minutes)
+        if delete_cf_stack "$ROOT_STACK" "$REGION" 600; then
+            log_success "CloudFormation stack deleted"
+        else
+            log_warn "Stack deletion may have failed or timed out"
+            log_warn "Check manually: doppler run --config {{doppler-config}} --project {{project-name}} -- aws cloudformation describe-stacks --region $REGION --stack-name $ROOT_STACK"
+        fi
+    fi
+fi
+
+# ============================================================================
+# PHASE 4: CLEANUP ARTIFACTS
+# ============================================================================
+
+log_step "Cleaning up artifacts"
+
+# 4.1 Remove .next directory
+if [ -d ".next" ]; then
+    log_info "Removing .next directory..."
+    if rm -rf .next 2>/dev/null; then
+        log_success ".next directory removed"
+    else
+        log_warn "Could not remove .next directory"
+    fi
+else
+    log_info "No .next directory to clean"
+fi
+
+# 4.2 Remove log files
+log_info "Removing log files..."
+rm -f "/tmp/${ISSUE_KEY}-sandbox.log" 2>/dev/null || true
+rm -f "/tmp/${ISSUE_KEY}-dev.log" 2>/dev/null || true
+log_success "Log files removed"
+
+# 4.3 Remove state file
+if [ -f "$STATE_FILE" ]; then
+    log_info "Removing state file..."
+    rm -f "$STATE_FILE"
+    log_success "State file removed"
+fi
+
+# ============================================================================
+# PHASE 5: FINAL VERIFICATION
+# ============================================================================
+
+log_step "Final verification"
+
+# 5.1 Check for orphaned processes
+log_info "Checking for orphaned processes..."
+ORPHANED=$(ps aux | grep -E "$ISSUE_KEY|$SANDBOX_ID" | grep -v grep | grep -v "stop-work" || true)
+if [ -n "$ORPHANED" ]; then
+    log_warn "Found orphaned processes:"
+    echo "$ORPHANED" | sed 's/^/  /'
+else
+    log_success "No orphaned processes found"
+fi
+
+# 5.2 Check for remaining stacks
+if [ -n "$SANDBOX_ID" ]; then
+    log_info "Checking for remaining CloudFormation stacks..."
+    REMAINING_STACKS=$(doppler run --config {{doppler-config}} --project {{project-name}} -- \
+        aws cloudformation list-stacks \
+        --region "$REGION" \
+        --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE \
+        --query "StackSummaries[?contains(StackName, '${SANDBOX_ID}')].StackName" \
+        --output text 2>/dev/null || echo "")
+
+    if [ -n "$REMAINING_STACKS" ] && [ "$REMAINING_STACKS" != "None" ]; then
+        log_warn "Found remaining stacks:"
+        echo "$REMAINING_STACKS" | sed 's/^/  /'
+    else
+        log_success "No remaining CloudFormation stacks"
+    fi
+fi
+
+# ============================================================================
+# CLEANUP SUMMARY
+# ============================================================================
+
+echo ""
+echo "╔════════════════════════════════════════════════════════════════╗"
+echo "║                     CLEANUP COMPLETE                           ║"
+echo "╚════════════════════════════════════════════════════════════════╝"
+echo ""
+
+log_success "All processes stopped"
+log_success "Sandbox deleted"
+log_success "Artifacts cleaned"
+log_success "Logs removed"
+
+echo ""
+log_info "Worktree is ready for removal"
+echo ""
