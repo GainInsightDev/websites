@@ -1,0 +1,87 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { fetchAll, fetchBySlug } from '../../lib/sanity';
+
+interface Project {
+  name: string;
+  slug: { current: string };
+  tagline: string;
+  description: string;
+  domain: string;
+  accent: string;
+  url?: string;
+}
+
+export async function getStaticPaths() {
+  const projects = await fetchAll<Project>('project');
+  return projects.map((p) => ({
+    params: { slug: p.slug.current },
+  }));
+}
+
+const { slug } = Astro.params;
+const project = await fetchBySlug<Project>('project', slug!);
+
+if (!project) {
+  return Astro.redirect('/404');
+}
+---
+
+<Layout title={`${project.name} | Gain Insight`} description={project.tagline}>
+  <!-- Hero -->
+  <section class="hero-section section-light">
+    <div class="container">
+      <div class="flex items-center gap-3 mb-6">
+        <span class={`tag tag-${project.accent}`}>
+          <span class={`w-[6px] h-[6px] rounded-full bg-${project.accent}`}></span>
+          {project.domain}
+        </span>
+      </div>
+      <h1 class="text-[48px] md:text-[64px] text-text-dark leading-[1.05] mb-6">
+        {project.name}
+      </h1>
+      <p class="text-[18px] text-text-light leading-relaxed max-w-[560px] font-light">
+        {project.tagline}
+      </p>
+    </div>
+  </section>
+
+  <!-- About — dark -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+        <div>
+          <div class="section-label text-text-muted">
+            <span>About</span>
+          </div>
+          <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-6">
+            What <em>we're building.</em>
+          </h2>
+        </div>
+        <div>
+          <p class="text-[16px] text-text-muted leading-relaxed font-light">
+            {project.description}
+          </p>
+          {project.url && (
+            <a href={project.url} target="_blank" rel="noopener noreferrer" class="btn btn-ghost-dark mt-8 inline-flex">
+              Visit {project.name} &rarr;
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-offwhite text-center">
+    <div class="container">
+      <h2 class="text-[40px] md:text-[48px] text-text-dark leading-[1.1] mb-6">
+        Interested in <em>this project?</em>
+      </h2>
+      <p class="text-[16px] text-text-light leading-relaxed max-w-[420px] mx-auto mb-10 font-light">
+        If you'd like to know more about {project.name} or explore a similar partnership, get in touch.
+      </p>
+      <a href="/contact" class="btn btn-steel">Get in touch</a>
+    </div>
+  </section>
+</Layout>

@@ -6,6 +6,7 @@ const sites = [
   { id: 'pensionable', title: 'Pensionable.ai' },
   { id: 'recon1', title: 'Recon1.co.uk' },
   { id: 'senti', title: 'Senti' },
+  { id: 'gaininsight', title: 'Gain Insight' },
 ];
 
 // Singleton page types — one document per site
@@ -18,6 +19,7 @@ const pageTypes = [
 // Collection types — multiple documents per site
 const collectionTypes = [
   { type: 'agent', title: 'Agents' },
+  { type: 'project', title: 'Projects' },
   { type: 'solution', title: 'Solutions' },
   { type: 'useCase', title: 'Use Cases' },
   { type: 'stakeholder', title: 'Stakeholders' },

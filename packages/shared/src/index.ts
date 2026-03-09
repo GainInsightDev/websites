@@ -22,6 +22,12 @@ export const sites = {
     s3Bucket: '', // TODO: Determine S3 bucket for senti
     cloudfrontId: '', // TODO: Determine CloudFront distribution for senti
   },
+  gaininsight: {
+    name: 'Gain Insight',
+    domain: 'gaininsight.ai',
+    s3Bucket: '', // TODO: Create S3 bucket after domain purchase
+    cloudfrontId: '', // TODO: Create CloudFront distribution
+  },
 } as const;
 
 export type SiteName = keyof typeof sites;

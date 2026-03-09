@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Placeholder partners — will come from Sanity
+const partners = [
+  { name: 'Andy Davidson', role: 'Head of Consultancy', ventures: ['Gain Insight'] },
+  { name: 'Jason Rogers', role: 'Head of Data', ventures: ['Gain Insight'] },
+  { name: 'Joanne Carter', role: 'Head of Accountancy', ventures: ['Gain Insight'] },
+  { name: 'Mark Crump', role: 'Head of Pension Technology', ventures: ['Pensionable.ai'] },
+  { name: 'Spencer Lynch', role: 'Associate Partner — Pensions', ventures: ['Pensionable.ai'] },
+  { name: 'Alistair Marsden', role: 'Founder', ventures: ['CLIK'] },
+  { name: 'Amy Lennox', role: 'Co-founder & Audiologist', ventures: ['CLIK'] },
+];
+---
+
+<Layout title="Partners | Gain Insight" description="The people we work with across our ventures.">
+  <!-- Hero -->
+  <section class="hero-section section-light">
+    <div class="container">
+      <div class="section-label text-text-light">
+        <span>Partners</span>
+      </div>
+      <h1 class="text-[48px] md:text-[64px] text-text-dark leading-[1.05] mb-6">
+        The people behind <em>the projects.</em>
+      </h1>
+      <p class="text-[18px] text-text-light leading-relaxed max-w-[560px] font-light">
+        Domain experts, founders, and practitioners — every person brings deep expertise in their field.
+      </p>
+    </div>
+  </section>
+
+  <!-- Partners grid — dark -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {partners.map((partner) => (
+          <div class="card">
+            <div class="w-16 h-16 rounded-full bg-elevated border border-border-subtle mb-4 flex items-center justify-center">
+              <span class="text-[20px] text-text-muted font-body font-semibold">
+                {partner.name.split(' ').map(n => n[0]).join('')}
+              </span>
+            </div>
+            <h3 class="text-[16px] font-medium text-text mb-1 font-body">{partner.name}</h3>
+            <p class="text-[13px] text-text-muted mb-3 font-body">{partner.role}</p>
+            <div class="flex flex-wrap gap-2">
+              {partner.ventures.map((v) => (
+                <span class="text-[11px] text-steel bg-steel-dim px-2 py-1 rounded font-body">{v}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -80,6 +80,7 @@ export const homePage = defineType({
           { title: 'Recon1', value: 'recon1' },
           { title: 'Pensionable', value: 'pensionable' },
           { title: 'Senti', value: 'senti' },
+          { title: 'GainInsight', value: 'gaininsight' },
         ],
       },
       validation: (rule) => rule.required(),

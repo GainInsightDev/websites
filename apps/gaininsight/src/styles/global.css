@@ -1,0 +1,279 @@
+@import 'tailwindcss';
+
+/* ─── Self-hosted fonts ──────────────────────────────────────────────────────
+   Barlow Condensed: Wordmark ONLY (bold 700)
+   DM Serif Display: Headings & display text (regular 400)
+   DM Sans: Body & UI (light 300, regular 400, medium 500, semibold 600)
+   ──────────────────────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Barlow Condensed';
+  src: url('/fonts/barlow-condensed-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'DM Serif Display';
+  src: url('/fonts/dm-serif-display-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'DM Serif Display';
+  src: url('/fonts/dm-serif-display-400-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/fonts/dm-sans-latin.woff2') format('woff2');
+  font-weight: 300 600;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/fonts/dm-sans-latin-italic.woff2') format('woff2');
+  font-weight: 300 600;
+  font-style: italic;
+  font-display: block;
+}
+
+/* ─── Design Tokens ──────────────────────────────────────────────────────── */
+
+@theme {
+  /* Dark backgrounds */
+  --color-bg: #09090C;
+  --color-surface: #0F1118;
+  --color-elevated: #181B26;
+
+  /* Light backgrounds */
+  --color-bg-light: #FFFFFF;
+  --color-bg-offwhite: #F7F7F5;
+  --color-bg-subtle: #F2F2F6;
+
+  /* Text on dark */
+  --color-text: #E8EAF0;
+  --color-text-muted: #8892B0;
+
+  /* Text on light */
+  --color-text-dark: #0F1118;
+  --color-text-light: #8090B0;
+
+  /* Borders */
+  --color-border: #1E2230;
+  --color-border-light: #E0E2EA;
+  --color-border-subtle: #2A2F42;
+
+  /* Primary accent — Steel */
+  --color-steel: #6090BA;
+  --color-steel-dim: rgba(96, 144, 186, 0.12);
+  --color-steel-mid: rgba(96, 144, 186, 0.30);
+
+  /* Secondary accents — portfolio palette */
+  --color-ember: #D4622A;
+  --color-sage: #4A9E7A;
+  --color-violet: #7B62C8;
+  --color-coral: #D45C6A;
+
+  /* Typography */
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-serif: 'DM Serif Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  /* Shadows */
+  --shadow-card: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-card-lg: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-pill: 9999px;
+}
+
+/* ─── Base styles ────────────────────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h1 em, h2 em, h3 em {
+  font-style: italic;
+}
+
+/* ─── Component classes ──────────────────────────────────────────────────── */
+
+@layer components {
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Sections */
+  .section {
+    padding: 80px 0;
+  }
+
+  .section-lg {
+    padding: 120px 0;
+  }
+
+  .hero-section {
+    padding: 96px 0;
+  }
+
+  /* Dark sections */
+  .section-dark {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  .section-surface {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+  }
+
+  /* Light sections */
+  .section-light {
+    background-color: var(--color-bg-light);
+    color: var(--color-text-dark);
+  }
+
+  .section-offwhite {
+    background-color: var(--color-bg-offwhite);
+    color: var(--color-text-dark);
+  }
+
+  /* Section labels (short rule + small caps) */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background-color: currentColor;
+    opacity: 0.3;
+  }
+
+  .section-label span {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+    text-decoration: none;
+    border: none;
+  }
+
+  .btn:hover {
+    opacity: 0.88;
+  }
+
+  .btn-steel {
+    background-color: var(--color-steel);
+    color: var(--color-bg-light);
+  }
+
+  .btn-ember {
+    background-color: var(--color-ember);
+    color: var(--color-bg-light);
+  }
+
+  .btn-ghost-dark {
+    background-color: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-ghost-light {
+    background-color: transparent;
+    color: var(--color-text-dark);
+    border: 1px solid var(--color-border-light);
+  }
+
+  /* Cards */
+  .card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 24px;
+    transition: border-color 0.15s ease;
+  }
+
+  .card:hover {
+    border-color: var(--color-border-subtle);
+  }
+
+  .card-light {
+    background-color: var(--color-bg-subtle);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-xl);
+    padding: 24px;
+    transition: border-color 0.15s ease;
+  }
+
+  /* Portfolio tags */
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+
+  .tag-steel  { color: var(--color-steel);  background-color: rgba(96, 144, 186, 0.09); border: 1px solid rgba(96, 144, 186, 0.19); }
+  .tag-ember  { color: var(--color-ember);  background-color: rgba(212, 98, 42, 0.09);  border: 1px solid rgba(212, 98, 42, 0.19);  }
+  .tag-sage   { color: var(--color-sage);   background-color: rgba(74, 158, 122, 0.09); border: 1px solid rgba(74, 158, 122, 0.19); }
+  .tag-violet { color: var(--color-violet); background-color: rgba(123, 98, 200, 0.09); border: 1px solid rgba(123, 98, 200, 0.19); }
+  .tag-coral  { color: var(--color-coral);  background-color: rgba(212, 92, 106, 0.09); border: 1px solid rgba(212, 92, 106, 0.19); }
+}

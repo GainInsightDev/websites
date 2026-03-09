@@ -6,6 +6,7 @@ import { featureList } from './objects/featureList';
 // Collection document types
 import { agent } from './agent';
 import { page } from './page';
+import { project } from './project';
 import { solution } from './solution';
 import { stakeholder } from './stakeholder';
 import { teamMember } from './teamMember';
@@ -26,6 +27,7 @@ export const schemaTypes = [
   // Collections
   agent,
   page,
+  project,
   solution,
   stakeholder,
   teamMember,

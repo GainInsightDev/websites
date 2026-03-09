@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { fetchAll } from '../../lib/sanity';
+
+interface Project {
+  name: string;
+  slug: { current: string };
+  tagline: string;
+  domain: string;
+  accent: string;
+}
+
+const projects = await fetchAll<Project>('project');
+---
+
+<Layout title="Projects | Gain Insight" description="AI-first products and services we're building with our partners.">
+  <!-- Header -->
+  <section class="hero-section section-light">
+    <div class="container">
+      <div class="section-label text-text-light">
+        <span>Portfolio</span>
+      </div>
+      <h1 class="text-[48px] md:text-[64px] text-text-dark leading-[1.05] mb-6">
+        Projects <em>we're building.</em>
+      </h1>
+      <p class="text-[18px] text-text-light leading-relaxed max-w-[560px] font-light">
+        Each project is a partnership — domain expertise meets AI capability to create products that solve real problems.
+      </p>
+    </div>
+  </section>
+
+  <!-- Project grid — dark -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {projects.map((project) => (
+          <a href={`/projects/${project.slug.current}`} class="card group block">
+            <div class="flex items-center gap-3 mb-4">
+              <span class={`tag tag-${project.accent}`}>
+                <span class={`w-[6px] h-[6px] rounded-full bg-${project.accent}`}></span>
+                {project.domain}
+              </span>
+            </div>
+            <h3 class="text-[18px] font-medium text-text mb-3 font-body group-hover:text-steel transition-colors">{project.name}</h3>
+            <p class="text-[13px] text-text-muted leading-relaxed font-light">{project.tagline}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-offwhite text-center">
+    <div class="container">
+      <h2 class="text-[40px] md:text-[48px] text-text-dark leading-[1.1] mb-6">Have an <em>idea?</em></h2>
+      <p class="text-[16px] text-text-light leading-relaxed max-w-[420px] mx-auto mb-10 font-light">
+        We're always looking for partners with domain expertise and ambitious ideas.
+      </p>
+      <a href="/contact" class="btn btn-steel">Get in touch</a>
+    </div>
+  </section>
+</Layout>

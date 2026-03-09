@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Approach | Gain Insight" description="How Gain Insight works — domain expertise meets AI capability.">
+  <!-- Hero -->
+  <section class="hero-section section-light">
+    <div class="container">
+      <div class="section-label text-text-light">
+        <span>Our approach</span>
+      </div>
+      <h1 class="text-[48px] md:text-[64px] text-text-dark leading-[1.05] mb-6">
+        How <em>we work.</em>
+      </h1>
+      <p class="text-[18px] text-text-light leading-relaxed max-w-[560px] font-light">
+        We don't build products in isolation. Every project starts with someone who knows their industry — and a shared conviction that AI can make it better.
+      </p>
+    </div>
+  </section>
+
+  <!-- The model — dark -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div>
+          <div class="section-label text-text-muted">
+            <span>The model</span>
+          </div>
+          <h2 class="text-[40px] md:text-[48px] text-text leading-[1.1] mb-6">
+            Domain expertise meets <em>AI capability.</em>
+          </h2>
+          <p class="text-[16px] text-text-muted leading-relaxed font-light">
+            Our partners are experienced professionals — consultants, founders, industry leaders — who understand their domain deeply. We bring the technical capability to turn that knowledge into AI-first products and services.
+          </p>
+        </div>
+        <div class="flex flex-col gap-6">
+          {[
+            { num: '01', title: 'You bring the expertise', desc: 'Deep understanding of the problem space, the users, and the market. We can\'t learn that from a dataset — it comes from years of experience.' },
+            { num: '02', title: 'We bring the capability', desc: 'AI engineering, software development, data architecture, and product design. We work with existing systems, existing data, and build from there.' },
+            { num: '03', title: 'We build together', desc: 'This isn\'t outsourcing. We sit alongside you, make decisions together, and share in the outcome. The best products come from genuine collaboration.' },
+            { num: '04', title: 'We stay involved', desc: 'Our partnerships are ongoing. We don\'t hand off and walk away — we grow with the ventures we help build.' },
+          ].map((step) => (
+            <div class="flex gap-4 p-5 rounded-xl border border-border bg-surface">
+              <span class="text-[11px] font-semibold text-steel font-body mt-1 shrink-0">{step.num}</span>
+              <div>
+                <h3 class="text-[15px] font-semibold text-text mb-2 font-body">{step.title}</h3>
+                <p class="text-[13px] text-text-muted leading-relaxed font-light">{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI first — light -->
+  <section class="section section-offwhite">
+    <div class="container">
+      <div class="section-label text-text-light">
+        <span>AI-first</span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+        <div>
+          <h2 class="text-[40px] md:text-[48px] text-text-dark leading-[1.1] mb-6">
+            AI isn't an add-on. <em>It's how we think.</em>
+          </h2>
+        </div>
+        <div>
+          <p class="text-[16px] text-text-light leading-relaxed mb-6 font-light">
+            Every product we build starts with AI at the core — not bolted on as an afterthought. We design systems, data flows, and user experiences around what AI makes possible.
+          </p>
+          <p class="text-[16px] text-text-light leading-relaxed font-light">
+            This means working with existing systems and data, writing custom software, and building tools that make a measurable difference to the people who use them.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA — dark -->
+  <section class="section-lg section-dark text-center">
+    <div class="container">
+      <h2 class="text-[40px] md:text-[48px] text-text leading-[1.1] mb-6">
+        Ready to build <em>something?</em>
+      </h2>
+      <p class="text-[16px] text-text-muted leading-relaxed max-w-[480px] mx-auto mb-10 font-light">
+        If you have domain expertise and an idea worth pursuing, we'd like to hear from you.
+      </p>
+      <a href="/contact" class="btn btn-steel">Get in touch</a>
+    </div>
+  </section>
+</Layout>

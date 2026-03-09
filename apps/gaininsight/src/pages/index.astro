@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { fetchAll } from '../lib/sanity';
+
+interface Project {
+  name: string;
+  slug: { current: string };
+  tagline: string;
+  domain: string;
+  accent: string;
+  featured: boolean;
+  order: number;
+}
+
+const allProjects = await fetchAll<Project>('project');
+const projects = allProjects.filter(p => p.featured).slice(0, 6);
+---
+
+<Layout>
+  <!-- Hero — white -->
+  <section class="hero-section section-light">
+    <div class="container">
+      <div class="max-w-[720px]">
+        <div class="section-label text-text-light">
+          <span>AI Venture Partner</span>
+        </div>
+        <h1 class="text-[56px] md:text-[80px] text-text-dark leading-[1.05] mb-6">
+          Domain expertise meets<br /><em>AI capability.</em>
+        </h1>
+        <p class="text-[18px] text-text-light leading-relaxed max-w-[560px] mb-10 font-light">
+          We work with experienced partners to build AI-first products and services — enhancing existing businesses or launching new ventures together.
+        </p>
+        <a href="/contact" class="btn btn-steel">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What we do — dark -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-label text-text-muted">
+        <span>What we do</span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+        <div>
+          <h2 class="text-[40px] md:text-[48px] text-text leading-[1.1] mb-6">
+            We build <em>AI-first products</em> with people who know their industry.
+          </h2>
+        </div>
+        <div>
+          <p class="text-[16px] text-text-muted leading-relaxed mb-6 font-light">
+            Our partners bring deep domain expertise — in pensions, healthcare, finance, retail, and beyond. We bring the AI capability, the engineering, and the conviction to turn that expertise into working software.
+          </p>
+          <p class="text-[16px] text-text-muted leading-relaxed font-light">
+            Whether that means enhancing an existing business with AI or co-founding an entirely new venture, we stay involved. This isn't outsourcing — it's a genuine partnership to build something that lasts.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How we work teaser — light -->
+  <section class="section section-offwhite">
+    <div class="container">
+      <div class="section-label text-text-light">
+        <span>How we work</span>
+      </div>
+      <h2 class="text-[40px] md:text-[48px] text-text-dark leading-[1.1] mb-12">
+        A partnership model <em>built for AI.</em>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {[
+          { title: 'Domain expertise meets AI', desc: 'You know your industry inside out. We know how to build AI-first products. Together, that combination is powerful.' },
+          { title: 'Build together', desc: 'Not outsourcing. Genuine partnership — from data and systems through to working software, side by side.' },
+          { title: 'Full-stack delivery', desc: 'We work with existing systems and data. We write software. We are AI-first in everything that we do.' },
+          { title: 'Stay involved', desc: 'We don\'t hand off and walk away. Our partnerships are ongoing — we grow with the ventures we help build.' },
+        ].map((item) => (
+          <div class="card-light">
+            <h3 class="text-[16px] font-semibold text-text-dark mb-3 font-body">{item.title}</h3>
+            <p class="text-[14px] text-text-light leading-relaxed font-light">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-10">
+        <a href="/approach" class="btn btn-ghost-light">Our approach</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured projects — dark -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-label text-text-muted">
+        <span>Portfolio</span>
+      </div>
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+        <h2 class="text-[40px] md:text-[48px] text-text leading-[1.1]">
+          Projects <em>we're building.</em>
+        </h2>
+        <a href="/projects" class="text-[13px] text-steel hover:text-text transition-colors font-body">View all projects &rarr;</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {projects.map((project) => (
+          <a href={`/projects/${project.slug.current}`} class="card group block">
+            <div class="flex items-center gap-3 mb-4">
+              <span class={`tag tag-${project.accent}`}>
+                <span class={`w-[6px] h-[6px] rounded-full bg-${project.accent}`}></span>
+                {project.domain}
+              </span>
+            </div>
+            <h3 class="text-[18px] font-medium text-text mb-2 font-body group-hover:text-steel transition-colors">{project.name}</h3>
+            <p class="text-[13px] text-text-muted leading-relaxed font-light">{project.tagline}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA — light -->
+  <section class="section-lg section-light">
+    <div class="container text-center">
+      <h2 class="text-[40px] md:text-[48px] text-text-dark leading-[1.1] mb-6">
+        Ready to build <em>something?</em>
+      </h2>
+      <p class="text-[16px] text-text-light leading-relaxed max-w-[480px] mx-auto mb-10 font-light">
+        If you have domain expertise and an idea worth pursuing, we'd like to hear from you.
+      </p>
+      <a href="/contact" class="btn btn-steel">Get in touch</a>
+    </div>
+  </section>
+</Layout>
