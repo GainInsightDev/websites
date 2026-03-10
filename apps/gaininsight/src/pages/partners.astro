@@ -1,15 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Placeholder partners — will come from Sanity
 const partners = [
-  { name: 'Andy Davidson', role: 'Head of Consultancy', ventures: ['Gain Insight'] },
-  { name: 'Jason Rogers', role: 'Head of Data', ventures: ['Gain Insight'] },
-  { name: 'Joanne Carter', role: 'Head of Accountancy', ventures: ['Gain Insight'] },
-  { name: 'Mark Crump', role: 'Head of Pension Technology', ventures: ['Pensionable.ai'] },
-  { name: 'Spencer Lynch', role: 'Associate Partner — Pensions', ventures: ['Pensionable.ai'] },
-  { name: 'Alistair Marsden', role: 'Founder', ventures: ['CLIK'] },
-  { name: 'Amy Lennox', role: 'Co-founder & Audiologist', ventures: ['CLIK'] },
+  { name: 'Andy Davidson', role: 'Managing Partner', photo: '/images/partners/andy-davidson.png', bio: 'Over 25 years as a technology entrepreneur. Founded and co-founded multiple seed-stage tech companies, raised over £20M in finance, and enjoyed two large eight-figure exits.', ventures: ['Gain Insight', 'Recon1', 'Pensionable.ai', 'Senti'] },
+  { name: 'Jason Rogers', role: 'Head of Data & Technology', photo: '/images/partners/jason-rogers.png', bio: '25 years in financial services and technology, bringing a unique blend of operational and technical expertise to every venture.', ventures: ['Gain Insight', 'Recon1', 'Pensionable.ai'] },
+  { name: 'Mark Crump', role: 'Head of Pension Technology', photo: '/images/partners/mark-crump.png', bio: 'Over 20 years as CEO or CTO at pensions administration software companies. Deep expertise in pension scheme operations and technology.', ventures: ['Pensionable.ai'] },
+  { name: 'Spencer Lynch', role: 'Associate Partner — Pensions', photo: '/images/partners/spencer-lynch.png', bio: 'Senior technology leader in the pensions industry, specialising in creating, developing and taking to market innovative data and technology solutions.', ventures: ['Pensionable.ai'] },
+  { name: 'David Rich', role: 'Chief Data Officer', photo: '/images/partners/david-rich.png', bio: 'Over 25 years as a technology and data entrepreneur. Deep understanding of how to improve and unlock the power of data.', ventures: ['Pensionable.ai'] },
+  { name: 'Philip Alton', role: 'Founder & CEO', photo: '/images/partners/philip-alton.png', bio: 'Former emergency medicine doctor and NHS clinical entrepreneur. Bridging the gap between clinical practice and technology.', ventures: ['Senti'] },
+  { name: 'Kieran Dwyer', role: 'Head of Software', photo: '/images/partners/kieran-dwyer.png', bio: 'Experienced software leader driving the technical vision and delivery of AI-powered biosignal analysis.', ventures: ['Senti'] },
+  { name: 'Kevin Kearney', role: 'Chief Operating Officer', photo: '/images/partners/kevin-kearney.png', bio: 'Reconciliation veteran with 28 years of finance experience across payments, gaming, and financial services.', ventures: ['Recon1'] },
+  { name: 'Stuart Sims', role: 'Chief Financial Officer', photo: '/images/partners/stuart-sims.png', bio: 'Chartered accountant with global finance expertise spanning multiple industries and geographies.', ventures: ['Recon1'] },
+  { name: 'Joanne Carter', role: 'Head of Accountancy', bio: 'Experienced finance professional overseeing financial operations and compliance across the portfolio.', ventures: ['Gain Insight'] },
+  { name: 'Alistair Marsden', role: 'Founder', bio: 'Hearing industry specialist with decades of experience in audiology and hearing device innovation.', ventures: ['CLIK'] },
+  { name: 'Amy Lennox', role: 'Co-founder & Audiologist', bio: 'Clinical audiologist bringing frontline healthcare expertise to reimagine hearing screening technology.', ventures: ['CLIK'] },
 ];
 ---
 
@@ -35,15 +39,29 @@ const partners = [
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {partners.map((partner) => (
           <div class="card">
-            <div class="w-16 h-16 rounded-full bg-elevated border border-border-subtle mb-4 flex items-center justify-center">
-              <span class="text-[20px] text-text-muted font-body font-semibold">
-                {partner.name.split(' ').map(n => n[0]).join('')}
-              </span>
-            </div>
+            {partner.photo ? (
+              <img
+                src={partner.photo}
+                alt={partner.name}
+                width="72"
+                height="72"
+                class="w-[72px] h-[72px] rounded-full object-cover border border-border-subtle mb-4"
+                loading="lazy"
+              />
+            ) : (
+              <div class="w-[72px] h-[72px] rounded-full bg-elevated border border-border-subtle mb-4 flex items-center justify-center">
+                <span class="text-[22px] text-text-muted font-body font-semibold">
+                  {partner.name.split(' ').map((n: string) => n[0]).join('')}
+                </span>
+              </div>
+            )}
             <h3 class="text-[16px] font-medium text-text mb-1 font-body">{partner.name}</h3>
-            <p class="text-[13px] text-text-muted mb-3 font-body">{partner.role}</p>
+            <p class="text-[13px] text-steel mb-3 font-body">{partner.role}</p>
+            {partner.bio && (
+              <p class="text-[13px] text-text-muted leading-relaxed mb-4 font-light">{partner.bio}</p>
+            )}
             <div class="flex flex-wrap gap-2">
-              {partner.ventures.map((v) => (
+              {partner.ventures.map((v: string) => (
                 <span class="text-[11px] text-steel bg-steel-dim px-2 py-1 rounded font-body">{v}</span>
               ))}
             </div>
