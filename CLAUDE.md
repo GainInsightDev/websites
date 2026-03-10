@@ -37,7 +37,7 @@ Monorepo for GainInsight marketing websites, migrating from React to Astro with 
 | senti | TBD (ask user) | TBD (ask user) |
 | clik.audio | `clik.audio` | `E2MN4CE4PG7QAR` |
 | junkan.ai | `junkan.ai` | `E2RK3RXTOQXX61` |
-| juncta.ai | TBD (ask user) | TBD (ask user) |
+| juncta.ai | `juncta.ai` | `E2E38PLLUKNAZD` |
 
 ## Linear
 
