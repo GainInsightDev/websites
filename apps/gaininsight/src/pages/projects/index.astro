@@ -44,14 +44,13 @@ const projects = await fetchAll<Project>('project');
               )}
             </div>
             <div class="project-card-body">
-              <span class={`tag tag-${project.accent}`}>
-                <span style={`background-color: var(--color-${project.accent})`} class="w-[6px] h-[6px] rounded-full"></span>
-                {project.domain}
-              </span>
               {!ventureLogoRaw[project.slug.current] && (
                 <h3 class="project-card-title">{project.name}</h3>
               )}
               <p class="project-card-tagline">{project.tagline}</p>
+              <div class="project-card-meta">
+                <span class="tag">{project.domain}</span>
+              </div>
             </div>
           </a>
         ))}

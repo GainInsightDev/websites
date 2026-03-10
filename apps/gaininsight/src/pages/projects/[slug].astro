@@ -116,10 +116,7 @@ const caseStudyLink = content?.caseStudyUrl ?? project.caseStudyUrl;
         </h1>
       )}
       <div class="flex items-center gap-3 mb-6">
-        <span class={`tag tag-${project.accent}`}>
-          <span style={`background-color: var(--color-${project.accent})`} class="w-[6px] h-[6px] rounded-full"></span>
-          {project.domain}
-        </span>
+        <span class="tag">{project.domain}</span>
       </div>
       <p class="text-[18px] text-text-muted leading-relaxed max-w-[560px] font-light">
         {project.tagline}
@@ -219,14 +216,13 @@ const caseStudyLink = content?.caseStudyUrl ?? project.caseStudyUrl;
               )}
             </div>
             <div class="project-card-body">
-              <span class={`tag tag-${p.accent}`}>
-                <span style={`background-color: var(--color-${p.accent})`} class="w-[6px] h-[6px] rounded-full"></span>
-                {p.domain}
-              </span>
               {!ventureLogoRaw[p.slug.current] && (
                 <h3 class="project-card-title">{p.name}</h3>
               )}
               <p class="project-card-tagline">{p.tagline}</p>
+              <div class="project-card-meta">
+                <span class="tag">{p.domain}</span>
+              </div>
             </div>
           </a>
         ))}

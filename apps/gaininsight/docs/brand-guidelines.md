@@ -158,9 +158,10 @@ Four curated accents used for differentiation across portfolio ventures, CTAs on
 ### Colour Rules
 
 **Do:**
-- Use accents sparingly — hero CTA, portfolio tags, one key phrase per section maximum
+- Use accents sparingly — hero CTA, one key phrase per section maximum
 - Keep the nav CTA in Steel blue always — consistent regardless of page accent
-- Use accent colours at low opacity for backgrounds and tags — full saturation for text and buttons only
+- Portfolio tags use Steel only — no accent colours on tags
+- Use accent colours at low opacity for backgrounds — full saturation for text and buttons only
 
 **Don't:**
 - Use more than one secondary accent on the same page section
@@ -275,18 +276,18 @@ Generous space. Alternating sections. Content-led structure.
 
 ### Portfolio Tags
 
-Small pill-shaped labels with accent colour dot, low-opacity background, and accent border.
+Small pill-shaped labels using Steel colour. No accent colours — tags are uniform across all ventures.
 
 | Element | Specification |
 |---------|--------------|
 | Shape | Pill (border-radius: 9999px) |
 | Padding | 4px 12px |
-| Dot | 6px circle in accent colour |
-| Background | Accent at 10% opacity |
-| Border | Accent at 19% opacity |
-| Text | Accent colour, 11px, semibold, 0.06em tracking |
+| Background | Steel at 10% opacity |
+| Border | Steel at 19% opacity |
+| Text | Steel colour, 11px, semibold, 0.06em tracking |
+| Placement | Below card description, right-aligned |
 
-Each venture category is assigned one accent. Used consistently — same category, same colour, always.
+Tags use a single colour (Steel) for visual consistency. No coloured dots, no per-category accent colours.
 
 ### Section Labels
 

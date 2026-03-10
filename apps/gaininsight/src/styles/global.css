@@ -274,24 +274,20 @@ h1 em, h2 em, h3 em {
     transition: border-color 0.15s ease;
   }
 
-  /* Portfolio tags */
+  /* Portfolio tags — unified Steel */
   .tag {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
     padding: 4px 12px;
     border-radius: var(--radius-pill);
     font-family: var(--font-body);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.06em;
+    color: var(--color-steel);
+    background-color: rgba(96, 144, 186, 0.08);
+    border: 1px solid rgba(96, 144, 186, 0.15);
   }
-
-  .tag-steel  { color: var(--color-steel);  background-color: rgba(96, 144, 186, 0.09); border: 1px solid rgba(96, 144, 186, 0.19); }
-  .tag-ember  { color: var(--color-ember);  background-color: rgba(212, 98, 42, 0.09);  border: 1px solid rgba(212, 98, 42, 0.19);  }
-  .tag-sage   { color: var(--color-sage);   background-color: rgba(74, 158, 122, 0.09); border: 1px solid rgba(74, 158, 122, 0.19); }
-  .tag-violet { color: var(--color-violet); background-color: rgba(123, 98, 200, 0.09); border: 1px solid rgba(123, 98, 200, 0.19); }
-  .tag-coral  { color: var(--color-coral);  background-color: rgba(212, 92, 106, 0.09); border: 1px solid rgba(212, 92, 106, 0.19); }
 
   /* ─── Project Cards (logo-first portfolio cards) ──────────────────────── */
 
@@ -350,6 +346,13 @@ h1 em, h2 em, h3 em {
     flex-direction: column;
     gap: 10px;
     flex: 1;
+  }
+
+  .project-card-meta {
+    margin-top: auto;
+    padding-top: 6px;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .project-card-title {
