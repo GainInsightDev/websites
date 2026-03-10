@@ -293,13 +293,135 @@ h1 em, h2 em, h3 em {
   .tag-violet { color: var(--color-violet); background-color: rgba(123, 98, 200, 0.09); border: 1px solid rgba(123, 98, 200, 0.19); }
   .tag-coral  { color: var(--color-coral);  background-color: rgba(212, 92, 106, 0.09); border: 1px solid rgba(212, 92, 106, 0.19); }
 
-  /* Card logo footer — subtle brand zone at bottom of project cards */
-  .card-logo-footer {
-    border-top: 1px solid var(--color-border);
-    padding-top: 16px;
-    margin-top: auto;
-    min-height: 32px;
+  /* ─── Project Cards (logo-first portfolio cards) ──────────────────────── */
+
+  .project-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .project-card:hover {
+    border-color: var(--color-border-subtle);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .project-card-accent {
+    height: 2px;
+    width: 100%;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+  }
+
+  .project-card:hover .project-card-accent {
+    opacity: 1;
+  }
+
+  .project-card-logo-stage {
+    aspect-ratio: 3 / 2;
+    background-color: var(--color-bg-offwhite);
     display: flex;
     align-items: center;
+    justify-content: center;
+    padding: 32px;
+    margin: 12px 12px 0 12px;
+    border-radius: var(--radius-lg);
+  }
+
+  .project-card-logo {
+    max-width: 70%;
+    max-height: 60%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+  }
+
+  .project-card:hover .project-card-logo {
+    transform: scale(1.03);
+  }
+
+  .project-card-wordmark {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-dark);
+    opacity: 0.25;
+  }
+
+  .project-card-body {
+    padding: 20px 24px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .project-card-title {
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-text);
+    letter-spacing: normal;
+    transition: color 0.15s ease;
+  }
+
+  .project-card:hover .project-card-title {
+    color: var(--color-steel);
+  }
+
+  .project-card-tagline {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  /* ─── Project Detail Hero ─────────────────────────────────────────────── */
+
+  .detail-hero-logo {
+    max-width: 320px;
+    padding: 32px 40px;
+    background-color: var(--color-bg-offwhite);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .detail-hero-logo-img {
+    max-width: 100%;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .detail-hero-wordmark {
+    max-width: 320px;
+    padding: 32px 40px;
+    background-color: var(--color-bg-offwhite);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .detail-hero-wordmark span {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-dark);
+    opacity: 0.2;
   }
 }

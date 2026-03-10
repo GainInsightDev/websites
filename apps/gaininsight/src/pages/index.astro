@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { fetchAll } from '../lib/sanity';
-import { ventureLogo } from '../lib/venture-logos';
+import { ventureLogoRaw } from '../lib/venture-logos';
 
 interface Project {
   name: string;
@@ -102,24 +102,23 @@ const projects = allProjects.filter(p => p.featured).slice(0, 6);
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {projects.map((project) => (
-          <a href={`/projects/${project.slug.current}`} class="card group block">
-            <div class="mb-4">
+          <a href={`/projects/${project.slug.current}`} class="project-card group block">
+            <div class="project-card-accent" style={`background-color: var(--color-${project.accent})`}></div>
+            <div class="project-card-logo-stage">
+              {ventureLogoRaw[project.slug.current] ? (
+                <img src={ventureLogoRaw[project.slug.current]} alt={`${project.name} logo`} width="200" height="80" class="project-card-logo" loading="lazy" />
+              ) : (
+                <span class="project-card-wordmark">{project.name}</span>
+              )}
+            </div>
+            <div class="project-card-body">
               <span class={`tag tag-${project.accent}`}>
                 <span class={`w-[6px] h-[6px] rounded-full bg-${project.accent}`}></span>
                 {project.domain}
               </span>
+              <h3 class="project-card-title">{project.name}</h3>
+              <p class="project-card-tagline">{project.tagline}</p>
             </div>
-            <h3 class="text-[18px] font-medium text-text mb-2 font-body group-hover:text-steel transition-colors">{project.name}</h3>
-            <p class="text-[13px] text-text-muted leading-relaxed font-light mb-5">{project.tagline}</p>
-            {ventureLogo[project.slug.current] ? (
-              <div class="card-logo-footer">
-                <img src={ventureLogo[project.slug.current]} alt={`${project.name} logo`} width="80" height="20" class="h-[16px] w-auto opacity-30 group-hover:opacity-50 transition-opacity duration-200" loading="lazy" />
-              </div>
-            ) : (
-              <div class="card-logo-footer">
-                <span class="text-[10px] font-medium tracking-[0.12em] uppercase text-text-muted opacity-30">{project.name}</span>
-              </div>
-            )}
           </a>
         ))}
       </div>

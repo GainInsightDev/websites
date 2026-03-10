@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { fetchAll, fetchBySlug } from '../../lib/sanity';
+import { ventureLogoRaw } from '../../lib/venture-logos';
 
 interface Project {
   name: string;
@@ -28,10 +29,22 @@ if (!project) {
 ---
 
 <Layout title={`${project.name} | Gain Insight`} description={project.tagline}>
-  <!-- Hero -->
+  <!-- Hero — light, logo-prominent -->
   <section class="hero-section section-light">
     <div class="container">
-      <div class="flex items-center gap-3 mb-6">
+      <div class="section-label text-text-light">
+        <span>Portfolio</span>
+      </div>
+      {ventureLogoRaw[slug!] ? (
+        <div class="detail-hero-logo">
+          <img src={ventureLogoRaw[slug!]} alt={`${project.name} logo`} width="400" height="160" class="detail-hero-logo-img" />
+        </div>
+      ) : (
+        <div class="detail-hero-wordmark">
+          <span>{project.name}</span>
+        </div>
+      )}
+      <div class="flex items-center gap-3 mb-4 mt-8">
         <span class={`tag tag-${project.accent}`}>
           <span class={`w-[6px] h-[6px] rounded-full bg-${project.accent}`}></span>
           {project.domain}
