@@ -67,16 +67,15 @@ import Logo from './Logo.astro';
   .hero {
     min-height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     padding: 80px 64px;
     position: relative;
     overflow: hidden;
-    gap: 48px;
   }
   .hero-content {
     max-width: 720px;
-    padding-top: 40px;
+    margin-top: 40px;
   }
   .hero-brand {
     display: flex;
@@ -122,14 +121,21 @@ import Logo from './Logo.astro';
     gap: 16px;
   }
 
-  /* Chat preview */
+  /* Chat preview — absolutely positioned like JSX reference */
   .chat-preview {
+    position: absolute;
+    right: 64px;
+    top: 50%;
+    transform: translateY(-50%);
     width: 380px;
-    flex-shrink: 0;
     background-color: var(--color-cream);
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 1px 3px rgba(201, 197, 188, 0.25);
+    background-image:
+      linear-gradient(rgba(201, 197, 188, 0.094) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201, 197, 188, 0.094) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
   .chat-breadcrumb {
     padding: 10px 16px;
@@ -203,12 +209,16 @@ import Logo from './Logo.astro';
 
   @media (max-width: 1100px) {
     .hero {
-      flex-direction: column;
       padding: 120px 24px 80px;
     }
     .chat-preview {
+      position: relative;
+      right: auto;
+      top: auto;
+      transform: none;
       width: 100%;
       max-width: 420px;
+      margin-top: 48px;
     }
   }
 </style>

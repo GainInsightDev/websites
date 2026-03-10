@@ -133,12 +133,26 @@ body {
     }
   }
 
-  /* Grid background pattern used across sections */
+  /* Grid background patterns — different opacities per section */
   .grid-bg {
     background-image:
-      linear-gradient(var(--color-warm-stone, #C9C5BC)10 1px, transparent 1px),
-      linear-gradient(90deg, var(--color-warm-stone, #C9C5BC)10 1px, transparent 1px);
+      linear-gradient(rgba(201, 197, 188, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201, 197, 188, 0.06) 1px, transparent 1px);
     background-size: 32px 32px;
+  }
+
+  .grid-bg-light {
+    background-image:
+      linear-gradient(rgba(201, 197, 188, 0.047) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201, 197, 188, 0.047) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .grid-bg-dense {
+    background-image:
+      linear-gradient(rgba(201, 197, 188, 0.094) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201, 197, 188, 0.094) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 
   /* Section labels (monospace numbered labels) */
@@ -153,18 +167,15 @@ body {
   .section-title {
     font-family: var(--font-body);
     font-weight: 700;
-    font-size: clamp(32px, 4vw, 44px);
-    line-height: 1.1;
+    line-height: 1.12;
     color: var(--color-text);
-    margin-bottom: 16px;
+    margin: 0;
   }
 
   .section-body {
-    font-size: clamp(15px, 1.2vw, 18px);
+    font-size: 15px;
     line-height: 1.7;
     color: var(--color-text-mid);
-    max-width: 480px;
-    margin-bottom: 40px;
   }
 
   /* Buttons — square corners, Juncta style */

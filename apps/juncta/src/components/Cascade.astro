@@ -1,10 +1,10 @@
 ---
 const steps = [
-  { label: 'Deadline moved', detail: 'API integration: Tue → Thu' },
-  { label: 'Testing compressed', detail: 'Now starts Friday — 2 day window' },
-  { label: 'Beta milestone at risk', detail: 'Achievable only if both land on time' },
-  { label: '3 downstream tasks shifted', detail: 'Dependencies automatically updated' },
-  { label: 'Decision surfaced', detail: 'Accept risk or request extension?' },
+  { label: 'Deadline moved', detail: 'API integration: Tue → Thu', color: '#C94A1E' },
+  { label: 'Testing compressed', detail: 'Now starts Friday — 2 day window', color: '#C94A1E' },
+  { label: 'Beta milestone at risk', detail: 'Achievable only if both land on time', color: '#C9A84C' },
+  { label: '3 downstream tasks shifted', detail: 'Dependencies automatically updated', color: '#8B8A85' },
+  { label: 'Decision surfaced', detail: 'Accept risk or request extension?', color: '#C94A1E' },
 ];
 ---
 
@@ -30,8 +30,8 @@ const steps = [
       <!-- Animated cascade steps -->
       <div class="cascade-steps" id="cascade-steps">
         {steps.map((s, i) => (
-          <div class="cascade-step" data-index={i}>
-            <div class="cascade-dot"></div>
+          <div class="cascade-step" data-index={i} data-color={s.color}>
+            <div class="cascade-dot" style={`--step-color: ${s.color};`}></div>
             <div class="cascade-step-content">
               <div class="cascade-step-label">{s.label}</div>
               <div class="cascade-step-detail">{s.detail}</div>
@@ -126,7 +126,7 @@ const steps = [
     transition: background-color 0.3s ease;
   }
   .cascade-step.visible .cascade-dot {
-    background-color: var(--color-accent);
+    background-color: var(--step-color, var(--color-accent));
   }
   .cascade-step-content { flex: 1; }
   .cascade-step-label {
@@ -171,8 +171,21 @@ const steps = [
 
   function animate() {
     steps.forEach((step, i) => {
-      step.classList.toggle('visible', i < current);
-      step.classList.toggle('active', i === current - 1);
+      const visible = i < current;
+      const active = i === current - 1;
+      step.classList.toggle('visible', visible);
+      step.classList.toggle('active', active);
+      const color = step.dataset.color || '#C94A1E';
+      if (active) {
+        step.style.borderColor = color;
+        step.style.backgroundColor = color + '12';
+      } else if (visible) {
+        step.style.borderColor = '#4A4F5C';
+        step.style.backgroundColor = 'transparent';
+      } else {
+        step.style.borderColor = '';
+        step.style.backgroundColor = '';
+      }
     });
     current++;
     if (current > total + 2) current = 0;

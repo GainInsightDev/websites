@@ -4,49 +4,81 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer class="footer">
-  <div class="footer-cta">
-    <h2 class="footer-cta-title">Ready to change how you manage projects?</h2>
-    <p class="footer-cta-body">Juncta is in early development. Request access to be among the first to experience AI-native project management.</p>
-    <a href="/contact" class="btn btn-primary" style="background-color: var(--color-accent);">Request early access</a>
+  <!-- Main CTA area -->
+  <div class="footer-main">
+    <div class="footer-logo-large">
+      <Logo size={48} />
+      <span class="footer-wordmark-large">JUNCTA</span>
+    </div>
+    <div class="footer-tagline">AI proposes. Humans decide.</div>
+    <p class="footer-body">
+      Juncta is in early development. If you're a PM, founder, or team lead who wants to manage projects through conversation — we'd like to hear from you.
+    </p>
+    <a href="/contact" class="btn btn-cta">Request early access</a>
   </div>
 
+  <!-- Bottom bar -->
   <div class="footer-bottom">
     <div class="footer-brand">
-      <Logo size={24} color="#9B9DA3" />
-      <span class="footer-wordmark">JUNCTA</span>
+      <Logo size={20} color="#8B8A85" />
+      <span class="footer-wordmark-small">JUNCTA</span>
     </div>
-    <p class="footer-copy">&copy; {currentYear} Juncta. All rights reserved.</p>
+    <div class="footer-etymology">From Latin <em>jungere</em> — to join, to connect</div>
+    <div class="footer-copy">&copy; {currentYear}</div>
   </div>
 </footer>
 
 <style>
   .footer {
-    background: var(--color-text);
-    color: var(--color-near-white);
+    background-color: var(--color-slate-dark);
   }
-  .footer-cta {
-    padding: 120px 64px;
+  .footer-main {
+    padding: 80px 64px;
     text-align: center;
-    border-top: 1px solid var(--color-sand);
-    background: var(--color-cream);
   }
-  .footer-cta-title {
-    font-family: var(--font-body);
+  .footer-logo-large {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .footer-wordmark-large {
+    font-family: var(--font-mono);
+    font-size: 32px;
+    color: var(--color-near-white);
+    letter-spacing: 4px;
+  }
+  .footer-tagline {
     font-weight: 700;
-    font-size: clamp(28px, 3.5vw, 40px);
-    line-height: 1.15;
-    color: var(--color-text);
-    margin: 0 0 16px;
+    font-size: 24px;
+    color: var(--color-warm-stone);
+    margin-bottom: 12px;
   }
-  .footer-cta-body {
-    font-size: 16px;
-    line-height: 1.7;
-    color: var(--color-text-mid);
+  .footer-body {
+    font-size: 15px;
+    color: var(--color-stone);
     max-width: 480px;
     margin: 0 auto 32px;
+    line-height: 1.6;
+  }
+  .btn-cta {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--color-slate-dark);
+    background-color: var(--color-near-white);
+    padding: 14px 36px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn-cta:hover {
+    background-color: var(--color-surface);
   }
   .footer-bottom {
+    margin-top: 64px;
     padding: 32px 64px;
+    border-top: 1px solid var(--color-slate-mid);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -54,24 +86,30 @@ const currentYear = new Date().getFullYear();
   .footer-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
   }
-  .footer-wordmark {
+  .footer-wordmark-small {
     font-family: var(--font-mono);
     font-size: 12px;
-    color: var(--color-text-light);
+    color: var(--color-stone);
     letter-spacing: 2px;
   }
-  .footer-copy {
-    font-size: 12px;
+  .footer-etymology {
+    font-family: var(--font-mono);
+    font-size: 10px;
     color: var(--color-stone);
-    margin: 0;
+  }
+  .footer-etymology em {
+    font-style: italic;
+  }
+  .footer-copy {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-stone);
   }
 
   @media (max-width: 900px) {
-    .footer-cta {
-      padding: 80px 24px;
-    }
+    .footer-main { padding: 60px 24px; }
     .footer-bottom {
       padding: 24px;
       flex-direction: column;
