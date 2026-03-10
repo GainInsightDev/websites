@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#09090C"/>
+  <!-- Wordmark -->
+  <text x="440" y="280" font-family="system-ui, sans-serif" font-weight="700" font-size="120" fill="#E8EAF0">G</text>
+  <text x="520" y="280" font-family="system-ui, sans-serif" font-weight="700" font-size="120" fill="#6090BA">AI</text>
+  <text x="670" y="280" font-family="system-ui, sans-serif" font-weight="700" font-size="120" fill="#E8EAF0">N</text>
+  <!-- Divider line -->
+  <line x1="440" y1="295" x2="770" y2="295" stroke="#2A2F42" stroke-width="1"/>
+  <!-- INSIGHT spread -->
+  <text x="443" y="320" font-family="system-ui, sans-serif" font-weight="700" font-size="22" letter-spacing="0.35em" fill="#E8EAF0">INSIGHT</text>
+  <!-- Tagline -->
+  <text x="600" y="400" font-family="Georgia, serif" font-size="28" fill="#8892B0" text-anchor="middle">AI Venture Partner</text>
+  <!-- URL -->
+  <text x="600" y="560" font-family="system-ui, sans-serif" font-size="18" fill="#8892B0" text-anchor="middle">gaininsight.ai</text>
+</svg>
