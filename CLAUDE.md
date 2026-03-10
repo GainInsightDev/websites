@@ -69,6 +69,26 @@ The original React sites live on the GI Dev server. These are the source for mig
 - All use Tailwind CSS (good - carries over to Astro)
 - senti S3/CloudFront infrastructure exists but bucket name and distribution ID are not in the current AWS account's CLI output — ask user for these details during WBS-4
 
+## Brand & Design
+
+Each site has its own independent brand guidelines. They are **not** sub-brands of Gain Insight — any visual similarity is coincidental.
+
+**Brand guidelines location:**
+- For sites with their own project repo: `docs/brand-guidelines.md` in that repo
+- For sites without their own repo (Gain Insight, Senti): `apps/{site}/docs/brand-guidelines.md` in this monorepo
+
+| Site | Brand Guidelines Location | Project Repo |
+|------|--------------------------|--------------|
+| Gain Insight | `apps/gaininsight/docs/brand-guidelines.md` | None (this monorepo) |
+| Senti | `apps/senti/docs/brand-guidelines.md` | None (this monorepo) |
+| CLIK | `docs/brand-guidelines.md` in clik repo | `clik.git` |
+| Junkan | `docs/brand-guidelines.md` in junkan repo | `junkan.git` |
+| Recon1 | `docs/brand-guidelines.md` in recon1 repo | `recon1.git` |
+| Juncta | `docs/brand-guidelines.md` in helm repo | `helm.git` |
+| Pensionable | `apps/pensionable/docs/brand-guidelines.md` | None (this monorepo) |
+
+Brand guidelines follow the AgentFlow template at `.claude/templates/brand-guidelines-template.md`.
+
 ## Documentation
 
 See `docs/` for detailed guides:
