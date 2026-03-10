@@ -1,0 +1,26 @@
+---
+interface Props {
+  size?: number;
+  color?: string;
+}
+
+const { size = 24, color = '#C94A1E' } = Astro.props;
+
+const block = size * 0.42;
+const notch = block * 0.3;
+const gap = size * 0.05;
+const w = block * 2 + gap;
+---
+
+<svg width={w} height={block} viewBox={`0 0 ${w} ${block}`} style="display:block;" aria-hidden="true">
+  <!-- Left block with right notch -->
+  <path
+    d={`M0,0 H${block} V${(block - notch) / 2} H${block - notch} V${(block + notch) / 2} H${block} V${block} H0 Z`}
+    fill={color}
+  />
+  <!-- Right block with left notch -->
+  <path
+    d={`M${block + gap},0 V${(block - notch) / 2} H${block + gap + notch} V0 H${w} V${block} H${block + gap + notch} V${(block + notch) / 2} H${block + gap} V${block} H${block + gap} Z`}
+    fill={color}
+  />
+</svg>

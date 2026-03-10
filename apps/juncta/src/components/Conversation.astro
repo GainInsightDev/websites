@@ -1,0 +1,113 @@
+---
+const messages = [
+  { from: 'user', text: "Sarah's moved to another project. Dev is taking over backend." },
+  { from: 'juncta', html: 'Got it. I\'ve updated <span class="entity-ref">Backend Lead</span> from Sarah to Dev. He\'s got 3 open items from her — want me to reassign those too?' },
+  { from: 'user', text: "Yes. And check if anything she owned is due this week." },
+  { from: 'juncta', html: '<span class="entity-ref">API Auth Review</span> is due Thursday — that was Sarah\'s. I\'ve moved it to Dev and flagged the tight turnaround. Everything else has runway.' },
+  { from: 'user', text: "Perfect. Send Dev a summary of what he's picking up." },
+  { from: 'juncta', html: 'Draft ready. Three items, context from Sarah\'s last updates, and the Thursday deadline highlighted. Want to review before I send?' },
+];
+
+const channels = ['App', 'Slack', 'WhatsApp', 'Voice', 'Email', 'Meetings'];
+---
+
+<section class="convo-section grid-bg" id="conversation">
+  <div class="convo-inner">
+    <div class="convo-text">
+      <div class="section-label">02 — TALK, DON'T TYPE</div>
+      <h2 class="section-title">Just say what's happening.</h2>
+      <p class="section-body">
+        No forms. No fields. No cards to drag. You talk about what's going on and Juncta builds structured understanding from your words. In text, voice, Slack, WhatsApp, or on a call.
+      </p>
+      <div class="convo-channels">
+        {channels.map(ch => (
+          <span class="convo-channel">{ch}</span>
+        ))}
+      </div>
+    </div>
+
+    <div class="convo-chat">
+      <div class="convo-messages">
+        {messages.map((msg) => (
+          <div class={`convo-msg convo-msg--${msg.from}`}>
+            {msg.from === 'juncta' && (
+              <div class="convo-msg-sender">juncta</div>
+            )}
+            <div class={`chat-bubble ${msg.from === 'user' ? 'chat-bubble-user' : 'chat-bubble-ai'}`}>
+              {msg.html ? <Fragment set:html={msg.html} /> : msg.text}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .convo-section {
+    padding: 120px 0;
+    background-color: var(--color-cream);
+  }
+  .convo-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 64px;
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+  }
+  .convo-text {
+    flex: 0 0 340px;
+  }
+  .convo-channels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .convo-channel {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    padding: 5px 14px;
+    border-radius: 100px;
+    background-color: var(--color-sand);
+    color: var(--color-text-mid);
+  }
+  .convo-chat {
+    flex: 1;
+    background-color: var(--color-surface);
+    border-radius: 16px;
+    padding: 20px 24px;
+    box-shadow: 0 1px 3px rgba(201, 197, 188, 0.2);
+  }
+  .convo-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .convo-msg { display: flex; flex-direction: column; }
+  .convo-msg--user { align-items: flex-end; }
+  .convo-msg--juncta { align-items: flex-start; }
+  .convo-msg-sender {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 10px;
+    color: var(--color-slate-mid);
+    margin-bottom: 3px;
+    margin-left: 14px;
+  }
+  .convo-msg .chat-bubble {
+    max-width: 85%;
+    font-size: 12.5px;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 900px) {
+    .convo-inner {
+      flex-direction: column;
+      padding: 0 24px;
+      gap: 40px;
+    }
+    .convo-text { flex: none; }
+  }
+</style>

@@ -1,0 +1,81 @@
+---
+import Logo from './Logo.astro';
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer-cta">
+    <h2 class="footer-cta-title">Ready to change how you manage projects?</h2>
+    <p class="footer-cta-body">Juncta is in early development. Request access to be among the first to experience AI-native project management.</p>
+    <a href="/contact" class="btn btn-primary" style="background-color: var(--color-accent);">Request early access</a>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-brand">
+      <Logo size={24} color="#9B9DA3" />
+      <span class="footer-wordmark">JUNCTA</span>
+    </div>
+    <p class="footer-copy">&copy; {currentYear} Juncta. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-text);
+    color: var(--color-near-white);
+  }
+  .footer-cta {
+    padding: 120px 64px;
+    text-align: center;
+    border-top: 1px solid var(--color-sand);
+    background: var(--color-cream);
+  }
+  .footer-cta-title {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: clamp(28px, 3.5vw, 40px);
+    line-height: 1.15;
+    color: var(--color-text);
+    margin: 0 0 16px;
+  }
+  .footer-cta-body {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-text-mid);
+    max-width: 480px;
+    margin: 0 auto 32px;
+  }
+  .footer-bottom {
+    padding: 32px 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .footer-wordmark {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-text-light);
+    letter-spacing: 2px;
+  }
+  .footer-copy {
+    font-size: 12px;
+    color: var(--color-stone);
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .footer-cta {
+      padding: 80px 24px;
+    }
+    .footer-bottom {
+      padding: 24px;
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>

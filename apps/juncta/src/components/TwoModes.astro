@@ -1,0 +1,164 @@
+<section class="modes-section" id="modes">
+  <div class="modes-inner">
+    <div class="section-label">08 — TWO MODES, ONE PRODUCT</div>
+    <h2 class="section-title">
+      Personal planning partner.<br>Project manager.<br><span style="color: var(--color-text-light);">Uniquely powerful together.</span>
+    </h2>
+
+    <div class="modes-cards">
+      <div class="modes-card modes-card--personal">
+        <span class="modes-pill">PERSONAL</span>
+        <h3 class="modes-card-title">Plan your day with a thinking partner</h3>
+        <p class="modes-card-body">
+          Juncta learns your energy patterns, recurring commitments, and tendency to defer certain tasks. Morning planning sessions, midday adjustments, end-of-day reflections — through conversation, not calendar dragging.
+        </p>
+      </div>
+      <div class="modes-card modes-card--project">
+        <span class="modes-pill modes-pill--accent">PROJECT</span>
+        <h3 class="modes-card-title">An AI that does the PM work</h3>
+        <p class="modes-card-body">
+          Tasks, risks, decisions, dependencies — tracked and reasoned about. When something changes, Juncta computes the downstream impact. It chases actions, flags drift, and helps you navigate difficult conversations.
+        </p>
+      </div>
+    </div>
+
+    <div class="modes-combined">
+      <div class="modes-combined-text">
+        <span class="modes-pill modes-pill--accent">COMBINED</span>
+        <p class="modes-combined-body">
+          Project tasks flow into personal planning. Progress feeds back into project visibility. No manual status updates. No context switching.
+        </p>
+      </div>
+      <div class="modes-progress">
+        <div class="modes-task">
+          <div class="modes-task-meta">
+            <span class="modes-task-name">Investor prep</span>
+            <span class="modes-task-source">Saxonvale</span>
+          </div>
+          <div class="modes-bar"><div class="modes-bar-fill" style="width: 60%;"></div></div>
+        </div>
+        <div class="modes-task">
+          <div class="modes-task-meta">
+            <span class="modes-task-name">Tax filing</span>
+            <span class="modes-task-source">Personal</span>
+          </div>
+          <div class="modes-bar"><div class="modes-bar-fill" style="width: 0%;"></div></div>
+        </div>
+        <div class="modes-task">
+          <div class="modes-task-meta">
+            <span class="modes-task-name">API review</span>
+            <span class="modes-task-source">Product</span>
+          </div>
+          <div class="modes-bar"><div class="modes-bar-fill" style="width: 85%;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .modes-section {
+    padding: 120px 64px;
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-sand);
+  }
+  .modes-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .modes-cards {
+    display: flex;
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .modes-card {
+    flex: 1;
+    padding: 28px;
+  }
+  .modes-card--personal {
+    border: 1px solid var(--color-sand);
+    background-color: var(--color-near-white);
+  }
+  .modes-card--project {
+    border: 2px solid var(--color-slate-mid);
+  }
+  .modes-pill {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    padding: 4px 14px;
+    border-radius: 100px;
+    background-color: var(--color-sand);
+    color: var(--color-text-mid);
+    display: inline-block;
+  }
+  .modes-pill--accent {
+    background-color: var(--color-accent);
+    color: var(--color-surface);
+  }
+  .modes-card-title {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-text);
+    margin: 16px 0 12px;
+  }
+  .modes-card-body {
+    font-size: 13px;
+    color: var(--color-text-mid);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .modes-combined {
+    margin-top: 32px;
+    padding: 28px;
+    border: 2px solid var(--color-accent);
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+  .modes-combined-text { flex: 1; }
+  .modes-combined-body {
+    font-size: 14px;
+    color: var(--color-text);
+    line-height: 1.7;
+    margin: 12px 0 0;
+  }
+  .modes-progress {
+    width: 220px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .modes-task-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+  }
+  .modes-task-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+  .modes-task-source {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--color-text-light);
+  }
+  .modes-bar {
+    height: 4px;
+    background-color: var(--color-sand);
+  }
+  .modes-bar-fill {
+    height: 4px;
+    background-color: var(--color-accent);
+  }
+
+  @media (max-width: 900px) {
+    .modes-section { padding: 80px 24px; }
+    .modes-cards { flex-direction: column; gap: 16px; }
+    .modes-combined { flex-direction: column; }
+    .modes-progress { width: 100%; }
+  }
+</style>

@@ -1,0 +1,103 @@
+---
+const nudges = [
+  { time: '08:00', channel: 'slack', msg: "Morning. Three things on your radar today — the design milestone is Thursday, the budget review moved to 2pm, and you've got a clear block after lunch for the investor deck." },
+  { time: '11:45', channel: 'app', msg: "The client call ran 20 minutes over. Want me to push your 1pm to 1:30? Sarah's free then too." },
+  { time: '16:20', channel: 'whatsapp', msg: "Dev hasn't updated on the API since Monday. Want me to check in with him, or would you rather do it?" },
+  { time: 'fri 17:00', channel: 'email', msg: "Week in review: 12 tasks completed, 3 moved to next week. The planning deadline is the one to watch. Full summary attached." },
+];
+---
+
+<section class="proactive-section grid-bg" id="proactive">
+  <div class="proactive-inner">
+    <div class="section-label">05 — ALWAYS PAYING ATTENTION</div>
+    <h2 class="section-title">It reaches out before you have to ask.</h2>
+    <p class="section-body" style="max-width: 560px;">
+      Curious, not demanding. Attentive, not nagging. Juncta tracks your projects between conversations and reaches out when something warrants attention.
+    </p>
+
+    <div class="proactive-timeline">
+      <div class="proactive-line"></div>
+      {nudges.map(n => (
+        <div class="proactive-nudge reveal">
+          <div class="proactive-node"></div>
+          <div class="proactive-meta">
+            <div class="proactive-time">{n.time}</div>
+            <div class="proactive-channel">{n.channel}</div>
+          </div>
+          <div class="proactive-msg">{n.msg}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .proactive-section {
+    padding: 120px 64px;
+    background-color: var(--color-cream);
+  }
+  .proactive-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .proactive-timeline {
+    position: relative;
+    padding-left: 40px;
+  }
+  .proactive-line {
+    position: absolute;
+    left: 15px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background-color: var(--color-warm-stone);
+  }
+  .proactive-nudge {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .proactive-node {
+    position: absolute;
+    left: -29px;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-surface);
+    border: 2px solid var(--color-accent);
+  }
+  .proactive-meta {
+    width: 80px;
+    flex-shrink: 0;
+    padding-top: 4px;
+  }
+  .proactive-time {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-text);
+  }
+  .proactive-channel {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--color-text-light);
+    margin-top: 2px;
+  }
+  .proactive-msg {
+    flex: 1;
+    background-color: var(--color-surface);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--color-text);
+    line-height: 1.65;
+    box-shadow: 0 1px 2px rgba(201, 197, 188, 0.12);
+  }
+
+  @media (max-width: 900px) {
+    .proactive-section { padding: 80px 24px; }
+    .proactive-nudge { flex-direction: column; gap: 8px; }
+    .proactive-meta { width: auto; display: flex; gap: 8px; }
+  }
+</style>

@@ -1,0 +1,193 @@
+---
+const steps = [
+  { label: 'Deadline moved', detail: 'API integration: Tue → Thu' },
+  { label: 'Testing compressed', detail: 'Now starts Friday — 2 day window' },
+  { label: 'Beta milestone at risk', detail: 'Achievable only if both land on time' },
+  { label: '3 downstream tasks shifted', detail: 'Dependencies automatically updated' },
+  { label: 'Decision surfaced', detail: 'Accept risk or request extension?' },
+];
+---
+
+<section class="cascade-section" id="cascade">
+  <div class="cascade-inner">
+    <div class="section-label" style="color: var(--color-accent);">04 — CAUSE AND EFFECT</div>
+    <div class="cascade-grid">
+      <div class="cascade-text">
+        <h2 class="cascade-title">
+          One thing changes.<br>Juncta shows you<br>everything it affects.
+        </h2>
+        <p class="cascade-body">
+          Not notifications. Computation. Juncta walks the dependency graph, checks resource availability, and tells you what matters — which milestones are threatened, which decisions need revisiting, and what to do about it.
+        </p>
+        <div class="cascade-quote">
+          <div class="cascade-quote-bar"></div>
+          <div class="cascade-quote-text">
+            This is the capability that makes Juncta worth relying on for real decisions.
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated cascade steps -->
+      <div class="cascade-steps" id="cascade-steps">
+        {steps.map((s, i) => (
+          <div class="cascade-step" data-index={i}>
+            <div class="cascade-dot"></div>
+            <div class="cascade-step-content">
+              <div class="cascade-step-label">{s.label}</div>
+              <div class="cascade-step-detail">{s.detail}</div>
+            </div>
+            {i === 0 && <div class="cascade-tag">TRIGGER</div>}
+            {i === steps.length - 1 && <div class="cascade-tag">ACTION</div>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cascade-section {
+    padding: 120px 64px;
+    background-color: var(--color-slate-dark);
+  }
+  .cascade-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .cascade-grid {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+  }
+  .cascade-text { flex: 0 0 400px; }
+  .cascade-title {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: clamp(28px, 3.5vw, 40px);
+    line-height: 1.08;
+    color: var(--color-near-white);
+    margin: 0 0 16px;
+  }
+  .cascade-body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-stone);
+    margin-bottom: 32px;
+  }
+  .cascade-quote {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .cascade-quote-bar {
+    width: 3px;
+    height: 36px;
+    background-color: var(--color-accent);
+    flex-shrink: 0;
+  }
+  .cascade-quote-text {
+    font-size: 14px;
+    font-style: italic;
+    color: var(--color-warm-stone);
+    line-height: 1.5;
+  }
+
+  .cascade-steps {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .cascade-step {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 14px 18px;
+    border: 1px solid rgba(74, 79, 92, 0.25);
+    opacity: 0.2;
+    transform: translateX(12px);
+    transition: all 0.4s ease;
+  }
+  .cascade-step.visible {
+    opacity: 1;
+    transform: translateX(0);
+    border-color: var(--color-slate-mid);
+  }
+  .cascade-step.active {
+    border-color: var(--color-accent);
+    background-color: rgba(201, 74, 30, 0.07);
+  }
+  .cascade-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-slate-mid);
+    flex-shrink: 0;
+    transition: background-color 0.3s ease;
+  }
+  .cascade-step.visible .cascade-dot {
+    background-color: var(--color-accent);
+  }
+  .cascade-step-content { flex: 1; }
+  .cascade-step-label {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--color-slate-mid);
+    transition: color 0.3s ease;
+  }
+  .cascade-step.visible .cascade-step-label {
+    color: var(--color-near-white);
+  }
+  .cascade-step-detail {
+    font-size: 11px;
+    color: var(--color-slate-mid);
+    transition: color 0.3s ease;
+  }
+  .cascade-step.visible .cascade-step-detail {
+    color: var(--color-stone);
+  }
+  .cascade-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--color-accent);
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 900px) {
+    .cascade-section { padding: 80px 24px; }
+    .cascade-grid {
+      flex-direction: column;
+      gap: 40px;
+    }
+    .cascade-text { flex: none; }
+  }
+</style>
+
+<script>
+  const steps = document.querySelectorAll('#cascade-steps .cascade-step');
+  let current = 0;
+  const total = steps.length;
+
+  function animate() {
+    steps.forEach((step, i) => {
+      step.classList.toggle('visible', i < current);
+      step.classList.toggle('active', i === current - 1);
+    });
+    current++;
+    if (current > total + 2) current = 0;
+  }
+
+  // Start animation when section is visible
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setInterval(animate, 1200);
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const section = document.getElementById('cascade-steps');
+  if (section) observer.observe(section);
+</script>

@@ -1,0 +1,191 @@
+<section class="display-section" id="display">
+  <div class="display-inner">
+    <div class="section-label">06 — ANY VIEW, ANY TIME</div>
+    <div class="display-grid">
+      <div class="display-text">
+        <h2 class="section-title">Ask for a Gantt.<br>Get a Gantt.</h2>
+        <p class="section-body">
+          Status reports, risk registers, Kanban boards, timelines, dashboards — generated from Juncta's understanding, not database queries. Every view is read-only. To change something, you talk.
+        </p>
+        <p class="display-extra">
+          Save formats as templates. Archive outputs as snapshots. Share anywhere — PDF, email, Slack — without friction.
+        </p>
+      </div>
+
+      <!-- Interactive view switcher -->
+      <div class="display-viewer">
+        <div class="display-tabs" id="display-tabs">
+          <button class="display-tab active" data-view="status">STATUS REPORT</button>
+          <button class="display-tab" data-view="kanban">KANBAN</button>
+          <button class="display-tab" data-view="timeline">TIMELINE</button>
+        </div>
+        <div class="display-panel">
+          <!-- Status Report -->
+          <div class="display-view active" id="view-status">
+            <div class="status-title">Project Status — Week 12</div>
+            <div class="status-cards">
+              <div class="status-card">
+                <div class="status-num" style="color: var(--color-sage);">4</div>
+                <div class="status-label">ON TRACK</div>
+              </div>
+              <div class="status-card">
+                <div class="status-num" style="color: #C9A84C;">2</div>
+                <div class="status-label">AT RISK</div>
+              </div>
+              <div class="status-card">
+                <div class="status-num" style="color: var(--color-accent);">1</div>
+                <div class="status-label">BLOCKED</div>
+              </div>
+            </div>
+            <div class="status-summary">
+              Key risk: Planning permission timeline has compressed by 2 weeks. Solicitor reviewing break clause — expect resolution by Thursday.
+            </div>
+          </div>
+
+          <!-- Kanban -->
+          <div class="display-view" id="view-kanban">
+            <div class="kanban-cols">
+              <div class="kanban-col">
+                <div class="kanban-col-title">TO DO</div>
+                <div class="kanban-card">Survey brief</div>
+                <div class="kanban-card">Cost estimate</div>
+              </div>
+              <div class="kanban-col">
+                <div class="kanban-col-title">IN PROGRESS</div>
+                <div class="kanban-card">Draft lease</div>
+                <div class="kanban-card">Planning app</div>
+              </div>
+              <div class="kanban-col">
+                <div class="kanban-col-title">DONE</div>
+                <div class="kanban-card">Site visit</div>
+                <div class="kanban-card">Heads of Terms</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div class="display-view" id="view-timeline">
+            <div class="timeline-header">MAR — APR 2026</div>
+            <div class="timeline-bars">
+              <div class="timeline-row">
+                <div class="timeline-name">Heads of Terms</div>
+                <div class="timeline-track"><div class="timeline-bar" style="width:45%;left:0%;background:var(--color-text);"></div></div>
+              </div>
+              <div class="timeline-row">
+                <div class="timeline-name">Draft Lease</div>
+                <div class="timeline-track"><div class="timeline-bar" style="width:55%;left:15%;background:var(--color-accent);"></div></div>
+              </div>
+              <div class="timeline-row">
+                <div class="timeline-name">Planning Permission</div>
+                <div class="timeline-track"><div class="timeline-bar" style="width:70%;left:10%;background:var(--color-sage);"></div></div>
+              </div>
+              <div class="timeline-row">
+                <div class="timeline-name">Site Survey</div>
+                <div class="timeline-track"><div class="timeline-bar" style="width:25%;left:40%;background:var(--color-warm-stone);"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .display-section {
+    padding: 120px 64px;
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-sand);
+  }
+  .display-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .display-grid {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+  }
+  .display-text { flex: 0 0 320px; }
+  .display-extra {
+    font-size: 13px;
+    color: var(--color-text-mid);
+    line-height: 1.7;
+  }
+
+  .display-viewer { flex: 1; }
+  .display-tabs { display: flex; gap: 0; }
+  .display-tab {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    padding: 10px 20px;
+    background-color: var(--color-sand);
+    border: 1px solid var(--color-sand);
+    border-bottom: 1px solid var(--color-sand);
+    color: var(--color-text-light);
+    cursor: pointer;
+  }
+  .display-tab.active {
+    background-color: var(--color-surface);
+    border-bottom-color: var(--color-surface);
+    color: var(--color-text);
+  }
+  .display-panel {
+    border: 1px solid var(--color-sand);
+    border-top: none;
+    background-color: var(--color-surface);
+    min-height: 200px;
+  }
+  .display-view { display: none; padding: 24px; }
+  .display-view.active { display: block; }
+
+  /* Status */
+  .status-title { font-weight: 700; font-size: 16px; margin-bottom: 16px; }
+  .status-cards { display: flex; gap: 16px; margin-bottom: 20px; }
+  .status-card { flex: 1; padding: 14px; background-color: var(--color-near-white); }
+  .status-num { font-family: var(--font-mono); font-size: 24px; font-weight: 700; }
+  .status-label { font-family: var(--font-mono); font-size: 9px; color: var(--color-text-light); letter-spacing: 0.5px; }
+  .status-summary { font-size: 12px; color: var(--color-text-mid); line-height: 1.7; }
+
+  /* Kanban */
+  .kanban-cols { display: flex; gap: 12px; }
+  .kanban-col { flex: 1; }
+  .kanban-col-title { font-family: var(--font-mono); font-size: 9px; color: var(--color-text-light); letter-spacing: 0.5px; margin-bottom: 10px; }
+  .kanban-card {
+    padding: 10px 12px;
+    background-color: var(--color-near-white);
+    border: 1px solid var(--color-sand);
+    margin-bottom: 6px;
+    font-size: 11px;
+    color: var(--color-text);
+  }
+
+  /* Timeline */
+  .timeline-header { font-family: var(--font-mono); font-size: 9px; color: var(--color-text-light); letter-spacing: 0.5px; margin-bottom: 16px; }
+  .timeline-row { margin-bottom: 10px; }
+  .timeline-name { font-size: 10px; color: var(--color-text-mid); margin-bottom: 3px; }
+  .timeline-track { position: relative; height: 12px; background-color: var(--color-near-white); }
+  .timeline-bar { position: absolute; height: 100%; opacity: 0.7; }
+
+  @media (max-width: 900px) {
+    .display-section { padding: 80px 24px; }
+    .display-grid { flex-direction: column; gap: 40px; }
+    .display-text { flex: none; }
+  }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll('#display-tabs .display-tab');
+  const views = document.querySelectorAll('.display-view');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const viewId = 'view-' + tab.dataset.view;
+      tabs.forEach(t => t.classList.remove('active'));
+      views.forEach(v => v.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(viewId)?.classList.add('active');
+    });
+  });
+</script>

@@ -1,0 +1,179 @@
+---
+const entities = [
+  { name: 'Lease Negotiation', children: ['Heads of Terms', 'Draft Lease', 'Break Clause Review'] },
+  { name: 'Site Acquisition', children: ['Planning Permission', 'Survey', 'Legal Pack'] },
+];
+
+const features = [
+  { title: 'Adaptive depth', desc: 'Scales from a weekend project to a £400m programme without you changing anything.' },
+  { title: 'Full audit trail', desc: 'Who changed what, when, in which conversation, and why.' },
+  { title: 'Your words, its structure', desc: 'Juncta adopts your terminology — it never asks you to learn its.' },
+];
+---
+
+<section class="structure-section" id="structure">
+  <div class="structure-inner">
+    <div class="section-label">03 — DEEP STRUCTURE</div>
+    <div class="structure-grid">
+      <!-- Left: entity tree -->
+      <div class="structure-tree">
+        <div class="tree-panel">
+          <div class="tree-header">ENTITY MODEL — live</div>
+          {entities.map(e => (
+            <div class="tree-entity">
+              <div class="tree-entity-head">
+                <div class="tree-entity-icon"></div>
+                <span class="tree-entity-name">{e.name}</span>
+                <span class="tree-entity-type">container</span>
+              </div>
+              <div class="tree-children">
+                {e.children.map(ch => (
+                  <div class="tree-child">
+                    <div class="tree-child-line"></div>
+                    <div class="tree-child-dot"></div>
+                    <span class="tree-child-name">{ch}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+          <div class="tree-footer">
+            8 entities · 12 relationships · last updated 3 min ago
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: explanation -->
+      <div class="structure-text">
+        <h2 class="section-title">A living model underneath every conversation.</h2>
+        <p class="section-body">
+          Tasks, risks, decisions, dependencies, people — structured, versioned, and traceable. Juncta works in your vocabulary whether you say "work package" or "thing I need to do".
+        </p>
+        <div class="structure-features">
+          {features.map(f => (
+            <div class="structure-feature">
+              <div class="structure-feature-title">{f.title}</div>
+              <div class="structure-feature-desc">{f.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .structure-section {
+    padding: 120px 64px;
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-sand);
+  }
+  .structure-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .structure-grid {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+  }
+  .structure-tree { flex: 1; }
+  .tree-panel {
+    padding: 32px;
+    background-color: var(--color-near-white);
+    border: 1px solid var(--color-sand);
+  }
+  .tree-header {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--color-text-light);
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+  }
+  .tree-entity { margin-bottom: 24px; }
+  .tree-entity-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .tree-entity-icon {
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--color-slate-mid);
+  }
+  .tree-entity-name {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--color-text);
+  }
+  .tree-entity-type {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--color-text-light);
+    padding: 2px 8px;
+    background-color: var(--color-sand);
+    border-radius: 100px;
+  }
+  .tree-children {
+    margin-left: 5px;
+    border-left: 1px solid var(--color-warm-stone);
+    padding-left: 20px;
+  }
+  .tree-child {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .tree-child-line {
+    width: 16px;
+    height: 0;
+    border-top: 1px solid var(--color-warm-stone);
+  }
+  .tree-child-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    flex-shrink: 0;
+  }
+  .tree-child-name {
+    font-size: 12px;
+    color: var(--color-text);
+  }
+  .tree-footer {
+    margin-top: 16px;
+    padding-top: 10px;
+    border-top: 1px solid var(--color-sand);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--color-stone);
+  }
+  .structure-text { flex: 0 0 380px; }
+  .structure-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .structure-feature-title {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--color-text);
+    margin-bottom: 3px;
+  }
+  .structure-feature-desc {
+    font-size: 12px;
+    color: var(--color-text-mid);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .structure-section { padding: 80px 24px; }
+    .structure-grid {
+      flex-direction: column;
+      gap: 40px;
+    }
+    .structure-text { flex: none; }
+  }
+</style>

@@ -15,6 +15,7 @@ Monorepo for GainInsight marketing websites, migrating from React to Astro with 
 | `apps/senti/` | Senti website - Astro site |
 | `apps/clik/` | clik.audio - Astro site |
 | `apps/junkan/` | junkan.ai - Astro site |
+| `apps/juncta/` | juncta.ai - Astro site (AI project management) |
 | `packages/sanity-studio/` | Shared Sanity CMS Studio |
 | `packages/shared/` | Shared utilities and site config |
 
@@ -36,6 +37,7 @@ Monorepo for GainInsight marketing websites, migrating from React to Astro with 
 | senti | TBD (ask user) | TBD (ask user) |
 | clik.audio | `clik.audio` | `E2MN4CE4PG7QAR` |
 | junkan.ai | `junkan.ai` | `E2RK3RXTOQXX61` |
+| juncta.ai | TBD (ask user) | TBD (ask user) |
 
 ## Linear
 

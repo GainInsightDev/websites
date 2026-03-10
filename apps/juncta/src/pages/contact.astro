@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Logo from '../components/Logo.astro';
+---
+
+<Layout title="Contact — Juncta" description="Request early access to Juncta, the AI project management tool.">
+  <section class="contact-hero">
+    <div class="contact-inner">
+      <div class="contact-brand">
+        <Logo size={48} />
+      </div>
+      <h1 class="contact-title">Request early access</h1>
+      <p class="contact-body">
+        Juncta is in early development. If you're a PM, founder, or team lead who wants to manage projects through conversation — we'd like to hear from you.
+      </p>
+
+      <form id="contact-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY" />
+        <input type="hidden" name="subject" value="Juncta Early Access Request" />
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none;" />
+
+        <div class="form-group">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" name="name" id="name" required class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" name="email" id="email" required class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label for="organisation" class="form-label">Organisation</label>
+          <input type="text" name="organisation" id="organisation" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label for="role" class="form-label">Role</label>
+          <input type="text" name="role" id="role" placeholder="e.g. PM, Founder, Team Lead" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label for="message" class="form-label">What interests you about Juncta?</label>
+          <textarea name="message" id="message" rows="4" class="form-textarea"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary form-submit">Request access</button>
+        <div id="form-status" class="form-status"></div>
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-hero {
+    padding: 140px 64px 120px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .contact-brand { margin-bottom: 24px; }
+  .contact-title {
+    font-weight: 700;
+    font-size: 32px;
+    color: var(--color-text);
+    margin: 0 0 12px;
+  }
+  .contact-body {
+    font-size: 15px;
+    color: var(--color-text-mid);
+    line-height: 1.7;
+    margin: 0 0 40px;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-text-light);
+    letter-spacing: 0.5px;
+  }
+  .form-input, .form-textarea {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--color-text);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-warm-stone);
+    padding: 12px 14px;
+    transition: border-color 0.2s ease;
+  }
+  .form-input:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+  .form-textarea { resize: vertical; }
+  .form-submit { align-self: flex-start; margin-top: 8px; }
+  .form-status {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .form-status.success { color: var(--color-sage); }
+  .form-status.error { color: var(--color-accent); }
+
+  @media (max-width: 900px) {
+    .contact-hero { padding: 120px 24px 80px; }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const status = document.getElementById('form-status');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        if (status) {
+          status.textContent = 'Thank you! We\'ll be in touch.';
+          status.className = 'form-status success';
+        }
+        form.reset();
+      } else {
+        if (status) {
+          status.textContent = 'Something went wrong. Please try again.';
+          status.className = 'form-status error';
+        }
+      }
+    } catch {
+      if (status) {
+        status.textContent = 'Network error. Please try again.';
+        status.className = 'form-status error';
+      }
+    }
+  });
+</script>

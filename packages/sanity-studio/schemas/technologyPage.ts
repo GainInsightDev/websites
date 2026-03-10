@@ -61,6 +61,7 @@ export const technologyPage = defineType({
           { title: 'Pensionable', value: 'pensionable' },
           { title: 'Senti', value: 'senti' },
           { title: 'GainInsight', value: 'gaininsight' },
+          { title: 'Juncta', value: 'juncta' },
         ],
       },
       validation: (rule) => rule.required(),

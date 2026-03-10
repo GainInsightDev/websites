@@ -1,0 +1,90 @@
+---
+const pillars = [
+  { title: 'Experienced', text: "Genuine expertise. Pattern recognition. Methodology. When it thinks you're heading for trouble, it says so." },
+  { title: 'Peer', text: "You bring domain knowledge. Juncta brings methodology and memory. Real dialogue, not order-taking." },
+  { title: 'Works for you', text: "You're the client. When you've made a different call, Juncta commits to making your decision work." },
+];
+---
+
+<section class="rel-section grid-bg" id="relationship">
+  <div class="rel-inner">
+    <div class="section-label">09 — THE RELATIONSHIP</div>
+    <h2 class="section-title" style="margin-bottom: 48px;">An experienced peer who works for you.</h2>
+
+    <div class="rel-pillars">
+      {pillars.map(p => (
+        <div class="rel-pillar reveal">
+          <div class="rel-pillar-title">{p.title}</div>
+          <div class="rel-pillar-text">{p.text}</div>
+        </div>
+      ))}
+    </div>
+
+    <div class="rel-quote reveal">
+      <div class="rel-quote-bar"></div>
+      <div>
+        <div class="rel-quote-text">
+          It feels less like using software and more like having the best colleague you've ever worked with.
+        </div>
+        <div class="rel-quote-attribution">— Juncta Vision Document</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .rel-section {
+    padding: 120px 64px;
+    background-color: var(--color-cream);
+  }
+  .rel-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .rel-pillars {
+    display: flex;
+    gap: 48px;
+    margin-bottom: 56px;
+  }
+  .rel-pillar { flex: 1; }
+  .rel-pillar-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--color-text);
+    margin-bottom: 10px;
+  }
+  .rel-pillar-text {
+    font-size: 13px;
+    color: var(--color-text-mid);
+    line-height: 1.7;
+  }
+  .rel-quote {
+    display: flex;
+    align-items: flex-start;
+  }
+  .rel-quote-bar {
+    width: 3px;
+    min-height: 40px;
+    background-color: var(--color-accent);
+    flex-shrink: 0;
+    margin-right: 16px;
+    align-self: stretch;
+  }
+  .rel-quote-text {
+    font-size: 22px;
+    font-style: italic;
+    color: var(--color-text);
+    line-height: 1.45;
+    margin-bottom: 8px;
+  }
+  .rel-quote-attribution {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-text-light);
+  }
+
+  @media (max-width: 900px) {
+    .rel-section { padding: 80px 24px; }
+    .rel-pillars { flex-direction: column; gap: 24px; }
+  }
+</style>

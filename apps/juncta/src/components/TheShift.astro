@@ -1,0 +1,116 @@
+<section class="shift-section" id="shift">
+  <div class="shift-inner">
+    <div class="shift-text">
+      <div class="section-label">01 — THE SHIFT</div>
+      <h2 class="shift-title">Not a tool<br>with AI features.</h2>
+      <div class="shift-accent">An AI that <em>is</em> the PM.</div>
+      <p class="section-body">
+        Current tools are sophisticated databases. You fill fields, drag cards, configure rules. Any intelligence about what the data means comes from you. Juncta takes on the thinking itself.
+      </p>
+    </div>
+
+    <div class="shift-blocks">
+      <div class="shift-before">
+        <div class="shift-block-label">BEFORE</div>
+        <div class="shift-struck">
+          Create task → assign → set due date → add dependencies → update status → generate report → chase team → repeat
+        </div>
+      </div>
+      <div class="shift-after">
+        <div class="shift-block-label shift-block-label--accent">AFTER</div>
+        <div class="shift-quote">"The API deadline moved to Thursday."</div>
+        <div class="shift-result">
+          Juncta updates dependencies, shifts testing, flags the milestone risk, and asks if you want to tell the team.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .shift-section {
+    padding: 120px 64px;
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-sand);
+  }
+  .shift-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    gap: 80px;
+    align-items: center;
+  }
+  .shift-text { flex: 1; }
+  .shift-title {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: clamp(32px, 4vw, 44px);
+    line-height: 1.08;
+    color: var(--color-text);
+    margin: 0 0 24px;
+  }
+  .shift-accent {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: clamp(32px, 4vw, 44px);
+    line-height: 1.08;
+    color: var(--color-accent);
+    margin-bottom: 32px;
+  }
+  .shift-accent em { font-style: italic; }
+  .shift-blocks {
+    width: 340px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .shift-before {
+    border: 1px dashed var(--color-warm-stone);
+    padding: 24px;
+    background-color: var(--color-near-white);
+  }
+  .shift-after {
+    border: 2px solid var(--color-accent);
+    padding: 24px;
+    background-color: var(--color-surface);
+  }
+  .shift-block-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--color-text-light);
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+  .shift-block-label--accent { color: var(--color-accent); }
+  .shift-struck {
+    font-size: 13px;
+    color: var(--color-stone);
+    line-height: 1.6;
+    text-decoration: line-through;
+    text-decoration-color: var(--color-warm-stone);
+  }
+  .shift-quote {
+    font-size: 14px;
+    color: var(--color-text);
+    line-height: 1.7;
+  }
+  .shift-result {
+    font-size: 13px;
+    color: var(--color-text-mid);
+    line-height: 1.6;
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  @media (max-width: 900px) {
+    .shift-section { padding: 80px 24px; }
+    .shift-inner {
+      flex-direction: column;
+      gap: 40px;
+    }
+    .shift-blocks {
+      width: 100%;
+    }
+  }
+</style>
