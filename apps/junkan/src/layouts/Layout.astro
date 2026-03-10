@@ -10,8 +10,8 @@ interface Props {
 }
 
 const {
-  title = 'Junkan | Circular Retail Intelligence',
-  description = 'AI-powered inventory intelligence for charity retailers. Identify, research, price, and sell every item with data-driven precision.',
+  title = 'Junkan — Every item, expertly sold.',
+  description = 'Photograph your item. Our AI handles identification, research, pricing, and listing across every marketplace.',
   ogImage = '/images/logos/junkan_logo.png',
 } = Astro.props;
 
@@ -44,10 +44,11 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://junkan.ai').href;
 
     <!-- Self-hosted fonts (eliminates FOUT) -->
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/manrope-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
   </head>
   <body>
     <Navbar />
-    <main class="pt-[70px]">
+    <main>
       <slot />
     </main>
     <Footer />
