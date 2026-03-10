@@ -1,0 +1,261 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { ventureLogo } from '../../../lib/venture-logos';
+---
+
+<Layout title="Indigo Capital Partners Case Study | Gain Insight" description="How Gain Insight transformed Indigo Capital's legacy trading platform through AI-powered modernisation.">
+  <!-- Hero — dark -->
+  <section class="detail-hero section-dark">
+    <div class="container">
+      <a href="/projects/indigo" class="detail-back-link">&larr; Back to Indigo</a>
+      {ventureLogo['indigo'] && (
+        <img
+          src={ventureLogo['indigo']}
+          alt="Indigo Capital Partners logo"
+          width="400"
+          height="160"
+          class="detail-hero-logo"
+        />
+      )}
+      <h1 class="detail-hero-title" style="font-size: 36px; line-height: 1.15;">
+        Legacy System Transformation Through AI-Powered Modernisation
+      </h1>
+      <div class="flex items-center gap-3 mb-6">
+        <span class="tag tag-violet">
+          <span style="background-color: var(--color-violet)" class="w-[6px] h-[6px] rounded-full"></span>
+          Case Study
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gate — email capture form -->
+  <section class="section section-offwhite" id="gate-section">
+    <div class="container max-w-[640px] text-center">
+      <h2 class="text-[32px] md:text-[40px] text-text-dark leading-[1.1] mb-4">
+        Read the <em>full case study.</em>
+      </h2>
+      <p class="text-[16px] text-text-light leading-relaxed mb-8 font-light">
+        Discover how Gain Insight transformed a $30B trading platform from an opaque legacy system into a modern, AI-powered architecture — with 100% functional equivalence.
+      </p>
+      <form id="case-study-gate" class="flex flex-col gap-4 max-w-[400px] mx-auto">
+        <input
+          type="text"
+          name="name"
+          placeholder="Your name"
+          required
+          class="case-study-input"
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Work email"
+          required
+          class="case-study-input"
+        />
+        <input
+          type="text"
+          name="company"
+          placeholder="Company (optional)"
+          class="case-study-input"
+        />
+        <button type="submit" class="btn btn-steel w-full mt-2">Download case study</button>
+      </form>
+      <p class="text-[12px] text-text-light mt-4">We'll send you a copy and won't spam you. <a href="/privacy-policy" class="text-steel hover:underline">Privacy policy</a></p>
+    </div>
+  </section>
+
+  <!-- Full case study content — hidden until form submitted -->
+  <div id="case-study-content" class="hidden">
+    <!-- Executive Summary -->
+    <section class="section section-surface">
+      <div class="container max-w-[780px]">
+        <div class="section-label text-text-muted">
+          <span>Executive Summary</span>
+        </div>
+        <div class="case-study-prose">
+          <p>Indigo Capital Partners, an investment bank trading over $30 billion in positions annually across 100+ banking relationships, faced a critical business challenge: their core trading platform had become an opaque legacy system that no one fully understood or could maintain.</p>
+          <p>The system's complexity, built on obsolete form-based technology and unmaintained PHP applications, had created a dangerous operational dependency on manual offshore data entry and left the organisation unable to extract meaningful insights from their own data.</p>
+          <p>Gain Insight delivered a comprehensive transformation that went far beyond traditional migration or re-platforming. Through an AI-powered approach combining automated system archaeology, behaviour-driven development, and incremental modernisation, we deconstructed the legacy application, achieved complete intellectual ownership of its functionality, and rebuilt it as a modern, service-based architecture on AWS — all while maintaining 100% functional equivalence and operational continuity.</p>
+          <h3>Key Outcomes</h3>
+          <ul>
+            <li>Eliminated dependency on legacy systems that had become unmaintainable</li>
+            <li>Removed reliance on manual offshore data entry processes</li>
+            <li>Achieved complete transparency into system functionality through comprehensive documentation</li>
+            <li>Deployed state-of-the-art infrastructure leveraging Next.js and AWS managed services</li>
+            <li>Established 100% test coverage ensuring functional completeness and future maintainability</li>
+            <li>Transformed operational risk profile from critical dependency to strategic asset</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Challenge -->
+    <section class="section section-dark">
+      <div class="container max-w-[780px]">
+        <div class="section-label text-text-muted">
+          <span>The Challenge</span>
+        </div>
+        <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-8">
+          A system <em>beyond control.</em>
+        </h2>
+        <div class="case-study-prose case-study-prose-dark">
+          <p>Indigo's trading platform had evolved into a hybrid architecture combining third-party form-based technology that generated non-machine-interpretable documents, an unmaintained PHP application whose original development team had departed, and a team of offshore workers manually transcribing information from screen captures.</p>
+          <p>This created cascading business problems:</p>
+          <ul>
+            <li><strong>Operational paralysis</strong> — the organisation could not modify the system to meet changing business requirements or regulatory obligations</li>
+            <li><strong>Data opacity</strong> — despite processing billions in transactions, Indigo couldn't extract meaningful analytics from their own system</li>
+            <li><strong>Resource dependency</strong> — reliance on offshore manual data entry created both cost burden and single points of failure</li>
+            <li><strong>Risk accumulation</strong> — the organisation had lost intellectual ownership of their core business system</li>
+            <li><strong>Strategic constraint</strong> — unable to modify their platform or integrate with modern systems</li>
+          </ul>
+          <p>Conventional modernisation strategies — wholesale replacement, lift-and-shift migration, or gradual manual refactoring — all posed unacceptable risks. A big-bang replacement would require recreating functionality that no one fully understood. Lift-and-shift would preserve the unmaintainability. Manual refactoring would take years.</p>
+          <p>Indigo needed an approach that could achieve intellectual ownership of their existing system <em>before</em> transformation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Approach -->
+    <section class="section section-surface">
+      <div class="container max-w-[780px]">
+        <div class="section-label text-text-muted">
+          <span>Our Approach</span>
+        </div>
+        <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-8">
+          AI-powered <em>system archaeology.</em>
+        </h2>
+        <div class="case-study-prose">
+          <h3>Phase 1: System Archaeology and Documentation</h3>
+          <p>We deployed AI-powered analysis to deconstruct the entire technology stack — creating a complete map of system functionality including code flow analysis, data flow mapping, integration point discovery, and business logic extraction. For the first time in years, Indigo had complete, accurate documentation of their trading platform.</p>
+
+          <h3>Phase 2: Behaviour-Driven Test Suite</h3>
+          <p>Documentation alone isn't sufficient proof of understanding. Using AI, we translated system documentation into a comprehensive BDD test suite achieving 100% code coverage. Every code path, every decision point, every data transformation was covered — providing executable proof of complete understanding.</p>
+
+          <h3>Phase 3: Architecture Design</h3>
+          <p>With complete understanding, we designed a modern service-based architecture on AWS — leveraging Next.js for the UI, TypeScript throughout, Aurora PostgreSQL and DynamoDB for data, and a full suite of AWS managed services for compute, integration, security, and monitoring.</p>
+
+          <h3>Phase 4: Incremental Reconstruction</h3>
+          <p>Each service was reconstructed using modern technologies, validated against the comprehensive test suite, and deployed incrementally — no big-bang cutover. Traffic was gradually shifted with rollback capability at each stage. Only when achieving 100% test passage did we proceed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section section-dark">
+      <div class="container max-w-[780px]">
+        <div class="section-label text-text-muted">
+          <span>Timeline</span>
+        </div>
+        <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-8">
+          Implementation <em>journey.</em>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="card">
+            <h3 class="text-[14px] font-medium text-steel mb-2 font-body uppercase tracking-wider">Weeks 1–4</h3>
+            <h4 class="text-[16px] font-medium text-text mb-2 font-body">Assessment & Planning</h4>
+            <p class="text-[14px] text-text-muted leading-relaxed font-light">System archaeology, stakeholder interviews, test suite development, architecture design.</p>
+          </div>
+          <div class="card">
+            <h3 class="text-[14px] font-medium text-steel mb-2 font-body uppercase tracking-wider">Weeks 5–9</h3>
+            <h4 class="text-[16px] font-medium text-text mb-2 font-body">Foundation Services</h4>
+            <p class="text-[14px] text-text-muted leading-relaxed font-light">Data access layer, core business logic, API gateway, initial AWS infrastructure.</p>
+          </div>
+          <div class="card">
+            <h3 class="text-[14px] font-medium text-steel mb-2 font-body uppercase tracking-wider">Weeks 10–16</h3>
+            <h4 class="text-[16px] font-medium text-text mb-2 font-body">Workflow & Integration</h4>
+            <p class="text-[14px] text-text-muted leading-relaxed font-light">Trading partner interfaces, workflow orchestration, form processing replacement, elimination of manual data entry.</p>
+          </div>
+          <div class="card">
+            <h3 class="text-[14px] font-medium text-steel mb-2 font-body uppercase tracking-wider">Weeks 17–26</h3>
+            <h4 class="text-[16px] font-medium text-text mb-2 font-body">UI & Cutover</h4>
+            <p class="text-[14px] text-text-muted leading-relaxed font-light">Next.js application, UX redesign, end-to-end testing, performance optimisation, gradual production cutover.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="section section-surface">
+      <div class="container max-w-[780px]">
+        <div class="section-label text-text-muted">
+          <span>Results</span>
+        </div>
+        <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-8">
+          Business <em>impact.</em>
+        </h2>
+        <div class="case-study-prose">
+          <h3>Operational Transformation</h3>
+          <p><strong>From opacity to transparency</strong> — complete documentation, real-time monitoring, data accessibility for analytics, and clear understanding of all business logic.</p>
+          <p><strong>From dependency to control</strong> — eliminated reliance on unmaintainable legacy code, removed offshore manual data entry, established in-house capability to modify and extend the platform.</p>
+          <p><strong>From constraint to capability</strong> — ability to rapidly implement new features, integration with modern financial systems, scalable infrastructure, foundation for future innovation.</p>
+
+          <h3>Technical Excellence</h3>
+          <p>Modern service-based architecture on AWS with 100% test coverage, automated CI/CD pipeline, comprehensive observability, and API-first design supporting future integration scenarios.</p>
+
+          <h3>Strategic Value</h3>
+          <p>Eliminated existential risk of unmaintainable core system. Reduced operational costs through automation. Right-sized infrastructure through cloud economics. Platform capable of supporting business growth and new trading partnerships.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="section section-dark">
+      <div class="container max-w-[640px] text-center">
+        <blockquote class="text-[20px] md:text-[24px] text-text leading-relaxed font-light italic mb-8">
+          "When we engaged Gain Insight, we were facing a critical situation. Our core trading platform had become a black box. What impressed us most was the methodical way they tackled the problem. The comprehensive test suite gave us confidence that nothing would be lost in translation. I've been involved in several system modernisation projects over my career, and this was the first one that delivered on time, stayed within budget, and actually worked as promised."
+        </blockquote>
+        <p class="text-[14px] text-text-muted font-body">
+          <strong class="text-text font-medium">Jason Rodgers</strong><br />
+          Chief Operating Officer, Indigo Capital Partners
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- CTA — offwhite -->
+  <section class="section section-offwhite text-center">
+    <div class="container">
+      <h2 class="text-[40px] md:text-[48px] text-text-dark leading-[1.1] mb-6">
+        Facing a <em>similar challenge?</em>
+      </h2>
+      <p class="text-[16px] text-text-light leading-relaxed max-w-[420px] mx-auto mb-10 font-light">
+        If your organisation is dealing with legacy systems, opaque business logic, or manual processes that need modernising, we'd like to hear from you.
+      </p>
+      <a href="/contact" class="btn btn-steel">Get in touch</a>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('case-study-gate') as HTMLFormElement;
+    const gateSection = document.getElementById('gate-section');
+    const contentSection = document.getElementById('case-study-content');
+
+    // Check if already unlocked
+    if (localStorage.getItem('gi-case-study-indigo')) {
+      gateSection?.classList.add('hidden');
+      contentSection?.classList.remove('hidden');
+    }
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        company: formData.get('company'),
+        source: 'indigo-case-study',
+      };
+
+      // Store unlock in localStorage
+      localStorage.setItem('gi-case-study-indigo', JSON.stringify(data));
+
+      // TODO: Send to backend/CRM when ready
+      // await fetch('/api/case-study-download', { method: 'POST', body: JSON.stringify(data) });
+
+      // Reveal content
+      gateSection?.classList.add('hidden');
+      contentSection?.classList.remove('hidden');
+      contentSection?.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</Layout>

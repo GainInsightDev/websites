@@ -3,6 +3,16 @@ import Layout from '../../layouts/Layout.astro';
 import { fetchAll, fetchBySlug } from '../../lib/sanity';
 import { ventureLogo, ventureLogoRaw } from '../../lib/venture-logos';
 
+interface Capability {
+  title: string;
+  description: string;
+}
+
+interface Result {
+  title: string;
+  description: string;
+}
+
 interface Project {
   name: string;
   slug: { current: string };
@@ -11,6 +21,7 @@ interface Project {
   domain: string;
   accent: string;
   url?: string;
+  caseStudyUrl?: string;
 }
 
 export async function getStaticPaths() {
@@ -31,13 +42,52 @@ if (!project) {
 const allProjects = await fetchAll<Project>('project');
 const related = allProjects.filter(p => p.slug.current !== slug).slice(0, 3);
 
-// Placeholder capabilities (will come from Sanity later)
-const capabilities = [
-  { title: 'Intelligent automation', desc: 'Advanced algorithms process complex data in real-time, reducing manual intervention and eliminating human error across critical workflows.' },
-  { title: 'Domain-specific AI', desc: 'Purpose-built models trained on industry data deliver insights that generic tools cannot — understanding the nuances of each sector.' },
-  { title: 'Enterprise integration', desc: 'Designed to work with existing systems and data sources. No rip-and-replace — we enhance what is already there.' },
-  { title: 'Continuous improvement', desc: 'The platform learns from every interaction, refining its accuracy and expanding its capabilities over time.' },
+// Project-specific content (will migrate to Sanity once schema is deployed)
+const projectContent: Record<string, {
+  overviewHeading: string;
+  overview: string[];
+  capabilities: Capability[];
+  results?: Result[];
+  caseStudyUrl?: string;
+}> = {
+  indigo: {
+    overviewHeading: 'Legacy system transformation through <em>AI-powered modernisation.</em>',
+    overview: [
+      'Indigo Capital Partners trades over $30 billion in positions annually across 100+ banking relationships. Their core trading platform had become an opaque legacy system — built on obsolete form-based technology and unmaintained PHP applications — that no one fully understood or could maintain.',
+      'The system\'s complexity had created a dangerous operational dependency on manual offshore data entry, and left the organisation unable to extract meaningful insights from their own data. Traditional modernisation approaches — big-bang replacement, lift-and-shift, or manual refactoring — all posed unacceptable risks.',
+      'Gain Insight delivered a comprehensive transformation using AI-powered system archaeology, behaviour-driven development, and incremental modernisation. We deconstructed the legacy application, achieved complete intellectual ownership of its functionality, and rebuilt it as a modern service-based architecture on AWS — all while maintaining 100% functional equivalence.',
+    ],
+    capabilities: [
+      { title: 'System archaeology', description: 'AI-powered analysis deconstructed the entire technology stack — extracting business logic, mapping data flows, and documenting all process flows from an opaque legacy codebase.' },
+      { title: 'Executable specifications', description: 'Comprehensive BDD test suite achieving 100% code coverage. Every business rule, edge case, and data transformation captured as executable proof of understanding.' },
+      { title: 'Incremental migration', description: 'Service-by-service reconstruction and deployment — no big-bang cutover. Each component validated against the test suite before going live.' },
+      { title: 'Modern architecture', description: 'Rebuilt on AWS with Next.js, TypeScript, and service-based design. Auto-scaling, managed services, and API-first architecture enabling future integration.' },
+    ],
+    results: [
+      { title: 'Eliminated legacy dependency', description: 'Removed reliance on unmaintainable legacy code and manual offshore data entry processes that had become an existential operational risk.' },
+      { title: '100% test coverage', description: 'Complete BDD test suite providing mathematical certainty of functional equivalence between legacy and modernised systems.' },
+      { title: 'Modern AWS platform', description: 'State-of-the-art infrastructure with auto-scaling, redundancy, and comprehensive observability — built for growth.' },
+      { title: 'Full transparency', description: 'From opaque black box to comprehensively documented, fully understood system. Business logic visible and modifiable for the first time in years.' },
+    ],
+    caseStudyUrl: '/projects/indigo/case-study',
+  },
+};
+
+const content = projectContent[slug!];
+
+// Fallback capabilities for projects without specific content
+const defaultCapabilities: Capability[] = [
+  { title: 'Intelligent automation', description: 'Advanced algorithms process complex data in real-time, reducing manual intervention and eliminating human error across critical workflows.' },
+  { title: 'Domain-specific AI', description: 'Purpose-built models trained on industry data deliver insights that generic tools cannot — understanding the nuances of each sector.' },
+  { title: 'Enterprise integration', description: 'Designed to work with existing systems and data sources. No rip-and-replace — we enhance what is already there.' },
+  { title: 'Continuous improvement', description: 'The platform learns from every interaction, refining its accuracy and expanding its capabilities over time.' },
 ];
+
+const capabilities = content?.capabilities ?? defaultCapabilities;
+const results = content?.results;
+const overviewParagraphs = content?.overview ?? [project.description];
+const overviewHeading = content?.overviewHeading ?? 'The <em>problem</em> and our <em>approach.</em>';
+const caseStudyLink = content?.caseStudyUrl ?? project.caseStudyUrl;
 ---
 
 <Layout title={`${project.name} | Gain Insight`} description={project.tagline}>
@@ -84,20 +134,12 @@ const capabilities = [
           <div class="section-label text-text-muted">
             <span>Overview</span>
           </div>
-          <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-6">
-            The <em>problem</em> and our <em>approach.</em>
-          </h2>
+          <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-6" set:html={overviewHeading} />
         </div>
         <div class="flex flex-col gap-6">
-          <p class="text-[16px] text-text-muted leading-relaxed font-light">
-            {project.description}
-          </p>
-          <p class="text-[16px] text-text-muted leading-relaxed font-light">
-            The challenge extends beyond simple data processing. Organisations in this space face fragmented systems, inconsistent data formats, and regulatory requirements that demand both speed and accuracy. Traditional approaches rely on manual processes that are slow, error-prone, and increasingly unsustainable as volumes grow.
-          </p>
-          <p class="text-[16px] text-text-muted leading-relaxed font-light">
-            Our approach combines deep domain understanding with purpose-built AI — not a generic platform bolted onto the problem, but a system designed from the ground up for this specific challenge. We work alongside industry practitioners to ensure every capability reflects real-world needs.
-          </p>
+          {overviewParagraphs.map((p) => (
+            <p class="text-[16px] text-text-muted leading-relaxed font-light">{p}</p>
+          ))}
         </div>
       </div>
     </div>
@@ -116,15 +158,42 @@ const capabilities = [
         {capabilities.map((cap) => (
           <div class="card">
             <h3 class="text-[16px] font-medium text-text mb-3 font-body">{cap.title}</h3>
-            <p class="text-[14px] text-text-muted leading-relaxed font-light">{cap.desc}</p>
+            <p class="text-[14px] text-text-muted leading-relaxed font-light">{cap.description}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Related Projects — surface -->
-  <section class="section section-surface">
+  <!-- Results — surface (only if results exist) -->
+  {results && (
+    <section class="section section-surface">
+      <div class="container">
+        <div class="section-label text-text-muted">
+          <span>Results</span>
+        </div>
+        <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-12">
+          What we <em>delivered.</em>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {results.map((r) => (
+            <div class="card">
+              <h3 class="text-[16px] font-medium text-text mb-3 font-body">{r.title}</h3>
+              <p class="text-[14px] text-text-muted leading-relaxed font-light">{r.description}</p>
+            </div>
+          ))}
+        </div>
+        {caseStudyLink && (
+          <div class="mt-12 text-center">
+            <a href={caseStudyLink} class="btn btn-steel">Read the full case study &rarr;</a>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  <!-- Related Projects -->
+  <section class={`section ${results ? 'section-dark' : 'section-surface'}`}>
     <div class="container">
       <div class="section-label text-text-muted">
         <span>Portfolio</span>
