@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { fetchAll } from '../lib/sanity';
+import { ventureLogo } from '../lib/venture-logos';
 
 interface Project {
   name: string;
@@ -102,11 +103,14 @@ const projects = allProjects.filter(p => p.featured).slice(0, 6);
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {projects.map((project) => (
           <a href={`/projects/${project.slug.current}`} class="card group block">
-            <div class="flex items-center gap-3 mb-4">
+            <div class="flex items-center justify-between mb-4">
               <span class={`tag tag-${project.accent}`}>
                 <span class={`w-[6px] h-[6px] rounded-full bg-${project.accent}`}></span>
                 {project.domain}
               </span>
+              {ventureLogo[project.slug.current] && (
+                <img src={ventureLogo[project.slug.current]} alt="" height="20" class="h-[20px] w-auto opacity-50" loading="lazy" />
+              )}
             </div>
             <h3 class="text-[18px] font-medium text-text mb-2 font-body group-hover:text-steel transition-colors">{project.name}</h3>
             <p class="text-[13px] text-text-muted leading-relaxed font-light">{project.tagline}</p>
