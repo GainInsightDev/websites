@@ -258,6 +258,8 @@ h1 em, h2 em, h3 em {
     border-radius: var(--radius-xl);
     padding: 24px;
     transition: border-color 0.15s ease;
+    display: flex;
+    flex-direction: column;
   }
 
   .card:hover {
@@ -290,4 +292,14 @@ h1 em, h2 em, h3 em {
   .tag-sage   { color: var(--color-sage);   background-color: rgba(74, 158, 122, 0.09); border: 1px solid rgba(74, 158, 122, 0.19); }
   .tag-violet { color: var(--color-violet); background-color: rgba(123, 98, 200, 0.09); border: 1px solid rgba(123, 98, 200, 0.19); }
   .tag-coral  { color: var(--color-coral);  background-color: rgba(212, 92, 106, 0.09); border: 1px solid rgba(212, 92, 106, 0.19); }
+
+  /* Card logo footer — subtle brand zone at bottom of project cards */
+  .card-logo-footer {
+    border-top: 1px solid var(--color-border);
+    padding-top: 16px;
+    margin-top: auto;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+  }
 }

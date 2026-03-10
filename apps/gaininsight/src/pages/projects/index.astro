@@ -36,17 +36,23 @@ const projects = await fetchAll<Project>('project');
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {projects.map((project) => (
           <a href={`/projects/${project.slug.current}`} class="card group block">
-            <div class="flex items-center justify-between mb-4">
+            <div class="mb-4">
               <span class={`tag tag-${project.accent}`}>
                 <span class={`w-[6px] h-[6px] rounded-full bg-${project.accent}`}></span>
                 {project.domain}
               </span>
-              {ventureLogo[project.slug.current] && (
-                <img src={ventureLogo[project.slug.current]} alt="" height="20" class="h-[20px] w-auto opacity-50" loading="lazy" />
-              )}
             </div>
             <h3 class="text-[18px] font-medium text-text mb-3 font-body group-hover:text-steel transition-colors">{project.name}</h3>
-            <p class="text-[13px] text-text-muted leading-relaxed font-light">{project.tagline}</p>
+            <p class="text-[13px] text-text-muted leading-relaxed font-light mb-5">{project.tagline}</p>
+            {ventureLogo[project.slug.current] ? (
+              <div class="card-logo-footer">
+                <img src={ventureLogo[project.slug.current]} alt={`${project.name} logo`} width="80" height="20" class="h-[16px] w-auto opacity-30 group-hover:opacity-50 transition-opacity duration-200" loading="lazy" />
+              </div>
+            ) : (
+              <div class="card-logo-footer">
+                <span class="text-[10px] font-medium tracking-[0.12em] uppercase text-text-muted opacity-30">{project.name}</span>
+              </div>
+            )}
           </a>
         ))}
       </div>
