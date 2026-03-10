@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { fetchAll, fetchBySlug } from '../../lib/sanity';
-import { ventureLogo, ventureLogoRaw } from '../../lib/venture-logos';
+import { ventureLogo } from '../../lib/venture-logos';
 
 interface Project {
   name: string;
@@ -29,42 +29,38 @@ if (!project) {
 ---
 
 <Layout title={`${project.name} | Gain Insight`} description={project.tagline}>
-  <!-- Hero — light, logo-prominent -->
-  <section class="hero-section section-light">
+  <!-- Hero — dark, logo sits naturally on background -->
+  <section class="detail-hero section-dark">
     <div class="container">
-      <div class="section-label text-text-light">
+      <div class="section-label text-text-muted">
         <span>Portfolio</span>
       </div>
       {ventureLogo[slug!] ? (
-        <div class="detail-hero-logo">
-          <img src={ventureLogo[slug!]} alt={`${project.name} logo`} width="400" height="160" class="detail-hero-logo-img" />
-        </div>
-      ) : (
-        <div class="detail-hero-wordmark">
-          <span>{project.name}</span>
-        </div>
-      )}
-      <div class="flex items-center gap-3 mb-4 mt-8">
+        <img
+          src={ventureLogo[slug!]}
+          alt={`${project.name} logo`}
+          width="400"
+          height="160"
+          class="detail-hero-logo"
+        />
+      ) : null}
+      <h1 class="detail-hero-title">
+        {project.name}
+      </h1>
+      <div class="flex items-center gap-3 mb-6">
         <span class={`tag tag-${project.accent}`}>
           <span class={`w-[6px] h-[6px] rounded-full bg-${project.accent}`}></span>
           {project.domain}
         </span>
       </div>
-      {ventureLogo[slug!] ? (
-        <h1 class="sr-only">{project.name}</h1>
-      ) : (
-        <h1 class="text-[48px] md:text-[64px] text-text-dark leading-[1.05] mb-6">
-          {project.name}
-        </h1>
-      )}
-      <p class="text-[18px] text-text-light leading-relaxed max-w-[560px] font-light">
+      <p class="text-[18px] text-text-muted leading-relaxed max-w-[560px] font-light">
         {project.tagline}
       </p>
     </div>
   </section>
 
-  <!-- About — dark -->
-  <section class="section section-dark">
+  <!-- About — surface (subtle shift from hero bg) -->
+  <section class="section section-surface">
     <div class="container">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         <div>
@@ -89,7 +85,7 @@ if (!project) {
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- CTA — offwhite for warm contrast -->
   <section class="section section-offwhite text-center">
     <div class="container">
       <h2 class="text-[40px] md:text-[48px] text-text-dark leading-[1.1] mb-6">
