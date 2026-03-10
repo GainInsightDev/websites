@@ -374,6 +374,21 @@ h1 em, h2 em, h3 em {
 
   /* ─── Project Detail Hero ─────────────────────────────────────────────── */
 
+  .detail-back-link {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    margin-bottom: 32px;
+    transition: color 0.15s ease;
+  }
+
+  .detail-back-link:hover {
+    color: var(--color-text);
+  }
+
   .detail-hero {
     padding: 64px 0 48px;
   }

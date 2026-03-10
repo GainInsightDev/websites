@@ -112,7 +112,7 @@ const projects = allProjects.filter(p => p.featured).slice(0, 6);
             </div>
             <div class="project-card-body">
               <span class={`tag tag-${project.accent}`}>
-                <span class={`w-[6px] h-[6px] rounded-full bg-${project.accent}`}></span>
+                <span style={`background-color: var(--color-${project.accent})`} class="w-[6px] h-[6px] rounded-full"></span>
                 {project.domain}
               </span>
               {!ventureLogoRaw[project.slug.current] && (

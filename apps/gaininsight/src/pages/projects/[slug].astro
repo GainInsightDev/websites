@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { fetchAll, fetchBySlug } from '../../lib/sanity';
-import { ventureLogo } from '../../lib/venture-logos';
+import { ventureLogo, ventureLogoRaw } from '../../lib/venture-logos';
 
 interface Project {
   name: string;
@@ -26,15 +26,25 @@ const project = await fetchBySlug<Project>('project', slug!);
 if (!project) {
   return Astro.redirect('/404');
 }
+
+// Get related projects (other projects, max 3)
+const allProjects = await fetchAll<Project>('project');
+const related = allProjects.filter(p => p.slug.current !== slug).slice(0, 3);
+
+// Placeholder capabilities (will come from Sanity later)
+const capabilities = [
+  { title: 'Intelligent automation', desc: 'Advanced algorithms process complex data in real-time, reducing manual intervention and eliminating human error across critical workflows.' },
+  { title: 'Domain-specific AI', desc: 'Purpose-built models trained on industry data deliver insights that generic tools cannot — understanding the nuances of each sector.' },
+  { title: 'Enterprise integration', desc: 'Designed to work with existing systems and data sources. No rip-and-replace — we enhance what is already there.' },
+  { title: 'Continuous improvement', desc: 'The platform learns from every interaction, refining its accuracy and expanding its capabilities over time.' },
+];
 ---
 
 <Layout title={`${project.name} | Gain Insight`} description={project.tagline}>
   <!-- Hero — dark, logo sits naturally on background -->
   <section class="detail-hero section-dark">
     <div class="container">
-      <div class="section-label text-text-muted">
-        <span>Portfolio</span>
-      </div>
+      <a href="/projects" class="detail-back-link">&larr; Back to Projects</a>
       {ventureLogo[slug!] ? (
         <img
           src={ventureLogo[slug!]}
@@ -43,49 +53,115 @@ if (!project) {
           height="160"
           class="detail-hero-logo"
         />
-      ) : null}
-      <h1 class="detail-hero-title">
-        {project.name}
-      </h1>
+        <h1 class="sr-only">{project.name}</h1>
+      ) : (
+        <h1 class="detail-hero-title">
+          {project.name}
+        </h1>
+      )}
       <div class="flex items-center gap-3 mb-6">
         <span class={`tag tag-${project.accent}`}>
-          <span class={`w-[6px] h-[6px] rounded-full bg-${project.accent}`}></span>
+          <span style={`background-color: var(--color-${project.accent})`} class="w-[6px] h-[6px] rounded-full"></span>
           {project.domain}
         </span>
       </div>
       <p class="text-[18px] text-text-muted leading-relaxed max-w-[560px] font-light">
         {project.tagline}
       </p>
+      {project.url && (
+        <a href={project.url} target="_blank" rel="noopener noreferrer" class="btn btn-ghost-dark mt-8 inline-flex">
+          Visit {project.name} &rarr;
+        </a>
+      )}
     </div>
   </section>
 
-  <!-- About — surface (subtle shift from hero bg) -->
+  <!-- Overview — surface -->
   <section class="section section-surface">
     <div class="container">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         <div>
           <div class="section-label text-text-muted">
-            <span>About</span>
+            <span>Overview</span>
           </div>
           <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-6">
-            What <em>we're building.</em>
+            The <em>problem</em> and our <em>approach.</em>
           </h2>
         </div>
-        <div>
+        <div class="flex flex-col gap-6">
           <p class="text-[16px] text-text-muted leading-relaxed font-light">
             {project.description}
           </p>
-          {project.url && (
-            <a href={project.url} target="_blank" rel="noopener noreferrer" class="btn btn-ghost-dark mt-8 inline-flex">
-              Visit {project.name} &rarr;
-            </a>
-          )}
+          <p class="text-[16px] text-text-muted leading-relaxed font-light">
+            The challenge extends beyond simple data processing. Organisations in this space face fragmented systems, inconsistent data formats, and regulatory requirements that demand both speed and accuracy. Traditional approaches rely on manual processes that are slow, error-prone, and increasingly unsustainable as volumes grow.
+          </p>
+          <p class="text-[16px] text-text-muted leading-relaxed font-light">
+            Our approach combines deep domain understanding with purpose-built AI — not a generic platform bolted onto the problem, but a system designed from the ground up for this specific challenge. We work alongside industry practitioners to ensure every capability reflects real-world needs.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA — offwhite for warm contrast -->
+  <!-- Capabilities — dark -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-label text-text-muted">
+        <span>Capabilities</span>
+      </div>
+      <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-12">
+        What <em>{project.name} does.</em>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {capabilities.map((cap) => (
+          <div class="card">
+            <h3 class="text-[16px] font-medium text-text mb-3 font-body">{cap.title}</h3>
+            <p class="text-[14px] text-text-muted leading-relaxed font-light">{cap.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Projects — surface -->
+  <section class="section section-surface">
+    <div class="container">
+      <div class="section-label text-text-muted">
+        <span>Portfolio</span>
+      </div>
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+        <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1]">
+          More <em>projects.</em>
+        </h2>
+        <a href="/projects" class="text-[13px] text-steel hover:text-text transition-colors font-body">View all projects &rarr;</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {related.map((p) => (
+          <a href={`/projects/${p.slug.current}`} class="project-card group block">
+            <div class="project-card-logo-stage">
+              {ventureLogoRaw[p.slug.current] ? (
+                <img src={ventureLogoRaw[p.slug.current]} alt={`${p.name} logo`} width="200" height="80" class="project-card-logo" loading="lazy" />
+              ) : (
+                <span class="project-card-wordmark">{p.name}</span>
+              )}
+            </div>
+            <div class="project-card-body">
+              <span class={`tag tag-${p.accent}`}>
+                <span style={`background-color: var(--color-${p.accent})`} class="w-[6px] h-[6px] rounded-full"></span>
+                {p.domain}
+              </span>
+              {!ventureLogoRaw[p.slug.current] && (
+                <h3 class="project-card-title">{p.name}</h3>
+              )}
+              <p class="project-card-tagline">{p.tagline}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA — offwhite -->
   <section class="section section-offwhite text-center">
     <div class="container">
       <h2 class="text-[40px] md:text-[48px] text-text-dark leading-[1.1] mb-6">
