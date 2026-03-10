@@ -36,7 +36,6 @@ const projects = await fetchAll<Project>('project');
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {projects.map((project) => (
           <a href={`/projects/${project.slug.current}`} class="project-card group block">
-            <div class="project-card-accent" style={`background-color: var(--color-${project.accent})`}></div>
             <div class="project-card-logo-stage">
               {ventureLogoRaw[project.slug.current] ? (
                 <img src={ventureLogoRaw[project.slug.current]} alt={`${project.name} logo`} width="200" height="80" class="project-card-logo" loading="lazy" />
@@ -49,7 +48,9 @@ const projects = await fetchAll<Project>('project');
                 <span class={`w-[6px] h-[6px] rounded-full bg-${project.accent}`}></span>
                 {project.domain}
               </span>
-              <h3 class="project-card-title">{project.name}</h3>
+              {!ventureLogoRaw[project.slug.current] && (
+                <h3 class="project-card-title">{project.name}</h3>
+              )}
               <p class="project-card-tagline">{project.tagline}</p>
             </div>
           </a>
