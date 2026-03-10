@@ -157,7 +157,7 @@ Mandatory documentation updates at:
 
 When implementing a new feature with BDD workflow:
 
-1. **Requirements Phase** (creates initial documentation)
+1. **Refinement Phase** (creates initial documentation)
    - BDD scenarios define the feature in `.feature` files
    - Mini-PRD documents requirements and design
    - Visual specifications for UI components

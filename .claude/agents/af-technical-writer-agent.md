@@ -94,7 +94,7 @@ Author comprehensive technical documentation for implemented features following 
 ## References
 
 **Documentation standards and structure:**
-- `.claude/skills/af-documentation-standards/SKILL.md`
+- `.claude/skills/af-enforce-doc-standards/SKILL.md`
 
 **Documentation validation:**
 - `.claude/scripts/documentation/` (validation scripts)

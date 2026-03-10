@@ -6,8 +6,8 @@ last_checked: 2026-01-03
 tags: [guide, testing, jest, playwright, rtl, tdd, bdd]
 parent: ./README.md
 related:
-  - ../../skills/af-testing-expertise/SKILL.md
-  - ../../skills/af-bdd-expertise/SKILL.md
+  - ../../skills/af-configure-test-frameworks/SKILL.md
+  - ../../skills/af-write-bdd-scenarios/SKILL.md
 ---
 
 # Testing Guide - Comprehensive Testing Strategy
@@ -54,15 +54,15 @@ Tests are written at different phases of development for specific reasons. Under
 
 | Test Type | Phase | Created By | Rationale |
 |-----------|-------|------------|-----------|
-| **RTL (Component)** | Requirements | ux-design-agent | Locks UI behavior BEFORE engineering. Acts as the "design contract" - defines what components should do. |
-| **Storybook Stories** | Requirements | ux-design-agent | Visual specifications showing all component states. Source of truth for design. |
+| **RTL (Component)** | Refinement | ux-design-agent | Locks UI behavior BEFORE engineering. Acts as the "design contract" - defines what components should do. |
+| **Storybook Stories** | Refinement | ux-design-agent | Visual specifications showing all component states. Source of truth for design. |
 | **E2E (Playwright)** | Delivery (RED) | AI from scenarios | Tests complete user journeys. Can only run once implementation exists. Generated from Mini-PRD Section 4 scenarios. |
 | **Integration** | Delivery (RED) | AI from scenarios | Tests backend/API behavior. Generated from Mini-PRD scenarios tagged as Integration. |
 | **Unit** | Delivery (RED) | Developer/AI | Tests pure logic. Written alongside implementation as needed. |
 
 ### The Key Insight
 
-**Requirements phase** creates tests that define WHAT should be built:
+**Refinement phase** creates tests that define WHAT should be built:
 - RTL tests lock component behavior (the contract)
 - Storybook shows what components look like
 - These exist BEFORE engineering starts
@@ -70,7 +70,7 @@ Tests are written at different phases of development for specific reasons. Under
 **Delivery phase** creates tests that verify the feature WORKS:
 - E2E tests run through real UI + real backend
 - Integration tests verify API contracts
-- These are generated FROM the scenarios written in Requirements
+- These are generated FROM the scenarios written in Refinement
 
 ### Visual Flow
 
@@ -118,7 +118,7 @@ Tests are written at different phases of development for specific reasons. Under
 
 ### Why This Split?
 
-**RTL tests in Requirements:**
+**RTL tests in Refinement:**
 - Define the UI contract BEFORE engineering starts
 - Engineers know exactly what behavior to implement
 - Prevents "interpretation drift" between design and implementation
@@ -134,7 +134,7 @@ Tests are written at different phases of development for specific reasons. Under
 
 **Feature: User can sign up with email**
 
-**Requirements Phase produces:**
+**Refinement phase produces:**
 ```
 docs/requirements/signup/mini-prd.md
   └── Section 4: Scenarios (E2E: valid signup, invalid email, etc.)
@@ -155,13 +155,13 @@ src/components/auth/SignupForm.tsx (implementation)
 ### Common Questions
 
 **Q: What if there's no UI (API-only feature)?**
-A: Skip RTL tests and Storybook. Write Integration scenarios in Requirements, generate Integration tests in Delivery.
+A: Skip RTL tests and Storybook. Write Integration scenarios in Refinement, generate Integration tests in Delivery.
 
 **Q: Who generates the E2E tests from scenarios?**
 A: The AI (orchestrator or dev-test-agent) reads scenarios from Mini-PRD and generates Playwright specs. Human reviews and refines.
 
-**Q: Can I write E2E tests in Requirements?**
-A: You write E2E *scenarios* in Requirements. The executable test *files* are generated in Delivery RED phase.
+**Q: Can I write E2E tests in Refinement?**
+A: You write E2E *scenarios* in Refinement. The executable test *files* are generated in Delivery RED phase.
 
 **Q: What if RTL tests need to change during Delivery?**
 A: Update them as needed, but treat changes as design changes - they should be intentional, not drift.
@@ -433,7 +433,7 @@ Markdown Scenarios (mini-PRD) → AI → Playwright Tests → Execution
 
 No step definitions required. The specification is the source of truth.
 
-### Markdown Scenario (from Requirements Phase)
+### Markdown Scenario (from Refinement phase)
 
 Scenarios are written in mini-PRD Section 4:
 
@@ -1037,8 +1037,8 @@ const baseUrl = `${protocol}://${host}`;
 
 ## References
 
-- **BDD Expertise Skill:** `.claude/skills/af-bdd-expertise/SKILL.md`
-- **Testing Expertise Skill:** `.claude/skills/af-testing-expertise/SKILL.md`
+- **BDD Expertise Skill:** `.claude/skills/af-write-bdd-scenarios/SKILL.md`
+- **Testing Expertise Skill:** `.claude/skills/af-configure-test-frameworks/SKILL.md`
 - **Jest:** https://jestjs.io/
 - **Playwright:** https://playwright.dev/
 - **BDD Guide:** `.claude/docs/guides/bdd-guide.md`

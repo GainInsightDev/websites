@@ -120,7 +120,7 @@ Creates `.claude.backup.YYYY-MM-DD` before making changes (if enabled in manifes
 ### 2. Framework Files Sync
 Syncs all framework assets with `af-` prefix:
 - Agents: `af-bdd-agent.md`, `af-docs-quality-agent.md`, etc.
-- Skills: `af-bdd-expertise/`, `af-testing-expertise/`, etc.
+- Skills: `af-write-bdd-scenarios/`, `af-configure-test-frameworks/`, etc.
 - Commands: `.claude/commands/af/**/*.md`
 - All orchestrators, docs, scripts, templates, hooks, lib files
 
@@ -193,7 +193,7 @@ The sync system uses naming conventions to separate framework and project assets
 
 **Framework assets (af- prefix):**
 - `af-bdd-agent.md` - Framework BDD agent
-- `af-testing-expertise/` - Framework testing skill
+- `af-configure-test-frameworks/` - Framework testing skill
 - `.claude/commands/af/sync.md` - Framework command
 
 **Project assets (project- prefix):**

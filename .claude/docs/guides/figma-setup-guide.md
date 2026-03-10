@@ -1,13 +1,13 @@
 ---
 title: Figma Design Round-Trip Setup Guide
 created: 2026-03-05
-updated: 2026-03-05
-last_checked: 2026-03-05
-tags: [guide, figma, design, setup, code-connect, anima]
+updated: 2026-03-06
+last_checked: 2026-03-06
+tags: [guide, figma, design, setup, component-map]
 parent: ./README.md
 related:
-  - ../../skills/af-figma-design-expertise/SKILL.md
-  - ../../skills/af-ux-design-expertise/SKILL.md
+  - ../../skills/af-sync-figma-designs/SKILL.md
+  - ../../skills/af-design-ui-components/SKILL.md
 ---
 
 # Figma Design Round-Trip Setup Guide
@@ -16,23 +16,23 @@ Step-by-step guide for adding Figma design round-trip workflows to an AgentFlow 
 
 **Prerequisites:** Project must have `ui-styling` module installed (Storybook + design tokens).
 
-**Skill reference:** Load `af-figma-design-expertise` for detailed rules and workflows.
+**Skill reference:** Load `af-sync-figma-designs` for detailed rules and workflows.
 
 ---
 
-## Flow A Setup: Direct Code <> Figma Round-Trip
+## Setup Steps
 
-Setup time: ~30 minutes. Use for tweaking existing screens, layout adjustments, responsive checks.
+Setup time: ~1-2 hours for full setup including initial library capture.
 
 ### Step 1: Figma MCP Server
 
 The Figma MCP server is **pre-configured globally** in AgentFlow's `.mcp.json`. No per-project setup needed.
 
-No API keys needed. On first use, the MCP server opens a browser OAuth flow — authenticate with your Figma account.
+No API keys needed. On first use, the MCP server opens a browser OAuth flow -- authenticate with your Figma account.
 
 > **Manual setup (non-AgentFlow projects):** Add to `.mcp.json`:
 > ```json
-> { "figma": { "command": "npx", "args": ["-y", "mcp-remote", "https://mcp.figma.com/mcp"] } }
+> { "figma": { "url": "https://mcp.figma.com/mcp" } }
 > ```
 
 ### Step 2: Create Figma Project Structure
@@ -41,9 +41,9 @@ In Figma, create a project for your product with three files:
 
 ```
 Figma Project: "{Product Name}"
-├── [Library] Design System          <- Tokens + components
-├── [File] Active Work               <- Issue-specific design pages
-└── [File] Shipped Archive           <- Completed designs (reference)
+|-- [Library] Design System          <- Component reference frames from Storybook
+|-- [File] Active Work               <- Issue-specific design pages
++-- [File] Shipped Archive           <- Completed designs (reference)
 ```
 
 Record the file IDs in your project config (e.g., `figma.config.json`):
@@ -58,78 +58,89 @@ Record the file IDs in your project config (e.g., `figma.config.json`):
 }
 ```
 
-### Step 3: Set Up Code Connect
+### Step 3: Generate Component Map
 
-Code Connect maps Figma components to your codebase imports so `get_design_context` produces real component references instead of inline code.
+The component map replaces Code Connect (which requires Figma Enterprise plan). It maps Figma component/frame names to codebase imports so agents can adapt extraction output.
+
+Run the component map generator script:
 
 ```bash
-npm install -D @figma/code-connect
+npx ts-node .figma/generate-component-map.ts
 ```
 
-Map frequently-used components:
-- shadcn/ui atoms (Button, Input, Card, Badge, etc.)
-- Project-specific molecules and organisms
+This reads Storybook's `stories.json` and component source files to produce `.figma/component-map.json`:
 
-Run the Code Connect CLI wizard to create mappings.
+```json
+{
+  "Button": {
+    "import": "import { Button } from '@/components/ui/button'",
+    "variants": {
+      "primary": "<Button variant=\"primary\">",
+      "secondary": "<Button variant=\"secondary\">"
+    }
+  },
+  "Card": {
+    "import": "import { Card, CardContent, CardHeader } from '@/components/ui/card'",
+    "usage": "<Card><CardHeader>...</CardHeader><CardContent>...</CardContent></Card>"
+  }
+}
+```
 
 ### Step 4: Generate Design System Rules
 
-Run `create_design_system_rules` via the Figma MCP against your project's CSS variables (from `globals.css`). This generates rule files so Claude Code generates code using your project tokens, not raw Tailwind utilities.
+Run the design system rules generator against your `globals.css`:
 
-### Step 5: Test the Capture Cycle
+```bash
+npx ts-node .figma/generate-design-rules.ts
+```
 
-1. Start your dev server (or use staging URL)
-2. Use `generate_figma_design` to capture a page to Figma
-3. Verify the result: editable frames, correct layer structure, not flat screenshots
-4. Use `get_design_context` to extract code back
-5. Verify: output uses Code Connect component references and project tokens
+This produces `.figma/design-system-rules.md` mapping hex values to CSS variable tokens. Agents read this during the extraction adaptation step to replace hardcoded colors with project tokens.
 
-**Flow A is ready when:** Capture and extract both produce usable results.
+### Step 5: Initial Library Capture
+
+Capture Storybook component stories to the Figma Library file. This requires a browser session (OAuth).
+
+1. Start your Storybook dev server
+2. Use `generate_figma_design` to capture each component story page to the Library file
+3. Name frames to match component names (matching Storybook naming)
+4. Record the current git commit hash: `git rev-parse HEAD > .figma/last-sync-commit`
+
+The Library file becomes the designer's reference palette in Figma.
+
+### Step 6: Test the Round-Trip
+
+1. Use `generate_figma_design` to capture a page to Figma (requires browser)
+2. Verify: editable frames, correct layer structure, not flat screenshots
+3. Use `get_metadata` to see the component tree with names
+4. Use `get_design_context` to extract code
+5. Verify: agent can map extracted component names to `component-map.json` entries
+6. Verify: agent can replace hex values using `design-system-rules.md`
+
+**Setup is complete when:** Capture, extract, and adapt all produce usable results.
 
 ---
 
-## Flow B Setup: Storybook > Figma Library > Code
+## Custom Mapping Files
 
-Setup time: ~2-4 hours. Use for new screen assembly, complex compositions, onboarding designers.
+These files live in `.figma/` in your project root:
 
-**Includes all of Flow A setup, plus:**
+| File | Purpose | How Generated |
+|------|---------|---------------|
+| `component-map.json` | Maps Figma component names to codebase imports | `generate-component-map.ts` script |
+| `design-system-rules.md` | Maps hex values to CSS variable tokens | `generate-design-rules.ts` script |
+| `last-sync-commit` | Git commit hash of last Figma library sync | Written by capture script |
 
-### Step 6: Install Anima CLI
+### Why Not Code Connect?
 
-```bash
-npm install -D @animaapp/anima-cli
-```
+Code Connect is Figma's native component mapping feature, but it requires an Enterprise/Organization Figma plan. Our custom mapping achieves the same outcome at the agent layer:
 
-### Step 7: Configure Anima
-
-1. Install the Anima Figma plugin from the Figma Community
-2. In the plugin, get your team token
-3. Configure the CLI with the token
-
-### Step 8: Build and Sync Storybook
-
-```bash
-npm run build-storybook
-npx anima sync
-```
-
-This creates/updates a Figma component library from your Storybook. Verify in Figma:
-- Components appear with correct variants
-- Design tokens (colors, spacing, typography) are preserved
-- Interactive states are represented
-
-### Step 9: Set Up Code Connect for Synced Components
-
-Anima-synced components need manual Code Connect mapping (Anima does not embed Code Connect metadata automatically). Map each synced Figma component back to its codebase origin.
-
-### Step 10: Test the Assembly Cycle
-
-1. Designer assembles a screen from library components in Figma
-2. Use `get_design_context` on the assembled design
-3. Verify: output references actual components via Code Connect, not inline code
-4. Generate code and verify it uses real codebase imports
-
-**Flow B is ready when:** Designer can assemble from library and extraction produces component-based code.
+| Aspect | Code Connect (Enterprise) | Custom Mapping |
+|--------|--------------------------|----------------|
+| Component identification | Automatic in extraction | Agent reads component-map.json |
+| Import generation | Built into API output | Agent maps names to imports |
+| Token preservation | Automatic | Agent applies design-system-rules |
+| Cost | ~$75/seat/month | Free |
+| Maintenance | Auto-synced | Regenerate on component changes |
 
 ---
 
@@ -137,10 +148,11 @@ Anima-synced components need manual Code Connect mapping (Anima does not embed C
 
 ### needs:design Label
 
-Use the `needs:design` label (workspace-scoped, already created) to signal designer input is needed:
-- Add `needs:design` when an issue needs design work
-- Remove `needs:design` when design work is complete
-- Designers filter their view by this label to find work
+Use the `needs:design` label (workspace-scoped) to signal designer input is needed:
+- PM adds `needs:design` when an issue needs design work
+- Agent checks library staleness on label addition
+- Designer works in Figma
+- Designer removes `needs:design` when design work is complete
 
 ### Figma Links in Issues
 
@@ -155,6 +167,20 @@ Dev agents look for this section to find the relevant Figma design.
 
 ---
 
+## Library Staleness & Sync
+
+The Figma Library is kept in sync with Storybook via **lazy sync on demand**:
+
+1. Issue gets `needs:design` label
+2. Agent reads `.figma/last-sync-commit` and compares against current HEAD
+3. If component files or `stories.json` changed since last sync: library is stale
+4. Designer is notified and triggers re-capture in their browser session
+5. After capture: `component-map.json` regenerated, `last-sync-commit` updated
+
+This avoids unnecessary captures while ensuring the library is fresh when designers need it.
+
+---
+
 ## Naming Conventions
 
 | Element | Format | Example |
@@ -163,6 +189,7 @@ Dev agents look for this section to find the relevant Figma design.
 | Frame within page | `{ISSUE-ID}/Screen Name/State` | `AF-124/Dashboard/Default` |
 | Design System Library | `[Library] Design System` | - |
 | Active Work file | `[File] Active Work` | - |
+| Library component frames | Match Storybook component names | `Button`, `Card`, `NavBar` |
 
 ---
 
@@ -170,23 +197,26 @@ Dev agents look for this section to find the relevant Figma design.
 
 | Limitation | Workaround |
 |-----------|------------|
-| Auto-layout not preserved on round-trip | Use Code Connect for structural components |
+| Extraction returns absolute positioning | Agent adapts to flexbox/grid using project patterns |
+| Tokens lost (hardcoded hex values) | Agent reads design-system-rules.md to map back to CSS variables |
+| Component classes lost (inline styles) | Agent reads component-map.json to map to real imports |
+| Always outputs React+Tailwind | Agent adapts to target framework |
+| Capture requires browser (OAuth) | Human-triggered; designer is already in browser |
 | Frame degradation after 3+ cycles | Re-capture from code every 2-3 cycles |
-| Only DEFAULT variable mode extracted | Use design system rules for token enforcement |
 | Annotations break get_design_context | Remove annotations before extraction |
-| Anima free tier ~5 syncs/day | Batch changes, sync at end of session |
+| Code Connect requires Enterprise plan | Custom component-map.json replaces it |
+| Library frames are visual references, not native Figma components | Sufficient for ideation + tweaking; evaluate Anima if native variants needed |
 
 ---
 
 ## Verification Checklist
 
-- [ ] Figma MCP server configured and authenticated
+- [ ] Figma MCP server configured and authenticated (browser OAuth)
 - [ ] Figma project structure created (Library + Active Work + Archive)
-- [ ] Code Connect installed and key components mapped
-- [ ] Design system rules generated from project tokens
-- [ ] Capture cycle tested (capture > edit > extract > code)
+- [ ] `.figma/component-map.json` generated from Storybook
+- [ ] `.figma/design-system-rules.md` generated from globals.css
+- [ ] Initial library capture done (Storybook stories -> Figma Library)
+- [ ] `.figma/last-sync-commit` recorded
+- [ ] Capture cycle tested (capture > edit > extract > adapt > code)
 - [ ] `needs:design` label available in Linear
-- [ ] (Flow B) Anima CLI installed and configured
-- [ ] (Flow B) Storybook synced to Figma library
-- [ ] (Flow B) Code Connect mapped for synced components
-- [ ] (Flow B) Assembly cycle tested (assemble > extract > code)
+- [ ] Figma file IDs recorded in project config

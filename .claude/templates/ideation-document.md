@@ -14,7 +14,7 @@ tags: [ideation, context]
 
 > This document captures brainstorming and early thinking about [project/product].
 > It is designed to be consumed by AgentFlow's Discovery phase.
-> See the [Ideation Expertise skill](.claude/skills/af-ideation-expertise/SKILL.md) for guidance on filling this out.
+> See the [Ideation Expertise skill](.claude/skills/af-brainstorm-ideas/SKILL.md) for guidance on filling this out.
 
 ## Problem Space
 

@@ -61,7 +61,7 @@ For project code using AgentFlow:
 │   └── docs-quality-agent.md  # Docs quality agent definition (self-documenting)
 ├── skills/
 │   ├── README.md               # Skills index
-│   ├── af-orchestration/       # Orchestration workflows
+│   ├── af-orchestrate-workflow/       # Orchestration workflows
 │   ├── af-*-process/           # Phase-specific process skills
 │   └── af-*-expertise/         # Domain expertise skills
 ├── hooks/
@@ -209,7 +209,7 @@ Links to these will break on the portal - acceptable for internal references:
 When linking between synced directories, use relative paths:
 ```markdown
 <!-- From commands/brownfield/add.md -->
-[setup-process skill](../../skills/af-setup-process/SKILL.md)  ✅ Works
+[setup-process skill](../../skills/af-setup-project/SKILL.md)  ✅ Works
 
 <!-- Link to internal script - will break on portal -->
 [setup script](../../scripts/brownfield/agentflow-setup.sh)  ⚠️ Internal only

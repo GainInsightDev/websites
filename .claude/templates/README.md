@@ -13,6 +13,7 @@ children:
   - ./setup/README.md
   - ./adr-template.md
   - ./adr-index.md
+  - ./brand-system-spec-template.md
 code_files:
   - ./glossary.yml
   - ./selector-contract.ts
@@ -32,7 +33,7 @@ Template for Architecture Decision Record index files.
 
 ### mini-prd-template.md
 Comprehensive Product Requirements Document template.
-- Used by Requirements Orchestrator during Phase 3
+- Used by Refinement Orchestrator during Phase 3
 - Creates ~80k context documents for Linear issues
 - Contains 7 sections for complete feature specification
 
@@ -41,6 +42,13 @@ Example glossary configuration for domain vocabulary.
 - Used by BDD agent for term validation
 - Defines approved terms, synonyms, and forbidden terms
 - Ensures consistent language across specifications
+
+### brand-system-spec-template.md
+Brand System Specification template for defining complete visual language.
+- Used during Discovery phase (UX + AI workflow)
+- 15 sections: reference class, colours (5-layer hierarchy), typography, spacing, shadows, motion, iconography, accessibility
+- Drives token generation, Storybook Brand Page, and component styling
+- Output: `docs/design/brand-system.md` and `tokens/` directory
 
 ### selector-contract.ts
 TypeScript template for test selector contracts.

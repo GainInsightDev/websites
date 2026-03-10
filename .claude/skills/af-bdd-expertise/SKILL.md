@@ -26,7 +26,7 @@ Load this skill when you need to:
 - Understand Preconditions/Steps/Expected patterns
 
 **Common triggers**:
-- Requirements phase creates scenario specifications
+- Refinement phase creates scenario specifications
 - BDD-agent invoked by orchestrator
 - Reviewing scenario coverage
 - Adding new test scenarios
@@ -65,7 +65,7 @@ docs/requirements/mini-prd/[feature-name].md
 Scenarios written here become executable tests in Delivery phase:
 
 ```
-Requirements Phase (YOU ARE HERE):
+Refinement phase (YOU ARE HERE):
   Write Markdown scenarios ──────────────────┐
   Define selector contract ──────────────────┤
                                              │
@@ -73,7 +73,7 @@ Delivery Phase (RED):                        │
   AI generates test files FROM scenarios: ◄──┘
     - E2E scenarios → Playwright specs
     - Integration scenarios → Jest tests
-    - Component scenarios → RTL tests (often created in Requirements by ux-design-agent)
+    - Component scenarios → RTL tests (often created in Refinement by ux-design-agent)
     - Unit scenarios → Jest tests
 ```
 
@@ -114,9 +114,9 @@ See [Testing Expertise](../af-testing-expertise/SKILL.md) for test writing timel
 
 ## Workflows
 
-### Workflow: Creating Scenarios from Requirements
+### Workflow: Creating Scenarios from Refinement
 
-**When:** Requirements phase, transforming Linear issue into executable specification
+**When:** Refinement phase, transforming Linear issue into executable specification
 
 **Procedure:**
 ```
@@ -244,7 +244,7 @@ Decision matrix:
 
 ### Workflow: Reviewing Scenario Coverage
 
-**When:** Before approving Requirements phase, during quality checks
+**When:** Before approving Refinement phase, during quality checks
 
 **Procedure:**
 ```

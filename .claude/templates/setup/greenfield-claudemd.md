@@ -82,7 +82,7 @@ When generating CLAUDE.md, replace these placeholders:
 1. Create a feature worktree: `start-work {repo-name} {ISSUE-ID}`
 2. Start local sandbox: `npx ampx sandbox`
 3. Run dev server: `npm run dev`
-4. Follow AgentFlow workflow: Discovery → Requirements → Delivery
+4. Follow AgentFlow workflow: Discovery → Refinement → Delivery
 ```
 
 **COMMANDS_SECTION:**
@@ -115,7 +115,7 @@ Add your own tech stack as needed.
 ```markdown
 1. Install dependencies: `npm install`
 2. Add your tech stack (frontend, backend, etc.)
-3. Follow AgentFlow workflow: Discovery → Requirements → Delivery
+3. Follow AgentFlow workflow: Discovery → Refinement → Delivery
 ```
 
 **COMMANDS_SECTION:**

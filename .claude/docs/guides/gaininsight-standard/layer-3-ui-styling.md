@@ -10,9 +10,9 @@ parent: ./README.md
 related:
   - ./layer-2-testing.md
   - ./layer-4-cicd.md
-  - ../../../skills/af-gaininsight-standard/SKILL.md
+  - ../../../skills/af-setup-gaininsight-stack/SKILL.md
   - ../posthog-guide.md
-  - ../../../skills/af-posthog-expertise/SKILL.md
+  - ../../../skills/af-integrate-posthog/SKILL.md
 ---
 
 # Layer 3: UI & Styling
@@ -657,7 +657,7 @@ import { PostHogProvider } from "@/posthog"
 
 **Step 4: Create feature flags in PostHog**
 
-Create view-level flags in the PostHog dashboard (or via API). See the [PostHog Expertise Skill](../../../skills/af-posthog-expertise/SKILL.md) for flag naming conventions.
+Create view-level flags in the PostHog dashboard (or via API). See the [PostHog Expertise Skill](../../../skills/af-integrate-posthog/SKILL.md) for flag naming conventions.
 
 **Verification:**
 - `pnpm dev` works without PostHog key (graceful degradation — all features visible)

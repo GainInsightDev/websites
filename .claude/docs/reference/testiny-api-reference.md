@@ -311,7 +311,7 @@ doppler run --project <project> --config dev -- npx ts-node scripts/testiny-impo
 - [ ] Store `TESTINY_PROJECT_ID` in project's `CLAUDE.md`
 - [ ] Add deduplication (match by source file + test name)
 - [ ] Add Linear reference + source file to preconditions
-- [ ] Include Step 2.5 (Sync to Testiny) in af-delivery-process
+- [ ] Include Step 2.5 (Sync to Testiny) in af-deliver-features
 - [ ] Create af-testiny-expertise skill
 - [ ] Eliminate UAT.md generation (Testiny replaces it)
 
@@ -458,6 +458,6 @@ The `af-testiny-expertise` skill should include:
 - Content population playbook for AI agent
 
 Related updates:
-- `af-delivery-process` should include Step 2.5: Sync to Testiny
+- `af-deliver-features` should include Step 2.5: Sync to Testiny
 - Import script template for projects (structure only)
 - Documentation on Testiny project setup and Linear integration

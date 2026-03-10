@@ -10,7 +10,7 @@
  * Prerequisites:
  *   - Layer 3 complete (UI & Styling)
  *
- * @documentation .claude/skills/af-gaininsight-standard/SKILL.md
+ * @documentation .claude/skills/af-setup-gaininsight-stack/SKILL.md
  */
 import { test, expect } from '@playwright/test';
 import { execSync } from 'child_process';

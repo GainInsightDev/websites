@@ -57,7 +57,7 @@ Load this skill when you need to:
 ### Module Rules
 20. **All modules** are declared in `docs/reference/module-registry.yml`
 21. **Core modules** are always installed (agentflow, linear, git, documentation, doppler)
-22. **Optional modules** are selected during Discovery and installed before Requirements
+22. **Optional modules** are selected during Discovery and installed before Refinement
 23. **Every module** must have: `name`, `description`, `skill`, `validation_spec`, `depends_on`
 24. **Integration guides** are created when two modules interact (e.g., cognito + SES)
 25. **Validation specs** are Playwright tests in `templates/setup/validation/specs/`
@@ -264,7 +264,7 @@ Load this skill when you need to:
    Extract requirements and acceptance criteria
 
 3. **MUST transform to Markdown scenarios**
-   Follow skill workflow: "Creating Scenarios from Requirements"
+   Follow skill workflow: "Creating Scenarios from Refinement"
    Apply glossary compliance rules
 
 4. **SHOULD validate output**

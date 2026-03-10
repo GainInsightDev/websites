@@ -134,7 +134,7 @@ graph TD
 
 - **Client App** — React + TypeScript frontend
 - **API Server** — Express with REST + WebSocket
-- **Database** — Turso for persistence
+- **Database** — PostgreSQL for persistence
 '
 canvas-focus AGV-20 markdown
 ```

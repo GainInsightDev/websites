@@ -12,7 +12,7 @@ parent: ../README.md
 related:
   - ../af-work-management-expertise/SKILL.md
   - ../af-linear-api-expertise/SKILL.md
-  - ../af-requirements-process/SKILL.md
+  - ../af-refinement-process/SKILL.md
   - ../af-discovery-process/SKILL.md
 ---
 
@@ -28,7 +28,7 @@ Load this skill when you need to:
 - Review or refine existing estimates
 
 **Common triggers:**
-- During Requirements phase when refining effort estimates
+- During Refinement phase when refining effort estimates
 - When creating or updating Linear features with story points
 - When a PM or SE asks "how long will this take?"
 
@@ -114,7 +114,7 @@ Sub-issues exist for assignment and scheduling, not for inflating totals.
 - Confidence: Low/Medium
 - No sub-issues exist yet
 
-**Refined Estimate (during Requirements):**
+**Refined Estimate (during Refinement):**
 - Sub-issues created with individual estimates
 - Parent estimate updated if scope changed during refinement
 - Verify: parent estimate ≥ sum of sub-issue estimates
@@ -181,7 +181,7 @@ Estimation happens in two phases with increasing precision:
 
 ### Refined Estimate (Atomic with Roll-Up)
 
-- **When:** During Requirements phase, after Behaviour scenarios and mini-PRD are written
+- **When:** During Refinement phase, after Behaviour scenarios and mini-PRD are written
 - **Granularity:** Per sub-issue, with hours and points rolling up to the parent feature
 - **Confidence:** Typically Medium or High
 - **Purpose:** Detailed breakdown for sprint planning and delivery
@@ -231,7 +231,7 @@ Estimation happens in two phases with increasing precision:
 
 7. **Assess confidence.** Rate confidence based on requirement clarity:
    - **High** — Clear requirements, BDD scenarios exist, known patterns
-   - **Medium** — Requirements understood but some ambiguity, partially specified
+   - **Medium** — Refinement understood but some ambiguity, partially specified
    - **Low** — Vague requirements, unknown technical approach, significant unknowns
 
 8. **Write the estimate.** Use the structured output format and post to the Linear issue.
@@ -416,7 +416,7 @@ Testing typically adds 30-50% to implementation time:
 - Set story points on the feature issue directly
 - Confidence is typically Low or Medium
 
-**Requirements phase** (af-requirements-process):
+**Refinement phase** (af-refinement-process):
 - Refined estimates after Behaviour scenarios and mini-PRD are complete
 - Tag as `[Refined Estimate]` in Linear comment
 - For features > 3 points: create specification sub-issues ([Behaviour], [UX]) with individual estimates

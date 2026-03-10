@@ -15,7 +15,7 @@ children:
 
 ## Executive Summary
 
-AgentFlow is a BDD-driven development framework that uses a **skills-based architecture** to orchestrate specialized AI agents through four distinct phases: Setup, Discovery, Requirements, and Delivery.
+AgentFlow is a BDD-driven development framework that uses a **skills-based architecture** to orchestrate specialized AI agents through four distinct phases: Setup, Discovery, Refinement, and Delivery.
 
 **Key V2 Changes:**
 - **Single orchestrator** with process skills (vs. 4 separate orchestrators)
@@ -37,7 +37,7 @@ AgentFlow is a BDD-driven development framework that uses a **skills-based archi
 ┌─────────────────────────────────────────────────────────────┐
 │ ORCHESTRATION (You ARE the orchestrator)                    │
 │ Context: CLAUDE-agentflow.md (always loaded)                │
-│ Detail: .claude/skills/af-orchestration/SKILL.md            │
+│ Detail: .claude/skills/af-orchestrate-workflow/SKILL.md            │
 │                                                              │
 │ Responsibilities:                                            │
 │ - Determine current phase/task                              │
@@ -54,7 +54,7 @@ AgentFlow is a BDD-driven development framework that uses a **skills-based archi
 │                      │    │ - af-bdd-agent                   │
 │ - setup-process      │    │ - af-docs-quality-agent          │
 │ - discovery-process  │    │ - af-dev-test-agent              │
-│ - requirements-      │    │ - af-ux-design-agent             │
+│ - refinement-        │    │ - af-ux-design-agent             │
 │   process            │    │ - af-work-management-agent       │
 │ - delivery-process   │    │ - af-technical-writer-agent      │
 │ - quality-process    │    │ - af-code-quality-agent          │
@@ -100,7 +100,7 @@ AgentFlow is a BDD-driven development framework that uses a **skills-based archi
 - Run `/af:setup --type brownfield --repo <project>` from AgentFlow context
 - Creates stable worktree, adds `.start-work-hooks`, creates `CLAUDE.md`
 - Configures docs portal integration
-- Process orchestrated by `af-setup-process` skill
+- Process orchestrated by `af-setup-project` skill
 
 **For Greenfield Projects**:
 - Initialize AWS Amplify infrastructure
@@ -125,7 +125,7 @@ AgentFlow is a BDD-driven development framework that uses a **skills-based archi
 
 **Process Skill**: `discovery-process.md`
 
-### Phase 3: Requirements
+### Phase 3: Refinement
 
 **Purpose**: BDD specification with human approval
 
@@ -140,7 +140,7 @@ AgentFlow is a BDD-driven development framework that uses a **skills-based archi
 - Storybook stories for UI components
 - Human approval before Delivery
 
-**Process Skill**: `requirements-process.md`
+**Process Skill**: `refinement-process.md`
 
 ### Phase 4: Delivery
 
@@ -158,7 +158,7 @@ AgentFlow is a BDD-driven development framework that uses a **skills-based archi
 ### Orchestration
 
 **Core Context**: `CLAUDE-agentflow.md` (always loaded)
-**Detailed Workflow**: `.claude/skills/af-orchestration/SKILL.md`
+**Detailed Workflow**: `.claude/skills/af-orchestrate-workflow/SKILL.md`
 
 Orchestration responsibilities:
 - Identifies current phase from context
@@ -172,11 +172,11 @@ Orchestration responsibilities:
 
 | Skill | Purpose |
 |-------|---------|
-| `af-setup-process` | Infrastructure setup workflow |
-| `af-discovery-process` | Problem exploration workflow |
-| `af-requirements-process` | BDD specification workflow |
-| `af-delivery-process` | TDD implementation workflow |
-| `af-quality-process` | Validation and quality workflow |
+| `af-setup-project` | Infrastructure setup workflow |
+| `af-discover-scope` | Problem exploration workflow |
+| `af-refine-specifications` | BDD specification workflow |
+| `af-deliver-features` | TDD implementation workflow |
+| `af-validate-quality` | Validation and quality workflow |
 
 ### Expertise Skills
 
@@ -184,11 +184,11 @@ Orchestration responsibilities:
 
 | Skill | Purpose |
 |-------|---------|
-| `af-bdd-expertise` | Markdown scenario patterns, glossary compliance |
-| `af-testing-expertise` | TDD/BDD, Jest, Playwright patterns |
-| `af-documentation-standards` | Metadata, linking requirements |
-| `af-ux-design-expertise` | Storybook, component specs |
-| `af-work-management-expertise` | Linear workflows, task state, compaction recovery |
+| `af-write-bdd-scenarios` | Markdown scenario patterns, glossary compliance |
+| `af-configure-test-frameworks` | TDD/BDD, Jest, Playwright patterns |
+| `af-enforce-doc-standards` | Metadata, linking requirements |
+| `af-design-ui-components` | Storybook, component specs |
+| `af-manage-work-state` | Linear workflows, task state, compaction recovery |
 
 ### Agents
 
@@ -251,7 +251,7 @@ project/
 │   ├── CLAUDE-agentflow.md     # Core orchestration context (always loaded)
 │   ├── agents/                 # Thin agent definitions
 │   ├── skills/                 # Knowledge layer
-│   │   ├── af-orchestration/   # Detailed orchestration workflows
+│   │   ├── af-orchestrate-workflow/   # Detailed orchestration workflows
 │   │   ├── af-*-process/       # Phase-specific workflow skills
 │   │   └── af-*-expertise/     # Domain expertise skills
 │   ├── commands/               # Slash commands
@@ -306,7 +306,7 @@ Projects can integrate with the shared docs portal:
 /af:setup --type brownfield --repo myproject
 ```
 
-- Orchestrated by `af-setup-process` skill
+- Orchestrated by `af-setup-project` skill
 - Creates stable worktree
 - Adds `.start-work-hooks` (symlinks AgentFlow on feature worktree creation)
 - Creates customized `CLAUDE.md`
@@ -329,7 +329,7 @@ Every feature must pass:
 1. **Specification**: Markdown scenarios cover all paths
 2. **Implementation**: All tests passing
 3. **Documentation**: docs-quality-agent validates
-4. **Human Approval**: Requirements phase sign-off
+4. **Human Approval**: Refinement phase sign-off
 
 ## ADR References
 
@@ -348,7 +348,7 @@ Consumer projects should create their own ADRs in `docs/architecture/adr/`. Use 
 - `adr-template.md` - Structure for individual ADRs
 - `adr-index.md` - Summary index for quick agent reference
 
-See `af-architecture-expertise` skill for ADR lifecycle guidance.
+See `af-decide-architecture` skill for ADR lifecycle guidance.
 
 ---
 

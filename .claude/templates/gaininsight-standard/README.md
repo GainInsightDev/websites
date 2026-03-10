@@ -16,7 +16,7 @@ code_files:
   - ./amplify.yml.template
   - ./.github/workflows/claude-code-review.yml.template
 related:
-  - ../../skills/af-gaininsight-standard/SKILL.md
+  - ../../skills/af-setup-gaininsight-stack/SKILL.md
 ---
 
 # GainInsight Standard Templates

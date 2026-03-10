@@ -47,7 +47,7 @@ Execute Linear integration operations as directed by orchestrators, managing iss
 ### Tool Selection
 
 **Primary:** Official Linear GraphQL API via `curl`
-**Reference:** Load `af-linear-api-expertise` skill for full API documentation
+**Reference:** Load `af-query-linear-api` skill for full API documentation
 
 ### Create Issue
 ```bash
@@ -125,13 +125,13 @@ When agents complete:
 ## References
 
 **Linear API patterns:**
-- `.claude/skills/af-linear-api-expertise/SKILL.md` (primary)
-- `.claude/skills/af-work-management-expertise/SKILL.md` (workflow context)
+- `.claude/skills/af-query-linear-api/SKILL.md` (primary)
+- `.claude/skills/af-manage-work-state/SKILL.md` (workflow context)
 
 **Tools:**
 - Official Linear GraphQL API via `curl` - requires `LINEAR_API_KEY` env var
 
 **Phase coordination:**
-- `.claude/skills/af-discovery-process/SKILL.md`
-- `.claude/skills/af-requirements-process/SKILL.md`
-- `.claude/skills/af-delivery-process/SKILL.md`
+- `.claude/skills/af-discover-scope/SKILL.md`
+- `.claude/skills/af-refine-specifications/SKILL.md`
+- `.claude/skills/af-deliver-features/SKILL.md`

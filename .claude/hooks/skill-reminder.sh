@@ -47,7 +47,7 @@ warn_synced_content() {
   "hookSpecificOutput": {
     "hookEventName": "PreToolUse",
     "permissionDecision": "allow",
-    "permissionDecisionReason": "WARNING: This file is synced FROM AgentFlow and will be OVERWRITTEN!\\n\\nEdit the source instead: $source_path\\n\\nLoad \`af-making-agentflow-changes\` for the correct workflow."
+    "permissionDecisionReason": "WARNING: This file is synced FROM AgentFlow and will be OVERWRITTEN!\\n\\nEdit the source instead: $source_path\\n\\nLoad \`af-commit-agentflow-changes\` for the correct workflow."
   }
 }
 EOF
@@ -74,61 +74,61 @@ fi
 # E2E testing: Playwright specs
 if [[ "$FILE_PATH" =~ (\.spec\.|/e2e/|playwright) ]]; then
     add_suggestions "E2E testing" \
-        "- af-playwright-e2e (writing/debugging E2E tests)\\n- af-testing-expertise (broader testing patterns)\\n- af-bdd-expertise (if working from scenarios)"
+        "- af-write-playwright-tests (writing/debugging E2E tests)\\n- af-configure-test-frameworks (broader testing patterns)\\n- af-write-bdd-scenarios (if working from scenarios)"
 fi
 
 # Email testing
 if [[ "$FILE_PATH" =~ (gmail|email.*test|email.*spec|test.*email) ]]; then
     add_suggestions "email testing" \
-        "- af-email-e2e-testing (Gmail API email verification)\\n- af-playwright-e2e (E2E test structure)\\n- af-testing-expertise (broader testing patterns)"
+        "- af-test-email-delivery (Gmail API email verification)\\n- af-write-playwright-tests (E2E test structure)\\n- af-configure-test-frameworks (broader testing patterns)"
 fi
 
 # Component testing: RTL
 if [[ "$FILE_PATH" =~ (/components/.*\.test\.|\.(test|spec)\.tsx$) ]]; then
     add_suggestions "component testing" \
-        "- af-rtl-component-tests (RTL component tests)\\n- af-ux-design-expertise (design contracts, Storybook)\\n- af-testing-expertise (broader testing patterns)"
+        "- af-write-rtl-tests (RTL component tests)\\n- af-design-ui-components (design contracts, Storybook)\\n- af-configure-test-frameworks (broader testing patterns)"
 fi
 
 # Coverage analysis
 if [[ "$FILE_PATH" =~ (coverage|\.coverage|lcov) ]]; then
     add_suggestions "test coverage" \
-        "- af-test-coverage (coverage analysis and improvement)\\n- af-testing-expertise (testing patterns and thresholds)"
+        "- af-analyse-test-coverage (coverage analysis and improvement)\\n- af-configure-test-frameworks (testing patterns and thresholds)"
 fi
 
 # Unit testing: Jest
 if [[ "$FILE_PATH" =~ (\.test\.|/tests/unit/|/test/|jest) ]]; then
     add_suggestions "unit testing" \
-        "- af-jest-unit-tests (Jest unit tests, TDD)\\n- af-tdd-workflow (Red-Green-Refactor cycle)\\n- af-testing-expertise (broader testing patterns)"
+        "- af-write-jest-tests (Jest unit tests, TDD)\\n- af-follow-tdd-cycle (Red-Green-Refactor cycle)\\n- af-configure-test-frameworks (broader testing patterns)"
 fi
 
 # BDD scenarios and glossary
 if [[ "$FILE_PATH" =~ (\.feature$|/features/|scenarios|BDD|mini-prd) ]]; then
     add_suggestions "BDD/requirements" \
-        "- af-writing-scenarios (Markdown scenario specs)\\n- af-bdd-expertise (comprehensive BDD patterns)\\n- af-glossary-compliance (domain terminology)"
+        "- af-write-scenario-specs (Markdown scenario specs)\\n- af-write-bdd-scenarios (comprehensive BDD patterns)\\n- af-enforce-glossary (domain terminology)"
 fi
 
 # Glossary specifically
 if [[ "$FILE_PATH" =~ (glossary|glossary\.yml) ]]; then
     add_suggestions "glossary" \
-        "- af-glossary-compliance (terminology enforcement)\\n- af-bdd-expertise (BDD language rules)"
+        "- af-enforce-glossary (terminology enforcement)\\n- af-write-bdd-scenarios (BDD language rules)"
 fi
 
 # Frontmatter
 if [[ "$FILE_PATH" =~ (frontmatter|validate-frontmatter|repair-frontmatter) ]]; then
     add_suggestions "frontmatter" \
-        "- af-frontmatter (YAML frontmatter metadata)\\n- af-documentation-standards (full doc standards)\\n- af-linking-docs (bidirectional linking)"
+        "- af-fix-frontmatter (YAML frontmatter metadata)\\n- af-enforce-doc-standards (full doc standards)\\n- af-link-documentation (bidirectional linking)"
 fi
 
 # Documentation (broad)
 if [[ "$FILE_PATH" =~ (\.md$|/docs/|/\.claude/docs/) ]]; then
     add_suggestions "documentation" \
-        "- af-writing-docs (creating/updating docs)\\n- af-documentation-standards (full doc standards)\\n- af-frontmatter (metadata requirements)\\n- af-linking-docs (cross-references)"
+        "- af-write-documentation (creating/updating docs)\\n- af-enforce-doc-standards (full doc standards)\\n- af-fix-frontmatter (metadata requirements)\\n- af-link-documentation (cross-references)"
 fi
 
 # UX/Storybook
 if [[ "$FILE_PATH" =~ (\.stories\.|/stories/|Storybook|shadcn|design-system) ]]; then
     add_suggestions "UX/design" \
-        "- af-ux-design-expertise (Storybook, design flow)\\n- af-rtl-component-tests (component test contracts)"
+        "- af-design-ui-components (Storybook, design flow)\\n- af-write-rtl-tests (component test contracts)"
 fi
 
 # Framework files (.claude/)
@@ -136,32 +136,32 @@ if [[ "$FILE_PATH" =~ /\.claude/ ]]; then
     # Skip preserved paths that are safe to edit locally
     if [[ ! "$FILE_PATH" =~ (/\.claude/work/|/\.claude/plans/|/\.claude/logs/|/\.claude/reports/|/\.claude/\.sync/|\.local\.|current-.*\.md$) ]]; then
         add_suggestions "framework files" \
-            "- af-making-agentflow-changes (contribution workflow)\\n- af-agentflow-framework-development (creating agents, skills, hooks)"
+            "- af-commit-agentflow-changes (contribution workflow)\\n- af-modify-agentflow (creating agents, skills, hooks)"
     fi
 fi
 
 # Work management: Linear
 if [[ "$FILE_PATH" =~ (Linear|LIN-[0-9]+|api\.linear\.app) ]]; then
     add_suggestions "work management" \
-        "- af-linear-issues (create/update issues)\\n- af-work-management-expertise (full workflow)\\n- af-starting-work (task context setup)"
+        "- af-manage-linear-issues (create/update issues)\\n- af-manage-work-state (full workflow)\\n- af-start-work-session (task context setup)"
 fi
 
 # Delivery: PR preparation
 if [[ "$FILE_PATH" =~ (pull.request|PR|pr-template) ]]; then
     add_suggestions "delivery" \
-        "- af-pr-preparation (PR checks and formatting)\\n- af-delivery-process (full delivery workflow)\\n- af-tdd-workflow (implementation cycle)"
+        "- af-prepare-pull-request (PR checks and formatting)\\n- af-deliver-features (full delivery workflow)\\n- af-follow-tdd-cycle (implementation cycle)"
 fi
 
 # Setup
 if [[ "$FILE_PATH" =~ (setup|brownfield|greenfield|bootstrap|initialization) ]]; then
     add_suggestions "setup" \
-        "- af-setup-process (infrastructure bootstrapping)\\n- af-gaininsight-standard (GI Standard stack)"
+        "- af-setup-project (infrastructure bootstrapping)\\n- af-setup-gaininsight-stack (GI Standard stack)"
 fi
 
 # Quality/validation
 if [[ "$FILE_PATH" =~ (validate|quality|lint|docs-quality|validation) ]]; then
     add_suggestions "quality" \
-        "- af-quality-process (validation workflows)\\n- af-documentation-standards (doc standards)"
+        "- af-validate-quality (validation workflows)\\n- af-enforce-doc-standards (doc standards)"
 fi
 
 # --- Output accumulated suggestions or exit silently ---

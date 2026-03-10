@@ -3,8 +3,8 @@ title: AgentFlow Development Framework
 sidebar_label: CLAUDE-agentflow.md
 sidebar_position: 99
 created: 2025-09-05
-updated: 2026-02-26
-last_checked: 2026-02-26
+updated: 2026-03-09
+last_checked: 2026-03-09
 tags: [framework, instructions, core, claude-integration]
 parent: ./README.md
 ---
@@ -19,7 +19,7 @@ parent: ./README.md
 
 | Component | Location |
 |-----------|----------|
-| Orchestration Skill | `.claude/skills/af-orchestration/SKILL.md` |
+| Orchestration Skill | `.claude/skills/af-orchestrate-workflow/SKILL.md` |
 | Process Skills | `.claude/skills/af-*-process/` |
 | Expertise Skills | `.claude/skills/af-*-expertise/` |
 | Agents | `.claude/agents/` |
@@ -30,17 +30,17 @@ parent: ./README.md
 |---------|--------|
 | `/task:start <id>` | Start Linear issue |
 | `/task:continue` | Resume current task |
-| `/requirements:refine <id>` | Start Requirements phase |
-| `/requirements:approve <id>` | Approve mini-PRD |
+| `/refinement:refine <id>` | Start Refinement phase |
+| `/refinement:approve <id>` | Approve mini-PRD |
 | `/pm:plan-week [team]` | Plan weekly work cycle |
 
 | Domain | Preferred Tool | Skill |
 |--------|---------------|-------|
-| Linear | GraphQL API via `curl` | `af-linear-api-expertise` |
-| Credentials | `doppler` CLI | `af-setup-process` |
-| AWS | `aws` CLI | `af-setup-process` |
-| GitHub | `gh` CLI | `af-delivery-process` |
-| E2E Testing | Playwright MCP | `af-testing-expertise` |
+| Linear | GraphQL API via `curl` | `af-query-linear-api` |
+| Credentials | `doppler` CLI | `af-setup-project` |
+| AWS | `aws` CLI | `af-setup-project` |
+| GitHub | `gh` CLI | `af-deliver-features` |
+| E2E Testing | Playwright MCP | `af-configure-test-frameworks` |
 | Ports | Check `PORT_INFO.md` for allocated service ports | - |
 
 | Test Layer | Command | Framework |
@@ -56,13 +56,13 @@ parent: ./README.md
 ### Development Process
 
 All work follows these phases in order:
-0. **Ideation** (optional) - Tool-agnostic brainstorming, produces structured documents for Discovery. See `af-ideation-expertise` skill.
+0. **Ideation** (optional) - Tool-agnostic brainstorming, produces structured documents for Discovery. See `af-brainstorm-ideas` skill.
 1. **Minimal Setup** - Bootstrap (AgentFlow, Linear, Git, docs, Doppler — always the same)
 2. **Discovery** - Problem exploration, tech stack selection, Linear Feature creation. If ideation docs exist in `docs/context/`, Discovery ingests them first.
-3. **Requirements** - BDD specification with human approval gate
+3. **Refinement** - BDD specification with human approval gate
 4. **Delivery** - Implementation from approved specifications
 
-Module installation happens between Discovery and Requirements, driven by the Tech Stack Agreement from Discovery. See `.claude/docs/reference/module-registry.yml` for available modules and `.claude/docs/guides/integrations/` for cross-module integration knowledge.
+Module installation happens between Discovery and Refinement, driven by the Tech Stack Agreement from Discovery. See `.claude/docs/reference/module-registry.yml` for available modules and `.claude/docs/guides/integrations/` for cross-module integration knowledge.
 
 ### V2 Architecture
 
@@ -137,12 +137,12 @@ Workflow: Make changes → Update docs → Run af-docs-quality-agent → Commit 
 |-------|---------|---------|---------|---------|
 | **Setup** | Project Brief | Brand Guidelines, Reference Class | - | Arch Analysis, GI Standard, Auth |
 | **Discovery** | Requirements, Estimates, Milestones, Linear config | Design Decision Log, Base Tokens, Atom Catalog | - | ADR reviews, Tooling setup |
-| **Requirements** | Approves Designs & Requirements, Plans Milestones | Catalog Check, Storybook stories, Play functions, Component specs | Refines Requirements, Test definitions | ADR reviews |
+| **Refinement** | Approves Designs & Requirements, Plans Milestones | Catalog Check, Storybook stories, Play functions, Component specs | Refines Requirements, Test definitions | ADR reviews |
 | **Delivery** | Approves Production release | **UX Review** (pre-PR), Design Fidelity | Approves Dev→Test→Prod | Implements tests & features |
 
-**UX Role:** Human designer + AI collaborate. UX has approval gates at Requirements (design sign-off) and Delivery (UX review).
+**UX Role:** Human designer + AI collaborate. UX has approval gates at Refinement (design sign-off) and Delivery (UX review).
 
-**Skills per phase:** Load `af-{phase}-process` (e.g., `af-setup-process`, `af-requirements-process`)
+**Skills per phase:** Load `af-{phase}-process` (e.g., `af-setup-project`, `af-refine-specifications`)
 
 ### Intervention Points
 
@@ -154,7 +154,7 @@ Workflow: Make changes → Update docs → Run af-docs-quality-agent → Commit 
 - Creating branches, making commits (after quality checks pass)
 
 **Stop and ask the human:**
-- Phase transitions (Discovery → Requirements → Delivery)
+- Phase transitions (Discovery → Refinement → Delivery)
 - Approval gates (mini-PRD approval, design approval, release approval)
 - Ambiguous requirements or multiple valid approaches
 - Architectural decisions with significant trade-offs
@@ -163,7 +163,7 @@ Workflow: Make changes → Update docs → Run af-docs-quality-agent → Commit 
 ### Phase Transitions
 
 ```
-[Ideation] ──optional──► Minimal Setup ──human approval──► Discovery ──► Module Installation ──human approval──► Requirements ──human approval──► Delivery
+[Ideation] ──optional──► Minimal Setup ──human approval──► Discovery ──► Module Installation ──human approval──► Refinement ──human approval──► Delivery
   (any tool)               (always)                          ▲                                                           │
                                                              │                                                           ▼
                                                          docs/context/                                         (cycles back for new features)
@@ -176,7 +176,7 @@ Module installation happens automatically after Discovery, driven by the Tech St
 
 Each phase has a process skill. Load it when entering the phase.
 
-For detailed orchestration workflows, load: `af-orchestration`
+For detailed orchestration workflows, load: `af-orchestrate-workflow`
 
 ---
 
@@ -210,29 +210,29 @@ Load the relevant skill before starting work. Skills contain framework-specific 
 
 | Skill | Load when... |
 |-------|--------------|
-| `af-setup-process` | Setting up infrastructure |
-| `af-discovery-process` | Exploring problems, creating Features |
-| `af-requirements-process` | Writing mini-PRDs, BDD specs |
-| `af-delivery-process` | Implementing from specs |
-| `af-quality-process` | Running validation workflows |
+| `af-setup-project` | Setting up infrastructure |
+| `af-discover-scope` | Exploring problems, creating Features |
+| `af-refine-specifications` | Writing mini-PRDs, BDD specs |
+| `af-deliver-features` | Implementing from specs |
+| `af-validate-quality` | Running validation workflows |
 
 **Expertise Skills** (load when doing domain work):
 
 | Skill | Load when... |
 |-------|--------------|
-| `af-bdd-expertise` | Writing Markdown scenarios |
-| `af-testing-expertise` | Writing tests (Jest, Playwright, RTL) |
-| `af-documentation-standards` | Creating/updating docs |
-| `af-ux-design-expertise` | Creating Storybook stories, RTL tests |
-| `af-work-management-expertise` | Managing Linear, current-task.md |
-| `af-architecture-expertise` | Checking ADR compliance |
-| `af-estimation-expertise` | Estimating effort, Linear story points |
-| `af-project-management-expertise` | Weekly cycle planning, capacity budgets, backlog prioritization |
-| `af-quotation-expertise` | Generating client quotations from estimates |
-| `af-email-sending-expertise` | Sending emails via Gmail API |
-| `af-ideation-expertise` | Brainstorming sessions, ideation documents |
-| `af-figma-design-expertise` | Figma round-trip workflows, Code Connect, Anima sync |
-| `af-agentflow-framework-development` | Modifying AgentFlow itself |
+| `af-write-bdd-scenarios` | Writing Markdown scenarios |
+| `af-configure-test-frameworks` | Writing tests (Jest, Playwright, RTL) |
+| `af-enforce-doc-standards` | Creating/updating docs |
+| `af-design-ui-components` | Creating Storybook stories, RTL tests |
+| `af-manage-work-state` | Managing Linear, current-task.md |
+| `af-decide-architecture` | Checking ADR compliance |
+| `af-estimate-effort` | Estimating effort, Linear story points |
+| `af-plan-work-cycles` | Weekly cycle planning, capacity budgets, backlog prioritization |
+| `af-generate-quotations` | Generating client quotations from estimates |
+| `af-send-emails-gmail` | Sending emails via Gmail API |
+| `af-brainstorm-ideas` | Brainstorming sessions, ideation documents |
+| `af-sync-figma-designs` | Figma round-trip workflows, Code Connect, Anima sync |
+| `af-modify-agentflow` | Modifying AgentFlow itself |
 
 ### Agents Reference
 
@@ -325,6 +325,10 @@ Discovered → Refining → Approved → In Progress → In Review → Dev → T
 
 Never skip states. After deployment: use Dev/Test/Live (not Done).
 
+### Sub-Issue Creation Policy
+
+**Default to checklists over sub-issues.** [Behaviour] and [UX] sub-issues are always created (BDD workflow). All other sub-issues require: (1) parent exceeds 2 days (12 hours) of effort, (2) sub-issue is ≥2 days, and (3) work is genuinely independent. See `af-manage-work-state` for full policy.
+
 ### Linear Issue Description vs Comments
 
 - **Description** = current state of truth. Overwrite, don't append. Always reflects "now."
@@ -403,7 +407,7 @@ For feature work (BDD cycle):
 | Phase | Branch | Command | Tmux Session |
 |-------|--------|---------|--------------|
 | Discovery | `specs` | `start-discovery myproject` | `myproject-discovery` |
-| Requirements | `specs` | `start-refine myproject JCN-123` | `refine-JCN-123` |
+| Refinement | `specs` | `start-refine myproject JCN-123` | `refine-JCN-123` |
 | Delivery | `{ISSUE-ID}` | `start-work myproject JCN-123` | `JCN-123` |
 
 - `specs` branch: PM/UX/QA pre-implementation work (long-lived, shared worktree)

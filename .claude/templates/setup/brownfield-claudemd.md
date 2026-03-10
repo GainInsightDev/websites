@@ -28,7 +28,7 @@ This project uses AgentFlow for BDD-driven development.
 
 ### Getting Started
 1. Create a feature worktree: `start-work [repo-name] [ISSUE-ID]`
-2. Follow the AgentFlow workflow: Discovery → Requirements → Delivery
+2. Follow the AgentFlow workflow: Discovery → Refinement → Delivery
 
 ### Current Status
 - AgentFlow framework integrated

@@ -62,5 +62,5 @@ npm run test:e2e -- --grep "@smoke"
 ## Learn More
 
 For testing patterns and best practices:
-- Testing expertise: `.claude/skills/af-testing-expertise/SKILL.md`
+- Testing expertise: `.claude/skills/af-configure-test-frameworks/SKILL.md`
 - GainInsight setup: `.claude/docs/guides/gaininsight-standard/layer-2-testing.md`

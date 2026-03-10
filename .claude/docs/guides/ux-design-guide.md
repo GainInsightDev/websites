@@ -6,9 +6,9 @@ last_checked: 2026-02-07
 tags: [guide, ux, design, storybook, atomic-design, accessibility, rtl, review]
 parent: ./README.md
 related:
-  - ../../skills/af-ux-design-expertise/SKILL.md
+  - ../../skills/af-design-ui-components/SKILL.md
   - ./testing-guide.md
-  - ./requirements-guide.md
+  - ./refinement-guide.md
   - ../standards/project-structure.md
 ---
 
@@ -16,7 +16,7 @@ related:
 
 Comprehensive guide to UX design in AgentFlow projects. Covers Atomic Design, the 7-stage design flow, Storybook-first development, component catalog management, and UX review workflows.
 
-**For quick rules and directives, load the `af-ux-design-expertise` skill.**
+**For quick rules and directives, load the `af-design-ui-components` skill.**
 
 ## Core Principles
 
@@ -232,7 +232,7 @@ Examples of emergent tokens:
 
 ### Workflow: Creating Storybook Stories from Scenarios
 
-**When:** Requirements phase, after BDD scenarios created.
+**When:** Refinement phase, after BDD scenarios created.
 
 1. Read BDD scenarios from mini-PRD Section 4
 2. Check tsconfig.json path aliases (plan imports accordingly)
@@ -252,7 +252,7 @@ Examples of emergent tokens:
 
 ### Workflow: Creating RTL Tests
 
-**When:** Requirements phase, for non-visual logic.
+**When:** Refinement phase, for non-visual logic.
 
 1. Identify Component-type scenarios in mini-PRD
 2. Read selector contract from `/tests/selectors/[capability].ts`
@@ -422,7 +422,7 @@ UX Review is a **Delivery-phase validation step** run before PR approval for UI 
 ### Review Inputs
 
 1. UI under review (URL, build, or Storybook)
-2. Brand guidelines (`docs/design/brand-guidelines.md`)
+2. Brand system specification (`docs/design/brand-system.md`)
 3. Design decision log (`docs/design/design-decisions.md`)
 4. Reference class declaration
 
@@ -494,7 +494,7 @@ If project includes Flutter mobile, also check:
 - Touch targets minimum 44px
 - Platform-appropriate patterns used
 
-See `af-flutter-expertise` skill for mobile-specific patterns.
+See `af-develop-flutter-apps` skill for mobile-specific patterns.
 
 ---
 
@@ -520,7 +520,7 @@ See `af-flutter-expertise` skill for mobile-specific patterns.
 | Phase | UX Design Activities |
 |-------|---------------------|
 | **Discovery** | Brand guidelines, reference class, design decision log, base design tokens |
-| **Requirements** | Stages 1-5: Component Catalog Check → Create components → Storybook stories → Tests → Sign-off |
+| **Refinement** | Stages 1-5: Component Catalog Check → Create components → Storybook stories → Tests → Sign-off |
 | **Delivery** | Stage 6: Engineering wires components, **UX Review before PR approval** |
 | **Post-Delivery** | Stage 7: Extract emergent pattern tokens |
 
@@ -529,8 +529,8 @@ See `af-flutter-expertise` skill for mobile-specific patterns.
 ## Essential Reading
 
 - Project design system: `/docs/design/design-system.md`
-- Load `af-bdd-expertise` for scenario understanding
-- Load `af-testing-expertise` for test patterns
+- Load `af-write-bdd-scenarios` for scenario understanding
+- Load `af-configure-test-frameworks` for test patterns
 - [Storybook Documentation](https://storybook.js.org/docs/react/writing-stories/introduction)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 - [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/quickref/)

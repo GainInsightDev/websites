@@ -6,9 +6,9 @@ last_checked: 2025-12-09
 tags: [guide, delivery, phase-4, implementation]
 parent: ./README.md
 related:
-  - ../../skills/af-orchestration/SKILL.md
-  - ../../skills/af-delivery-process/SKILL.md
-  - ./requirements-guide.md
+  - ../../skills/af-orchestrate-workflow/SKILL.md
+  - ../../skills/af-deliver-features/SKILL.md
+  - ./refinement-guide.md
   - ../standards/documentation-standards.md
 ---
 
@@ -20,7 +20,7 @@ Complete guide to the AgentFlow Delivery phase - transforming validated requirem
 
 **Phase 4 of 4**: Implementation from complete specifications
 
-The Delivery phase takes the mini-PRD from Requirements and implements it as working code, focusing on:
+The Delivery phase takes the mini-PRD from Refinement and implements it as working code, focusing on:
 - Local development environment (localhost:3000 + sandbox)
 - Iterative testing and refinement
 - Documentation creation
@@ -29,7 +29,7 @@ The Delivery phase takes the mini-PRD from Requirements and implements it as wor
 ## Entry Criteria
 
 Before entering Delivery phase:
-1. ✅ **Complete mini-PRD** from Requirements phase
+1. ✅ **Complete mini-PRD** from Refinement phase
 2. ✅ **Approved BDD scenarios** (`approval:bdd-approved` label on parent issue)
 3. ✅ **Visual specifications** (`approval:ux-approved` label on parent issue, if applicable)
 4. ✅ **Linear issue** in "In Development" status
@@ -298,8 +298,8 @@ The delivery orchestrator's responsibility ends at PR creation. The CI/CD system
 
 ## See Also
 
-- [Orchestration Skill](../../skills/af-orchestration/SKILL.md) - Coordination workflows
-- [Delivery Process](../../skills/af-delivery-process/SKILL.md) - TDD implementation workflow
-- [Requirements Guide](./requirements-guide.md) - Previous phase
+- [Orchestration Skill](../../skills/af-orchestrate-workflow/SKILL.md) - Coordination workflows
+- [Delivery Process](../../skills/af-deliver-features/SKILL.md) - TDD implementation workflow
+- [Refinement Guide](./refinement-guide.md) - Previous phase
 - [Dev Test Agent](../../agents/af-dev-test-agent.md) - Testing agent details
 - [Technical Writer Agent](../../agents/af-technical-writer-agent.md) - Documentation agent

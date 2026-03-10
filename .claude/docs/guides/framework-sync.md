@@ -152,7 +152,7 @@ Pull fixes immediately without waiting for feature work.
 ├── agents/
 │   └── af-*.md                    # Framework agents
 ├── skills/
-│   ├── af-orchestration/          # Orchestration workflows
+│   ├── af-orchestrate-workflow/          # Orchestration workflows
 │   ├── af-**/SKILL.md             # Framework skills
 │   └── af-**/README.md            # Skill indexes
 ├── commands/
@@ -465,7 +465,7 @@ After each sync, `.claude/.sync/state.json` records:
   "sourcePath": "/srv/worktrees/agentflow/main",
   "syncedFiles": [
     ".claude/agents/af-bdd-agent.md",
-    ".claude/skills/af-bdd-expertise/SKILL.md",
+    ".claude/skills/af-write-bdd-scenarios/SKILL.md",
     "..."
   ],
   "backupPath": ".claude/.sync/backup-20251209-143022/"

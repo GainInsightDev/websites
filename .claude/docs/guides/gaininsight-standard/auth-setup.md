@@ -8,11 +8,11 @@ last_checked: 2026-02-08
 tags: [guide, gaininsight, cognito, ses, authentication, email, dkim]
 parent: ./README.md
 related:
-  - ../../../skills/af-cognito-expertise/SKILL.md
-  - ../../../skills/af-ses-expertise/SKILL.md
-  - ../../../skills/af-gaininsight-standard/SKILL.md
-  - ../../../skills/af-environment-infrastructure/SKILL.md
-  - ../../../skills/af-amplify-expertise/SKILL.md
+  - ../../../skills/af-configure-cognito-auth/SKILL.md
+  - ../../../skills/af-configure-ses-email/SKILL.md
+  - ../../../skills/af-setup-gaininsight-stack/SKILL.md
+  - ../../../skills/af-provision-infrastructure/SKILL.md
+  - ../../../skills/af-build-amplify-features/SKILL.md
 ---
 
 # Authentication & Email Setup
@@ -22,8 +22,8 @@ Complete guide for setting up Cognito authentication and SES email in GainInsigh
 **Prerequisites:** Layer 1 Infrastructure complete (AWS accounts, Doppler, Amplify apps deployed).
 
 **Skills that reference this guide:**
-- `af-cognito-expertise` — Cognito User Pool setup, custom attributes, auth triggers
-- `af-ses-expertise` — SES domain verification, sandbox/production, DKIM
+- `af-configure-cognito-auth` — Cognito User Pool setup, custom attributes, auth triggers
+- `af-configure-ses-email` — SES domain verification, sandbox/production, DKIM
 
 ---
 
@@ -177,7 +177,7 @@ doppler run --project gi --config prd -- bash -c '
     }'"'"''
 ```
 
-See `af-environment-infrastructure` for domain admin credential patterns.
+See `af-provision-infrastructure` for domain admin credential patterns.
 
 **Step 4: Verify DKIM is active**
 
@@ -323,8 +323,8 @@ testing+juncan@gaininsight.global → Gmail inbox (read via service account)
 ```
 
 - Gmail API access via service account stored in Doppler (`GMAIL_TESTING_SERVICE_ACCOUNT` in `gi/prd`)
-- See `af-email-e2e-testing` skill for Gmail verification workflow
-- See `af-testing-expertise` for helper patterns
+- See `af-test-email-delivery` skill for Gmail verification workflow
+- See `af-configure-test-frameworks` for helper patterns
 
 ### SES Verified Recipients for Sandbox
 

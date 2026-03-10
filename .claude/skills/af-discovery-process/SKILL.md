@@ -25,7 +25,7 @@ This guide provides:
 - When to delegate to search-agent vs handle directly
 - All 5 deliverable documents with real content examples
 - Linear integration and feature creation workflow
-- Handoff to Requirements phase checklist
+- Handoff to Refinement phase checklist
 
 **Without reading this guide first, you will create incomplete discovery documentation.**
 
@@ -43,7 +43,7 @@ The discovery process explores product-level ideas through structured interviews
 - "Build a SaaS platform for project management"
 - "Develop a learning management system"
 
-**❌ Not Appropriate** (feature level - use Requirements instead):
+**❌ Not Appropriate** (feature level - use Refinement instead):
 - "Add user authentication"
 - "Create a dashboard widget"
 - "Implement email notifications"
@@ -57,7 +57,7 @@ The discovery process explores product-level ideas through structured interviews
 start-specs myproject           # Creates/attaches to specs worktree + tmux
 ```
 
-The `specs` branch is shared by PM, UX, and QA for all pre-implementation work (Discovery + Requirements). Issue branches are only created later during Delivery phase.
+The `specs` branch is shared by PM, UX, and QA for all pre-implementation work (Discovery + Refinement). Issue branches are only created later during Delivery phase.
 
 **File organization on specs branch:**
 - `docs/vision/` - Project overview, business case
@@ -246,7 +246,7 @@ For UI projects, append a calibration matrix after the persona section. This is 
 
 **Purpose:** Feature decomposition from entities. Capabilities become Linear features; prioritization happens in Linear, not in this document.
 
-**Depth:** Discovery sketches, Requirements specifies. Capture what you know (attributes, data sources, UI components) but don't require exhaustive detail — Requirements will flesh it out.
+**Depth:** Discovery sketches, Refinement specifies. Capture what you know (attributes, data sources, UI components) but don't require exhaustive detail — Refinement will flesh it out.
 
 **Note:** Replaces the Feature Roadmap deliverable. Version labels (v1, v2, future) are no longer used in Discovery — Linear's milestones, cycles, and priority flags handle prioritization.
 
@@ -317,7 +317,7 @@ For UI projects, append a calibration matrix after the persona section. This is 
 - PM + UX collaborate on reference class selection
 - UX leads brand guidelines creation
 - UX initializes design decision log (empty but structured)
-- Initial Storybook atoms/tokens may be created (optional, bridges to Requirements)
+- Initial Storybook atoms/tokens may be created (optional, bridges to Refinement)
 
 #### 7. Tech Stack Agreement (`/docs/architecture/tech-stack-agreement.md`)
 **Contains:**
@@ -400,7 +400,7 @@ Load af-estimation-expertise:
   - Set story points on each Linear feature issue
   - Post a [Discovery Estimate] comment on each feature (structured format from skill)
   - Confidence is typically Low or Medium at this stage
-  - These estimates will be refined during Requirements phase
+  - These estimates will be refined during Refinement phase
 ```
 
 **Linear structure uses Milestones to group related issues:**
@@ -422,7 +422,7 @@ Load af-estimation-expertise:
 **Issue creation:**
 - One issue per deliverable capability
 - Container issues (app shell, navigation) block content issues
-- Do NOT create sub-issues during Discovery — sub-issues are created during Requirements
+- Do NOT create sub-issues during Discovery — sub-issues are created during Refinement
 
 **Entity-driven decomposition:**
 - If using entity-driven approach, each entity capability becomes an issue (not a sub-issue)
@@ -523,13 +523,13 @@ Composition View (separate feature)
 
 **Important:** Mark entity parent issues as Epics in Linear. Note in the description: "This is an entity Epic. Capabilities are delivery chunks — refine as one PRD, not separate PRDs per capability."
 
-### Discovery Sketches, Requirements Specifies
+### Discovery Sketches, Refinement Specifies
 
-Discovery captures what you know at a sketch level. Requirements fleshes it out:
+Discovery captures what you know at a sketch level. Refinement fleshes it out:
 - **Discovery depth:** Entities, relationships, capabilities, indicative attributes
-- **Requirements depth:** Exact API contracts, BDD scenarios, Storybook stories, selector contracts
-- Deeper Discovery knowledge helps Requirements (more context) but doesn't constrain it
-- Requirements always does its own Three Amigos analysis and may revise Discovery's sketch
+- **Refinement depth:** Exact API contracts, BDD scenarios, Storybook stories, selector contracts
+- Deeper Discovery knowledge helps Refinement (more context) but doesn't constrain it
+- Refinement always does its own Three Amigos analysis and may revise Discovery's sketch
 
 ## Atomic Features
 
@@ -555,7 +555,7 @@ Epic: Multi-Tenant Authentication
 
 Each Feature becomes ONE Linear Issue with ONE Mini-PRD.
 
-See [Atomic Requirements Guide](../../docs/guides/atomic-requirements-guide.md) for full details on outside-in development and scenario coverage.
+See [Atomic Refinement Guide](../../docs/guides/atomic-refinement-guide.md) for full details on outside-in development and scenario coverage.
 
 ---
 
@@ -586,7 +586,7 @@ See [Atomic Requirements Guide](../../docs/guides/atomic-requirements-guide.md) 
 
 2. **Feature-level discovery**
    - Discovery is for products/projects, not individual features
-   - Redirect to Requirements phase for features
+   - Redirect to Refinement phase for features
 
 3. **Incomplete deliverables**
    - All 7 documents MUST be created (6 if API-only/no UI)
@@ -639,10 +639,10 @@ See [Atomic Requirements Guide](../../docs/guides/atomic-requirements-guide.md) 
 - ← **Ideation** (optional) - Brainstorming outputs in `docs/context/` (see `af-ideation-expertise` skill)
 
 **After Discovery:**
-- → **Requirements Phase** - Select Linear features for detailed BDD specs
-- → Requirements creates Markdown scenarios and sub-issues
-- → Requirements refines effort estimates (1,2,3,5,8,13)
-- → Requirements obtains human approval before implementation
+- → **Refinement phase** - Select Linear features for detailed BDD specs
+- → Refinement creates Markdown scenarios and sub-issues
+- → Refinement refines effort estimates (1,2,3,5,8,13)
+- → Refinement obtains human approval before implementation
 
 **Discovery provides foundation for:**
 - Feature prioritization decisions
@@ -663,14 +663,14 @@ Discovery session complete when:
 - ✅ Documentation validated (frontmatter, links, standards)
 - ✅ Milestone(s) created for delivery goals
 - ✅ Issues created (not sub-issues) for each capability, grouped under Milestones
-- ✅ No sub-issues created (those come from Requirements phase)
+- ✅ No sub-issues created (those come from Refinement phase)
 - ✅ Container issues block content issues
 - ✅ No version labels used — prioritization via Linear milestones/cycles/priority
 - ✅ Discovery Estimates posted on all new/changed issues (using af-estimation-expertise skill)
 - ✅ Tech Stack Agreement created with selected modules and rationale
 - ✅ Module dependencies and applicable integration guides identified
 - ✅ Discovery documentation attached to Linear issues
-- ✅ User acknowledges readiness for Requirements phase
+- ✅ User acknowledges readiness for Refinement phase
 
 ## Detailed Reference
 

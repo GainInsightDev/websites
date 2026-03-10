@@ -24,8 +24,8 @@ Systematically onboard existing repositories to AgentFlow documentation standard
 
 ## Skills Used
 
-- **af-documentation-standards** (for metadata, structure, and frontmatter requirements)
-- **af-quality-process** (for validation workflows and script execution)
+- **af-enforce-doc-standards** (for metadata, structure, and frontmatter requirements)
+- **af-validate-quality** (for validation workflows and script execution)
 
 ## Inputs (from Orchestrator)
 
@@ -80,7 +80,7 @@ Assess existing documentation state against AgentFlow standards.
 
 ### Phase 2: Documentation Hierarchy
 
-1. **MUST** load af-documentation-standards skill
+1. **MUST** load af-enforce-doc-standards skill
 2. **MUST** add frontmatter to all existing `.md` files with required fields:
    - `title`, `created`, `updated`, `last_checked`, `tags`
    - At least one linking field
@@ -154,10 +154,10 @@ Assess existing documentation state against AgentFlow standards.
 - `.claude/docs/standards/documentation-standards.md`
 
 **Skill for standards:**
-- `.claude/skills/af-documentation-standards/SKILL.md`
+- `.claude/skills/af-enforce-doc-standards/SKILL.md`
 
 **Validation workflows:**
-- `.claude/skills/af-quality-process/SKILL.md`
+- `.claude/skills/af-validate-quality/SKILL.md`
 
 **Validation scripts:**
 - `.claude/scripts/documentation/validate-frontmatter.ts`

@@ -2,7 +2,7 @@
 /**
  * Push AgentFlow framework updates to all consumer project worktrees.
  *
- * Discovers projects from the server registry (Turso cloud DB via project-registry CLI),
+ * Discovers projects from the server registry (project-registry CLI),
  * finds all worktrees with AgentFlow installed, syncs each one using the
  * existing sync-from-agentflow.ts script, auto-commits, and reports results.
  *

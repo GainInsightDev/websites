@@ -13,9 +13,9 @@ last_checked: 2026-02-08
 tags: [agent, project-management, planning, cycles, capacity]
 parent: ./README.md
 related:
-  - ../skills/af-project-management-expertise/SKILL.md
-  - ../skills/af-estimation-expertise/SKILL.md
-  - ../skills/af-work-management-expertise/SKILL.md
+  - ../skills/af-plan-work-cycles/SKILL.md
+  - ../skills/af-estimate-effort/SKILL.md
+  - ../skills/af-manage-work-state/SKILL.md
 ---
 
 # Project Management Agent
@@ -38,8 +38,8 @@ Plan weekly work cycles for a Linear team by querying the backlog, estimating un
 
 ## Procedure
 
-1. **MUST** load `af-project-management-expertise` skill for planning patterns
-2. **MUST** load `af-estimation-expertise` skill for estimation heuristics
+1. **MUST** load `af-plan-work-cycles` skill for planning patterns
+2. **MUST** load `af-estimate-effort` skill for estimation heuristics
 3. **MUST** query all issues in Discovered and Approved states for the target team using Linear MCP tools
 4. **MUST** assess estimation coverage for each issue:
    - Check `estimate` field (null = unestimated)
@@ -81,13 +81,13 @@ Plan weekly work cycles for a Linear team by querying the backlog, estimating un
 ## References
 
 **Planning patterns:**
-- `.claude/skills/af-project-management-expertise/SKILL.md` (primary)
+- `.claude/skills/af-plan-work-cycles/SKILL.md` (primary)
 
 **Estimation patterns:**
-- `.claude/skills/af-estimation-expertise/SKILL.md` (for heuristics and structured output)
+- `.claude/skills/af-estimate-effort/SKILL.md` (for heuristics and structured output)
 
 **Linear integration:**
-- `.claude/skills/af-work-management-expertise/SKILL.md` (for Linear workflows)
+- `.claude/skills/af-manage-work-state/SKILL.md` (for Linear workflows)
 
 **Tools:**
 - Linear MCP tools: `list_issues`, `list_cycles`, `update_issue`, `create_comment`

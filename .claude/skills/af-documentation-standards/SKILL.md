@@ -83,16 +83,16 @@ Invoke this skill when:
 
 When implementing a new feature (BDD workflow):
 
-1. **Requirements Phase** - BDD scenarios, mini-PRD, visual specs
+1. **Refinement Phase** - BDD scenarios, mini-PRD, visual specs
 2. **Implementation Phase** - Write code with JSDoc, include `@documentation` tags
 3. **Documentation Phase** - Create guides in `/docs/guides/`, API docs in `/docs/api/`
 4. **Validation Phase** - Run validation scripts and docs-quality-agent
 
-**Key principle**: Documentation created BEFORE code (Requirements), then enhanced DURING implementation, then validated AFTER completion.
+**Key principle**: Documentation created BEFORE code (Refinement), then enhanced DURING implementation, then validated AFTER completion.
 
 **Example structure**:
 ```
-docs/requirements/mini-prd/auth.md       # Requirements phase (contains Markdown scenarios)
+docs/requirements/mini-prd/auth.md       # Refinement phase (contains Markdown scenarios)
 src/lib/auth.ts                          # Implementation phase (with TSDoc)
 docs/guides/authentication.md            # Documentation phase
 docs/api/auth-endpoints.md               # Documentation phase

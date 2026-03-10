@@ -23,7 +23,7 @@ children:
 
 AgentFlow provides a systematic approach to AI-assisted software development:
 
-- **Four-Phase Workflow**: Setup → Discovery → Requirements → Delivery
+- **Four-Phase Workflow**: Setup → Discovery → Refinement → Delivery
 - **BDD-First Development**: All features start with Markdown scenario specifications
 - **Human-in-the-Loop**: Critical decisions require explicit approval
 - **Context Preservation**: Maintains state across sessions via Linear integration
@@ -70,7 +70,7 @@ See: [Capabilities Framework](./architecture/capabilities-framework.md) for the 
 |-------|---------|------------|-------------|
 | **Setup** | Environment and infrastructure | Working project structure | No |
 | **Discovery** | Problem exploration | Linear Features, project docs | No |
-| **Requirements** | BDD specification | Markdown scenarios, mini-PRDs | **Yes** |
+| **Refinement** | BDD specification | Markdown scenarios, mini-PRDs | **Yes** |
 | **Delivery** | TDD implementation | Working, tested code | No |
 
 See: [Phase Guides](./guides/) for detailed workflows.
@@ -80,7 +80,7 @@ See: [Phase Guides](./guides/) for detailed workflows.
 ```
 CLAUDE-agentflow.md (always loaded - "You ARE the orchestrator")
     ↓
-Process Skills (workflow: setup, discovery, requirements, delivery)
+Process Skills (workflow: setup, discovery, refinement, delivery)
     ↓
 Agents (thin execution wrappers)
     ↓
@@ -95,8 +95,8 @@ See: [System Architecture](./architecture/README.md) for details.
 
 | Decision Type | Who Decides | When |
 |---------------|-------------|------|
-| Phase transitions | Human | Moving between Setup/Discovery/Requirements/Delivery |
-| Requirements approval | Human | Before Delivery phase begins |
+| Phase transitions | Human | Moving between Setup/Discovery/Refinement/Delivery |
+| Refinement approval | Human | Before Delivery phase begins |
 | Architectural decisions | Human | ADRs require sign-off |
 | Destructive operations | Human | Force push, schema migrations, etc. |
 | Routine operations | AI | Loading skills, running tests, committing code |
@@ -105,7 +105,7 @@ See: [System Architecture](./architecture/README.md) for details.
 
 | Component | Purpose | Location |
 |-----------|---------|----------|
-| **Orchestration** | Coordinates phases, invokes agents | `CLAUDE-agentflow.md` + `.claude/skills/af-orchestration/` |
+| **Orchestration** | Coordinates phases, invokes agents | `CLAUDE-agentflow.md` + `.claude/skills/af-orchestrate-workflow/` |
 | **Process Skills** | Workflow knowledge (setup, discovery, etc.) | `.claude/skills/*/SKILL.md` |
 | **Expertise Skills** | Domain knowledge (BDD, testing, etc.) | `.claude/skills/*/SKILL.md` |
 | **Agents** | Execute specific tasks | `.claude/agents/` |
@@ -124,7 +124,7 @@ See: [System Architecture](./architecture/README.md) for details.
 
 1. Run Setup phase to initialize infrastructure
 2. Run Discovery phase to explore and document the project
-3. Proceed through Requirements and Delivery phases
+3. Proceed through Refinement and Delivery phases
 
 ## Documentation Sections
 
@@ -133,7 +133,7 @@ See: [System Architecture](./architecture/README.md) for details.
 How-to guides for each phase:
 - [Setup Guide](./guides/setup-guide.md)
 - [Discovery Guide](./guides/discovery-guide.md)
-- [Requirements Guide](./guides/requirements-guide.md)
+- [Refinement Guide](./guides/refinement-guide.md)
 - [Delivery Guide](./guides/delivery-guide.md)
 - [Testing Guide](./guides/testing-guide.md)
 
@@ -146,7 +146,7 @@ Quality standards and conventions:
 ### Framework Reference
 
 Self-documenting components:
-- [Orchestration](../skills/af-orchestration/SKILL.md) - Phase coordination and workflows
+- [Orchestration](../skills/af-orchestrate-workflow/SKILL.md) - Phase coordination and workflows
 - [Agents](../agents/README.md)
 - [Skills](../skills/README.md)
 - [Commands](../commands/README.md)
@@ -161,12 +161,12 @@ Self-documenting components:
 /docs:audit-project       # Assess documentation state
 /task:start <issue>       # Begin work on Linear issue
 /task:continue            # Resume current task
-/requirements:refine      # BDD specification work
+/refinement:refine      # BDD specification work
 ```
 
 ### Key Principles
 
-1. **Specifications before implementation** - Requirements phase is mandatory
+1. **Specifications before implementation** - Refinement phase is mandatory
 2. **Human approval required** - Critical decisions need sign-off
 3. **Documentation is automatic** - Hooks maintain quality
 4. **Context is preserved** - Linear + current-task.md maintain state

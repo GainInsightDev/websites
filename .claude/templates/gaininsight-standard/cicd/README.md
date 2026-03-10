@@ -10,7 +10,7 @@ code_files:
   - ./deploy-simple.yml.tpl
   - ./deploy-with-e2e.yml.tpl
 related:
-  - ../../../skills/af-gaininsight-standard/SKILL.md
+  - ../../../skills/af-setup-gaininsight-stack/SKILL.md
   - ../../../docs/guides/gaininsight-standard/layer-4-cicd.md
 ---
 

@@ -33,7 +33,7 @@ Load this skill when you need to:
 
 **Common triggers:**
 - Discovery phase: Creating initial project ADRs
-- Requirements phase: Reviewing architecture for complex features
+- Refinement phase: Reviewing architecture for complex features
 - Delivery phase: Checking if implementation introduces new patterns
 - Git commit hook: "Does this align with existing ADRs?"
 
@@ -207,7 +207,7 @@ These are typical decisions - use as starting points, not prescriptions:
 - **Output:** `docs/architecture/adr/` with 3-5 foundational ADRs
 - **Index:** Populated with decision summaries
 
-### Requirements Phase
+### Refinement phase
 - **Reference:** Mini-PRD Section 6 lists related ADRs
 - **Review:** Architecture agent validates complex features
 - **Update:** ADRs if requirements reveal new constraints

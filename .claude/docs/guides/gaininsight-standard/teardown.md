@@ -10,7 +10,7 @@ parent: ./README.md
 related:
   - ./layer-4-cicd.md
   - ./layer-1-infrastructure.md
-  - ../../../skills/af-gaininsight-standard/SKILL.md
+  - ../../../skills/af-setup-gaininsight-stack/SKILL.md
 ---
 
 # Full Stack Teardown

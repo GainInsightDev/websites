@@ -285,10 +285,10 @@ EOF
 
 ## Step 6: Register with Project Registry
 
-Add project to the Turso cloud registry via `project-registry` CLI:
+Add project to the registry via `project-registry` CLI:
 
 ```bash
-# If project doesn't exist yet, insert via Turso HTTP API (see af-setup-process skill)
+# If project doesn't exist yet, insert via project-registry CLI (see af-setup-project skill)
 # Then set fields:
 project-registry set {project-name} name "{Project Name}"
 project-registry set {project-name} linear.team_key "{TEAM_KEY}"

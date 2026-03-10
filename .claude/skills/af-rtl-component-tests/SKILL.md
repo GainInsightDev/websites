@@ -1,6 +1,6 @@
 ---
 name: af-rtl-component-tests
-description: Write React Testing Library (RTL) component tests for UI behavior, accessibility, and design contracts. Use when testing React components, creating component test files, or defining UI behavior before implementation during Requirements phase.
+description: Write React Testing Library (RTL) component tests for UI behavior, accessibility, and design contracts. Use when testing React components, creating component test files, or defining UI behavior before implementation during Refinement phase.
 
 # AgentFlow documentation fields
 title: RTL Component Tests (Entry Point)
@@ -19,7 +19,7 @@ related:
 
 ## What to read
 
-**When RTL tests are written (Requirements phase, before engineering):**
+**When RTL tests are written (Refinement phase, before engineering):**
 → [testing-guide.md#test-writing-timeline](../../docs/guides/testing-guide.md#test-writing-timeline)
 
 **React component testing patterns with RTL:**

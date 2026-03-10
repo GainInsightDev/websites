@@ -18,7 +18,7 @@ Push the latest AgentFlow framework to all consumer project worktrees. This is t
 
 ## What This Command Does
 
-1. Reads the server project registry (Turso cloud DB via `project-registry` CLI)
+1. Reads the server project registry (`project-registry` CLI)
 2. Discovers all worktrees with AgentFlow installed (`.claude/CLAUDE-agentflow.md` present)
 3. For each worktree:
    - Runs the sync script to copy framework-owned files
@@ -126,4 +126,4 @@ Both commands use the same underlying sync logic (`sync-from-agentflow.ts`). `/a
 - [/af:sync](./sync.md) - Pull-based sync for individual projects
 - [Framework Sync Guide](../../docs/guides/framework-sync.md) - Sync system overview
 - [Push Script Source](../../scripts/sync/push-to-projects.ts) - Implementation
-- [Making AgentFlow Changes](../../skills/af-making-agentflow-changes/SKILL.md) - Contribution workflow
+- [Making AgentFlow Changes](../../skills/af-commit-agentflow-changes/SKILL.md) - Contribution workflow

@@ -60,7 +60,7 @@ jobs:
             - `$LINEAR_API_KEY` - API key (already set, use directly in curl)
             - `$LINEAR_TEAM_ID` - Team ID (already set, use directly in curl)
 
-            Use the GraphQL API directly with curl commands below (Linear API is the standard approach - see af-linear-api-expertise skill).
+            Use the GraphQL API directly with curl commands below (Linear API is the standard approach - see af-query-linear-api skill).
 
             First, get available labels for the team:
             ```bash

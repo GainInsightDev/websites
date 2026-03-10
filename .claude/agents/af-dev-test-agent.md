@@ -110,10 +110,10 @@ Implement comprehensive testing following TDD/BDD workflows, execute test suites
 ## References
 
 **Testing patterns and workflows:**
-- `.claude/skills/af-testing-expertise/SKILL.md`
+- `.claude/skills/af-configure-test-frameworks/SKILL.md`
 
 **BDD implementation:**
-- `.claude/skills/af-bdd-expertise/SKILL.md`
+- `.claude/skills/af-write-bdd-scenarios/SKILL.md`
 
 **Test configuration:**
 - `jest.config.js` - Unit/Integration test configuration

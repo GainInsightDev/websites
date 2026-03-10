@@ -36,7 +36,7 @@ Load this skill when you need:
 |-------|--------------|------------|
 | Setup | `af-setup-process` | - |
 | Discovery | `af-discovery-process` | `af-work-management-agent` |
-| Requirements | `af-requirements-process` | `af-bdd-agent`, `af-ux-design-agent` |
+| Refinement | `af-refinement-process` | `af-bdd-agent`, `af-ux-design-agent` |
 | Delivery | `af-delivery-process` | `af-dev-test-agent`, `af-code-quality-agent` |
 | Quality (cross-cutting) | `af-quality-process` | `af-docs-quality-agent`, `af-architecture-quality-agent` |
 
@@ -50,7 +50,7 @@ Identify the current phase from context:
 |-----------------|-------|
 | "setup", "initialize", "bootstrap", "new project" | Setup |
 | "explore", "discover", "understand", "what should we build" | Discovery |
-| "requirements", "BDD", "scenarios", "specifications", "mini-PRD" | Requirements |
+| "requirements", "BDD", "scenarios", "specifications", "mini-PRD" | Refinement |
 | "implement", "develop", "code", "TDD", "build the feature" | Delivery |
 | "validate", "quality", "check", "audit", "review" | Quality (any phase) |
 
@@ -74,9 +74,9 @@ Never proceed past these without human approval:
 
 | Gate | When | Who Approves |
 |------|------|--------------|
-| Discovery → Requirements | Feature scope defined, ADRs written | PM |
+| Discovery → Refinement | Feature scope defined, ADRs written | PM |
 | Mini-PRD approval | Scenarios and designs complete (`approval:bdd-approved` + `approval:ux-approved` labels set) | PM + QA |
-| Requirements → Delivery | Specifications locked | PM |
+| Refinement → Delivery | Specifications locked | PM |
 | Merge to main | Tests passing, code reviewed | SE |
 | Release to Production | QA verification complete | PM |
 
@@ -124,7 +124,7 @@ Never proceed past these without human approval:
 ```
 Setup:      Create project brief, define scope
 Discovery:  Discover requirements, create estimates, configure Linear
-Requirements: Approve designs, approve requirements, plan milestones
+Refinement:   Approve designs, approve requirements, plan milestones
 Delivery:   Approve releases to production
 ```
 
@@ -132,7 +132,7 @@ Delivery:   Approve releases to production
 ```
 Setup:      Establish brand guidelines, reference class
 Discovery:  Define base design tokens, identify atoms (shadcn/ui primitives)
-Requirements: Catalog Check → Create molecules/organisms → Storybook → Tests
+Refinement:   Catalog Check → Create molecules/organisms → Storybook → Tests
 Delivery:   Engineering wires components, UX Review before PR
 ```
 
@@ -140,7 +140,7 @@ Delivery:   Engineering wires components, UX Review before PR
 ```
 Setup:      -
 Discovery:  -
-Requirements: Refine requirements, develop test definitions, verify designs
+Refinement:   Refine requirements, develop test definitions, verify designs
 Delivery:   Approve Dev→Test, verify Test→Prod transitions
 ```
 
@@ -148,13 +148,13 @@ Delivery:   Approve Dev→Test, verify Test→Prod transitions
 ```
 Setup:      Architecture analysis, GI Standard setup, auth implementation
 Discovery:  Review ADRs, set up tooling (logging, alerting, observability)
-Requirements: Review ADRs
+Refinement:   Review ADRs
 Delivery:   Implement tests, implement features, approve merges
 ```
 
 ### Workflow: Estimation
 
-**When:** Estimating effort during Discovery or Requirements phase
+**When:** Estimating effort during Discovery or Refinement phase
 
 **Procedure:**
 ```
@@ -167,7 +167,7 @@ Delivery:   Implement tests, implement features, approve merges
    - Post [Discovery Estimate] comment with structured breakdown
    - Confidence is typically Low or Medium
 
-3. Requirements phase (atomic with roll-up):
+3. Refinement phase (atomic with roll-up):
    - After mini-PRD and BDD scenarios are complete
    - For features > 3 points: create sub-issues with individual estimates
    - Estimate each sub-issue by functional area in hours
@@ -227,8 +227,8 @@ Delivery:   Implement tests, implement features, approve merges
 **User: "Let's start building the signup feature"**
 ```
 → Identify: Delivery phase (implementation request)
-→ Check: Is there an approved mini-PRD? (Requirements gate)
-→ If NO: "We need to complete Requirements first. Shall I start /requirements:refine?"
+→ Check: Is there an approved mini-PRD? (Refinement gate)
+→ If NO: "We need to complete Refinement first. Shall I start /refinement:refine?"
 → If YES: Load af-delivery-process, begin TDD cycle
 ```
 
@@ -265,7 +265,7 @@ Delivery:   Implement tests, implement features, approve merges
 **Solution:** Always check for approval before phase transitions
 
 ### 2. Wrong Phase for Request
-**Problem:** User asks to "implement" but Requirements not complete
+**Problem:** User asks to "implement" but Refinement not complete
 **Solution:** Identify phase gaps, propose completing prerequisites
 
 ### 3. Role Confusion

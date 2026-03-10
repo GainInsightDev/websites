@@ -72,7 +72,7 @@ Who performs the work and what happens to the context?
 
 The "orchestrator" is not a separate entity - it's the **main agent** operating with:
 - **CONTEXT**: CLAUDE-agentflow.md ("You ARE the orchestrator")
-- **HOW**: af-orchestration skill (detailed playbook)
+- **HOW**: af-orchestrate-workflow skill (detailed playbook)
 - **WHEN**: Hooks reinforce orchestrator role (SessionStart, PreCompact)
 
 ---
@@ -89,10 +89,10 @@ Methodology, expertise, recommended approaches.
 
 | Category | Examples | Purpose |
 |----------|----------|---------|
-| Orchestration | `af-orchestration` | Phase transitions, role workflows |
-| Process | `af-setup-process`, `af-delivery-process` | Phase-specific workflows |
-| Expertise | `af-testing-expertise`, `af-bdd-expertise` | Domain knowledge |
-| Framework | `af-agentflow-framework-development` | Meta-skills for extending AgentFlow |
+| Orchestration | `af-orchestrate-workflow` | Phase transitions, role workflows |
+| Process | `af-setup-project`, `af-deliver-features` | Phase-specific workflows |
+| Expertise | `af-configure-test-frameworks`, `af-write-bdd-scenarios` | Domain knowledge |
+| Framework | `af-modify-agentflow` | Meta-skills for extending AgentFlow |
 
 ---
 

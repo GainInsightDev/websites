@@ -10,7 +10,7 @@
  * Prerequisites:
  *   - Layer 2 complete (testing framework)
  *
- * @documentation .claude/skills/af-gaininsight-standard/SKILL.md
+ * @documentation .claude/skills/af-setup-gaininsight-stack/SKILL.md
  */
 import { test, expect } from '@playwright/test';
 import { execSync, spawn, ChildProcess } from 'child_process';

@@ -30,7 +30,7 @@ Interactive introduction to AgentFlow for new team members.
 - Questions about your role in the workflow
 
 **What it covers:**
-- The four-phase workflow (Setup → Discovery → Requirements → Delivery)
+- The four-phase workflow (Setup → Discovery → Refinement → Delivery)
 - Key commands and when to use them
 - Role-specific guidance (PM, SE, UX, QA)
 - Where to find documentation
@@ -130,7 +130,7 @@ To add a new framework command:
 
 - [Commands Index](../README.md) - All commands
 - [Template Manifest Schema](../../docs/reference/template-manifest-schema.md) - Sync configuration
-- [AgentFlow Framework Development](../../skills/af-agentflow-framework-development/SKILL.md) - Creating framework components
+- [AgentFlow Framework Development](../../skills/af-modify-agentflow/SKILL.md) - Creating framework components
 
 ---
 

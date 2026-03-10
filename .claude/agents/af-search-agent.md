@@ -13,8 +13,8 @@ last_checked: 2025-12-02
 tags: [agent, search, context-protection, pass-through]
 parent: ./README.md
 related:
-  - ../skills/af-orchestration/SKILL.md
-  - ../skills/af-discovery-process/SKILL.md
+  - ../skills/af-orchestrate-workflow/SKILL.md
+  - ../skills/af-discover-scope/SKILL.md
 code_files: []
 ---
 

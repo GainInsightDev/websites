@@ -376,8 +376,8 @@ AgentFlow uses a standardized set of workflow states. Colors are from the refere
 | State | Type | Color | Position | Purpose |
 |-------|------|-------|----------|---------|
 | Discovered | backlog | #bec2c8 | 0 | New feature identified, needs exploration |
-| Refining | started | #5e6ad2 | 1 | Requirements phase in progress |
-| Approved | unstarted | #bec2c8 | 2 | Requirements approved, ready for implementation |
+| Refining | started | #5e6ad2 | 1 | Refinement phase in progress |
+| Approved | unstarted | #bec2c8 | 2 | Refinement approved, ready for implementation |
 | In Progress | started | #f2c94c | 3 | Active development |
 | Waiting for Feedback | started | #eb5757 | 4 | Blocked on human input (agent automation) |
 | In Review | started | #0f783c | 5 | PR created, code review |
@@ -456,7 +456,7 @@ curl -s -X POST https://api.linear.app/graphql \
 |-------|-------|---------|
 | phase:setup | #95a2b3 | Setup phase work |
 | phase:discovery | #5e6ad2 | Discovery phase work |
-| phase:requirements | #f2c94c | Requirements phase work |
+| phase:requirements | #f2c94c | Refinement phase work |
 | phase:delivery | #0f783c | Delivery phase work |
 | type:feature | #5e6ad2 | New functionality |
 | type:bug | #eb5757 | Bug fix |

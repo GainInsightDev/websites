@@ -60,9 +60,9 @@ Ideation can be **highly precise** about the problem space and user experience. 
 | Feature ideas and priority | Medium | Directional (must-have vs nice-to-have) |
 | Known constraints | Capture as context | "We already use Salesforce" is a constraint, not a decision |
 | Data models and entities | Excluded | Discovery builds these with codebase context |
-| API design | Excluded | Discovery + Requirements territory |
+| API design | Excluded | Discovery + Refinement territory |
 | Architecture and tech stack | Excluded | Requires codebase and infrastructure context |
-| Database schema | Excluded | Requirements and Delivery territory |
+| Database schema | Excluded | Refinement and Delivery territory |
 
 **If the conversation drifts toward implementation:** Redirect with: "That's a great question for Discovery, where we'll have full codebase context. For now, let's capture what the user needs to accomplish."
 

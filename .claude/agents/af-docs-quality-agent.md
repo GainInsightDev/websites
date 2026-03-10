@@ -275,10 +275,10 @@ npm run check:stale
 ## References
 
 **Validation workflows:**
-- `.claude/skills/af-quality-process/SKILL.md`
+- `.claude/skills/af-validate-quality/SKILL.md`
 
 **Documentation standards:**
-- `.claude/skills/af-documentation-standards/SKILL.md`
+- `.claude/skills/af-enforce-doc-standards/SKILL.md`
 
 **Validation scripts:**
 - `.claude/scripts/documentation/validate-frontmatter.ts`

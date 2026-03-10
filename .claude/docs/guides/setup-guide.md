@@ -9,7 +9,7 @@ tags: [guide, setup, brownfield, greenfield, initialization]
 parent: ./README.md
 related:
   - ../../commands/brownfield/add.md
-  - ../../skills/af-setup-process/SKILL.md
+  - ../../skills/af-setup-project/SKILL.md
 ---
 
 # Setup Guide
@@ -226,7 +226,7 @@ Brief description of what this project does
 
 ## Development Workflow
 1. Create Linear issue
-2. Run /requirements:refine
+2. Run /refinement:refine
 3. Implement with TDD
 4. Create PR
 
@@ -278,7 +278,7 @@ ls -la .claude/agents/
 - ✅ `.claude/` directory exists with symlinks
 - ✅ `CLAUDE.md` exists at repository root
 - ✅ Slash commands work (e.g., `/status`)
-- ✅ Can load skills (e.g., `af-setup-process`)
+- ✅ Can load skills (e.g., `af-setup-project`)
 - ✅ No git conflicts
 
 ### Brownfield Customization
@@ -857,7 +857,7 @@ ls .claude/commands/
 **5. Skill Loading**
 ```
 # Test skill loading
-`af-setup-process`
+`af-setup-project`
 
 # Should load without errors
 ```
@@ -1097,10 +1097,10 @@ Labels: type:feature
 State: Backlog
 ```
 
-### 2. Refine Requirements
+### 2. Refinement
 
 ```
-/requirements:refine LIN-123
+/refinement:refine LIN-123
 
 # Creates:
 - Mini-PRD
@@ -1111,7 +1111,7 @@ State: Backlog
 ### 3. Approve & Start Development
 
 ```
-/requirements:approve LIN-123
+/refinement:approve LIN-123
 
 # Then:
 /task:start LIN-123
@@ -1207,7 +1207,7 @@ gh pr create --title "LIN-123: Feature description"
 
 ## See Also
 
-- [Setup Process Skill](../../skills/af-setup-process/SKILL.md) - Workflow knowledge
+- [Setup Process Skill](../../skills/af-setup-project/SKILL.md) - Workflow knowledge
 - [Brownfield Add Command](../../commands/brownfield/add.md) - Setup command reference
 - [Framework Development Guide](./framework-development-guide.md) - For framework changes
 - [Documentation Standards](../standards/documentation-standards.md) - Doc requirements

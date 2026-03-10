@@ -28,7 +28,7 @@ Templates used by the setup process for creating new projects.
 
 ## Usage
 
-These templates are referenced by `af-setup-process` skill. Replace placeholders:
+These templates are referenced by `af-setup-project` skill. Replace placeholders:
 
 - `[Project Name]` - Human-readable project name
 - `[KEY]` - Linear team key (e.g., "MYA")

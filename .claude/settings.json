@@ -29,6 +29,15 @@
         ]
       },
       {
+        "matcher": "mcp__agentflow__mark_done",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/specs-merge-reminder.sh"
+          }
+        ]
+      },
+      {
         "matcher": "Bash",
         "hooks": [
           {
@@ -52,6 +61,15 @@
           {
             "type": "command",
             "command": "bash .claude/hooks/check-services-before-slack.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__agentflow__mark_done",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/specs-merge-reminder.sh"
           }
         ]
       }

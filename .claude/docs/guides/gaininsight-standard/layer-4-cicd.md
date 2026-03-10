@@ -10,7 +10,7 @@ parent: ./README.md
 related:
   - ./layer-3-ui-styling.md
   - ./teardown.md
-  - ../../../skills/af-gaininsight-standard/SKILL.md
+  - ../../../skills/af-setup-gaininsight-stack/SKILL.md
 ---
 
 # Layer 4: CI/CD Pipeline
@@ -1455,4 +1455,4 @@ See [Flutter Mobile Setup Guide](./flutter-mobile-setup.md) for complete Codemag
 | PR/develop Android | GHA Linux | Free |
 | staging/main iOS | Codemagic macOS | ~$2/month |
 
-**Reference:** See [Flutter Expertise Skill](../../../skills/af-flutter-expertise/SKILL.md) for CI/CD patterns.
+**Reference:** See [Flutter Expertise Skill](../../../skills/af-develop-flutter-apps/SKILL.md) for CI/CD patterns.

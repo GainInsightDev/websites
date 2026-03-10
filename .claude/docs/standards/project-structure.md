@@ -36,7 +36,7 @@ project-root/
 │   │   └── optimization/         # General optimization reports
 │   └── work/                     # Working files (gitignored)
 │       ├── current-task.md       # Delivery phase context
-│       └── current-requirement.md # Requirements phase context
+│       └── current-requirement.md # Refinement phase context
 │
 ├── amplify/                      # AWS Amplify backend
 │   ├── backend/
@@ -218,7 +218,7 @@ These files are generated and should be gitignored:
 
 Working context files (gitignored):
 - `.claude/work/current-task.md` - Delivery phase context
-- `.claude/work/current-requirement.md` - Requirements phase context
+- `.claude/work/current-requirement.md` - Refinement phase context
 
 ## Validation
 

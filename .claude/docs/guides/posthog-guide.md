@@ -8,7 +8,7 @@ last_checked: 2026-02-11
 tags: [guide, posthog, analytics, feature-flags, integration]
 parent: ./README.md
 related:
-  - ../../skills/af-posthog-expertise/SKILL.md
+  - ../../skills/af-integrate-posthog/SKILL.md
   - ./gaininsight-standard/README.md
   - ./gaininsight-standard/layer-3-ui-styling.md
   - ../../../.agentflow/adr/adr-010-posthog-analytics-feature-flags.md

@@ -59,7 +59,7 @@ Parse response:
 
 ### If Brownfield Selected:
 
-Execute brownfield setup procedure from `.claude/skills/af-setup-process/SKILL.md` Workflow: Brownfield Setup.
+Execute brownfield setup procedure from `.claude/skills/af-setup-project/SKILL.md` Workflow: Brownfield Setup.
 
 Key steps:
 1. Validate environment (bare repo exists, Node.js available, AgentFlow path)
@@ -279,11 +279,11 @@ Generate CLAUDE.md content based on stack choices. Use `.claude/templates/setup/
 - See GainInsight Standard guides for full setup
 ```
 
-See `.claude/skills/af-setup-process/SKILL.md` for complete workflow details.
+See `.claude/skills/af-setup-project/SKILL.md` for complete workflow details.
 
 ### If Standard Selected:
 
-Load the `af-gaininsight-standard` skill and execute its workflows.
+Load the `af-setup-gaininsight-stack` skill and execute its workflows.
 
 This is a shortcut that selects the `gaininsight-standard` combination from the module registry — equivalent to selecting all standard modules during Discovery.
 
@@ -301,7 +301,7 @@ Execute module installation using the `gaininsight-standard` combination from `.
 The module registry defines the install order and integration guides:
 1. aws-infrastructure → amplify → auth → email → testing → ui-styling → cicd → posthog → security
 2. Cross-module integration guides are loaded automatically based on selected modules
-3. See `.claude/skills/af-setup-process/SKILL.md` for the Module Setup workflow
+3. See `.claude/skills/af-setup-project/SKILL.md` for the Module Setup workflow
 
 **Layer guides (for reference):**
 - Layer 1: `.claude/docs/guides/gaininsight-standard/layer-1-infrastructure.md`
@@ -313,7 +313,7 @@ The module registry defines the install order and integration guides:
 ## Reference Documentation
 
 **For detailed procedures:**
-- `.claude/skills/af-setup-process/SKILL.md` - Complete setup workflows with all steps
+- `.claude/skills/af-setup-project/SKILL.md` - Complete setup workflows with all steps
 - `.claude/docs/reference/module-registry.yml` - Module definitions, dependencies, and combinations
 - `.claude/docs/guides/integrations/` - Cross-module integration guides
 

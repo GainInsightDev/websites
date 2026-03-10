@@ -122,16 +122,16 @@ Architecture quality ensures design decisions are documented, ADRs are current, 
 Process quality ensures AgentFlow workflows are followed correctly and context is preserved.
 
 #### Standards Enforced
-- **Phase Adherence**: Development follows Setup → Discovery → Requirements → Delivery
+- **Phase Adherence**: Development follows Setup → Discovery → Refinement → Delivery
 - **BDD Compliance**: All features start with Markdown scenario specifications
-- **Approval Gates**: Requirements phase has human approval
+- **Approval Gates**: Refinement phase has human approval
 - **Context Preservation**: `current-task.md` and Linear integration maintain state
 - **Commit Standards**: Commits are properly formatted and validated
 
 #### Validation Checkpoints
 - **Setup Phase**: Infrastructure validated before proceeding
 - **Discovery Phase**: Linear features properly documented
-- **Requirements Phase**: Mini-PRD approved before implementation
+- **Refinement Phase**: Mini-PRD approved before implementation
 - **Delivery Phase**: Tests pass, documentation created, pre-commit validation
 
 ## Quality Workflows
@@ -519,7 +519,7 @@ status: accepted  # proposed | accepted | deprecated | superseded
 |--------|--------|-------------|
 | Phase Adherence | 100% | All features follow 4-phase workflow |
 | BDD Compliance | 100% | Features start with Markdown scenarios |
-| Approval Gate | 100% | Requirements approved before Delivery |
+| Approval Gate | 100% | Refinement approved before Delivery |
 | Context Preservation | High | Tasks tracked in Linear + current-task.md |
 | Pre-commit Validation | High | Validation before most commits |
 
@@ -684,16 +684,16 @@ supersedes: ../adr-012-old-approach.md
 
 ### Process Issues
 
-#### Skipping Requirements Phase
+#### Skipping Refinement Phase
 **Problem**: Implementation without approved mini-PRD
 
-**Detection**: Linear issue in Delivery without Requirements label
+**Detection**: Linear issue in Delivery without Refinement label
 
 **Fix**: Stop implementation, create requirements
 ```bash
-/requirements:refine <Linear-Feature-ID>
+/refinement:refine <Linear-Feature-ID>
 # Complete mini-PRD
-/requirements:approve <Linear-Feature-ID>
+/refinement:approve <Linear-Feature-ID>
 # Then resume implementation
 ```
 
@@ -722,7 +722,7 @@ supersedes: ../adr-012-old-approach.md
 - User redirected to dashboard
 ```
 
-**Prevention**: Requirements phase creates scenario specs
+**Prevention**: Refinement phase creates scenario specs
 
 #### Lost Context
 **Problem**: Switching tasks without preserving state
@@ -854,7 +854,7 @@ See [af-architecture-quality-agent.md](../../agents/af-architecture-quality-agen
 - Check freshness of reference documentation
 - Ensure Linear features are properly documented
 
-### Requirements Phase
+### Refinement Phase
 - Validate BDD feature files with bdd-expertise skill
 - Ensure mini-PRDs have proper metadata
 - Verify visual specifications are complete
@@ -900,7 +900,7 @@ See [af-architecture-quality-agent.md](../../agents/af-architecture-quality-agen
 - Review stale documentation weekly
 
 ### 6. Follow the Workflow
-- Don't skip phases (especially Requirements)
+- Don't skip phases (especially Refinement)
 - Create BDD scenarios before implementing
 - Get approval before proceeding to Delivery
 - Preserve context across sessions

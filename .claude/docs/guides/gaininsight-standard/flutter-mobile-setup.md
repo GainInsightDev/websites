@@ -10,7 +10,7 @@ parent: ./README.md
 related:
   - ./layer-1-infrastructure.md
   - ./layer-2-testing.md
-  - ../../../skills/af-flutter-expertise/SKILL.md
+  - ../../../skills/af-develop-flutter-apps/SKILL.md
 ---
 
 # Flutter Mobile Setup (Optional Add-on)
@@ -649,6 +649,6 @@ flutter run -d web-server --web-port=4500
 
 ## Reference
 
-- **Skill:** `.claude/skills/af-flutter-expertise/SKILL.md`
+- **Skill:** `.claude/skills/af-develop-flutter-apps/SKILL.md`
 - **AFT Implementation:** `/srv/worktrees/aft/develop/packages/mobile/`
 - **Web/Flutter Parallel:** Same Todo.list() query, same success message

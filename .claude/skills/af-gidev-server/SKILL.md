@@ -41,7 +41,7 @@ Load this skill when you need to:
 
 | Component | Location |
 |-----------|----------|
-| Project registry | Turso cloud DB (`project-registry` CLI) |
+| Project registry | `project-registry` CLI |
 | Bare repos | `/srv/repos/` |
 | Worktrees | `/srv/worktrees/{project}/{issue}` |
 | Server docs | `/srv/docs/` |

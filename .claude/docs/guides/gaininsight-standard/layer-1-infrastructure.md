@@ -9,7 +9,7 @@ tags: [guide, gaininsight, infrastructure, aws, amplify, doppler]
 parent: ./README.md
 related:
   - ./layer-2-testing.md
-  - ../../../skills/af-gaininsight-standard/SKILL.md
+  - ../../../skills/af-setup-gaininsight-stack/SKILL.md
 ---
 
 # Layer 1: Environment & Infrastructure
@@ -1183,9 +1183,9 @@ doppler run --project {project-name} --config dev -- \
 
 **Purpose:** Add project to the GI server's project registry for cost tracking and docs portal.
 
-**Location:** Turso cloud database (accessed via `project-registry` CLI)
+**Location:** `project-registry` CLI (server project registry)
 
-**Add project via Turso HTTP API** (see `af-setup-process` skill for full insert example), then set fields:
+**Add project via `project-registry` CLI** (see `af-setup-project` skill for full insert example), then set fields:
 
 ```bash
 project-registry set {project-name} name "{Project Name}"

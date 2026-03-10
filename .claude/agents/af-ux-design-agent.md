@@ -7,8 +7,8 @@ tools: Read, Write, Edit, Glob, mcp__shadcn-ui-server__list_shadcn_components, m
 # Documentation system fields (for AgentFlow)
 title: UX Design Agent
 created: 2025-09-05
-updated: 2026-02-07
-last_checked: 2026-02-07
+updated: 2026-03-09
+last_checked: 2026-03-09
 tags: [agent, ux, design, visual-specs, storybook, atomic-design]
 parent: ./README.md
 ---
@@ -34,27 +34,32 @@ Transform BDD scenarios into visual specifications and Storybook stories, classi
 
 1. **MUST** load ux-design-expertise skill for design patterns
 2. **MUST** read design system at `/docs/design/design-system.md`
-3. **MUST** perform Component Catalog Check:
+3. **MUST** check Design Grammar at `.design-grammar/` — does a grammar definition exist for this component type?
+4. **MUST** perform Component Catalog Check:
    a. Browse existing Storybook stories for reusable atoms/molecules
    b. Use `mcp__shadcn-ui-server__list_shadcn_components` for available primitives
    c. Use `mcp__shadcn-ui-server__get_component_details` for specifications
    d. Compose from existing components before creating new ones
-4. **MUST** classify new components: Atoms, Molecules, Organisms, or Templates
-5. **MUST** create components in atomic folder structure: `src/components/{atoms,molecules,organisms,templates}/`
-6. **MUST** create Storybook stories with atomic-level title prefixes (e.g., `Organisms/Auth/SignupForm`)
-7. **MUST** include stories for each BDD scenario (happy, error, boundary)
-8. **MUST** add responsive variants (Mobile, Tablet, Desktop)
-9. **MUST** add theme variants (Light, Dark) using decorators
-10. **MUST** add play functions for interaction testing (PRIMARY for UI)
-11. **MUST** use `tags: ['autodocs']` and JSDoc on props
-12. **MUST** document accessibility requirements (WCAG 2.1 AA)
-13. **SHOULD** create user flow diagrams (Mermaid) for complex interactions
+5. **MUST** classify new components using extended hierarchy: Primitives, Atoms, Molecules, Organisms, or Templates
+6. **MUST** create view components for page-level UI at `src/components/views/[Name]View.tsx` — these are the single source of truth shared by stories and app pages
+7. **MUST** create atomic components in `src/components/{primitives,atoms,molecules,organisms,templates}/`
+8. **MUST** create Storybook stories that import view components or atomic components (title uses atomic prefix)
+9. **MUST** include stories for each BDD scenario (happy, error, boundary)
+10. **MUST** add responsive variants (Mobile, Tablet, Desktop)
+11. **MUST** add theme variants (Light, Dark) using decorators
+12. **MUST** add play functions for interaction testing (PRIMARY for UI)
+13. **MUST** use `tags: ['autodocs']` and JSDoc on props
+14. **MUST** document accessibility requirements (WCAG 2.1 AA)
+15. **MUST** validate component structure conforms to grammar JSON (if grammar definition exists)
+16. **SHOULD** create user flow diagrams (Mermaid) for complex interactions
 
 ## Outputs (returned to Orchestrator)
 
+- view_components_created (array of file paths in `src/components/views/`)
 - stories_created (array of file paths)
-- components_specified (count, with atomic classification)
+- components_specified (count, with atomic classification including primitives level)
 - components_reused (count from catalog check)
+- grammar_conformance (boolean — do components match grammar JSON definitions?)
 - scenarios_covered (count matching BDD)
 - responsive_variants (count)
 - theme_variants (count)
@@ -74,8 +79,13 @@ Transform BDD scenarios into visual specifications and Storybook stories, classi
 ## References
 
 **Design patterns, Atomic Design, and Storybook:**
-- `.claude/skills/af-ux-design-expertise/SKILL.md`
+- `.claude/skills/af-design-ui-components/SKILL.md`
 - `.claude/docs/guides/ux-design-guide.md`
+
+**Design Grammar (shared cross-project vocabulary):**
+- `.design-grammar/` (JSON definitions for all atomic levels)
+- `.design-grammar/pipeline/` (token build tooling — Style Dictionary)
+- `.design-grammar/tokens-studio/` (Figma ↔ repo token sync)
 
 **Design system:**
 - `/docs/design/design-system.md` (brand, colors, typography, components)

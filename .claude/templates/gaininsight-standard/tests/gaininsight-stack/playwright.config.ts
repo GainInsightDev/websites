@@ -7,7 +7,7 @@
  * Run tests via Doppler to inject environment variables:
  *   doppler run --project {project} --config dev -- npx playwright test
  *
- * @documentation .claude/skills/af-gaininsight-standard/SKILL.md
+ * @documentation .claude/skills/af-setup-gaininsight-stack/SKILL.md
  */
 import { defineConfig } from '@playwright/test';
 

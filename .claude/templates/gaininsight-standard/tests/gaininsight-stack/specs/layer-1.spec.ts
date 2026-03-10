@@ -11,7 +11,7 @@
  *   - DOPPLER_PROJECT: Project name (auto-set by doppler run)
  *   - AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION: AWS credentials
  *
- * @documentation .claude/skills/af-gaininsight-standard/SKILL.md
+ * @documentation .claude/skills/af-setup-gaininsight-stack/SKILL.md
  */
 import { test, expect } from '@playwright/test';
 import { execSync } from 'child_process';

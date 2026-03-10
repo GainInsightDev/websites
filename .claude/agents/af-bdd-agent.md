@@ -153,7 +153,7 @@ For each scenario, assign one test type:
 ## References
 
 **BDD patterns and scenario syntax:**
-- `.claude/skills/af-bdd-expertise/SKILL.md`
+- `.claude/skills/af-write-bdd-scenarios/SKILL.md`
 
 **Glossary:**
 - `/docs/glossary.yml` or `.claude/templates/glossary.yml`

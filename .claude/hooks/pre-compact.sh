@@ -6,7 +6,7 @@ cat << 'EOF'
 Context compaction imminent. Save orchestration state:
 
   Update .claude/work/current-task.md with:
-  - Current phase (Setup/Discovery/Requirements/Delivery)
+  - Current phase (Setup/Discovery/Refinement/Delivery)
   - Human's role (PM/UX/QA/SE)
   - Progress and blockers
   - Next orchestration step

@@ -54,7 +54,7 @@ parent: ../README.md
 1. **Linear team creation is automatic** - Setup creates the team via GraphQL API
 2. **Never skip validation phase** - Always verify setup completed correctly
 3. **Use templates** - Reference `.claude/templates/setup/` for CLAUDE.md and handoff messages
-4. **Add to project registry** - Use `project-registry` CLI (Turso cloud DB) for gidev projects
+4. **Add to project registry** - Use `project-registry` CLI for gidev projects
 5. **Commit with --no-verify** - Initial commits skip git hooks (no code to lint yet)
 
 ### Setup State Rules
@@ -88,7 +88,7 @@ parent: ../README.md
    - Archive default workflow states
    - Create AgentFlow states based on development model
    - Create standard labels (Epic, BDD, UX, Docs, Debt)
-2. Create GitHub repo if needed: `gh repo create`
+2. Create GitHub repo if needed: `gh repo create GainInsightDev/{repo-name} --private`
 3. Create Linear issue for setup (via GraphQL API)
 4. Create Doppler project: `doppler projects create {project-name} --description "Secrets for {project-name}"`
    - Creates default configs (dev, stg, prd)
@@ -102,7 +102,7 @@ parent: ../README.md
 8. Create CLAUDE.md from template: `.claude/templates/setup/greenfield-claudemd.md`
 9. Create security config: `mkdir -p .github && cp .claude/templates/github/dependabot.yml .github/`
 10. Initial commit and push (use --no-verify)
-11. Add to project registry via Turso DB (see "Project Registry Entry" workflow)
+11. Add to project registry via `project-registry` CLI (see "Project Registry Entry" workflow)
 12. Create docs portal files: `docs/_category_.json`, `docs/README.md`
 13. Update Linear issue to Done
 14. Show handoff message: `.claude/templates/setup/greenfield-handoff.txt`
@@ -272,7 +272,7 @@ parent: ../README.md
 - ✅ All applicable integration guides followed
 - ✅ Validation tests pass for each module
 - ✅ Tech Stack Agreement updated with completion status
-- ✅ Ready for Requirements phase
+- ✅ Ready for Refinement phase
 
 ### Workflow: Component Installation
 
@@ -538,7 +538,7 @@ Running 4 projects...
 8. Create CLAUDE.md from template: `.claude/templates/setup/brownfield-claudemd.md`
 9. Create security config if missing: `mkdir -p .github && cp .claude/templates/github/dependabot.yml .github/`
 10. Commit and push (use --no-verify)
-11. Add to project registry via Turso DB (see "Project Registry Entry" workflow)
+11. Add to project registry via `project-registry` CLI (see "Project Registry Entry" workflow)
 12. Create docs portal files
 13. Create Linear issue with next steps (docs retrofit, security audit)
 14. Show handoff message: `.claude/templates/setup/brownfield-handoff.txt`
@@ -555,7 +555,7 @@ Running 4 projects...
 
 **When:** Adding any project to gidev infrastructure.
 
-**Registry:** Turso cloud database, accessed via `project-registry` CLI.
+**Registry:** `project-registry` CLI (backed by PostgreSQL/RDS — but always use the CLI, never raw SQL).
 
 **Reading config:**
 ```bash
@@ -574,8 +574,6 @@ project-registry set myproject branching_strategy trunk+develop
 project-registry set myproject linear.team_key HLM
 ```
 
-Changes take effect within ~2 seconds (Turso replica sync). No restart needed.
-
 **Key fields:**
 
 | Field | Purpose |
@@ -583,7 +581,7 @@ Changes take effect within ~2 seconds (Turso replica sync). No restart needed.
 | `name` | Display name |
 | `linear.team_key` / `linear.team_id` | Linear team mapping (use UUID for linearis CLI) |
 | `zulip.stream` / `zulip.stream_id` | Zulip stream for agent notifications (legacy: `slack.channel_id`) |
-| `github.repo` | GitHub repo (Org/repo) |
+| `github.repo` | GitHub repo (Org/repo) — always use `GainInsightDev/{repo}` |
 | `repo_path` | Bare repo on server |
 | `worktree_base` | Where worktrees live |
 | `run_as` | Unix user for agent sessions |
@@ -595,23 +593,23 @@ Changes take effect within ~2 seconds (Turso replica sync). No restart needed.
 **Steps to add a new project:**
 
 1. Find next port_base: `project-registry list` then check existing port_base values, add 10000
-2. Insert via Turso HTTP API:
+2. Create project entry with initial config:
    ```bash
-   source /etc/claude/agent-orchestrator.env
-   curl -s "https://agentview-andydavo.aws-eu-west-1.turso.io/v2/pipeline" \
-     -H "Authorization: Bearer $TURSO_AUTH_TOKEN" \
-     -d '{
-       "requests": [{"type":"execute","stmt":{
-         "sql": "INSERT INTO projects (project_key, config_json) VALUES (?, ?)",
-         "args": [
-           {"type":"text","value":"{project-key}"},
-           {"type":"text","value":"{config-json}"}
-         ]
-       }}]
-     }'
+   project-registry set {project-key} name "{Display Name}"
+   project-registry set {project-key} linear.team_key "{TEAM_KEY}"
+   project-registry set {project-key} linear.team_id "{team-uuid}"
+   project-registry set {project-key} github.repo "GainInsightDev/{project-key}"
+   project-registry set {project-key} repo_path "/srv/repos/{project-key}.git"
+   project-registry set {project-key} worktree_base "/srv/worktrees/{project-key}"
+   project-registry set {project-key} run_as "tmux-shared"
+   project-registry set {project-key} port_base "{next-port-base}"
+   project-registry set {project-key} agent_enabled true
+   project-registry set {project-key} branching_strategy "feature-branch"
+   project-registry set {project-key} doppler.project "{project-key}"
+   project-registry set {project-key} doppler.config "dev"
+   project-registry set {project-key} zulip.stream "{project-key}"
    ```
-3. Set individual fields: `project-registry set {project} <field> <value>`
-4. Verify: `project-registry {project}`
+3. Verify: `project-registry {project-key}`
 
 **Lookups:**
 ```bash
@@ -680,7 +678,7 @@ Module selection happens during Discovery, not during Setup:
 
 3. **Skipping project registry**
    - Docs portal won't sync
-   - Add entry via `project-registry` CLI (Turso cloud DB)
+   - Add entry via `project-registry` CLI
 
 4. **Wrong port_base**
    - Check existing: `project-registry list` then inspect port_base values

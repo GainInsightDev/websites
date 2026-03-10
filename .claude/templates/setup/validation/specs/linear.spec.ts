@@ -50,7 +50,7 @@ test.describe('Linear Module Validation', () => {
       // Work directory is created on first task:start, so it's optional at setup time
       // Just verify the framework has the concept
       expect(
-        fileExists('.claude/skills/af-work-management-expertise/SKILL.md') ||
+        fileExists('.claude/skills/af-manage-work-state/SKILL.md') ||
         fileExists('.claude/CLAUDE-agentflow.md'),
         'Work management skill or framework file should exist'
       ).toBe(true);

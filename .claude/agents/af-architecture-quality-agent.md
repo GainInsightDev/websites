@@ -21,8 +21,8 @@ Validate system architecture coherence, ensure ADR compliance, review integratio
 
 ## Skills Used
 
-- `af-architecture-expertise` (for ADR lifecycle, decision framework, compliance rules)
-- `af-quality-process` (for validation workflows and procedures)
+- `af-decide-architecture` (for ADR lifecycle, decision framework, compliance rules)
+- `af-validate-quality` (for validation workflows and procedures)
 
 ## Inputs (from Orchestrator)
 
@@ -32,7 +32,7 @@ Validate system architecture coherence, ensure ADR compliance, review integratio
 
 ## Procedure
 
-1. **MUST** load `af-architecture-expertise` skill for ADR patterns and decision framework
+1. **MUST** load `af-decide-architecture` skill for ADR patterns and decision framework
 2. **MUST** read ADR index first: `docs/architecture/adr/README.md`
    - Get quick overview of all decisions
    - Only read individual ADRs when needed for depth
@@ -74,7 +74,7 @@ Validate system architecture coherence, ensure ADR compliance, review integratio
 - Ensure ADR index is created and populated
 - Check foundational decisions are documented
 
-### Requirements Phase
+### Refinement phase
 - Validate mini-PRD Section 6 references correct ADRs
 - Check for architectural constraints on new features
 - Review data flow implications
@@ -113,7 +113,7 @@ status: success | error
 ## References
 
 **Primary skill:**
-- `.claude/skills/af-architecture-expertise/SKILL.md`
+- `.claude/skills/af-decide-architecture/SKILL.md`
 
 **Templates:**
 - `.claude/templates/adr-template.md`

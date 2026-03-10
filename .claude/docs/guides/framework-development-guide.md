@@ -8,7 +8,7 @@ parent: ./README.md
 related:
   - ../architecture/README.md
   - ../standards/documentation-standards.md
-  - ../../skills/af-agentflow-framework-development/SKILL.md
+  - ../../skills/af-modify-agentflow/SKILL.md
 ---
 
 # Framework Development Guide - Creating AgentFlow Components
@@ -46,7 +46,7 @@ Source Materials (500+ lines) → Docs, templates, scripts (source of truth)
 | Component | Purpose | Size | Location |
 |-----------|---------|------|----------|
 | **Orchestration** | Phase coordination context | Always loaded | `CLAUDE-agentflow.md` |
-| **Orchestration Skill** | Detailed workflows | 200-300 lines | `.claude/skills/af-orchestration/` |
+| **Orchestration Skill** | Detailed workflows | 200-300 lines | `.claude/skills/af-orchestrate-workflow/` |
 | **Process Skill** | Workflow knowledge | 100-300 lines | `.claude/skills/af-*-process/` |
 | **Expertise Skill** | Domain knowledge | 100-400 lines | `.claude/skills/af-*-expertise/` |
 | **Agent** | Execution wrapper | ~50 lines | `.claude/agents/` |
@@ -82,8 +82,8 @@ Docs (800 lines) = Comprehensive reference material
 
 **Framework components MUST use `af-` prefix:**
 - `af-bdd-agent.md`
-- `af-delivery-process/SKILL.md`
-- `af-testing-expertise/SKILL.md`
+- `af-deliver-features/SKILL.md`
+- `af-configure-test-frameworks/SKILL.md`
 
 **Project components MUST NOT use `af-` prefix:**
 - `shopping-cart-service.md`
@@ -213,14 +213,14 @@ This agent loads the following skills:
 ## Procedure
 
 1. **MUST load BDD expertise**
-   Load `af-bdd-expertise` skill
+   Load `af-write-bdd-scenarios` skill
 
 2. **MUST read Linear issue**
    - Extract requirements
    - Identify acceptance criteria
 
 3. **MUST transform to Markdown scenarios**
-   - Follow skill workflow: "Creating Scenarios from Requirements"
+   - Follow skill workflow: "Creating Scenarios from Refinement"
    - Apply glossary compliance rules
 
 4. **MUST validate output**
@@ -299,8 +299,8 @@ Takes a feature ID and maybe a project path or something. You might also want to
 **Good:**
 ```markdown
 3. **MUST transform to Markdown scenarios**
-   - Load `af-bdd-expertise` skill
-   - Follow workflow: "Creating Scenarios from Requirements"
+   - Load `af-write-bdd-scenarios` skill
+   - Follow workflow: "Creating Scenarios from Refinement"
    - Apply Rule #5: Glossary compliance
 ```
 
@@ -348,10 +348,10 @@ Task tool → subagent_type="af-new-agent", inputs={}  # missing required param
 **Purpose:** Workflow knowledge - how to execute a phase or process
 
 **Examples:**
-- `af-setup-process` - Infrastructure setup workflow
-- `af-discovery-process` - Problem exploration workflow
-- `af-requirements-process` - BDD specification workflow
-- `af-delivery-process` - Implementation workflow
+- `af-setup-project` - Infrastructure setup workflow
+- `af-discover-scope` - Problem exploration workflow
+- `af-refine-specifications` - BDD specification workflow
+- `af-deliver-features` - Implementation workflow
 
 **Characteristics:**
 - Step-by-step procedures
@@ -364,10 +364,10 @@ Task tool → subagent_type="af-new-agent", inputs={}  # missing required param
 **Purpose:** Domain knowledge - patterns and rules for a specific domain
 
 **Examples:**
-- `af-bdd-expertise` - Markdown scenario patterns and glossary
-- `af-testing-expertise` - Testing patterns and TDD
-- `af-documentation-standards` - Documentation requirements
-- `af-ux-design-expertise` - UI/UX patterns
+- `af-write-bdd-scenarios` - Markdown scenario patterns and glossary
+- `af-configure-test-frameworks` - Testing patterns and TDD
+- `af-enforce-doc-standards` - Documentation requirements
+- `af-design-ui-components` - UI/UX patterns
 
 **Characteristics:**
 - Domain rules and constraints
@@ -585,10 +585,10 @@ Target: **150-200 lines**
 ## Essential Reading
 
 **Comprehensive BDD patterns and examples:**
-- [BDD Expertise Skill](../../skills/af-bdd-expertise/SKILL.md) - Markdown scenario patterns
+- [BDD Expertise Skill](../../skills/af-write-bdd-scenarios/SKILL.md) - Markdown scenario patterns
 ```
 
-**Skill (af-bdd-expertise):**
+**Skill (af-write-bdd-scenarios):**
 ```markdown
 [Concise directive skill with patterns, glossary compliance, examples]
 ```
@@ -669,7 +669,7 @@ Before considering a skill complete:
 Task: "Create a unit test for authentication function"
 
 Expected:
-- Agent loads `af-testing-expertise`
+- Agent loads `af-configure-test-frameworks`
 - Agent follows "Writing Unit Tests from BDD" workflow
 - Agent creates .test.ts file (Rule #1)
 - Agent uses Arrange-Act-Assert pattern (Rule #5)
@@ -713,10 +713,10 @@ parent: ./README.md
 
 Example command body:
 
-You are starting the Requirements phase for Linear feature $1.
+You are starting the Refinement phase for Linear feature $1.
 
 Your tasks:
-1. Load `af-requirements-process` skill
+1. Load `af-refine-specifications` skill
 2. Invoke af-bdd-agent to create Markdown scenarios
 3. Invoke af-ux-design-agent to create visual specifications
 4. Create mini-PRD document
@@ -738,7 +738,7 @@ Commands are organized by category:
 │   ├── start.md
 │   ├── continue.md
 │   └── complete.md
-├── requirements/          # Requirements phase (/requirements:*)
+├── refinement/            # Refinement phase (/refinement:*)
 │   ├── refine.md
 │   └── approve.md
 └── discovery/             # Discovery phase (/discovery:*)
@@ -751,7 +751,7 @@ Commands are organized by category:
 
 **Examples:**
 - `/task:start` - Start working on a task
-- `/requirements:refine` - Begin requirements refinement
+- `/refinement:refine` - Begin refinement
 - `/af:sync` - Sync framework from upstream
 - `/discovery:discover` - Start discovery phase
 
@@ -832,14 +832,14 @@ Sync the latest AgentFlow framework changes from the upstream repository.
 
 **Good:**
 ```markdown
-# /requirements:refine <feature-id>
+# /refinement:refine <feature-id>
 
-You are starting the Requirements phase for Linear feature $1.
+You are starting the Refinement phase for Linear feature $1.
 
 **Your procedure:**
 
 1. **Load process skill**
-   Load `af-requirements-process` for Requirements phase workflow
+   Load `af-refine-specifications` for Refinement phase workflow
 
 2. **Invoke BDD agent**
    Use Task tool with subagent_type="af-bdd-agent"
@@ -854,7 +854,7 @@ You are starting the Requirements phase for Linear feature $1.
    Include BDD scenarios and visual specs
 
 5. **Request approval**
-   Wait for human approval via /requirements:approve
+   Wait for human approval via /refinement:approve
 ```
 
 ### Command Testing
@@ -1690,7 +1690,7 @@ npx ts-node .claude/scripts/check-stale-docs.ts
 
 **Comprehensive guides for depth:**
 - [Documentation System Guide](./documentation-system.md) - Self-documenting system details
-- [BDD Expertise Skill](../../skills/af-bdd-expertise/SKILL.md) - Markdown scenario patterns
+- [BDD Expertise Skill](../../skills/af-write-bdd-scenarios/SKILL.md) - Markdown scenario patterns
 - [Testing Guide](./testing-guide.md) - Testing strategy and TDD workflow
 
 **Claude Code official documentation:**

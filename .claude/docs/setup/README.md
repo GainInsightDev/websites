@@ -53,7 +53,7 @@ For adding AgentFlow to an existing project, you keep your existing stack. Agent
 
 ### What You Get
 
-- BDD workflow (Discovery → Requirements → Delivery)
+- BDD workflow (Discovery → Refinement → Delivery)
 - Documentation quality tooling
 - Linear integration for task management
 - Slash commands and agent access

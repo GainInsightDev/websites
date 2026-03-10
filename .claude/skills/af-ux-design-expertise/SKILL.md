@@ -28,7 +28,7 @@ Load this skill when you need to:
 - Check the component catalog before creating new components
 
 **Common triggers:**
-- Requirements phase creates visual sub-tasks
+- Refinement phase creates visual sub-tasks
 - UI features need Storybook stories
 - PR touches `src/components/` or `stories/`
 - Discovery phase needs brand guidelines
@@ -109,7 +109,7 @@ Load this skill when you need to:
 
 ### Workflow: Creating Stories from Scenarios
 
-**When:** Requirements phase, after BDD scenarios.
+**When:** Refinement phase, after BDD scenarios.
 
 1. Read BDD scenarios from mini-PRD Section 4
 2. **Component Catalog Check** — Browse Storybook, check shadcn/ui
@@ -167,7 +167,7 @@ See [UX Design Guide](../../docs/guides/ux-design-guide.md#ux-review-workflow) f
 | Phase | Activities |
 |-------|-----------|
 | **Discovery** | Brand guidelines, reference class, base design tokens |
-| **Requirements** | Catalog Check → Components → Stories → Tests → Sign-off |
+| **Refinement** | Catalog Check → Components → Stories → Tests → Sign-off |
 | **Delivery** | Engineering wires components, UX Review before PR |
 | **Post-Delivery** | Extract emergent pattern tokens |
 

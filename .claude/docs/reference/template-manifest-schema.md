@@ -155,7 +155,7 @@ Defines project assets that must be preserved during sync.
 
 ❌ Overwritten (framework):
   - af-bdd-agent.md
-  - af-testing-expertise/
+  - af-configure-test-frameworks/
   - .claude/docs/standards/
 ```
 
@@ -169,7 +169,7 @@ Namespace conventions and validation rules.
     "framework": "af-",
     "instructions": [
       "Framework assets MUST use 'af-' prefix",
-      "Example: af-bdd-agent.md, af-bdd-expertise/",
+      "Example: af-bdd-agent.md, af-write-bdd-scenarios/",
       "Project assets should use '{project-name}-' prefix",
       "Example: umii-deployment-agent.md, umii-apollo-graphql/",
       "Sync preserves all non-af- prefixed assets automatically"
@@ -381,7 +381,7 @@ Each synced project maintains state at `.claude/.sync/state.json`:
   "commit": "abc123def456",
   "files": [
     ".claude/agents/af-bdd-agent.md",
-    ".claude/skills/af-bdd-expertise/SKILL.md"
+    ".claude/skills/af-write-bdd-scenarios/SKILL.md"
   ]
 }
 ```

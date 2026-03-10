@@ -16,9 +16,9 @@ children:
   - ./layer-4-cicd.md
   - ./teardown.md
 related:
-  - ../../../skills/af-gaininsight-standard/SKILL.md
+  - ../../../skills/af-setup-gaininsight-stack/SKILL.md
   - ../posthog-guide.md
-  - ../../../skills/af-posthog-expertise/SKILL.md
+  - ../../../skills/af-integrate-posthog/SKILL.md
 ---
 
 # GainInsight Standard Guides
@@ -41,7 +41,7 @@ The GainInsight Standard stack provides a production-ready infrastructure for Ne
 
 ## How to Use These Guides
 
-1. **Invoke the skill first**: Use the `af-gaininsight-standard` skill to understand when and why to use each layer
+1. **Invoke the skill first**: Use the `af-setup-gaininsight-stack` skill to understand when and why to use each layer
 2. **Follow layers in order**: Layer 2 depends on Layer 1, etc.
 3. **Run validation tests**: Each layer has BDD tests - run them before and after setup
 4. **Stop at any layer**: You can stop after any layer has a complete, useful setup

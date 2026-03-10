@@ -8,7 +8,7 @@
  * Pattern: CAPABILITY.component.element
  * Example: AUTH.signup.email
  *
- * @see .claude/skills/af-bdd-expertise/SKILL.md for usage in scenarios
+ * @see .claude/skills/af-write-bdd-scenarios/SKILL.md for usage in scenarios
  */
 
 // Example: Authentication selectors

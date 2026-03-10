@@ -53,7 +53,7 @@ doppler run --project gi --config prd -- bash -c '
 
 | Item | Location |
 |------|----------|
-| Registry | Turso cloud DB |
+| Registry | `project-registry` CLI |
 | Query command | `project-registry <project> [field]` |
 | Update command | `project-registry set <project> <field> <value>` |
 
@@ -223,7 +223,7 @@ project-registry find-by-team JKN  # Find project by Linear team key
 
 | File | Contains |
 |------|----------|
-| Turso cloud DB (`project-registry` CLI) | All project AWS accounts, Doppler configs |
+| `project-registry` CLI | All project AWS accounts, Doppler configs |
 | `/srv/docs/CREDENTIALS.md` | Credential management patterns |
 | `/srv/docs/ADMIN.md` | Server administration including Cloudflare |
 

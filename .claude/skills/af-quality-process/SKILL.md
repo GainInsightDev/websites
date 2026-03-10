@@ -483,7 +483,7 @@ children:
 - Ensure Linear features properly documented
 - Run incremental validation after each document
 
-### Requirements Phase
+### Refinement phase
 - Validate **BDD feature files** with bdd-expertise
 - Ensure mini-PRDs have proper metadata
 - Verify visual specifications complete

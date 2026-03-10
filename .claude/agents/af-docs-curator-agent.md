@@ -27,9 +27,9 @@ Curate documentation for consistency and coherence:
 
 ## Skills Used
 
-- `af-documentation-standards` - For linking patterns, frontmatter requirements, three-layer structure
-- `af-agentflow-framework-development` - For understanding skills-based documentation in `.claude/`
-- `af-quality-process` - For validation workflows
+- `af-enforce-doc-standards` - For linking patterns, frontmatter requirements, three-layer structure
+- `af-modify-agentflow` - For understanding skills-based documentation in `.claude/`
+- `af-validate-quality` - For validation workflows
 
 ## Two Documentation Contexts
 
@@ -80,8 +80,8 @@ src/**/*.ts                 (code with @documentation tags)
 
 ## Procedure
 
-1. **MUST** load `af-documentation-standards` skill
-2. **MUST** load `af-agentflow-framework-development` skill (for framework scope)
+1. **MUST** load `af-enforce-doc-standards` skill
+2. **MUST** load `af-modify-agentflow` skill (for framework scope)
 3. **MUST** determine scope and apply appropriate patterns
 4. **MUST** find duplicate explanations of same concepts
 5. **MUST** identify authoritative source for each concept
@@ -148,7 +148,7 @@ Key rules:
 
 # After (good - loads skill)
 ## Procedure
-1. **MUST** load `af-bdd-expertise` skill for scenario patterns
+1. **MUST** load `af-write-bdd-scenarios` skill for scenario patterns
 2. Follow skill workflow: "Creating Scenarios"
 ```
 
@@ -208,11 +208,11 @@ grep -rh "docs/guides" .claude/skills/*/SKILL.md | grep -oE 'docs/guides/[^)]+' 
 ## Framework Coherence Report
 
 ### Agent→Skill References
-- ✅ af-bdd-agent → af-bdd-expertise (valid)
+- ✅ af-bdd-agent → af-write-bdd-scenarios (valid)
 - ❌ af-foo-agent → af-bar-expertise (skill doesn't exist)
 
 ### Skill→Guide References
-- ✅ af-testing-expertise → docs/guides/testing-guide.md (valid)
+- ✅ af-configure-test-frameworks → docs/guides/testing-guide.md (valid)
 - ❌ af-foo-expertise → docs/guides/missing.md (guide doesn't exist)
 
 ### Terminology Inconsistencies
@@ -259,14 +259,14 @@ grep -rh "docs/guides" .claude/skills/*/SKILL.md | grep -oE 'docs/guides/[^)]+' 
 ## Duplicates Found
 
 ### Concept: "BDD Scenario Syntax"
-- `.claude/skills/af-bdd-expertise/SKILL.md` (lines 45-120) ← AUTHORITATIVE
+- `.claude/skills/af-write-bdd-scenarios/SKILL.md` (lines 45-120) ← AUTHORITATIVE
 - `.claude/agents/af-bdd-agent.md` (lines 30-80) ← Should reference skill
 - `.claude/docs/guides/testing-guide.md` (lines 200-250) ← Should reference skill
 
-**Recommendation:** Remove duplicate from agent, add `Load \`af-bdd-expertise\` skill`
+**Recommendation:** Remove duplicate from agent, add `Load \`af-write-bdd-scenarios\` skill`
 
 ### Concept: "Frontmatter Requirements"
-- `.claude/skills/af-documentation-standards/SKILL.md` (lines 42-79) ← Keep as rules
+- `.claude/skills/af-enforce-doc-standards/SKILL.md` (lines 42-79) ← Keep as rules
 - `.claude/docs/guides/documentation-system.md` (lines 100-200) ← AUTHORITATIVE (comprehensive)
 
 **Recommendation:** Skill correctly has rules only, guide has full details. OK.
@@ -290,11 +290,11 @@ grep -rh "docs/guides" .claude/skills/*/SKILL.md | grep -oE 'docs/guides/[^)]+' 
 ## References
 
 **Documentation patterns:**
-- `.claude/skills/af-documentation-standards/SKILL.md`
-- `.claude/skills/af-agentflow-framework-development/SKILL.md`
+- `.claude/skills/af-enforce-doc-standards/SKILL.md`
+- `.claude/skills/af-modify-agentflow/SKILL.md`
 
 **Validation workflows:**
-- `.claude/skills/af-quality-process/SKILL.md`
+- `.claude/skills/af-validate-quality/SKILL.md`
 
 **Comprehensive guide:**
 - `.claude/docs/guides/documentation-system.md`

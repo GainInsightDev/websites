@@ -15,8 +15,8 @@ children:
   - ./setup-interview.md
   - ./discovery-guide.md
   - ./work-management.md
-  - ./atomic-requirements-guide.md
-  - ./requirements-guide.md
+  - ./atomic-refinement-guide.md
+  - ./refinement-guide.md
   - ./bdd-guide.md
   - ./delivery-guide.md
   - ./quality-guide.md
@@ -27,6 +27,7 @@ children:
   - ./gaininsight-standard/README.md
   - ./posthog-guide.md
   - ./figma-setup-guide.md
+  - ./design-grammar-retrofit-guide.md
 ---
 
 # AgentFlow Guides
@@ -85,7 +86,7 @@ Guide to managing work and context in AgentFlow:
 - Linear integration workflows
 - Progress tracking approaches
 
-### [Atomic Requirements Guide](./atomic-requirements-guide.md)
+### [Atomic Refinement Guide](./atomic-refinement-guide.md)
 How AgentFlow structures work into Epics, Features, and Scenarios:
 - Outside-in development principle
 - Epic → Feature → Scenario hierarchy
@@ -93,8 +94,8 @@ How AgentFlow structures work into Epics, Features, and Scenarios:
 - Mapping to Linear, Mini-PRDs, and test files
 - Seed data and selector contract patterns
 
-### [Requirements Guide](./requirements-guide.md)
-Guide to the Requirements phase (Phase 3 of 4), including:
+### [Refinement Guide](./refinement-guide.md)
+Guide to the Refinement phase (Phase 3 of 4), including:
 - Three Amigos analysis approach
 - Human-in-the-loop coordination
 - BDD scenario creation with bdd-agent
@@ -171,6 +172,15 @@ Complete step-by-step instructions for the GainInsight Standard 4-layer stack:
 - Layer 3: UI & Styling (shadcn/ui, Storybook)
 - Layer 4: CI/CD (GitHub Actions, branch protection)
 - Teardown procedures
+
+### [Design Grammar Retrofit Guide](./design-grammar-retrofit-guide.md)
+How to add the AgentFlow Design Grammar to an existing project:
+- Audit existing design values (CSS vars, Tailwind config, theme files)
+- Create project tokens in W3C DTCG format
+- Set up Style Dictionary build pipeline (JSON → CSS + Tailwind)
+- Map existing components to grammar types
+- Align Storybook to extended atomic hierarchy
+- Optional Tokens Studio setup for Figma ↔ repo sync
 
 ## Planned Guides
 

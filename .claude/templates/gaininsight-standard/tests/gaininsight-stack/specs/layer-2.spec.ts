@@ -11,7 +11,7 @@
  *   - Layer 1 complete (environment and infrastructure)
  *   - Tests run from the target project (not agentflow)
  *
- * @documentation .claude/skills/af-gaininsight-standard/layer-2-testing.md
+ * @documentation .claude/skills/af-setup-gaininsight-stack/layer-2-testing.md
  */
 import { test, expect } from '@playwright/test';
 import { execSync, spawn, ChildProcess } from 'child_process';

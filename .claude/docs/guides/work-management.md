@@ -38,17 +38,17 @@ Linear (Source of Truth)          AgentFlow (Implementation)
 - **Activities**: Problem exploration, research, initial requirements
 - **Creates**: Feature issues in Linear
 
-### 3. Requirements Phase
+### 3. Refinement Phase
 - **Linear States**: Discovered → Refining → Approved
-- **Label**: `phase:requirements`
-- **Orchestrator**: requirements-orchestrator
+- **Label**: `phase:refinement`
+- **Orchestrator**: refinement-orchestrator
 - **Activities**: Three Amigos, Behaviour scenarios, visual specs, API contracts, mini-PRD creation
 - **Creates**: [Behaviour] and [UX] sub-issues for specification work
 - **Context File**: `.claude/work/current-requirement.md`
 
-#### Sub-issue Lifecycle in Requirements
+#### Sub-issue Lifecycle in Refinement
 
-When a Feature enters Requirements, create specification sub-issues:
+When a Feature enters Refinement, create specification sub-issues:
 
 | Sub-issue | Label | Assignee | Order | Purpose |
 |-----------|-------|----------|-------|---------|
@@ -81,11 +81,11 @@ Issue: Login Flow (8 pts) [Refining]
 ### Required Setup
 
 #### States
-States are auto-created during project setup (see `af-setup-process` skill):
+States are auto-created during project setup (see `af-setup-project` skill):
 
 1. **Discovered** (backlog) - New feature identified, needs exploration
-2. **Refining** (started) - Requirements phase in progress
-3. **Approved** (unstarted) - Requirements approved, ready for implementation
+2. **Refining** (started) - Refinement phase in progress
+3. **Approved** (unstarted) - Refinement approved, ready for implementation
 4. **In Progress** (started) - Active development
 5. **Waiting for Feedback** (started) - Blocked on human input (essential for agent automation)
 6. **In Review** (started) - PR created, code review
@@ -218,7 +218,7 @@ This ensures you can reconnect to detailed implementation plans after session re
 
 ### Finding Work
 ```
-"Find issues in Requirements phase"
+"Find issues in Refinement phase"
 "Show current sprint tasks"
 "What's blocking progress?"
 ```
@@ -342,7 +342,7 @@ AgentFlow uses a **specs branch strategy** that aligns with Linear issue status:
 ```
 develop (stable baseline)
     │
-    ├── specs (Discovery + Requirements work)
+    ├── specs (Discovery + Refinement work)
     │       └── PRd to develop when specs approved
     │
     ├── JCN-123 (Delivery - implementation only)
@@ -354,7 +354,7 @@ develop (stable baseline)
 | Branch | Phase | Who Works Here | Lifecycle |
 |--------|-------|----------------|-----------|
 | `develop` | - | Merge target | Permanent |
-| `specs` | Discovery, Requirements | PM, UX, QA | Long-lived |
+| `specs` | Discovery, Refinement | PM, UX, QA | Long-lived |
 | `{ISSUE-ID}` | Delivery | SE | Short-lived |
 
 #### Linear Status Drives Branching
@@ -373,7 +373,7 @@ develop (stable baseline)
 #### Commands
 
 ```bash
-# Discovery/Requirements work (PM, UX, QA)
+# Discovery/Refinement work (PM, UX, QA)
 start-specs myproject           # Creates/attaches to specs worktree + tmux
 
 # Delivery work (SE) - only works if Linear status >= "Approved"
@@ -398,7 +398,7 @@ To minimize merge conflicts when PM/UX/QA work concurrently:
 ```
 /srv/worktrees/{project}/
 ├── develop        # Stable (setup phase)
-├── specs          # Discovery + Requirements
+├── specs          # Discovery + Refinement
 ├── JCN-123        # Active delivery (short-lived)
 └── JCN-124        # Active delivery (short-lived)
 ```
@@ -407,7 +407,7 @@ See [ADR-009: Specs Branch Strategy](../../../.agentflow/adr/adr-009-specs-branc
 
 #### Trunk-Based Projects
 
-Some projects use **trunk-based development** where Discovery/Requirements work happens directly on the main branch (no specs branch). Configured in the project registry:
+Some projects use **trunk-based development** where Discovery/Refinement work happens directly on the main branch (no specs branch). Configured in the project registry:
 
 ```bash
 project-registry set <project> branching_strategy trunk-based

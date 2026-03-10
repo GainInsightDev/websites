@@ -10,7 +10,7 @@ parent: ./README.md
 related:
   - ./layer-1-infrastructure.md
   - ./layer-3-ui-styling.md
-  - ../../../skills/af-gaininsight-standard/SKILL.md
+  - ../../../skills/af-setup-gaininsight-stack/SKILL.md
   - ../bdd-guide.md
 ---
 

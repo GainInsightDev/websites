@@ -6,7 +6,7 @@ last_checked: 2026-01-03
 tags: [guide, bdd, scenarios, testing, specifications, playwright, jest]
 parent: ./README.md
 related:
-  - ../../skills/af-bdd-expertise/SKILL.md
+  - ../../skills/af-write-bdd-scenarios/SKILL.md
 ---
 
 # BDD Guide - Behavior-Driven Development
@@ -34,10 +34,10 @@ AgentFlow uses Markdown scenarios because:
 ### The V2 BDD Workflow
 
 ```
-Requirements → Three Amigos Analysis → Markdown Scenarios → AI Generates Tests → Implementation → Tests Pass
+Refinement → Three Amigos Analysis → Markdown Scenarios → AI Generates Tests → Implementation → Tests Pass
 ```
 
-1. **Requirements Phase**: Capture user stories and acceptance criteria in Linear
+1. **Refinement phase**: Capture user stories and acceptance criteria in Linear
 2. **Three Amigos**: Developer, tester, and product owner refine scenarios
 3. **Markdown Scenarios**: Write executable specifications in mini-PRD Section 4
 4. **Selector Contracts**: Define shared test selectors in Section 5
@@ -886,11 +886,11 @@ export const CHECKOUT = {
 
 ## Integration with AgentFlow
 
-### BDD in Requirements Phase
+### BDD in Refinement phase
 
 1. **Orchestrator** determines feature needs BDD specification
 2. **af-bdd-agent** is invoked with requirements and Three Amigos decisions
-3. **Agent** loads `af-bdd-expertise` skill for patterns
+3. **Agent** loads `af-write-bdd-scenarios` skill for patterns
 4. **Agent** reads glossary from `/docs/glossary.yml`
 5. **Agent** generates Markdown scenarios in mini-PRD Section 4
 6. **Agent** creates selector contract in mini-PRD Section 5
@@ -1025,7 +1025,7 @@ Before implementation begins:
 
 ## References
 
-- **Skill:** `.claude/skills/af-bdd-expertise/SKILL.md`
+- **Skill:** `.claude/skills/af-write-bdd-scenarios/SKILL.md`
 - **Glossary Template:** `.claude/templates/glossary.yml`
 - **Selector Contract Template:** `.claude/templates/selector-contract.ts`
 - **Playwright Documentation:** https://playwright.dev/

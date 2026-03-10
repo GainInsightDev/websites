@@ -51,4 +51,4 @@ parent: ./README.md
 ---
 ```
 
-See `.claude/skills/af-documentation-standards/SKILL.md` for full standards.
+See `.claude/skills/af-enforce-doc-standards/SKILL.md` for full standards.

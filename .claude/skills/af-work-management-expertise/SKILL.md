@@ -31,7 +31,7 @@ Load this skill when you need to:
 - Starting new work (`/task:start`)
 - Resuming work (`/task:continue`)
 - Completing work (`/task:complete`)
-- Discovery/Requirements/Delivery phase transitions
+- Discovery/Refinement/Delivery phase transitions
 
 ## Quick Reference
 
@@ -65,8 +65,8 @@ Discovered → Refining → Approved → In Progress → In Review → Dev → T
 | Status | Type | AgentFlow Phase |
 |--------|------|-----------------|
 | **Discovered** | backlog | Discovery |
-| **Refining** | started | Requirements |
-| **Approved** | unstarted | Requirements complete, ready for delivery |
+| **Refining** | started | Refinement |
+| **Approved** | unstarted | Refinement complete, ready for delivery |
 | **In Progress** | started | Delivery |
 | **In Review** | started | Delivery (PR created) |
 | **Dev/Test/Live** | completed | Deployed |
@@ -235,7 +235,7 @@ For GraphQL API (advanced operations like history, relations), see `af-linear-ap
 |--------|-------------|----------|
 | Update mode | Overwrite (replace with current state) | Append-only (never edit/delete) |
 | Purpose | What this issue IS right now | How we got here |
-| Format | Clean snapshot | Phase-tagged: `[Discovery]`, `[Requirements]`, `[Delivery]` |
+| Format | Clean snapshot | Phase-tagged: `[Discovery]`, `[Refinement]`, `[Delivery]` |
 
 **Agent rules for reading:**
 1. Read description first (current truth)
@@ -284,7 +284,7 @@ curl -s -X POST https://api.linear.app/graphql \
   }' | jq
 ```
 
-### Workflow: Transitioning to Requirements (Refining)
+### Workflow: Transitioning to Refinement (Refining)
 
 ```bash
 # Move to Refining (get state UUID first from team's workflow states)
@@ -294,7 +294,7 @@ curl -s -X POST https://api.linear.app/graphql \
   -d '{"query": "mutation { issueUpdate(id: \"AF-123\", input: { stateId: \"REFINING_STATE_UUID\" }) { success } }"}'
 ```
 
-### Workflow: Approving Requirements
+### Workflow: Approving Refinement
 
 ```bash
 # Human approves - move to Approved
@@ -307,7 +307,7 @@ curl -s -X POST https://api.linear.app/graphql \
 curl -s -X POST https://api.linear.app/graphql \
   -H "Content-Type: application/json" \
   -H "Authorization: $LINEAR_API_KEY" \
-  -d '{"query": "mutation { commentCreate(input: { issueId: \"AF-123\", body: \"Requirements approved\\n- Mini-PRD: Complete\\n- BDD scenarios: Covered\\n- Ready for scheduling\" }) { success } }"}'
+  -d '{"query": "mutation { commentCreate(input: { issueId: \"AF-123\", body: \"Refinement approved\\n- Mini-PRD: Complete\\n- BDD scenarios: Covered\\n- Ready for scheduling\" }) { success } }"}'
 ```
 
 ### Workflow: Starting Delivery (In Progress)
@@ -440,7 +440,7 @@ curl -s -X POST https://api.linear.app/graphql \
 
 **For AgentFlow phases:**
 - Load `af-discovery-process` for Discovery patterns
-- Load `af-requirements-process` for Requirements patterns
+- Load `af-refinement-process` for Refinement patterns
 - Load `af-delivery-process` for Delivery patterns
 
 **Official Linear documentation:**

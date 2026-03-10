@@ -14,7 +14,7 @@ related:
   - ../af-work-management-expertise/SKILL.md
   - ../af-linear-api-expertise/SKILL.md
   - ../af-discovery-process/SKILL.md
-  - ../af-requirements-process/SKILL.md
+  - ../af-refinement-process/SKILL.md
 ---
 
 # Project Management Expertise
@@ -51,7 +51,7 @@ Load this skill when you need to:
 | Status | Type | Planning Relevance |
 |--------|------|-------------------|
 | Discovered | backlog | Lowest priority for scheduling; may need Discovery Estimate |
-| Approved | unstarted | Highest priority for scheduling; should have Refined Estimate from Requirements phase |
+| Approved | unstarted | Highest priority for scheduling; should have Refined Estimate from Refinement phase |
 
 ### Prioritization Order
 
@@ -95,7 +95,7 @@ The estimation skill (`af-estimation-expertise`) defines two tiers:
 | Tier | When | Confidence | Tagged As |
 |------|------|-----------|-----------|
 | Discovery Estimate | During Discovery phase | Low/Medium | `[Discovery Estimate]` in Linear comment |
-| Refined Estimate | During Requirements phase | Medium/High | `[Refined Estimate]` in Linear comment |
+| Refined Estimate | During Refinement phase | Medium/High | `[Refined Estimate]` in Linear comment |
 
 **For planning purposes:**
 - Issues with Refined Estimates → schedule with high confidence
@@ -124,7 +124,7 @@ AgentFlow uses Linear constructs as follows:
 | **Project** | Optional — only for "super-epics" | As needed | Bundles of milestones; rarely used |
 | **Milestone** | Delivery goal (replaces "Epic" concept) | Discovery or Planning | Groups issues that ship together (e.g., "Auth MVP") |
 | **Issue (Parent)** | Deliverable capability | Discovery | Gets branch, PR, implementation |
-| **Sub-issue** | Specification artifact | Requirements | [Behaviour] or [UX] work; own cycle/assignee |
+| **Sub-issue** | Specification artifact | Refinement | [Behaviour] or [UX] work; own cycle/assignee |
 | **Cycle** | Weekly time-box | Ongoing | For both refinement and delivery |
 
 ### Key Insight: Sub-issues Are Full Issues
@@ -338,7 +338,7 @@ When reviewing a backlog for estimation health:
 | Metric | Healthy | Warning | Action |
 |--------|---------|---------|--------|
 | % issues with estimates | >80% | <50% | Batch estimate unestimated issues |
-| % with Refined Estimates | >60% | <30% | Move issues through Requirements |
+| % with Refined Estimates | >60% | <30% | Move issues through Refinement |
 | Avg points per issue | 3-8 | >13 | Suggest decomposition |
 | Issues over 21 points | 0 | >2 | Flag for decomposition |
 
@@ -374,7 +374,7 @@ When reviewing a backlog for estimation health:
 
 **Process skills:**
 - `af-discovery-process` — Features should get Discovery Estimates during Phase 4
-- `af-requirements-process` — Features should get Refined Estimates before approval
+- `af-refinement-process` — Features should get Refined Estimates before approval
 - `af-delivery-process` — Story points must be set before starting implementation
 
 **Linear MCP tools:**
@@ -454,7 +454,7 @@ Cycles are numbered sequentially per team. When creating future cycles, continue
 ## Common Pitfalls
 
 1. **Over-scheduling.** Don't fill 100% of capacity. Leave 5-10 points for unplanned work and interruptions.
-2. **Ignoring estimation quality.** A Discovery Estimate for a Discovered issue is fine. A Discovery Estimate for an Approved issue means Requirements didn't complete properly.
+2. **Ignoring estimation quality.** A Discovery Estimate for a Discovered issue is fine. A Discovery Estimate for an Approved issue means Refinement didn't complete properly.
 3. **Scheduling unestimated work.** Never add an unestimated issue to a cycle — estimate it first, even if just a heuristic.
 4. **Ignoring dependencies.** Check parent/child relationships. Don't schedule a sub-issue if its parent isn't ready.
 5. **Planning across teams.** Each team has its own capacity. Don't mix team budgets.

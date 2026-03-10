@@ -6,8 +6,8 @@ last_checked: 2026-02-06
 tags: [guide, discovery, orchestrator, phase-2]
 parent: ./README.md
 related:
-  - ../../skills/af-orchestration/SKILL.md
-  - ../../skills/af-discovery-process/SKILL.md
+  - ../../skills/af-orchestrate-workflow/SKILL.md
+  - ../../skills/af-discover-scope/SKILL.md
   - ../../agents/af-search-agent.md
 ---
 
@@ -24,7 +24,7 @@ This guide demonstrates the Discovery Orchestrator workflow using a practical ex
 - "Build a SaaS platform for project management"
 - "Develop a learning management system"
 
-**❌ Not Appropriate** (feature level - belongs in Requirements):
+**❌ Not Appropriate** (feature level - belongs in Refinement):
 - "Add user authentication"
 - "Create a dashboard widget" 
 - "Implement email notifications"
@@ -295,7 +295,7 @@ Entity-driven example (from entity model above):
 
 **Linear Defaults Applied:**
 - State: `Backlog`
-- Effort: `1` (Requirements will refine)
+- Effort: `1` (Refinement will refine)
 - Priority: `2` (medium)
 - Entity parent issues labeled as Epic in Linear
 
@@ -308,7 +308,7 @@ Entity-driven example (from entity model above):
 - Search findings and competitive analysis
 - User workflow documentation
 
-## Handoff to Requirements Phase
+## Handoff to Refinement phase
 
 **Session Complete Criteria:**
 - ✅ All 4 context questions answered
@@ -318,12 +318,12 @@ Entity-driven example (from entity model above):
 - ✅ Linear features created with proper defaults (entity capabilities as independent sub-issues)
 - ✅ No version labels used — prioritization via Linear milestones/cycles/priority
 - ✅ Discovery documentation attached to Linear issues
-- ✅ User acknowledges readiness for Requirements phase
+- ✅ User acknowledges readiness for Refinement phase
 
 **Next Phase:**
-Requirements Orchestrator will:
+Refinement Orchestrator will:
 - Select Linear features for detailed specification
-- Refine effort estimates using `af-estimation-expertise` (decompose by functional area, estimate hours, convert to fibonacci story points)
+- Refine effort estimates using `af-estimate-effort` (decompose by functional area, estimate hours, convert to fibonacci story points)
 - For features > 3 points: create sub-issues with individual estimates; hours AND points roll up to parent feature
 - Tag refined estimates as `[Refined Estimate]` in Linear comments (vs Discovery's `[Discovery Estimate]`)
 - Create BDD scenarios with Markdown format
@@ -342,7 +342,7 @@ Requirements Orchestrator will:
 - **Stay Product-Level**: Resist diving into implementation details
 - **Use Search-Agent**: Delegate research to prevent context bloat
 - **Document Decisions**: Write ADRs for major architectural choices
-- **Prepare Handoff**: Ensure Requirements phase has complete context
+- **Prepare Handoff**: Ensure Refinement phase has complete context
 
 ## Troubleshooting
 
@@ -354,11 +354,11 @@ Requirements Orchestrator will:
 
 **Solution:**
 ```
-Redirect to Requirements phase:
+Redirect to Refinement phase:
 "This appears to be a feature-level request. Discovery is for product/project-level exploration.
-Let me help you create a detailed specification for this feature using the Requirements process."
+Let me help you create a detailed specification for this feature using the Refinement process."
 
-Then invoke: af-requirements-process skill
+Then invoke: af-refine-specifications skill
 ```
 
 ### "Not sure if external research is needed"
@@ -386,7 +386,7 @@ Then invoke: af-requirements-process skill
 **Common issues:**
 - Entity capabilities bundled into parent instead of separate sub-issues
 - Wrong state (should be `Backlog`)
-- Effort not set to 1 (Requirements refines later)
+- Effort not set to 1 (Refinement refines later)
 - Missing documentation attachments
 - Entity parent issues not labeled as Epic
 
@@ -469,14 +469,14 @@ Product → Entities → Capabilities per entity → Features (Linear sub-issues
 
 Start top-down, then realize entities are shared across views. Switch to entity-driven for the shared entities while keeping top-down for independent views.
 
-### Discovery Sketches, Requirements Specifies
+### Discovery Sketches, Refinement Specifies
 
-Whichever approach you use, remember: Discovery captures what you know at a sketch level. Requirements does the detailed specification.
+Whichever approach you use, remember: Discovery captures what you know at a sketch level. Refinement does the detailed specification.
 
 - **Discovery depth:** Entities, relationships, capabilities, indicative attributes
-- **Requirements depth:** Exact API contracts, BDD scenarios, Storybook stories, selector contracts
-- Deeper Discovery knowledge is helpful context for Requirements but doesn't constrain it
-- Requirements always does its own Three Amigos analysis and may revise Discovery's sketch
+- **Refinement depth:** Exact API contracts, BDD scenarios, Storybook stories, selector contracts
+- Deeper Discovery knowledge is helpful context for Refinement but doesn't constrain it
+- Refinement always does its own Three Amigos analysis and may revise Discovery's sketch
 
 ## Case Study: Agentview (Entity-Driven)
 
@@ -500,8 +500,8 @@ During Agentview's discovery, we initially created features top-down (My View, C
 ---
 
 **Related Documents:**
-- [Orchestration Skill](../../skills/af-orchestration/SKILL.md)
-- [Discovery Process](../../skills/af-discovery-process/SKILL.md)
+- [Orchestration Skill](../../skills/af-orchestrate-workflow/SKILL.md)
+- [Discovery Process](../../skills/af-discover-scope/SKILL.md)
 - [Search Agent Definition](../../agents/af-search-agent.md)
-- [Work Management Expertise](../../skills/af-work-management-expertise/SKILL.md)
+- [Work Management Expertise](../../skills/af-manage-work-state/SKILL.md)
 - [Documentation Standards](../standards/documentation-standards.md)

@@ -65,5 +65,5 @@ CSS variables in `globals.css`:
 
 ## Learn More
 
-- shadcn/ui expertise: `.claude/skills/af-ux-design-expertise/SKILL.md`
-- GainInsight setup: `.claude/skills/af-gaininsight-standard/layer-3-ui-styling.md`
+- shadcn/ui expertise: `.claude/skills/af-design-ui-components/SKILL.md`
+- GainInsight setup: `.claude/skills/af-setup-gaininsight-stack/layer-3-ui-styling.md`

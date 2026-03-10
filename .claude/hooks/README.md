@@ -12,6 +12,7 @@ code_files:
   - ./session-start.sh
   - ./pre-compact.sh
   - ./check-services-before-slack.sh
+  - ./specs-merge-reminder.sh
 ---
 
 # AgentFlow Hooks System
@@ -49,14 +50,14 @@ If Claude ignores hook reminders, the system breaks. The fix is in instructions 
 **Purpose**: Gently suggest loading relevant skills based on work being done
 
 **Detection patterns:**
-- Documentation files (`.md`) → Suggests `af-documentation-standards`
-- BDD files (`.feature`) → Suggests `af-bdd-expertise`
-- Test files (`.test.`, `.spec.`) → Suggests `af-testing-expertise`
-- Storybook files (`.stories.`) → Suggests `af-ux-design-expertise`
-- Framework files (`.claude/`) → Suggests `af-agentflow-framework-development`
-- Linear references (`LIN-XXX`) → Suggests `af-work-management-expertise`
-- Setup/bootstrap work → Suggests `af-setup-process`
-- Quality/validation work → Suggests `af-quality-process`
+- Documentation files (`.md`) → Suggests `af-enforce-doc-standards`
+- BDD files (`.feature`) → Suggests `af-write-bdd-scenarios`
+- Test files (`.test.`, `.spec.`) → Suggests `af-configure-test-frameworks`
+- Storybook files (`.stories.`) → Suggests `af-design-ui-components`
+- Framework files (`.claude/`) → Suggests `af-modify-agentflow`
+- Linear references (`LIN-XXX`) → Suggests `af-manage-work-state`
+- Setup/bootstrap work → Suggests `af-setup-project`
+- Quality/validation work → Suggests `af-validate-quality`
 
 **Behavior:**
 - Non-blocking suggestion (informational only)
@@ -83,6 +84,25 @@ If Claude ignores hook reminders, the system breaks. The fix is in instructions 
 
 **Important**: This hook is informational -- it warns the agent but doesn't block the message. The agent is expected to restart down services before continuing. Requires PORT_INFO.md in the project root. Note: This hook still targets the legacy Slack MCP tool; a Zulip equivalent should be added when the Zulip MCP integration is configured.
 
+### 4. specs-merge-reminder.sh
+**Type**: PreToolUse (mcp__agentflow__mark_done)
+**Trigger**: When an agent calls `mark_done()`
+**Purpose**: Ensure specs branch is merged into base branch before completing Discovery/Refinement
+
+**Behavior:**
+1. If not on `specs` branch → Allow through (Delivery agents, etc.)
+2. If specs is already merged into base → Allow through
+3. First attempt on specs branch → Block with merge instructions
+4. Second attempt (within 5-minute window) → Allow through
+
+**Base branch detection**: Uses `develop` if it exists, otherwise `main`.
+
+**Merge check**: Uses `git merge-base --is-ancestor` to verify specs HEAD is already in the base branch. If already merged, skips the reminder entirely.
+
+**State tracking**: Uses `.claude/work/specs-merge-reminder` file (5-minute window)
+
+**Important**: The agent performs the actual merge, not the hook. This allows the agent to handle merge conflicts and push to remote.
+
 ## Hook Configuration
 
 Located in `.claude/settings.json`:
@@ -106,6 +126,15 @@ Located in `.claude/settings.json`:
           {
             "type": "command",
             "command": "bash .claude/hooks/skill-reminder.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__agentflow__mark_done",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/specs-merge-reminder.sh"
           }
         ]
       }
@@ -167,5 +196,6 @@ rm -f .claude/work/commit-reminder
 - git-commit-reminder.sh (PreToolUse on Bash)
 - skill-reminder.sh (PreToolUse on Edit/Write/Task)
 - check-services-before-slack.sh (PreToolUse on mcp__slack__slack_reply_to_thread) (legacy)
+- specs-merge-reminder.sh (PreToolUse on mcp__agentflow__mark_done)
 
-**Last Updated**: 2026-02-10
+**Last Updated**: 2026-03-06

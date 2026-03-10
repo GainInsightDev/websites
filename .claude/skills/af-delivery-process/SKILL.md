@@ -24,13 +24,13 @@ The delivery process transforms approved mini-PRDs into working code through ite
 ## When to Use
 
 **✅ Use Delivery Process for:**
-- Implementing approved mini-PRDs from Requirements
+- Implementing approved mini-PRDs from Refinement
 - Writing code using TDD (Red → Green → Refactor)
 - Running tests iteratively until clean
 - Creating documentation and PRs
 
 **❌ Not Delivery Phase:**
-- Defining requirements (use Requirements)
+- Defining requirements (use Refinement)
 - Deployment to production (separate process)
 - Exploratory work without specs (use Discovery)
 
@@ -51,23 +51,23 @@ stop-work myproject JCN-123     # Removes worktree + tmux
 - Linear status must be "Approved" or later
 - `start-work` will warn if feature isn't ready
 
-**Issue branches are short-lived** - they only exist during implementation. Specs (mini-PRD, scenarios) are already in `develop` from the Requirements phase.
+**Issue branches are short-lived** - they only exist during implementation. Specs (mini-PRD, scenarios) are already in `develop` from the Refinement phase.
 
 See [Work Management Guide](../../docs/guides/work-management.md#branch-strategy-adr-009) for full branching details.
 
 ## Entry Criteria
 
 Before starting Delivery, MUST have:
-- ✅ Complete mini-PRD from Requirements phase
+- ✅ Complete mini-PRD from Refinement phase
 - ✅ Approved BDD scenarios with glossary compliance
 - ✅ Visual specifications (Storybook stories for UI)
 - ✅ Linear issue in "In Development" status
 - ✅ Development environment ready (localhost + sandbox)
 - ✅ Story points set on Linear issue (Refined Estimate preferred)
 
-**Do NOT start Delivery without approved Requirements**
+**Do NOT start Delivery without approved Refinement**
 
-**Estimation check:** If the issue has no story points (`estimate` is null), flag this to the orchestrator before starting implementation. Load `af-estimation-expertise` and produce at minimum a Discovery Estimate. If only a Discovery Estimate exists (check comments for `[Discovery Estimate]` tag), consider whether a Refined Estimate is needed given that Requirements are now complete.
+**Estimation check:** If the issue has no story points (`estimate` is null), flag this to the orchestrator before starting implementation. Load `af-estimation-expertise` and produce at minimum a Discovery Estimate. If only a Discovery Estimate exists (check comments for `[Discovery Estimate]` tag), consider whether a Refined Estimate is needed given that Refinement is now complete.
 
 ## Core Workflow
 
@@ -90,7 +90,7 @@ Implement → Test → Fix → Retest → Document → PR
 
 ### When Tests Are Written
 
-**Requirements Phase (ALREADY DONE before Delivery):**
+**Refinement Phase (ALREADY DONE before Delivery):**
 - Storybook stories with play functions (primary UI component tests) - PASSING
 - RTL tests for non-visual logic (hooks, utils, state management) - PASSING
 - Selector contract defined in mini-PRD Section 5
@@ -100,7 +100,7 @@ Implement → Test → Fix → Retest → Document → PR
 - AI generates E2E and Integration test files FROM scenarios + selector contract
 - Test files go to `tests/e2e/` and `tests/integration/`
 - These tests start as `test.todo()` (no backend/API yet) — visible in output as "todo" count
-- Do NOT regenerate RTL or Storybook tests that already exist from Requirements
+- Do NOT regenerate RTL or Storybook tests that already exist from Refinement
 
 **Delivery Phase (GREEN):**
 - Implementation makes E2E/Integration tests pass
@@ -114,7 +114,7 @@ Implement → Test → Fix → Retest → Document → PR
 **A. Start with test generation (RED)**
 - Read BDD scenarios from mini-PRD Section 4
 - Import selector contract from mini-PRD Section 5
-- Verify existing tests from Requirements phase still pass (Storybook + RTL)
+- Verify existing tests from Refinement phase still pass (Storybook + RTL)
 - Generate NEW test files for E2E and Integration only:
   - E2E → Playwright specs in `tests/e2e/`
   - Integration → Jest tests in `tests/integration/`
@@ -452,7 +452,7 @@ Orchestrator MUST pause for human input at:
    - What you were trying to implement
    - What technical constraint prevents it
    - What the impact is (feature won't work as spec'd)
-3. **Return to Requirements** - The mini-PRD needs to be updated
+3. **Return to Refinement** - The mini-PRD needs to be updated
 4. **Wait for decision** - Human/PM decides:
    - Re-scope the feature (what CAN we build?)
    - Defer the feature (move to backlog)
@@ -498,7 +498,7 @@ Discovery: Platform doesn't support session listing
      ↓
 ✅ Agent STOPS and informs human
      ↓
-✅ Return to Requirements phase
+✅ Return to Refinement phase
      ↓
 ✅ PM decides: Re-scope to "Sign out all devices" only
      ↓
@@ -529,7 +529,7 @@ When you hit a blocker, tell the human:
 
 ## Common Pitfalls
 
-1. **Starting without approved Requirements**
+1. **Starting without approved Refinement**
    - Always verify mini-PRD is approved
    - Implementation without specs leads to rework
 
@@ -561,7 +561,7 @@ When you hit a blocker, tell the human:
 ## Integration with Other Phases
 
 **Before Delivery:**
-- ← **Requirements Phase** - Provides approved mini-PRD and BDD scenarios
+- ← **Refinement Phase** - Provides approved mini-PRD and BDD scenarios
 
 **After Delivery:**
 - → **Code Review** - PR reviewed by team

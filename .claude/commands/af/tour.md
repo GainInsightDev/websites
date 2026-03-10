@@ -10,7 +10,7 @@ last_checked: 2026-01-06
 tags: [command, onboarding, introduction, tour]
 parent: ./README.md
 related:
-  - ../../skills/af-orchestration/SKILL.md
+  - ../../skills/af-orchestrate-workflow/SKILL.md
   - ../../docs/architecture/README.md
 ---
 
@@ -28,7 +28,7 @@ AgentFlow is a **BDD-driven development framework** that helps structure AI-assi
 
 ```
 ┌─────────┐    ┌───────────┐    ┌──────────────┐    ┌──────────┐
-│  Setup  │ → │ Discovery │ → │ Requirements │ → │ Delivery │
+│  Setup  │ → │ Discovery │ → │  Refinement  │ → │ Delivery │
 └─────────┘    └───────────┘    └──────────────┘    └──────────┘
      │              │                  │                  │
   Infra &       Explore &          BDD specs &        TDD impl &
@@ -39,7 +39,7 @@ AgentFlow is a **BDD-driven development framework** that helps structure AI-assi
 |-------|---------|--------|
 | **Setup** | Infrastructure, environment | Working dev environment |
 | **Discovery** | Explore problems, scope features | Linear Features, ADRs |
-| **Requirements** | BDD specs, designs, approval | Mini-PRD with scenarios |
+| **Refinement** | BDD specs, designs, approval | Mini-PRD with scenarios |
 | **Delivery** | TDD implementation | Tested, deployed code |
 
 ## How It Works
@@ -59,7 +59,7 @@ AgentFlow is a **BDD-driven development framework** that helps structure AI-assi
 |---------|-------------|
 | `/task:start AF-123` | Begin work on a Linear issue |
 | `/task:continue` | Resume your current task |
-| `/requirements:refine AF-123` | Create BDD specs for a feature |
+| `/refinement:refine AF-123` | Create BDD specs for a feature |
 | `/af:sync` | Get latest framework updates |
 
 ## Your Role Matters
@@ -107,7 +107,7 @@ your-project/
 
 I'm here to help. You can ask me:
 
-- "How does the Requirements phase work?"
+- "How does the Refinement phase work?"
 - "What's a mini-PRD?"
 - "How do I create a new feature?"
 - "What tests should I write?"

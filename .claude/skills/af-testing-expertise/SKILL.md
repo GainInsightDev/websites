@@ -79,8 +79,8 @@ Tests are written at different phases for specific reasons:
 
 | Test Type | Written In | By Whom | Why This Phase? |
 |-----------|------------|---------|-----------------|
-| **Storybook (play functions)** | Requirements | ux-design-agent | PRIMARY component test: visual specs + interaction tests in one place |
-| **RTL (Component)** | Requirements | ux-design-agent | Non-visual logic only: hooks, utilities, state management, data transforms |
+| **Storybook (play functions)** | Refinement | ux-design-agent | PRIMARY component test: visual specs + interaction tests in one place |
+| **RTL (Component)** | Refinement | ux-design-agent | Non-visual logic only: hooks, utilities, state management, data transforms |
 | **E2E (Playwright)** | Delivery (RED) | AI from scenarios | Tests full flow - can't run until implementation exists |
 | **Integration** | Delivery (RED) | AI from scenarios | Tests backend/API - generated from Mini-PRD scenarios |
 | **Unit** | Delivery (RED) | As needed | Tests pure logic - written alongside implementation |
@@ -89,7 +89,7 @@ Tests are written at different phases for specific reasons:
 
 **Flow:**
 ```
-Requirements Phase:
+Refinement phase:
   Mini-PRD Section 4 (scenarios) ──────────────────────┐
   Mini-PRD Section 5 (selector contract) ──┐           │
                                            ▼           │
@@ -127,7 +127,7 @@ See [Testing Guide](../../docs/guides/testing-guide.md) for comprehensive patter
 ### Critical Testing Rules
 
 1. **Always write tests BEFORE implementation** - TDD Red → Green → Refactor
-2. **Tests MUST fail before implementation (RED phase)** - Never commit `expect(true).toBe(true)` or any test that trivially passes. Use `test.todo('description')` for tests that cannot run yet (E2E needing backend, integration needing API). **Never use `test.skip()`** — it silently hides unimplemented tests. `test.todo()` is reported in test output so gaps are always visible. If components exist (Requirements phase), RTL and Storybook tests should PASS, not be todo.
+2. **Tests MUST fail before implementation (RED phase)** - Never commit `expect(true).toBe(true)` or any test that trivially passes. Use `test.todo('description')` for tests that cannot run yet (E2E needing backend, integration needing API). **Never use `test.skip()`** — it silently hides unimplemented tests. `test.todo()` is reported in test output so gaps are always visible. If components exist (Refinement phase), RTL and Storybook tests should PASS, not be todo.
 3. **Unit tests MUST be isolated** - No external dependencies, use mocks
 4. **Storybook play functions are PRIMARY for UI component testing** - RTL tests cover non-visual logic only. Do not duplicate assertions across both.
 5. **E2E tests use Playwright directly** - No Cucumber, AI generates from Markdown specs
@@ -256,7 +256,7 @@ Is it a COMPLETE USER JOURNEY through REAL UI + REAL BACKEND?
 
 ### Workflow: Writing RTL Component Tests
 
-**When:** During Requirements phase, locking component behaviour before engineering handoff
+**When:** During Refinement phase, locking component behaviour before engineering handoff
 
 **Procedure:**
 ```
@@ -404,7 +404,7 @@ test.describe('User Signup', () => {
 
 ### Workflow: Creating Selector Contracts
 
-**When:** Requirements phase, creating shared selectors for Storybook and tests
+**When:** Refinement phase, creating shared selectors for Storybook and tests
 
 **Procedure:**
 ```
@@ -1436,7 +1436,7 @@ done
 **Remember:**
 1. Write tests BEFORE implementation (TDD)
 2. Test behaviour, not implementation details
-3. RTL tests lock component behaviour during Requirements
+3. RTL tests lock component behaviour during Refinement
 4. E2E tests use Playwright directly (no Cucumber)
 5. Mock external dependencies only
 6. 80%+ coverage is required, not optional

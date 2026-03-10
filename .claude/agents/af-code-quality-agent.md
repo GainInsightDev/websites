@@ -81,7 +81,7 @@ Enforce code quality standards through automated checks, static analysis, test c
 ## References
 
 **Validation workflows:**
-- `.claude/skills/af-quality-process/SKILL.md`
+- `.claude/skills/af-validate-quality/SKILL.md`
 
 **Validation state:**
 - `.claude/lib/validation-state.ts`

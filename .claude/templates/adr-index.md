@@ -70,7 +70,7 @@ Create an ADR when:
 - Making a decision that's hard to reverse
 - Future developers would ask "why did we do this?"
 
-See `af-architecture-expertise` skill for detailed guidance.
+See `af-decide-architecture` skill for detailed guidance.
 
 ## ADR Lifecycle
 

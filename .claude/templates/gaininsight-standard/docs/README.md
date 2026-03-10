@@ -32,7 +32,7 @@ For detailed guides on patterns and best practices, see the AgentFlow skills:
 
 | Skill | Purpose |
 |-------|---------|
-| `af-testing-expertise` | Testing patterns (Jest, Playwright) |
-| `af-bdd-expertise` | BDD and Markdown scenario patterns |
-| `af-documentation-standards` | Documentation requirements |
-| `af-gaininsight-standard` | GainInsight Standard setup |
+| `af-configure-test-frameworks` | Testing patterns (Jest, Playwright) |
+| `af-write-bdd-scenarios` | BDD and Markdown scenario patterns |
+| `af-enforce-doc-standards` | Documentation requirements |
+| `af-setup-gaininsight-stack` | GainInsight Standard setup |

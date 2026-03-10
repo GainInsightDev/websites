@@ -12,7 +12,7 @@
  *   - Must run on GI server (start-work/stop-work available)
  *   - Test Linear issue must exist
  *
- * @documentation .claude/skills/af-gaininsight-standard/SKILL.md
+ * @documentation .claude/skills/af-setup-gaininsight-stack/SKILL.md
  */
 import { test, expect } from '@playwright/test';
 import { execSync } from 'child_process';
