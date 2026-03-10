@@ -21,6 +21,7 @@ on:
           - senti
           - clik
           - junkan
+          - gaininsight
           - all
 
 env:
@@ -41,7 +42,7 @@ jobs:
         run: |
           # Only include sites that are ready for deployment
           # Add sites here as they complete migration
-          DEPLOYABLE_SITES=("pensionable" "clik" "junkan")
+          DEPLOYABLE_SITES=("pensionable" "clik" "junkan" "gaininsight")
 
           CHANGED=$(git diff --name-only HEAD~1 HEAD)
           SITES=()
@@ -104,6 +105,10 @@ jobs:
               echo "bucket=${{ secrets.JUNKAN_S3_BUCKET }}" >> "$GITHUB_OUTPUT"
               echo "cf_id=${{ secrets.JUNKAN_CLOUDFRONT_ID }}" >> "$GITHUB_OUTPUT"
               ;;
+            gaininsight)
+              echo "bucket=${{ secrets.GAININSIGHT_S3_BUCKET }}" >> "$GITHUB_OUTPUT"
+              echo "cf_id=${{ secrets.GAININSIGHT_CLOUDFRONT_ID }}" >> "$GITHUB_OUTPUT"
+              ;;
           esac
 
       - uses: aws-actions/configure-aws-credentials@v4
@@ -139,7 +144,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        site: ${{ github.event.client_payload.site && fromJson(format('["{0}"]', github.event.client_payload.site)) || fromJson('["pensionable"]') }}
+        site: ${{ github.event.client_payload.site && fromJson(format('["{0}"]', github.event.client_payload.site)) || fromJson('["pensionable","gaininsight"]') }}
     name: Deploy ${{ matrix.site }} (webhook)
     steps:
       - uses: actions/checkout@v4
@@ -174,6 +179,10 @@ jobs:
             junkan)
               echo "bucket=${{ secrets.JUNKAN_S3_BUCKET }}" >> "$GITHUB_OUTPUT"
               echo "cf_id=${{ secrets.JUNKAN_CLOUDFRONT_ID }}" >> "$GITHUB_OUTPUT"
+              ;;
+            gaininsight)
+              echo "bucket=${{ secrets.GAININSIGHT_S3_BUCKET }}" >> "$GITHUB_OUTPUT"
+              echo "cf_id=${{ secrets.GAININSIGHT_CLOUDFRONT_ID }}" >> "$GITHUB_OUTPUT"
               ;;
           esac
 
@@ -210,7 +219,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        site: ${{ inputs.site == 'all' && fromJson('["recon1","pensionable","senti","clik","junkan"]') || fromJson(format('["{0}"]', inputs.site)) }}
+        site: ${{ inputs.site == 'all' && fromJson('["recon1","pensionable","senti","clik","junkan","gaininsight"]') || fromJson(format('["{0}"]', inputs.site)) }}
     name: Deploy ${{ matrix.site }}
     steps:
       - uses: actions/checkout@v4
@@ -245,6 +254,10 @@ jobs:
             junkan)
               echo "bucket=${{ secrets.JUNKAN_S3_BUCKET }}" >> "$GITHUB_OUTPUT"
               echo "cf_id=${{ secrets.JUNKAN_CLOUDFRONT_ID }}" >> "$GITHUB_OUTPUT"
+              ;;
+            gaininsight)
+              echo "bucket=${{ secrets.GAININSIGHT_S3_BUCKET }}" >> "$GITHUB_OUTPUT"
+              echo "cf_id=${{ secrets.GAININSIGHT_CLOUDFRONT_ID }}" >> "$GITHUB_OUTPUT"
               ;;
           esac
 
