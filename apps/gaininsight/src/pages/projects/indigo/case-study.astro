@@ -17,7 +17,7 @@ import { ventureLogo } from '../../../lib/venture-logos';
           class="detail-hero-logo"
         />
       )}
-      <h1 class="detail-hero-title" style="font-size: 36px; line-height: 1.15;">
+      <h1 class="detail-hero-title">
         Legacy System Transformation Through AI-Powered Modernisation
       </h1>
       <div class="flex items-center gap-3 mb-6">
@@ -79,12 +79,10 @@ import { ventureLogo } from '../../../lib/venture-logos';
           <p>Gain Insight delivered a comprehensive transformation that went far beyond traditional migration or re-platforming. Through an AI-powered approach combining automated system archaeology, behaviour-driven development, and incremental modernisation, we deconstructed the legacy application, achieved complete intellectual ownership of its functionality, and rebuilt it as a modern, service-based architecture on AWS — all while maintaining 100% functional equivalence and operational continuity.</p>
           <h3>Key Outcomes</h3>
           <ul>
-            <li>Eliminated dependency on legacy systems that had become unmaintainable</li>
-            <li>Removed reliance on manual offshore data entry processes</li>
-            <li>Achieved complete transparency into system functionality through comprehensive documentation</li>
-            <li>Deployed state-of-the-art infrastructure leveraging Next.js and AWS managed services</li>
-            <li>Established 100% test coverage ensuring functional completeness and future maintainability</li>
-            <li>Transformed operational risk profile from critical dependency to strategic asset</li>
+            <li><strong>Eliminated legacy dependency</strong> — removed reliance on unmaintainable legacy code and manual offshore data entry processes</li>
+            <li><strong>Complete transparency</strong> — achieved full documentation and understanding of all system functionality for the first time</li>
+            <li><strong>Modern infrastructure</strong> — deployed state-of-the-art AWS architecture with Next.js, auto-scaling, and managed services</li>
+            <li><strong>100% test coverage</strong> — comprehensive BDD test suite ensuring functional completeness and future maintainability</li>
           </ul>
         </div>
       </div>
@@ -106,8 +104,7 @@ import { ventureLogo } from '../../../lib/venture-logos';
             <li><strong>Operational paralysis</strong> — the organisation could not modify the system to meet changing business requirements or regulatory obligations</li>
             <li><strong>Data opacity</strong> — despite processing billions in transactions, Indigo couldn't extract meaningful analytics from their own system</li>
             <li><strong>Resource dependency</strong> — reliance on offshore manual data entry created both cost burden and single points of failure</li>
-            <li><strong>Risk accumulation</strong> — the organisation had lost intellectual ownership of their core business system</li>
-            <li><strong>Strategic constraint</strong> — unable to modify their platform or integrate with modern systems</li>
+            <li><strong>Strategic risk</strong> — the organisation had lost intellectual ownership of their core business system and could not modify or integrate it with modern platforms</li>
           </ul>
           <p>Conventional modernisation strategies — wholesale replacement, lift-and-shift migration, or gradual manual refactoring — all posed unacceptable risks. A big-bang replacement would require recreating functionality that no one fully understood. Lift-and-shift would preserve the unmaintainability. Manual refactoring would take years.</p>
           <p>Indigo needed an approach that could achieve intellectual ownership of their existing system <em>before</em> transformation.</p>
@@ -115,27 +112,34 @@ import { ventureLogo } from '../../../lib/venture-logos';
       </div>
     </section>
 
-    <!-- Our Approach -->
+    <!-- Our Approach — phase cards -->
     <section class="section section-surface">
       <div class="container max-w-[780px]">
         <div class="section-label text-text-muted">
           <span>Our Approach</span>
         </div>
-        <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-8">
+        <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-10">
           AI-powered <em>system archaeology.</em>
         </h2>
-        <div class="case-study-prose">
-          <h3>Phase 1: System Archaeology and Documentation</h3>
-          <p>We deployed AI-powered analysis to deconstruct the entire technology stack — creating a complete map of system functionality including code flow analysis, data flow mapping, integration point discovery, and business logic extraction. For the first time in years, Indigo had complete, accurate documentation of their trading platform.</p>
-
-          <h3>Phase 2: Behaviour-Driven Test Suite</h3>
-          <p>Documentation alone isn't sufficient proof of understanding. Using AI, we translated system documentation into a comprehensive BDD test suite achieving 100% code coverage. Every code path, every decision point, every data transformation was covered — providing executable proof of complete understanding.</p>
-
-          <h3>Phase 3: Architecture Design</h3>
-          <p>With complete understanding, we designed a modern service-based architecture on AWS — leveraging Next.js for the UI, TypeScript throughout, Aurora PostgreSQL and DynamoDB for data, and a full suite of AWS managed services for compute, integration, security, and monitoring.</p>
-
-          <h3>Phase 4: Incremental Reconstruction</h3>
-          <p>Each service was reconstructed using modern technologies, validated against the comprehensive test suite, and deployed incrementally — no big-bang cutover. Traffic was gradually shifted with rollback capability at each stage. Only when achieving 100% test passage did we proceed.</p>
+        <div class="phase-card">
+          <div class="phase-card-number">Phase 1</div>
+          <div class="phase-card-title">System Archaeology and Documentation</div>
+          <div class="phase-card-body">We deployed AI-powered analysis to deconstruct the entire technology stack — creating a complete map of system functionality including code flow analysis, data flow mapping, integration point discovery, and business logic extraction. For the first time in years, Indigo had complete, accurate documentation of their trading platform.</div>
+        </div>
+        <div class="phase-card">
+          <div class="phase-card-number">Phase 2</div>
+          <div class="phase-card-title">Behaviour-Driven Test Suite</div>
+          <div class="phase-card-body">Documentation alone isn't sufficient proof of understanding. Using AI, we translated system documentation into a comprehensive BDD test suite achieving 100% code coverage. Every code path, every decision point, every data transformation was covered — providing executable proof of complete understanding.</div>
+        </div>
+        <div class="phase-card">
+          <div class="phase-card-number">Phase 3</div>
+          <div class="phase-card-title">Architecture Design</div>
+          <div class="phase-card-body">With complete understanding, we designed a modern service-based architecture on AWS — leveraging Next.js for the UI, TypeScript throughout, Aurora PostgreSQL and DynamoDB for data, and a full suite of AWS managed services for compute, integration, security, and monitoring.</div>
+        </div>
+        <div class="phase-card">
+          <div class="phase-card-number">Phase 4</div>
+          <div class="phase-card-title">Incremental Reconstruction</div>
+          <div class="phase-card-body">Each service was reconstructed using modern technologies, validated against the comprehensive test suite, and deployed incrementally — no big-bang cutover. Traffic was gradually shifted with rollback capability at each stage. Only when achieving 100% test passage did we proceed.</div>
         </div>
       </div>
     </section>
@@ -150,22 +154,22 @@ import { ventureLogo } from '../../../lib/venture-logos';
           Implementation <em>journey.</em>
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="card">
+          <div class="timeline-card">
             <h3 class="text-[14px] font-medium text-steel mb-2 font-body uppercase tracking-wider">Weeks 1–4</h3>
             <h4 class="text-[16px] font-medium text-text mb-2 font-body">Assessment & Planning</h4>
             <p class="text-[14px] text-text-muted leading-relaxed font-light">System archaeology, stakeholder interviews, test suite development, architecture design.</p>
           </div>
-          <div class="card">
+          <div class="timeline-card">
             <h3 class="text-[14px] font-medium text-steel mb-2 font-body uppercase tracking-wider">Weeks 5–9</h3>
             <h4 class="text-[16px] font-medium text-text mb-2 font-body">Foundation Services</h4>
             <p class="text-[14px] text-text-muted leading-relaxed font-light">Data access layer, core business logic, API gateway, initial AWS infrastructure.</p>
           </div>
-          <div class="card">
+          <div class="timeline-card">
             <h3 class="text-[14px] font-medium text-steel mb-2 font-body uppercase tracking-wider">Weeks 10–16</h3>
             <h4 class="text-[16px] font-medium text-text mb-2 font-body">Workflow & Integration</h4>
             <p class="text-[14px] text-text-muted leading-relaxed font-light">Trading partner interfaces, workflow orchestration, form processing replacement, elimination of manual data entry.</p>
           </div>
-          <div class="card">
+          <div class="timeline-card">
             <h3 class="text-[14px] font-medium text-steel mb-2 font-body uppercase tracking-wider">Weeks 17–26</h3>
             <h4 class="text-[16px] font-medium text-text mb-2 font-body">UI & Cutover</h4>
             <p class="text-[14px] text-text-muted leading-relaxed font-light">Next.js application, UX redesign, end-to-end testing, performance optimisation, gradual production cutover.</p>
@@ -174,21 +178,30 @@ import { ventureLogo } from '../../../lib/venture-logos';
       </div>
     </section>
 
-    <!-- Results -->
+    <!-- Results — impact cards -->
     <section class="section section-surface">
       <div class="container max-w-[780px]">
         <div class="section-label text-text-muted">
           <span>Results</span>
         </div>
-        <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-8">
+        <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-10">
           Business <em>impact.</em>
         </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+          <div class="result-card">
+            <div class="result-card-label">From opacity to transparency</div>
+            <div class="result-card-body">Complete documentation, real-time monitoring, data accessibility for analytics, and clear understanding of all business logic.</div>
+          </div>
+          <div class="result-card">
+            <div class="result-card-label">From dependency to control</div>
+            <div class="result-card-body">Eliminated reliance on unmaintainable legacy code, removed offshore manual data entry, established in-house capability to modify and extend.</div>
+          </div>
+          <div class="result-card">
+            <div class="result-card-label">From constraint to capability</div>
+            <div class="result-card-body">Rapid feature implementation, modern financial system integration, scalable infrastructure, foundation for future innovation.</div>
+          </div>
+        </div>
         <div class="case-study-prose">
-          <h3>Operational Transformation</h3>
-          <p><strong>From opacity to transparency</strong> — complete documentation, real-time monitoring, data accessibility for analytics, and clear understanding of all business logic.</p>
-          <p><strong>From dependency to control</strong> — eliminated reliance on unmaintainable legacy code, removed offshore manual data entry, established in-house capability to modify and extend the platform.</p>
-          <p><strong>From constraint to capability</strong> — ability to rapidly implement new features, integration with modern financial systems, scalable infrastructure, foundation for future innovation.</p>
-
           <h3>Technical Excellence</h3>
           <p>Modern service-based architecture on AWS with 100% test coverage, automated CI/CD pipeline, comprehensive observability, and API-first design supporting future integration scenarios.</p>
 
@@ -200,14 +213,14 @@ import { ventureLogo } from '../../../lib/venture-logos';
 
     <!-- Testimonial -->
     <section class="section section-dark">
-      <div class="container max-w-[640px] text-center">
-        <blockquote class="text-[20px] md:text-[24px] text-text leading-relaxed font-light italic mb-8">
-          "When we engaged Gain Insight, we were facing a critical situation. Our core trading platform had become a black box. What impressed us most was the methodical way they tackled the problem. The comprehensive test suite gave us confidence that nothing would be lost in translation. I've been involved in several system modernisation projects over my career, and this was the first one that delivered on time, stayed within budget, and actually worked as promised."
+      <div class="container max-w-[640px] text-center testimonial">
+        <blockquote>
+          "When we engaged Gain Insight, we were facing a critical situation. Our core trading platform had become a black box. What impressed us most was the methodical way they tackled the problem. The comprehensive test suite gave us confidence that nothing would be lost in translation. <span class="quote-highlight">This was the first modernisation project that delivered on time, stayed within budget, and actually worked as promised.</span>"
         </blockquote>
-        <p class="text-[14px] text-text-muted font-body">
-          <strong class="text-text font-medium">Jason Rodgers</strong><br />
+        <div class="testimonial-attribution">
+          <strong>Jason Rodgers</strong><br />
           Chief Operating Officer, Indigo Capital Partners
-        </p>
+        </div>
       </div>
     </section>
   </div>

@@ -294,10 +294,74 @@ Small uppercase label with a short rule/dash prefix. Used to introduce sections.
 
 | Element | Specification |
 |---------|--------------|
-| Rule | 20px wide, 1px height |
-| Rule colour | border on dark, border-light on light |
-| Text | 10px, uppercase, 0.16em letter-spacing, medium weight |
+| Rule | 28px wide, 1px height |
+| Rule colour | Steel at 40% opacity |
+| Text | 11px, uppercase, 0.14em letter-spacing, medium weight |
 | Text colour | text-muted on dark, text-light on light |
+
+### Phase Cards
+
+Used in methodology/approach sections to present sequential steps with clear visual separation.
+
+| Element | Specification |
+|---------|--------------|
+| Left border | 3px solid Steel |
+| Background | Elevated (#181B26) |
+| Border radius | 0 on left, lg (8px) on right |
+| Padding | 24px right/top/bottom, 28px left |
+| Phase label | 12px, semibold, Steel, uppercase, 0.08em tracking |
+| Title | 18px, medium weight, text primary |
+| Body | 14px, light (300), text-muted, 1.7 line-height |
+| Spacing | 16px between cards |
+
+### Result Cards
+
+Used to highlight key outcomes or impact statements. 3-column grid on desktop, single column on mobile.
+
+| Element | Specification |
+|---------|--------------|
+| Background | Elevated (#181B26) |
+| Border | 1px solid border (#1E2230) |
+| Border radius | xl (12px) |
+| Padding | 28px |
+| Label | 18px, medium weight, text primary |
+| Body | 14px, light (300), text-muted, 1.65 line-height |
+
+### Timeline Cards
+
+Used for chronological milestones. 2-column grid on desktop.
+
+| Element | Specification |
+|---------|--------------|
+| Background | Elevated (#181B26) |
+| Border | 1px solid border-subtle (#2A2F42) |
+| Left border | 3px solid Steel |
+| Border radius | xl (12px) |
+| Padding | 24px |
+| Week label | 14px, medium, Steel, uppercase, wider tracking |
+| Title | 16px, medium, text primary |
+| Body | 14px, light (300), text-muted |
+
+### Testimonial
+
+Blockquote with decorative opening quote mark and highlighted key phrase.
+
+| Element | Specification |
+|---------|--------------|
+| Quote mark | DM Serif Display, 80px, Steel at 30% opacity, centred above text |
+| Body | DM Sans, 18px, light (300), text-muted, roman (not italic), 1.75 line-height |
+| Highlight phrase | Steel colour, regular (400) weight, applied to the single most quotable sentence |
+| Attribution | 14px, text-muted; name in text primary at medium weight |
+| Max width | 640px, centred |
+
+### Bullet Lists (in prose)
+
+| Element | Specification |
+|---------|--------------|
+| Marker | 7px circle, Steel, 80% opacity |
+| Item spacing | 0.85em between items |
+| List bottom margin | 1.5em |
+| Bold lead phrases | Use `<strong>` with medium (500) weight for scannable anchor points |
 
 ---
 
