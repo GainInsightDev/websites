@@ -46,6 +46,8 @@ const related = allProjects.filter(p => p.slug.current !== slug).slice(0, 3);
 const projectContent: Record<string, {
   overviewHeading: string;
   overview: string[];
+  capabilitiesLabel?: string;
+  capabilitiesHeading?: string;
   capabilities: Capability[];
   results?: Result[];
   caseStudyUrl?: string;
@@ -57,6 +59,8 @@ const projectContent: Record<string, {
       'The system\'s complexity had created a dangerous operational dependency on manual offshore data entry, and left the organisation unable to extract meaningful insights from their own data. Traditional modernisation approaches — big-bang replacement, lift-and-shift, or manual refactoring — all posed unacceptable risks.',
       'Gain Insight delivered a comprehensive transformation using AI-powered system archaeology, behaviour-driven development, and incremental modernisation. We deconstructed the legacy application, achieved complete intellectual ownership of its functionality, and rebuilt it as a modern service-based architecture on AWS — all while maintaining 100% functional equivalence.',
     ],
+    capabilitiesLabel: 'Our Approach',
+    capabilitiesHeading: 'How we <em>delivered.</em>',
     capabilities: [
       { title: 'System archaeology', description: 'AI-powered analysis deconstructed the entire technology stack — extracting business logic, mapping data flows, and documenting all process flows from an opaque legacy codebase.' },
       { title: 'Executable specifications', description: 'Comprehensive BDD test suite achieving 100% code coverage. Every business rule, edge case, and data transformation captured as executable proof of understanding.' },
@@ -84,6 +88,8 @@ const defaultCapabilities: Capability[] = [
 ];
 
 const capabilities = content?.capabilities ?? defaultCapabilities;
+const capabilitiesLabel = content?.capabilitiesLabel ?? 'Capabilities';
+const capabilitiesHeading = content?.capabilitiesHeading ?? `What <em>${project.name} does.</em>`;
 const results = content?.results;
 const overviewParagraphs = content?.overview ?? [project.description];
 const overviewHeading = content?.overviewHeading ?? 'The <em>problem</em> and our <em>approach.</em>';
@@ -149,11 +155,9 @@ const caseStudyLink = content?.caseStudyUrl ?? project.caseStudyUrl;
   <section class="section section-dark">
     <div class="container">
       <div class="section-label text-text-muted">
-        <span>Capabilities</span>
+        <span>{capabilitiesLabel}</span>
       </div>
-      <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-12">
-        What <em>{project.name} does.</em>
-      </h2>
+      <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-12" set:html={capabilitiesHeading} />
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {capabilities.map((cap) => (
           <div class="card">
