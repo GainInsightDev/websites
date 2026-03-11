@@ -4,27 +4,31 @@ import { ventureLogoRaw } from '../../../lib/venture-logos';
 ---
 
 <Layout title="Indigo Capital Partners Case Study | Gain Insight" description="How Gain Insight transformed Indigo Capital's legacy trading platform through AI-powered modernisation.">
-  <!-- Hero — white -->
+  <!-- Hero — white, split layout: title left, logo right -->
   <section class="detail-hero section-light">
     <div class="container">
       <a href="/projects/indigo" class="detail-back-link">Back to Indigo</a>
-      {ventureLogoRaw['indigo'] && (
-        <div class="detail-hero-logo-stage">
-          <img
-            src={ventureLogoRaw['indigo']}
-            alt="Indigo Capital Partners logo"
-            width="600"
-            height="240"
-            class="detail-hero-logo"
-          />
+      <div class="detail-hero-split">
+        <div class="detail-hero-content">
+          <h1 class="detail-hero-title">
+            Legacy System Transformation Through AI-Powered Modernisation
+          </h1>
+          <div class="detail-hero-meta">
+            <span class="tag">Case Study</span>
+            <span class="tag">8 min read</span>
+          </div>
         </div>
-      )}
-      <h1 class="detail-hero-title">
-        Legacy System Transformation Through AI-Powered Modernisation
-      </h1>
-      <div class="detail-hero-meta">
-        <span class="tag">Case Study</span>
-        <span class="tag">8 min read</span>
+        {ventureLogoRaw['indigo'] && (
+          <div class="detail-hero-logo-stage">
+            <img
+              src={ventureLogoRaw['indigo']}
+              alt="Indigo Capital Partners logo"
+              width="400"
+              height="160"
+              class="detail-hero-logo"
+            />
+          </div>
+        )}
       </div>
     </div>
   </section>

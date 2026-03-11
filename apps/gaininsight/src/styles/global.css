@@ -645,6 +645,7 @@ h1 em, h2 em {
     align-items: center;
     gap: 16px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
   }
 
   .detail-hero-visit {

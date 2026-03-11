@@ -127,6 +127,11 @@ const caseStudyLink = content?.caseStudyUrl ?? project.caseStudyUrl;
                 Visit {displayName} &rarr;
               </a>
             )}
+            {caseStudyLink && (
+              <a href={caseStudyLink} class="detail-hero-visit">
+                Read the case study &rarr;
+              </a>
+            )}
           </div>
           <p class="detail-hero-tagline">
             {displayTagline}
