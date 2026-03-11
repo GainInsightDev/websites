@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { fetchAll } from '../../lib/sanity';
-import { ventureLogoRaw } from '../../lib/venture-logos';
+import { ventureLogoRaw, hiddenSlugs, projectOverrides, wideLogoSlugs } from '../../lib/venture-logos';
 
 interface Project {
   name: string;
@@ -11,20 +11,37 @@ interface Project {
   accent: string;
 }
 
-const projects = await fetchAll<Project>('project');
+const allProjects = await fetchAll<Project>('project');
+
+// Filter hidden projects, apply overrides, and separate similar-palette logos
+const preferredOrder = ['recon1', 'clik', 'senti', 'kaizen', 'junkan', 'pensionable'];
+const projects = allProjects
+  .filter(p => !hiddenSlugs.has(p.slug.current))
+  .map(p => {
+    const override = projectOverrides[p.slug.current];
+    if (override) {
+      return { ...p, name: override.name, displaySlug: override.displaySlug, tagline: override.tagline, domain: override.domain };
+    }
+    return { ...p, displaySlug: p.slug.current };
+  })
+  .sort((a, b) => {
+    const ai = preferredOrder.indexOf(a.slug.current);
+    const bi = preferredOrder.indexOf(b.slug.current);
+    return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+  });
 ---
 
 <Layout title="Projects | Gain Insight" description="AI-first products and services we're building with our partners.">
   <!-- Header -->
   <section class="hero-section section-light">
     <div class="container">
-      <div class="section-label text-text-light">
+      <div class="section-label text-text-light reveal">
         <span>Portfolio</span>
       </div>
-      <h1 class="text-[48px] md:text-[64px] text-text-dark leading-[1.05] mb-6">
+      <h1 class="text-[48px] md:text-[64px] text-text-dark leading-[1.05] mb-6 reveal">
         Projects <em>we're building.</em>
       </h1>
-      <p class="text-[18px] text-text-light leading-relaxed max-w-[560px] font-light">
+      <p class="text-[18px] text-text-light leading-relaxed max-w-[560px] font-light reveal">
         Each project is a partnership — domain expertise meets AI capability to create products that solve real problems.
       </p>
     </div>
@@ -33,18 +50,18 @@ const projects = await fetchAll<Project>('project');
   <!-- Project grid — dark -->
   <section class="section section-dark">
     <div class="container">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 reveal-stagger">
         {projects.map((project) => (
-          <a href={`/projects/${project.slug.current}`} class="project-card group block">
+          <a href={`/projects/${project.slug.current}`} class="project-card group block reveal">
             <div class="project-card-logo-stage">
-              {ventureLogoRaw[project.slug.current] ? (
-                <img src={ventureLogoRaw[project.slug.current]} alt={`${project.name} logo`} width="200" height="80" class="project-card-logo" loading="lazy" />
+              {ventureLogoRaw[project.displaySlug] ? (
+                <img src={ventureLogoRaw[project.displaySlug]} alt={`${project.name} logo`} width="200" height="80" class={`project-card-logo${wideLogoSlugs.has(project.displaySlug) ? ' logo-wide' : ''}`} loading="lazy" />
               ) : (
                 <span class="project-card-wordmark">{project.name}</span>
               )}
             </div>
             <div class="project-card-body">
-              {!ventureLogoRaw[project.slug.current] && (
+              {!ventureLogoRaw[project.displaySlug] && (
                 <h3 class="project-card-title">{project.name}</h3>
               )}
               <p class="project-card-tagline">{project.tagline}</p>
@@ -60,7 +77,7 @@ const projects = await fetchAll<Project>('project');
 
   <!-- CTA -->
   <section class="section section-offwhite text-center">
-    <div class="container">
+    <div class="container reveal">
       <h2 class="text-[40px] md:text-[48px] text-text-dark leading-[1.1] mb-6">Have an <em>idea?</em></h2>
       <p class="text-[16px] text-text-light leading-relaxed max-w-[420px] mx-auto mb-10 font-light">
         We're always looking for partners with domain expertise and ambitious ideas.

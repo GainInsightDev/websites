@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { fetchAll } from '../lib/sanity';
-import { ventureLogoRaw } from '../lib/venture-logos';
+import { ventureLogoRaw, hiddenSlugs, projectOverrides, wideLogoSlugs } from '../lib/venture-logos';
 
 interface Project {
   name: string;
@@ -14,13 +14,32 @@ interface Project {
 }
 
 const allProjects = await fetchAll<Project>('project');
-const projects = allProjects.filter(p => p.featured).slice(0, 6);
+const featuredProjects = allProjects
+  .filter(p => p.featured && !hiddenSlugs.has(p.slug.current))
+  .map(p => {
+    const override = projectOverrides[p.slug.current];
+    if (override) {
+      return { ...p, name: override.name, displaySlug: override.displaySlug, tagline: override.tagline, domain: override.domain };
+    }
+    return { ...p, displaySlug: p.slug.current };
+  })
+  .slice(0, 6);
+
+// Preferred display order — separate similar colour palettes (Recon1/Pensionable)
+// Row 1: recon1, clik, senti | Row 2: pensionable, junkan, kaizen
+const preferredOrder = ['recon1', 'clik', 'senti', 'pensionable', 'junkan', 'kaizen'];
+const projects = featuredProjects.sort((a, b) => {
+  const ai = preferredOrder.indexOf(a.slug.current);
+  const bi = preferredOrder.indexOf(b.slug.current);
+  return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+});
 ---
 
 <Layout>
   <!-- Hero — white -->
-  <section class="hero-section section-light">
-    <div class="container">
+  <section class="hero-section section-light relative overflow-hidden">
+    <div class="hero-ambient" aria-hidden="true"></div>
+    <div class="container relative">
       <div class="max-w-[720px]">
         <div class="section-label text-text-light">
           <span>AI Venture Partner</span>
@@ -39,16 +58,16 @@ const projects = allProjects.filter(p => p.featured).slice(0, 6);
   <!-- What we do — dark -->
   <section class="section section-dark">
     <div class="container">
-      <div class="section-label text-text-muted">
+      <div class="section-label text-text-muted reveal">
         <span>What we do</span>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-        <div>
+        <div class="reveal">
           <h2 class="text-[40px] md:text-[48px] text-text leading-[1.1] mb-6">
             We build <em>AI-first products</em> with people who know their industry.
           </h2>
         </div>
-        <div>
+        <div class="reveal">
           <p class="text-[16px] text-text-muted leading-relaxed mb-6 font-light">
             Our partners bring deep domain expertise — in pensions, healthcare, finance, retail, and beyond. We bring the AI capability, the engineering, and the conviction to turn that expertise into working software.
           </p>
@@ -63,20 +82,20 @@ const projects = allProjects.filter(p => p.featured).slice(0, 6);
   <!-- How we work teaser — light -->
   <section class="section section-offwhite">
     <div class="container">
-      <div class="section-label text-text-light">
+      <div class="section-label text-text-light reveal">
         <span>How we work</span>
       </div>
-      <h2 class="text-[40px] md:text-[48px] text-text-dark leading-[1.1] mb-12">
+      <h2 class="text-[40px] md:text-[48px] text-text-dark leading-[1.1] mb-12 reveal">
         A partnership model <em>built for AI.</em>
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 reveal-stagger">
         {[
           { title: 'Domain expertise meets AI', desc: 'You know your industry inside out. We know how to build AI-first products. Together, that combination is powerful.' },
           { title: 'Build together', desc: 'Not outsourcing. Genuine partnership — from data and systems through to working software, side by side.' },
           { title: 'Full-stack delivery', desc: 'We work with existing systems and data. We write software. We are AI-first in everything that we do.' },
           { title: 'Stay involved', desc: 'We don\'t hand off and walk away. Our partnerships are ongoing — we grow with the ventures we help build.' },
         ].map((item) => (
-          <div class="card-light">
+          <div class="card-light reveal">
             <h3 class="text-[16px] font-semibold text-text-dark mb-3 font-body">{item.title}</h3>
             <p class="text-[14px] text-text-light leading-relaxed font-light">{item.desc}</p>
           </div>
@@ -91,27 +110,27 @@ const projects = allProjects.filter(p => p.featured).slice(0, 6);
   <!-- Featured projects — dark -->
   <section class="section section-dark">
     <div class="container">
-      <div class="section-label text-text-muted">
+      <div class="section-label text-text-muted reveal">
         <span>Portfolio</span>
       </div>
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4 reveal">
         <h2 class="text-[40px] md:text-[48px] text-text leading-[1.1]">
           Projects <em>we're building.</em>
         </h2>
         <a href="/projects" class="text-[13px] text-steel hover:text-text transition-colors font-body">View all projects &rarr;</a>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 reveal-stagger">
         {projects.map((project) => (
-          <a href={`/projects/${project.slug.current}`} class="project-card group block">
+          <a href={`/projects/${project.slug.current}`} class="project-card group block reveal">
             <div class="project-card-logo-stage">
-              {ventureLogoRaw[project.slug.current] ? (
-                <img src={ventureLogoRaw[project.slug.current]} alt={`${project.name} logo`} width="200" height="80" class="project-card-logo" loading="lazy" />
+              {ventureLogoRaw[project.displaySlug] ? (
+                <img src={ventureLogoRaw[project.displaySlug]} alt={`${project.name} logo`} width="200" height="80" class={`project-card-logo${wideLogoSlugs.has(project.displaySlug) ? ' logo-wide' : ''}`} loading="lazy" />
               ) : (
                 <span class="project-card-wordmark">{project.name}</span>
               )}
             </div>
             <div class="project-card-body">
-              {!ventureLogoRaw[project.slug.current] && (
+              {!ventureLogoRaw[project.displaySlug] && (
                 <h3 class="project-card-title">{project.name}</h3>
               )}
               <p class="project-card-tagline">{project.tagline}</p>
@@ -127,7 +146,7 @@ const projects = allProjects.filter(p => p.featured).slice(0, 6);
 
   <!-- CTA — light -->
   <section class="section-lg section-light">
-    <div class="container text-center">
+    <div class="container text-center reveal">
       <h2 class="text-[40px] md:text-[48px] text-text-dark leading-[1.1] mb-6">
         Ready to build <em>something?</em>
       </h2>

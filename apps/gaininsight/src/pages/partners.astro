@@ -19,13 +19,13 @@ const partners = [
   <!-- Hero -->
   <section class="hero-section section-light">
     <div class="container">
-      <div class="section-label text-text-light">
+      <div class="section-label text-text-light reveal">
         <span>Partners</span>
       </div>
-      <h1 class="text-[48px] md:text-[64px] text-text-dark leading-[1.05] mb-6">
+      <h1 class="text-[48px] md:text-[64px] text-text-dark leading-[1.05] mb-6 reveal">
         The people behind <em>the projects.</em>
       </h1>
-      <p class="text-[18px] text-text-light leading-relaxed max-w-[560px] font-light">
+      <p class="text-[18px] text-text-light leading-relaxed max-w-[560px] font-light reveal">
         Domain experts, founders, and practitioners — every person brings deep expertise in their field.
       </p>
     </div>
@@ -34,34 +34,36 @@ const partners = [
   <!-- Partners grid — dark -->
   <section class="section section-dark">
     <div class="container">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 reveal-stagger">
         {partners.map((partner) => (
-          <div class="card">
+          <div class="card card-horizontal reveal">
             {partner.photo ? (
               <img
                 src={partner.photo}
                 alt={partner.name}
-                width="72"
-                height="72"
-                class="w-[72px] h-[72px] rounded-full object-cover border border-border-subtle mb-4"
+                width="96"
+                height="96"
+                class="w-24 h-24 rounded-lg object-cover border border-border-subtle flex-shrink-0"
                 loading="lazy"
               />
             ) : (
-              <div class="w-[72px] h-[72px] rounded-full bg-elevated border border-border-subtle mb-4 flex items-center justify-center">
-                <span class="text-[22px] text-text-muted font-body font-semibold">
+              <div class="w-24 h-24 rounded-lg bg-elevated border border-border-subtle flex-shrink-0 flex items-center justify-center">
+                <span class="text-[24px] text-text-muted font-body font-semibold">
                   {partner.name.split(' ').map((n: string) => n[0]).join('')}
                 </span>
               </div>
             )}
-            <h3 class="text-[16px] font-medium text-text mb-1 font-body">{partner.name}</h3>
-            <p class="text-[13px] text-steel mb-3 font-body">{partner.role}</p>
-            {partner.bio && (
-              <p class="text-[13px] text-text-muted leading-relaxed mb-4 font-light">{partner.bio}</p>
-            )}
-            <div class="flex flex-wrap gap-2">
-              {partner.ventures.map((v: string) => (
-                <span class="text-[11px] text-steel bg-steel-dim px-2 py-1 rounded font-body">{v}</span>
-              ))}
+            <div class="flex-1 min-w-0">
+              <h3 class="text-[16px] font-medium text-text mb-1 font-body">{partner.name}</h3>
+              <p class="text-[13px] text-steel mb-3 font-body">{partner.role}</p>
+              {partner.bio && (
+                <p class="text-[13px] text-text-muted leading-relaxed mb-4 font-light">{partner.bio}</p>
+              )}
+              <div class="flex flex-wrap gap-2">
+                {partner.ventures.map((v: string) => (
+                  <span class="text-[11px] text-steel bg-steel-dim px-2 py-1 rounded font-body">{v}</span>
+                ))}
+              </div>
             </div>
           </div>
         ))}

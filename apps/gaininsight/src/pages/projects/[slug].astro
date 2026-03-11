@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { fetchAll, fetchBySlug } from '../../lib/sanity';
-import { ventureLogo, ventureLogoRaw } from '../../lib/venture-logos';
+import { ventureLogoRaw, hiddenSlugs, projectOverrides, wideLogoSlugs } from '../../lib/venture-logos';
 
 interface Capability {
   title: string;
@@ -38,9 +38,25 @@ if (!project) {
   return Astro.redirect('/404');
 }
 
-// Get related projects (other projects, max 3)
+// Apply display overrides (e.g. Helm → Juncta)
+const override = projectOverrides[slug!];
+const displayName = override?.name ?? project.name;
+const displaySlug = override?.displaySlug ?? slug!;
+const displayDomain = override?.domain ?? project.domain;
+const displayTagline = override?.tagline ?? project.tagline;
+
+// Get related projects (other visible projects, max 3)
 const allProjects = await fetchAll<Project>('project');
-const related = allProjects.filter(p => p.slug.current !== slug).slice(0, 3);
+const related = allProjects
+  .filter(p => p.slug.current !== slug && !hiddenSlugs.has(p.slug.current))
+  .map(p => {
+    const override = projectOverrides[p.slug.current];
+    if (override) {
+      return { ...p, name: override.name, displaySlug: override.displaySlug, tagline: override.tagline, domain: override.domain };
+    }
+    return { ...p, displaySlug: p.slug.current };
+  })
+  .slice(0, 3);
 
 // Project-specific content (will migrate to Sanity once schema is deployed)
 const projectContent: Record<string, {
@@ -89,57 +105,59 @@ const defaultCapabilities: Capability[] = [
 
 const capabilities = content?.capabilities ?? defaultCapabilities;
 const capabilitiesLabel = content?.capabilitiesLabel ?? 'Capabilities';
-const capabilitiesHeading = content?.capabilitiesHeading ?? `What <em>${project.name} does.</em>`;
+const capabilitiesHeading = content?.capabilitiesHeading ?? `What <em>${displayName} does.</em>`;
 const results = content?.results;
 const overviewParagraphs = content?.overview ?? [project.description];
 const overviewHeading = content?.overviewHeading ?? 'The <em>problem</em> and our <em>approach.</em>';
 const caseStudyLink = content?.caseStudyUrl ?? project.caseStudyUrl;
 ---
 
-<Layout title={`${project.name} | Gain Insight`} description={project.tagline}>
-  <!-- Hero — dark, logo sits naturally on background -->
-  <section class="detail-hero section-dark">
+<Layout title={`${displayName} | Gain Insight`} description={displayTagline}>
+  <!-- Hero — white, split layout: description left, logo right -->
+  <section class="detail-hero section-light">
     <div class="container">
-      <a href="/projects" class="detail-back-link">&larr; Back to Projects</a>
-      {ventureLogo[slug!] ? (
-        <img
-          src={ventureLogo[slug!]}
-          alt={`${project.name} logo`}
-          width="400"
-          height="160"
-          class="detail-hero-logo"
-        />
-        <h1 class="sr-only">{project.name}</h1>
-      ) : (
-        <h1 class="detail-hero-title">
-          {project.name}
-        </h1>
-      )}
-      <div class="flex items-center gap-3 mb-6">
-        <span class="tag">{project.domain}</span>
+      <a href="/projects" class="detail-back-link">Back to Projects</a>
+      <div class="detail-hero-split">
+        <div class="detail-hero-content">
+          <h1 class="detail-hero-title">{displayName}</h1>
+          <div class="detail-hero-meta">
+            <span class="tag">{displayDomain}</span>
+            {project.url && (
+              <a href={project.url} target="_blank" rel="noopener noreferrer" class="detail-hero-visit">
+                Visit {displayName} &rarr;
+              </a>
+            )}
+          </div>
+          <p class="detail-hero-tagline">
+            {displayTagline}
+          </p>
+        </div>
+        {ventureLogoRaw[displaySlug] && (
+          <div class="detail-hero-logo-stage">
+            <img
+              src={ventureLogoRaw[displaySlug]}
+              alt={`${displayName} logo`}
+              width="400"
+              height="160"
+              class="detail-hero-logo"
+            />
+          </div>
+        )}
       </div>
-      <p class="text-[18px] text-text-muted leading-relaxed max-w-[560px] font-light">
-        {project.tagline}
-      </p>
-      {project.url && (
-        <a href={project.url} target="_blank" rel="noopener noreferrer" class="btn btn-ghost-dark mt-8 inline-flex">
-          Visit {project.name} &rarr;
-        </a>
-      )}
     </div>
   </section>
 
-  <!-- Overview — surface -->
-  <section class="section section-surface">
+  <!-- Overview — dark -->
+  <section class="section section-dark">
     <div class="container">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-        <div>
+        <div class="reveal">
           <div class="section-label text-text-muted">
             <span>Overview</span>
           </div>
           <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-6" set:html={overviewHeading} />
         </div>
-        <div class="flex flex-col gap-6">
+        <div class="flex flex-col gap-6 reveal">
           {overviewParagraphs.map((p) => (
             <p class="text-[16px] text-text-muted leading-relaxed font-light">{p}</p>
           ))}
@@ -148,16 +166,16 @@ const caseStudyLink = content?.caseStudyUrl ?? project.caseStudyUrl;
     </div>
   </section>
 
-  <!-- Capabilities — dark -->
-  <section class="section section-dark">
+  <!-- Capabilities — surface -->
+  <section class="section section-surface">
     <div class="container">
-      <div class="section-label text-text-muted">
+      <div class="section-label text-text-muted reveal">
         <span>{capabilitiesLabel}</span>
       </div>
-      <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-12" set:html={capabilitiesHeading} />
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-12 reveal" set:html={capabilitiesHeading} />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 reveal-stagger">
         {capabilities.map((cap) => (
-          <div class="card">
+          <div class="card reveal">
             <h3 class="text-[16px] font-medium text-text mb-3 font-body">{cap.title}</h3>
             <p class="text-[14px] text-text-muted leading-relaxed font-light">{cap.description}</p>
           </div>
@@ -166,19 +184,19 @@ const caseStudyLink = content?.caseStudyUrl ?? project.caseStudyUrl;
     </div>
   </section>
 
-  <!-- Results — surface (only if results exist) -->
+  <!-- Results — dark (only if results exist) -->
   {results && (
-    <section class="section section-surface">
+    <section class="section section-dark">
       <div class="container">
-        <div class="section-label text-text-muted">
+        <div class="section-label text-text-muted reveal">
           <span>Results</span>
         </div>
-        <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-12">
+        <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-12 reveal">
           What we <em>delivered.</em>
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 reveal-stagger">
           {results.map((r) => (
-            <div class="card">
+            <div class="card reveal">
               <h3 class="text-[16px] font-medium text-text mb-3 font-body">{r.title}</h3>
               <p class="text-[14px] text-text-muted leading-relaxed font-light">{r.description}</p>
             </div>
@@ -194,29 +212,29 @@ const caseStudyLink = content?.caseStudyUrl ?? project.caseStudyUrl;
   )}
 
   <!-- Related Projects -->
-  <section class={`section ${results ? 'section-dark' : 'section-surface'}`}>
+  <section class={`section ${results ? 'section-surface' : 'section-dark'}`}>
     <div class="container">
-      <div class="section-label text-text-muted">
+      <div class="section-label text-text-muted reveal">
         <span>Portfolio</span>
       </div>
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4 reveal">
         <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1]">
           More <em>projects.</em>
         </h2>
         <a href="/projects" class="text-[13px] text-steel hover:text-text transition-colors font-body">View all projects &rarr;</a>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal-stagger">
         {related.map((p) => (
-          <a href={`/projects/${p.slug.current}`} class="project-card group block">
+          <a href={`/projects/${p.slug.current}`} class="project-card group block reveal">
             <div class="project-card-logo-stage">
-              {ventureLogoRaw[p.slug.current] ? (
-                <img src={ventureLogoRaw[p.slug.current]} alt={`${p.name} logo`} width="200" height="80" class="project-card-logo" loading="lazy" />
+              {ventureLogoRaw[p.displaySlug] ? (
+                <img src={ventureLogoRaw[p.displaySlug]} alt={`${p.name} logo`} width="200" height="80" class={`project-card-logo${wideLogoSlugs.has(p.displaySlug) ? ' logo-wide' : ''}`} loading="lazy" />
               ) : (
                 <span class="project-card-wordmark">{p.name}</span>
               )}
             </div>
             <div class="project-card-body">
-              {!ventureLogoRaw[p.slug.current] && (
+              {!ventureLogoRaw[p.displaySlug] && (
                 <h3 class="project-card-title">{p.name}</h3>
               )}
               <p class="project-card-tagline">{p.tagline}</p>
@@ -232,12 +250,12 @@ const caseStudyLink = content?.caseStudyUrl ?? project.caseStudyUrl;
 
   <!-- CTA — offwhite -->
   <section class="section section-offwhite text-center">
-    <div class="container">
+    <div class="container reveal">
       <h2 class="text-[40px] md:text-[48px] text-text-dark leading-[1.1] mb-6">
         Interested in <em>this project?</em>
       </h2>
       <p class="text-[16px] text-text-light leading-relaxed max-w-[420px] mx-auto mb-10 font-light">
-        If you'd like to know more about {project.name} or explore a similar partnership, get in touch.
+        If you'd like to know more about {displayName} or explore a similar partnership, get in touch.
       </p>
       <a href="/contact" class="btn btn-steel">Get in touch</a>
     </div>

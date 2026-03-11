@@ -100,10 +100,40 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://gaininsight.ai').href;
     </style>
   </head>
   <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
     <Navbar />
     <main class="pt-[80px]">
       <slot />
     </main>
     <Footer />
+    <script>
+      // Scroll-triggered reveal animations
+      const io = new IntersectionObserver(
+        (entries) => entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in-view');
+            io.unobserve(e.target);
+          }
+        }),
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      );
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+      // Scroll progress bar
+      const bar = document.querySelector('.scroll-progress');
+      if (bar instanceof HTMLElement) {
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              const h = document.documentElement.scrollHeight - window.innerHeight;
+              bar.style.transform = h > 0 ? `scaleX(${window.scrollY / h})` : 'scaleX(0)';
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+      }
+    </script>
   </body>
 </html>

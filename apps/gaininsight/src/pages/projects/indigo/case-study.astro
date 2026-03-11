@@ -1,27 +1,30 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import { ventureLogo } from '../../../lib/venture-logos';
+import { ventureLogoRaw } from '../../../lib/venture-logos';
 ---
 
 <Layout title="Indigo Capital Partners Case Study | Gain Insight" description="How Gain Insight transformed Indigo Capital's legacy trading platform through AI-powered modernisation.">
-  <!-- Hero — dark -->
-  <section class="detail-hero section-dark">
+  <!-- Hero — white -->
+  <section class="detail-hero section-light">
     <div class="container">
-      <a href="/projects/indigo" class="detail-back-link">&larr; Back to Indigo</a>
-      {ventureLogo['indigo'] && (
-        <img
-          src={ventureLogo['indigo']}
-          alt="Indigo Capital Partners logo"
-          width="400"
-          height="160"
-          class="detail-hero-logo"
-        />
+      <a href="/projects/indigo" class="detail-back-link">Back to Indigo</a>
+      {ventureLogoRaw['indigo'] && (
+        <div class="detail-hero-logo-stage">
+          <img
+            src={ventureLogoRaw['indigo']}
+            alt="Indigo Capital Partners logo"
+            width="600"
+            height="240"
+            class="detail-hero-logo"
+          />
+        </div>
       )}
       <h1 class="detail-hero-title">
         Legacy System Transformation Through AI-Powered Modernisation
       </h1>
-      <div class="flex items-center gap-3 mb-6">
+      <div class="detail-hero-meta">
         <span class="tag">Case Study</span>
+        <span class="tag">8 min read</span>
       </div>
     </div>
   </section>
@@ -29,13 +32,17 @@ import { ventureLogo } from '../../../lib/venture-logos';
   <!-- Gate — email capture form -->
   <section class="section section-offwhite" id="gate-section">
     <div class="container max-w-[640px] text-center">
-      <h2 class="text-[32px] md:text-[40px] text-text-dark leading-[1.1] mb-4">
+      <h2 class="text-[28px] sm:text-[32px] md:text-[40px] text-text-dark leading-[1.1] mb-4 reveal">
         Read the <em>full case study.</em>
       </h2>
-      <p class="text-[16px] text-text-light leading-relaxed mb-8 font-light">
+      <p class="text-[16px] text-text-light leading-relaxed mb-8 font-light reveal">
         Discover how Gain Insight transformed a $30B trading platform from an opaque legacy system into a modern, AI-powered architecture — with 100% functional equivalence.
       </p>
-      <form id="case-study-gate" class="flex flex-col gap-4 max-w-[400px] mx-auto">
+      <form id="case-study-gate" class="flex flex-col gap-4 max-w-[400px] mx-auto reveal">
+        <input type="hidden" name="access_key" value="2f8908fb-3821-4304-9ee1-28ac7b71e165" />
+        <input type="hidden" name="subject" value="Case Study Download — Indigo Capital" />
+        <input type="hidden" name="from_name" value="Gain Insight Case Study" />
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
         <input
           type="text"
           name="name"
@@ -56,7 +63,7 @@ import { ventureLogo } from '../../../lib/venture-logos';
           placeholder="Company (optional)"
           class="case-study-input"
         />
-        <button type="submit" class="btn btn-steel w-full mt-2">Download case study</button>
+        <button type="submit" class="btn btn-steel w-full mt-2" id="gate-submit">Read the full case study</button>
       </form>
       <p class="text-[12px] text-text-light mt-4">We'll send you a copy and won't spam you. <a href="/privacy-policy" class="text-steel hover:underline">Privacy policy</a></p>
     </div>
@@ -67,13 +74,13 @@ import { ventureLogo } from '../../../lib/venture-logos';
     <!-- Executive Summary -->
     <section class="section section-surface">
       <div class="container max-w-[780px]">
-        <div class="section-label text-text-muted">
+        <div class="section-label text-text-muted reveal">
           <span>Executive Summary</span>
         </div>
-        <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-8">
+        <h2 class="text-[28px] sm:text-[32px] md:text-[40px] text-text leading-[1.1] mb-8 reveal">
           Transforming a <em>$30B trading platform.</em>
         </h2>
-        <div class="case-study-prose">
+        <div class="case-study-prose case-study-prose-dark reveal">
           <p>Indigo Capital Partners, an investment bank trading over $30 billion in positions annually across 100+ banking relationships, faced a critical business challenge: their core trading platform had become an opaque legacy system that no one fully understood or could maintain.</p>
           <p>The system's complexity, built on obsolete form-based technology and unmaintained PHP applications, had created a dangerous operational dependency on manual offshore data entry and left the organisation unable to extract meaningful insights from their own data.</p>
           <p>Gain Insight delivered a comprehensive transformation that went far beyond traditional migration or re-platforming. Through an AI-powered approach combining automated system archaeology, behaviour-driven development, and incremental modernisation, we deconstructed the legacy application, achieved complete intellectual ownership of its functionality, and rebuilt it as a modern, service-based architecture on AWS — all while maintaining 100% functional equivalence and operational continuity.</p>
@@ -91,13 +98,13 @@ import { ventureLogo } from '../../../lib/venture-logos';
     <!-- The Challenge -->
     <section class="section section-dark">
       <div class="container max-w-[780px]">
-        <div class="section-label text-text-muted">
+        <div class="section-label text-text-muted reveal">
           <span>The Challenge</span>
         </div>
-        <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-8">
+        <h2 class="text-[28px] sm:text-[32px] md:text-[40px] text-text leading-[1.1] mb-8 reveal">
           A system <em>beyond control.</em>
         </h2>
-        <div class="case-study-prose case-study-prose-dark">
+        <div class="case-study-prose case-study-prose-dark reveal">
           <p>Indigo's trading platform had evolved into a hybrid architecture combining third-party form-based technology that generated non-machine-interpretable documents, an unmaintained PHP application whose original development team had departed, and a team of offshore workers manually transcribing information from screen captures.</p>
           <p>This created cascading business problems:</p>
           <ul>
@@ -115,31 +122,33 @@ import { ventureLogo } from '../../../lib/venture-logos';
     <!-- Our Approach — phase cards -->
     <section class="section section-surface">
       <div class="container max-w-[780px]">
-        <div class="section-label text-text-muted">
+        <div class="section-label text-text-muted reveal">
           <span>Our Approach</span>
         </div>
-        <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-10">
+        <h2 class="text-[28px] sm:text-[32px] md:text-[40px] text-text leading-[1.1] mb-10 reveal">
           AI-powered <em>system archaeology.</em>
         </h2>
-        <div class="phase-card">
-          <div class="phase-card-number">Phase 1</div>
-          <div class="phase-card-title">System Archaeology and Documentation</div>
-          <div class="phase-card-body">We deployed AI-powered analysis to deconstruct the entire technology stack — creating a complete map of system functionality including code flow analysis, data flow mapping, integration point discovery, and business logic extraction. For the first time in years, Indigo had complete, accurate documentation of their trading platform.</div>
-        </div>
-        <div class="phase-card">
-          <div class="phase-card-number">Phase 2</div>
-          <div class="phase-card-title">Behaviour-Driven Test Suite</div>
-          <div class="phase-card-body">Documentation alone isn't sufficient proof of understanding. Using AI, we translated system documentation into a comprehensive BDD test suite achieving 100% code coverage. Every code path, every decision point, every data transformation was covered — providing executable proof of complete understanding.</div>
-        </div>
-        <div class="phase-card">
-          <div class="phase-card-number">Phase 3</div>
-          <div class="phase-card-title">Architecture Design</div>
-          <div class="phase-card-body">With complete understanding, we designed a modern service-based architecture on AWS — leveraging Next.js for the UI, TypeScript throughout, Aurora PostgreSQL and DynamoDB for data, and a full suite of AWS managed services for compute, integration, security, and monitoring.</div>
-        </div>
-        <div class="phase-card">
-          <div class="phase-card-number">Phase 4</div>
-          <div class="phase-card-title">Incremental Reconstruction</div>
-          <div class="phase-card-body">Each service was reconstructed using modern technologies, validated against the comprehensive test suite, and deployed incrementally — no big-bang cutover. Traffic was gradually shifted with rollback capability at each stage. Only when achieving 100% test passage did we proceed.</div>
+        <div class="reveal-stagger">
+          <div class="phase-card reveal">
+            <div class="phase-card-number">Phase 1</div>
+            <div class="phase-card-title">System Archaeology and Documentation</div>
+            <div class="phase-card-body">We deployed AI-powered analysis to deconstruct the entire technology stack — creating a complete map of system functionality including code flow analysis, data flow mapping, integration point discovery, and business logic extraction. For the first time in years, Indigo had complete, accurate documentation of their trading platform.</div>
+          </div>
+          <div class="phase-card reveal">
+            <div class="phase-card-number">Phase 2</div>
+            <div class="phase-card-title">Behaviour-Driven Test Suite</div>
+            <div class="phase-card-body">Documentation alone isn't sufficient proof of understanding. Using AI, we translated system documentation into a comprehensive BDD test suite achieving 100% code coverage. Every code path, every decision point, every data transformation was covered — providing executable proof of complete understanding.</div>
+          </div>
+          <div class="phase-card reveal">
+            <div class="phase-card-number">Phase 3</div>
+            <div class="phase-card-title">Architecture Design</div>
+            <div class="phase-card-body">With complete understanding, we designed a modern service-based architecture on AWS — leveraging Next.js for the UI, TypeScript throughout, Aurora PostgreSQL and DynamoDB for data, and a full suite of AWS managed services for compute, integration, security, and monitoring.</div>
+          </div>
+          <div class="phase-card reveal">
+            <div class="phase-card-number">Phase 4</div>
+            <div class="phase-card-title">Incremental Reconstruction</div>
+            <div class="phase-card-body">Each service was reconstructed using modern technologies, validated against the comprehensive test suite, and deployed incrementally — no big-bang cutover. Traffic was gradually shifted with rollback capability at each stage. Only when achieving 100% test passage did we proceed.</div>
+          </div>
         </div>
       </div>
     </section>
@@ -147,29 +156,29 @@ import { ventureLogo } from '../../../lib/venture-logos';
     <!-- Timeline -->
     <section class="section section-dark">
       <div class="container max-w-[780px]">
-        <div class="section-label text-text-muted">
+        <div class="section-label text-text-muted reveal">
           <span>Timeline</span>
         </div>
-        <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-8">
+        <h2 class="text-[28px] sm:text-[32px] md:text-[40px] text-text leading-[1.1] mb-8 reveal">
           Implementation <em>journey.</em>
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="timeline-card">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 reveal-stagger">
+          <div class="timeline-card reveal">
             <h3 class="text-[14px] font-medium text-steel mb-2 font-body uppercase tracking-wider">Weeks 1–4</h3>
             <h4 class="text-[16px] font-medium text-text mb-2 font-body">Assessment & Planning</h4>
             <p class="text-[14px] text-text-muted leading-relaxed font-light">System archaeology, stakeholder interviews, test suite development, architecture design.</p>
           </div>
-          <div class="timeline-card">
+          <div class="timeline-card reveal">
             <h3 class="text-[14px] font-medium text-steel mb-2 font-body uppercase tracking-wider">Weeks 5–9</h3>
             <h4 class="text-[16px] font-medium text-text mb-2 font-body">Foundation Services</h4>
             <p class="text-[14px] text-text-muted leading-relaxed font-light">Data access layer, core business logic, API gateway, initial AWS infrastructure.</p>
           </div>
-          <div class="timeline-card">
+          <div class="timeline-card reveal">
             <h3 class="text-[14px] font-medium text-steel mb-2 font-body uppercase tracking-wider">Weeks 10–16</h3>
             <h4 class="text-[16px] font-medium text-text mb-2 font-body">Workflow & Integration</h4>
             <p class="text-[14px] text-text-muted leading-relaxed font-light">Trading partner interfaces, workflow orchestration, form processing replacement, elimination of manual data entry.</p>
           </div>
-          <div class="timeline-card">
+          <div class="timeline-card reveal">
             <h3 class="text-[14px] font-medium text-steel mb-2 font-body uppercase tracking-wider">Weeks 17–26</h3>
             <h4 class="text-[16px] font-medium text-text mb-2 font-body">UI & Cutover</h4>
             <p class="text-[14px] text-text-muted leading-relaxed font-light">Next.js application, UX redesign, end-to-end testing, performance optimisation, gradual production cutover.</p>
@@ -181,39 +190,42 @@ import { ventureLogo } from '../../../lib/venture-logos';
     <!-- Results — impact cards -->
     <section class="section section-surface">
       <div class="container max-w-[780px]">
-        <div class="section-label text-text-muted">
+        <div class="section-label text-text-muted reveal">
           <span>Results</span>
         </div>
-        <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-10">
+        <h2 class="text-[28px] sm:text-[32px] md:text-[40px] text-text leading-[1.1] mb-10 reveal">
           Business <em>impact.</em>
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-          <div class="result-card">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12 reveal-stagger">
+          <div class="result-card reveal">
             <div class="result-card-label">From opacity to transparency</div>
             <div class="result-card-body">Complete documentation, real-time monitoring, data accessibility for analytics, and clear understanding of all business logic.</div>
           </div>
-          <div class="result-card">
+          <div class="result-card reveal">
             <div class="result-card-label">From dependency to control</div>
             <div class="result-card-body">Eliminated reliance on unmaintainable legacy code, removed offshore manual data entry, established in-house capability to modify and extend.</div>
           </div>
-          <div class="result-card">
+          <div class="result-card reveal">
             <div class="result-card-label">From constraint to capability</div>
             <div class="result-card-body">Rapid feature implementation, modern financial system integration, scalable infrastructure, foundation for future innovation.</div>
           </div>
         </div>
-        <div class="case-study-prose">
-          <h3>Technical Excellence</h3>
-          <p>Modern service-based architecture on AWS with 100% test coverage, automated CI/CD pipeline, comprehensive observability, and API-first design supporting future integration scenarios.</p>
-
-          <h3>Strategic Value</h3>
-          <p>Eliminated existential risk of unmaintainable core system. Reduced operational costs through automation. Right-sized infrastructure through cloud economics. Platform capable of supporting business growth and new trading partnerships.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
+          <div class="case-study-prose case-study-prose-dark">
+            <h3 style="margin-top: 0;">Technical Excellence</h3>
+            <p>Modern service-based architecture on AWS with 100% test coverage, automated CI/CD pipeline, comprehensive observability, and API-first design supporting future integration scenarios.</p>
+          </div>
+          <div class="case-study-prose case-study-prose-dark">
+            <h3 style="margin-top: 0;">Strategic Value</h3>
+            <p>Eliminated existential risk of unmaintainable core system. Reduced operational costs through automation. Right-sized infrastructure through cloud economics. Platform capable of supporting business growth and new trading partnerships.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Testimonial -->
     <section class="section section-dark">
-      <div class="container max-w-[640px] text-center testimonial">
+      <div class="container max-w-[640px] text-center testimonial reveal">
         <blockquote>
           "When we engaged Gain Insight, we were facing a critical situation. Our core trading platform had become a black box. What impressed us most was the methodical way they tackled the problem. The comprehensive test suite gave us confidence that nothing would be lost in translation. <span class="quote-highlight">This was the first modernisation project that delivered on time, stayed within budget, and actually worked as promised.</span>"
         </blockquote>
@@ -227,8 +239,8 @@ import { ventureLogo } from '../../../lib/venture-logos';
 
   <!-- CTA — offwhite -->
   <section class="section section-offwhite text-center">
-    <div class="container">
-      <h2 class="text-[40px] md:text-[48px] text-text-dark leading-[1.1] mb-6">
+    <div class="container reveal">
+      <h2 class="text-[32px] sm:text-[40px] md:text-[48px] text-text-dark leading-[1.1] mb-6">
         Facing a <em>similar challenge?</em>
       </h2>
       <p class="text-[16px] text-text-light leading-relaxed max-w-[420px] mx-auto mb-10 font-light">
@@ -243,14 +255,33 @@ import { ventureLogo } from '../../../lib/venture-logos';
     const gateSection = document.getElementById('gate-section');
     const contentSection = document.getElementById('case-study-content');
 
+    // Re-observe reveal elements inside a container (for gated content)
+    function observeReveals(container: Element) {
+      const io = new IntersectionObserver(
+        (entries) => entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in-view');
+            io.unobserve(e.target);
+          }
+        }),
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      );
+      container.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    }
+
     // Check if already unlocked
     if (localStorage.getItem('gi-case-study-indigo')) {
       gateSection?.classList.add('hidden');
       contentSection?.classList.remove('hidden');
+      if (contentSection) observeReveals(contentSection);
     }
 
     form?.addEventListener('submit', async (e) => {
       e.preventDefault();
+      const submitBtn = document.getElementById('gate-submit') as HTMLButtonElement;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Loading...';
+
       const formData = new FormData(form);
       const data = {
         name: formData.get('name'),
@@ -259,15 +290,19 @@ import { ventureLogo } from '../../../lib/venture-logos';
         source: 'indigo-case-study',
       };
 
+      // Send lead to Web3Forms (fire-and-forget — don't block content reveal)
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      }).catch(() => {}); // Silently handle errors — lead capture shouldn't block reading
+
       // Store unlock in localStorage
       localStorage.setItem('gi-case-study-indigo', JSON.stringify(data));
 
-      // TODO: Send to backend/CRM when ready
-      // await fetch('/api/case-study-download', { method: 'POST', body: JSON.stringify(data) });
-
-      // Reveal content
+      // Reveal content and re-observe animations
       gateSection?.classList.add('hidden');
       contentSection?.classList.remove('hidden');
+      if (contentSection) observeReveals(contentSection);
       contentSection?.scrollIntoView({ behavior: 'smooth' });
     });
   </script>

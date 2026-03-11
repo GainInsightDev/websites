@@ -6,23 +6,23 @@ import Layout from '../layouts/Layout.astro';
   <!-- Hero -->
   <section class="hero-section section-light">
     <div class="container">
-      <div class="section-label text-text-light">
+      <div class="section-label text-text-light reveal">
         <span>Contact</span>
       </div>
-      <h1 class="text-[48px] md:text-[64px] text-text-dark leading-[1.05] mb-6">
+      <h1 class="text-[48px] md:text-[64px] text-text-dark leading-[1.05] mb-6 reveal">
         Get <em>in touch.</em>
       </h1>
-      <p class="text-[18px] text-text-light leading-relaxed max-w-[560px] font-light">
+      <p class="text-[18px] text-text-light leading-relaxed max-w-[560px] font-light reveal">
         If you have domain expertise and an idea worth building, we'd like to hear from you.
       </p>
     </div>
   </section>
 
-  <!-- Contact details — dark -->
+  <!-- Contact form + details — dark -->
   <section class="section section-dark">
     <div class="container">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-        <div>
+        <div class="reveal">
           <h2 class="text-[32px] md:text-[40px] text-text leading-[1.1] mb-6">
             Start a <em>conversation.</em>
           </h2>
@@ -41,12 +41,101 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </div>
 
-        <!-- Placeholder for future form -->
-        <div class="card flex flex-col items-center justify-center min-h-[300px] text-center">
-          <p class="text-[14px] text-text-muted mb-4 font-body">Drop us an email to get started.</p>
-          <a href="mailto:hello@gaininsight.global" class="btn btn-steel">Email us</a>
+        <!-- Contact form -->
+        <div class="card reveal">
+          <form id="contact-form" class="flex flex-col gap-4">
+            <input type="hidden" name="access_key" value="2f8908fb-3821-4304-9ee1-28ac7b71e165" />
+            <input type="hidden" name="subject" value="New Contact Form — gaininsight.global" />
+            <input type="hidden" name="from_name" value="Gain Insight Website" />
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
+
+            <div>
+              <label for="contact-name" class="block text-[12px] font-medium text-text-muted uppercase tracking-wider mb-2 font-body">Name</label>
+              <input
+                type="text"
+                name="name"
+                id="contact-name"
+                required
+                placeholder="Your name"
+                class="contact-input"
+              />
+            </div>
+            <div>
+              <label for="contact-email" class="block text-[12px] font-medium text-text-muted uppercase tracking-wider mb-2 font-body">Email</label>
+              <input
+                type="email"
+                name="email"
+                id="contact-email"
+                required
+                placeholder="you@company.com"
+                class="contact-input"
+              />
+            </div>
+            <div>
+              <label for="contact-company" class="block text-[12px] font-medium text-text-muted uppercase tracking-wider mb-2 font-body">Company <span class="text-text-muted opacity-50">(optional)</span></label>
+              <input
+                type="text"
+                name="company"
+                id="contact-company"
+                placeholder="Your company"
+                class="contact-input"
+              />
+            </div>
+            <div>
+              <label for="contact-message" class="block text-[12px] font-medium text-text-muted uppercase tracking-wider mb-2 font-body">Message</label>
+              <textarea
+                name="message"
+                id="contact-message"
+                required
+                rows="5"
+                placeholder="Tell us about your project or challenge..."
+                class="contact-input resize-vertical"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-steel w-full mt-2" id="contact-submit">Send message</button>
+          </form>
+          <div id="contact-success" class="hidden text-center py-8">
+            <p class="text-[18px] text-steel font-medium mb-2 font-body">Message sent.</p>
+            <p class="text-[14px] text-text-muted font-light">Thank you for reaching out. We'll get back to you shortly.</p>
+          </div>
+          <div id="contact-error" class="hidden text-center py-4">
+            <p class="text-[14px] text-red-400 font-body">Something went wrong. Please try emailing us directly at <a href="mailto:hello@gaininsight.global" class="text-steel hover:underline">hello@gaininsight.global</a>.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const submitBtn = document.getElementById('contact-submit') as HTMLButtonElement;
+    const successDiv = document.getElementById('contact-success');
+    const errorDiv = document.getElementById('contact-error');
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      errorDiv?.classList.add('hidden');
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: new FormData(form),
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          form.classList.add('hidden');
+          successDiv?.classList.remove('hidden');
+        } else {
+          throw new Error(result.message || 'Submission failed');
+        }
+      } catch {
+        errorDiv?.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send message';
+      }
+    });
+  </script>
 </Layout>
