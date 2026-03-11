@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#1a1917"/>
+
+  <!-- Logo blocks -->
+  <g transform="translate(460, 230)">
+    <!-- Left block with right notch -->
+    <path d="M0,0 H42 V14.7 H29.4 V27.3 H42 V42 H0 Z" fill="#C94A1E" transform="scale(1.5)"/>
+    <!-- Right block with left notch -->
+    <path d="M44.1,0 V14.7 H56.7 V0 H86.1 V42 H56.7 V27.3 H44.1 V42 H44.1 Z" fill="#C94A1E" transform="scale(1.5)"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="600" y="340" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="700" fill="#faf9f6" letter-spacing="-1">Juncta</text>
+
+  <!-- Tagline -->
+  <text x="600" y="400" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#8B8A85">AI Project Management</text>
+</svg>

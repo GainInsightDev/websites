@@ -13,9 +13,12 @@ const {
   title = 'Juncta — AI Project Management',
   description = 'An AI that takes on the cognitive work of planning, organising, and managing — so you can focus on judgment, relationships, and decisions.',
   ogImage = '/images/logos/juncta-og.png',
+  noindex = false,
 } = Astro.props;
 
-const canonicalUrl = new URL(Astro.url.pathname, 'https://juncta.ai').href;
+const siteUrl = 'https://juncta.ai';
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const ogImageUrl = new URL(ogImage, siteUrl).href;
 ---
 
 <!DOCTYPE html>
@@ -27,20 +30,54 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://juncta.ai').href;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex" />}
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:site_name" content="Juncta" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": `${siteUrl}/#organization`,
+          "name": "Juncta",
+          "url": siteUrl,
+          "logo": {
+            "@type": "ImageObject",
+            "url": `${siteUrl}/favicon.svg`
+          },
+          "description": "AI project management that takes on the cognitive work of planning, organising, and managing."
+        },
+        {
+          "@type": "WebSite",
+          "@id": `${siteUrl}/#website`,
+          "url": siteUrl,
+          "name": "Juncta",
+          "publisher": { "@id": `${siteUrl}/#organization` }
+        },
+        {
+          "@type": "WebPage",
+          "@id": canonicalUrl,
+          "url": canonicalUrl,
+          "name": title,
+          "description": description,
+          "isPartOf": { "@id": `${siteUrl}/#website` }
+        }
+      ]
+    })} />
 
     <!-- Self-hosted fonts -->
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
