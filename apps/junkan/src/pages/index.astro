@@ -96,86 +96,112 @@ import Layout from '../layouts/Layout.astro';
         <p class="section-body reveal reveal-delay-2">Junkan's AI pipeline takes your item from photo to sold — identifying it, researching comparable sales, calculating optimal pricing, and listing it where it'll sell best.</p>
       </div>
 
-      <div class="steps-list">
-        <!-- Step 1: Identify -->
-        <div class="step-row reveal">
-          <div class="step-content">
-            <div class="step-number">1</div>
+      <div class="solution-layout reveal">
+        <!-- Left: Lifestyle images -->
+        <div class="solution-images">
+          <div class="solution-image-card">
+            <svg width="100%" height="100%" viewBox="0 0 480 240" fill="none" preserveAspectRatio="xMidYMid meet">
+              <!-- Thrift store scene -->
+              <rect width="480" height="240" rx="16" fill="var(--color-bg-deep)"/>
+              <!-- Clothing racks -->
+              <line x1="60" y1="60" x2="60" y2="180" stroke="var(--color-light)" stroke-width="3"/>
+              <line x1="180" y1="60" x2="180" y2="180" stroke="var(--color-light)" stroke-width="3"/>
+              <line x1="60" y1="60" x2="180" y2="60" stroke="var(--color-light)" stroke-width="3"/>
+              <!-- Hangers with clothes -->
+              <path d="M85 60L95 75H75Z" fill="var(--color-ai)" opacity="0.4"/>
+              <rect x="78" y="75" width="14" height="45" rx="2" fill="var(--color-ai)" opacity="0.25"/>
+              <path d="M115 60L125 75H105Z" fill="var(--color-shu)" opacity="0.4"/>
+              <rect x="108" y="75" width="14" height="50" rx="2" fill="var(--color-shu)" opacity="0.25"/>
+              <path d="M145 60L155 75H135Z" fill="var(--color-matcha)" opacity="0.4"/>
+              <rect x="138" y="75" width="14" height="40" rx="2" fill="var(--color-matcha)" opacity="0.25"/>
+              <!-- Shelf with items -->
+              <rect x="220" y="90" width="200" height="4" rx="2" fill="var(--color-light)"/>
+              <rect x="240" y="60" width="30" height="30" rx="6" fill="var(--color-ai-muted)" stroke="var(--color-ai)" stroke-width="1"/>
+              <rect x="285" y="50" width="25" height="40" rx="4" fill="var(--color-matcha-muted)" stroke="var(--color-matcha)" stroke-width="1"/>
+              <circle cx="345" cy="75" r="15" fill="var(--color-shu-muted)" stroke="var(--color-shu)" stroke-width="1"/>
+              <rect x="375" y="55" width="28" height="35" rx="3" fill="var(--color-ai-muted)" stroke="var(--color-ai)" stroke-width="1"/>
+              <!-- Price tags -->
+              <rect x="230" y="140" width="60" height="28" rx="6" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
+              <text x="260" y="159" text-anchor="middle" font-size="12" fill="var(--color-text-muted)" font-family="var(--font-body)">£12.99</text>
+              <rect x="310" y="140" width="60" height="28" rx="6" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
+              <text x="340" y="159" text-anchor="middle" font-size="12" fill="var(--color-text-muted)" font-family="var(--font-body)">£8.50</text>
+              <!-- Caption -->
+              <text x="240" y="210" font-size="13" fill="var(--color-text-muted)" font-family="var(--font-body)">Charity shop inventory</text>
+            </svg>
+          </div>
+          <div class="solution-image-card">
+            <svg width="100%" height="100%" viewBox="0 0 480 240" fill="none" preserveAspectRatio="xMidYMid meet">
+              <!-- Person using app scene -->
+              <rect width="480" height="240" rx="16" fill="var(--color-bg-deep)"/>
+              <!-- Phone in hand -->
+              <rect x="180" y="30" width="120" height="200" rx="16" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="2"/>
+              <rect x="190" y="50" width="100" height="120" rx="4" fill="var(--color-ai-muted)"/>
+              <!-- Camera viewfinder on phone -->
+              <circle cx="240" cy="100" r="24" stroke="var(--color-ai)" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <line x1="240" y1="85" x2="240" y2="90" stroke="var(--color-ai)" stroke-width="1.5"/>
+              <line x1="240" y1="110" x2="240" y2="115" stroke="var(--color-ai)" stroke-width="1.5"/>
+              <line x1="225" y1="100" x2="230" y2="100" stroke="var(--color-ai)" stroke-width="1.5"/>
+              <line x1="250" y1="100" x2="255" y2="100" stroke="var(--color-ai)" stroke-width="1.5"/>
+              <!-- Item being photographed -->
+              <rect x="226" y="90" width="28" height="20" rx="4" fill="var(--color-matcha)" opacity="0.3" stroke="var(--color-matcha)" stroke-width="1"/>
+              <!-- App UI elements -->
+              <rect x="195" y="180" width="40" height="8" rx="4" fill="var(--color-ai)" opacity="0.5"/>
+              <rect x="245" y="180" width="40" height="8" rx="4" fill="var(--color-matcha)" opacity="0.5"/>
+              <!-- AI sparkle indicators -->
+              <circle cx="320" cy="70" r="3" fill="var(--color-ai)" opacity="0.6"/>
+              <circle cx="340" cy="90" r="2" fill="var(--color-ai)" opacity="0.4"/>
+              <circle cx="330" cy="110" r="2.5" fill="var(--color-ai)" opacity="0.5"/>
+              <!-- Result card floating -->
+              <rect x="320" y="130" width="130" height="70" rx="10" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
+              <rect x="332" y="142" width="50" height="6" rx="3" fill="var(--color-text)" opacity="0.2"/>
+              <rect x="332" y="154" width="35" height="6" rx="3" fill="var(--color-text)" opacity="0.12"/>
+              <text x="332" y="182" font-size="14" font-weight="600" fill="var(--color-matcha)" font-family="var(--font-body)">£24.99</text>
+              <!-- Caption -->
+              <text x="240" y="228" text-anchor="middle" font-size="13" fill="var(--color-text-muted)" font-family="var(--font-body)">Scan, price, and list in seconds</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Right: Steps -->
+        <div class="solution-steps">
+          <div class="solution-step reveal reveal-delay-1">
+            <div class="step-icon step-icon-ai">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="13" r="4" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
             <div class="step-text">
               <h3>Snap a Photo</h3>
               <p>Take a quick photo of the item. Our AI instantly recognises the brand, model, condition, and key attributes — no manual data entry needed.</p>
             </div>
           </div>
-          <div class="step-visual step-visual-ai">
-            <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
-              <rect x="20" y="30" width="80" height="60" rx="8" stroke="var(--color-ai)" stroke-width="2"/>
-              <circle cx="60" cy="55" r="16" stroke="var(--color-ai)" stroke-width="2"/>
-              <circle cx="60" cy="55" r="8" fill="var(--color-ai-muted)" stroke="var(--color-ai)" stroke-width="1.5"/>
-              <rect x="30" y="36" width="12" height="8" rx="2" fill="var(--color-ai-muted)"/>
-              <path d="M44 30L50 20H70L76 30" stroke="var(--color-ai)" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="60" cy="55" r="3" fill="var(--color-ai)" opacity="0.6"/>
-            </svg>
-          </div>
-        </div>
 
-        <!-- Step 2: Research -->
-        <div class="step-row step-row-reverse reveal reveal-delay-1">
-          <div class="step-content">
-            <div class="step-number">2</div>
+          <div class="solution-step reveal reveal-delay-2">
+            <div class="step-icon step-icon-ai">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
             <div class="step-text">
               <h3>Automatic Research</h3>
               <p>Junkan scans completed sales across eBay, Vinted, and Depop in seconds — building a real-time pricing picture so you know exactly what the item is worth.</p>
             </div>
           </div>
-          <div class="step-visual step-visual-ai">
-            <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
-              <circle cx="52" cy="52" r="28" stroke="var(--color-ai)" stroke-width="2"/>
-              <line x1="72" y1="72" x2="95" y2="95" stroke="var(--color-ai)" stroke-width="3" stroke-linecap="round"/>
-              <rect x="38" y="42" width="28" height="3" rx="1.5" fill="var(--color-ai)" opacity="0.3"/>
-              <rect x="38" y="49" width="20" height="3" rx="1.5" fill="var(--color-ai)" opacity="0.3"/>
-              <rect x="38" y="56" width="24" height="3" rx="1.5" fill="var(--color-ai)" opacity="0.3"/>
-            </svg>
-          </div>
-        </div>
 
-        <!-- Step 3: Price -->
-        <div class="step-row reveal reveal-delay-2">
-          <div class="step-content">
-            <div class="step-number">3</div>
+          <div class="solution-step reveal reveal-delay-3">
+            <div class="step-icon step-icon-matcha">
+              <span class="step-icon-currency">&pound;</span>
+            </div>
             <div class="step-text">
               <h3>Smart Pricing</h3>
               <p>Our algorithm calculates the net profit per platform after all fees, recommending the optimal pricing strategy to maximise your returns.</p>
             </div>
           </div>
-          <div class="step-visual step-visual-matcha">
-            <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
-              <rect x="25" y="25" width="70" height="70" rx="12" stroke="var(--color-matcha)" stroke-width="2"/>
-              <text x="60" y="68" text-anchor="middle" font-family="var(--font-body)" font-size="28" font-weight="600" fill="var(--color-matcha)">£</text>
-              <path d="M40 85L55 75L70 80L95 55" stroke="var(--color-matcha)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
-              <circle cx="95" cy="55" r="3" fill="var(--color-matcha)" opacity="0.5"/>
-            </svg>
-          </div>
-        </div>
 
-        <!-- Step 4: Sell -->
-        <div class="step-row step-row-reverse reveal reveal-delay-3">
-          <div class="step-content">
-            <div class="step-number step-number-matcha">4</div>
+          <div class="solution-step reveal reveal-delay-4">
+            <div class="step-icon step-icon-matcha">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
             <div class="step-text">
               <h3>List &amp; Sell</h3>
               <p>Junkan creates optimised listings with compelling descriptions and posts them across marketplaces — then monitors until the sale completes.</p>
             </div>
-          </div>
-          <div class="step-visual step-visual-matcha">
-            <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
-              <rect x="20" y="28" width="35" height="64" rx="6" stroke="var(--color-matcha)" stroke-width="2"/>
-              <rect x="65" y="28" width="35" height="64" rx="6" stroke="var(--color-matcha)" stroke-width="2"/>
-              <path d="M42 60L52 70L78 44" stroke="var(--color-matcha)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              <rect x="26" y="36" width="23" height="3" rx="1.5" fill="var(--color-matcha)" opacity="0.2"/>
-              <rect x="26" y="43" width="16" height="3" rx="1.5" fill="var(--color-matcha)" opacity="0.2"/>
-              <rect x="71" y="36" width="23" height="3" rx="1.5" fill="var(--color-matcha)" opacity="0.2"/>
-              <rect x="71" y="43" width="16" height="3" rx="1.5" fill="var(--color-matcha)" opacity="0.2"/>
-            </svg>
           </div>
         </div>
       </div>
@@ -553,34 +579,41 @@ import Layout from '../layouts/Layout.astro';
     margin-bottom: 80px;
   }
 
-  .steps-list {
-    display: flex;
-    flex-direction: column;
-    gap: 64px;
-  }
-
-  .step-row {
+  .solution-layout {
     display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 48px;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
     align-items: center;
   }
-  .step-row-reverse {
-    grid-template-columns: 280px 1fr;
+
+  .solution-images {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
-  .step-row-reverse .step-content {
-    order: 2;
+  .solution-image-card {
+    border-radius: var(--radius-card-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
   }
-  .step-row-reverse .step-visual {
-    order: 1;
+  .solution-image-card svg {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
-  .step-content {
+  .solution-steps {
     display: flex;
-    gap: 24px;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .solution-step {
+    display: flex;
+    gap: 20px;
     align-items: flex-start;
   }
-  .step-number {
+  .step-icon {
     flex-shrink: 0;
     width: 48px;
     height: 48px;
@@ -588,48 +621,36 @@ import Layout from '../layouts/Layout.astro';
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 18px;
+  }
+  .step-icon-ai {
     color: var(--color-ai);
     background: var(--color-ai-muted);
     border: 1.5px solid var(--color-ai);
   }
-  .step-number-matcha {
+  .step-icon-matcha {
     color: var(--color-matcha);
     background: var(--color-matcha-muted);
-    border-color: var(--color-matcha);
+    border: 1.5px solid var(--color-matcha);
+  }
+  .step-icon-currency {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1;
   }
   .step-text h3 {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 22px;
+    font-size: 20px;
     letter-spacing: -0.02em;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     color: var(--color-text);
   }
   .step-text p {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 350;
-    line-height: 1.65;
+    line-height: 1.6;
     color: var(--color-text-secondary);
-    max-width: 480px;
-  }
-
-  .step-visual {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 280px;
-    height: 200px;
-    border-radius: var(--radius-card-lg);
-    border: 1px solid var(--color-border);
-  }
-  .step-visual-ai {
-    background: var(--color-ai-muted);
-  }
-  .step-visual-matcha {
-    background: var(--color-matcha-muted);
   }
 
   /* ═══════════════════════════════════════════════════
@@ -899,11 +920,8 @@ import Layout from '../layouts/Layout.astro';
     .hero { padding: 100px 24px 60px; }
     .problem-grid,
     .segments-grid { grid-template-columns: 1fr; }
-    .step-row,
-    .step-row-reverse { grid-template-columns: 1fr; gap: 24px; }
-    .step-row-reverse .step-content { order: 1; }
-    .step-row-reverse .step-visual { order: 2; }
-    .step-visual { width: 100%; height: 160px; }
+    .solution-layout { grid-template-columns: 1fr; gap: 48px; }
+    .solution-images { order: 2; }
     .social-proof { flex-wrap: wrap; gap: 24px; padding: 32px 24px; }
     .stat-section { padding: 100px 24px; }
     .cta-section { padding: 100px 24px; }
