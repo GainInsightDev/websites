@@ -100,65 +100,10 @@ import Layout from '../layouts/Layout.astro';
         <!-- Left: Lifestyle images -->
         <div class="solution-images">
           <div class="solution-image-card">
-            <svg width="100%" height="100%" viewBox="0 0 480 240" fill="none" preserveAspectRatio="xMidYMid meet">
-              <!-- Thrift store scene -->
-              <rect width="480" height="240" rx="16" fill="var(--color-bg-deep)"/>
-              <!-- Clothing racks -->
-              <line x1="60" y1="60" x2="60" y2="180" stroke="var(--color-light)" stroke-width="3"/>
-              <line x1="180" y1="60" x2="180" y2="180" stroke="var(--color-light)" stroke-width="3"/>
-              <line x1="60" y1="60" x2="180" y2="60" stroke="var(--color-light)" stroke-width="3"/>
-              <!-- Hangers with clothes -->
-              <path d="M85 60L95 75H75Z" fill="var(--color-ai)" opacity="0.4"/>
-              <rect x="78" y="75" width="14" height="45" rx="2" fill="var(--color-ai)" opacity="0.25"/>
-              <path d="M115 60L125 75H105Z" fill="var(--color-shu)" opacity="0.4"/>
-              <rect x="108" y="75" width="14" height="50" rx="2" fill="var(--color-shu)" opacity="0.25"/>
-              <path d="M145 60L155 75H135Z" fill="var(--color-matcha)" opacity="0.4"/>
-              <rect x="138" y="75" width="14" height="40" rx="2" fill="var(--color-matcha)" opacity="0.25"/>
-              <!-- Shelf with items -->
-              <rect x="220" y="90" width="200" height="4" rx="2" fill="var(--color-light)"/>
-              <rect x="240" y="60" width="30" height="30" rx="6" fill="var(--color-ai-muted)" stroke="var(--color-ai)" stroke-width="1"/>
-              <rect x="285" y="50" width="25" height="40" rx="4" fill="var(--color-matcha-muted)" stroke="var(--color-matcha)" stroke-width="1"/>
-              <circle cx="345" cy="75" r="15" fill="var(--color-shu-muted)" stroke="var(--color-shu)" stroke-width="1"/>
-              <rect x="375" y="55" width="28" height="35" rx="3" fill="var(--color-ai-muted)" stroke="var(--color-ai)" stroke-width="1"/>
-              <!-- Price tags -->
-              <rect x="230" y="140" width="60" height="28" rx="6" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
-              <text x="260" y="159" text-anchor="middle" font-size="12" fill="var(--color-text-muted)" font-family="var(--font-body)">£12.99</text>
-              <rect x="310" y="140" width="60" height="28" rx="6" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
-              <text x="340" y="159" text-anchor="middle" font-size="12" fill="var(--color-text-muted)" font-family="var(--font-body)">£8.50</text>
-              <!-- Caption -->
-              <text x="240" y="210" font-size="13" fill="var(--color-text-muted)" font-family="var(--font-body)">Charity shop inventory</text>
-            </svg>
+            <img src="/images/thrift-store.jpg" alt="Woman browsing secondhand clothing at a vintage thrift store" width="800" height="533" loading="lazy" />
           </div>
           <div class="solution-image-card">
-            <svg width="100%" height="100%" viewBox="0 0 480 240" fill="none" preserveAspectRatio="xMidYMid meet">
-              <!-- Person using app scene -->
-              <rect width="480" height="240" rx="16" fill="var(--color-bg-deep)"/>
-              <!-- Phone in hand -->
-              <rect x="180" y="30" width="120" height="200" rx="16" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="2"/>
-              <rect x="190" y="50" width="100" height="120" rx="4" fill="var(--color-ai-muted)"/>
-              <!-- Camera viewfinder on phone -->
-              <circle cx="240" cy="100" r="24" stroke="var(--color-ai)" stroke-width="1.5" stroke-dasharray="4 3"/>
-              <line x1="240" y1="85" x2="240" y2="90" stroke="var(--color-ai)" stroke-width="1.5"/>
-              <line x1="240" y1="110" x2="240" y2="115" stroke="var(--color-ai)" stroke-width="1.5"/>
-              <line x1="225" y1="100" x2="230" y2="100" stroke="var(--color-ai)" stroke-width="1.5"/>
-              <line x1="250" y1="100" x2="255" y2="100" stroke="var(--color-ai)" stroke-width="1.5"/>
-              <!-- Item being photographed -->
-              <rect x="226" y="90" width="28" height="20" rx="4" fill="var(--color-matcha)" opacity="0.3" stroke="var(--color-matcha)" stroke-width="1"/>
-              <!-- App UI elements -->
-              <rect x="195" y="180" width="40" height="8" rx="4" fill="var(--color-ai)" opacity="0.5"/>
-              <rect x="245" y="180" width="40" height="8" rx="4" fill="var(--color-matcha)" opacity="0.5"/>
-              <!-- AI sparkle indicators -->
-              <circle cx="320" cy="70" r="3" fill="var(--color-ai)" opacity="0.6"/>
-              <circle cx="340" cy="90" r="2" fill="var(--color-ai)" opacity="0.4"/>
-              <circle cx="330" cy="110" r="2.5" fill="var(--color-ai)" opacity="0.5"/>
-              <!-- Result card floating -->
-              <rect x="320" y="130" width="130" height="70" rx="10" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
-              <rect x="332" y="142" width="50" height="6" rx="3" fill="var(--color-text)" opacity="0.2"/>
-              <rect x="332" y="154" width="35" height="6" rx="3" fill="var(--color-text)" opacity="0.12"/>
-              <text x="332" y="182" font-size="14" font-weight="600" fill="var(--color-matcha)" font-family="var(--font-body)">£24.99</text>
-              <!-- Caption -->
-              <text x="240" y="228" text-anchor="middle" font-size="13" fill="var(--color-text-muted)" font-family="var(--font-body)">Scan, price, and list in seconds</text>
-            </svg>
+            <img src="/images/phone-scanning.jpg" alt="Person browsing clothing listings with prices on a mobile app" width="800" height="1200" loading="lazy" />
           </div>
         </div>
 
@@ -596,11 +541,13 @@ import Layout from '../layouts/Layout.astro';
     overflow: hidden;
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-card);
+    height: 260px;
   }
-  .solution-image-card svg {
+  .solution-image-card img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
   }
 
   .solution-steps {
