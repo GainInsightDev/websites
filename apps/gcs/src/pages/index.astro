@@ -5,76 +5,172 @@ import Layout from '../layouts/Layout.astro';
 <Layout>
   <!-- Hero -->
   <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
     <div class="container">
       <div class="hero-content reveal">
-        <div class="section-label" style="color: var(--color-stage-s2);">Global Climbing Standard</div>
+        <span class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Global Climbing Standard
+        </span>
         <h1 class="hero-title">
-          The <em>PADI</em> of climbing.
+          A climbing journey that<br><em>goes somewhere.</em>
         </h1>
         <p class="hero-subtitle">
-          A globally portable climbing qualification framework — structured progression
-          from first climb to advanced climber, recognised worldwide.
+          GCS is the world's first globally portable climbing qualification.
+          Five stages. Six skill domains. One standard — recognised at every wall, in every country.
         </p>
         <div class="hero-actions">
           <a href="/for-centres" class="btn btn-primary">Accredit your centre</a>
-          <a href="/how-it-works" class="btn btn-secondary">How it works</a>
+          <a href="/how-it-works" class="btn btn-secondary">See the framework</a>
         </div>
       </div>
-      <div class="hero-stage-visual reveal reveal-delay-2" aria-hidden="true">
-        <div class="stage-pills">
-          <span class="stage-pill" style="--stage-color: var(--color-stage-ey);">Early Years</span>
-          <span class="stage-pill" style="--stage-color: var(--color-stage-s1);">Discover</span>
-          <span class="stage-pill" style="--stage-color: var(--color-stage-s2);">Explore</span>
-          <span class="stage-pill" style="--stage-color: var(--color-stage-s3);">Develop</span>
-          <span class="stage-pill" style="--stage-color: var(--color-stage-s4);">Perform</span>
-          <span class="stage-pill" style="--stage-color: var(--color-stage-s5);">Evolve</span>
+
+      <!-- Stage visualisation -->
+      <div class="hero-stages reveal reveal-delay-2" aria-label="Five progression stages plus Early Years">
+        <div class="stage-track">
+          <div class="stage-node" style="--stage-color: var(--color-stage-ey);">
+            <span class="stage-label">Early Years</span>
+            <span class="stage-ages">Ages 4–7</span>
+          </div>
+          <div class="stage-connector"></div>
+          <div class="stage-node" style="--stage-color: var(--color-stage-s1);">
+            <span class="stage-label">Discover</span>
+            <span class="stage-ages">Stage 1</span>
+          </div>
+          <div class="stage-connector"></div>
+          <div class="stage-node" style="--stage-color: var(--color-stage-s2);">
+            <span class="stage-label">Explore</span>
+            <span class="stage-ages">Stage 2</span>
+          </div>
+          <div class="stage-connector"></div>
+          <div class="stage-node" style="--stage-color: var(--color-stage-s3);">
+            <span class="stage-label">Develop</span>
+            <span class="stage-ages">Stage 3</span>
+          </div>
+          <div class="stage-connector"></div>
+          <div class="stage-node" style="--stage-color: var(--color-stage-s4);">
+            <span class="stage-label">Perform</span>
+            <span class="stage-ages">Stage 4</span>
+          </div>
+          <div class="stage-connector"></div>
+          <div class="stage-node" style="--stage-color: var(--color-stage-s5);">
+            <span class="stage-label">Evolve</span>
+            <span class="stage-ages">Stage 5</span>
+          </div>
         </div>
       </div>
     </div>
+    <div class="scroll-hint reveal reveal-delay-4" aria-hidden="true">
+      <div class="scroll-line"></div>
+    </div>
   </section>
 
-  <!-- Value Props -->
-  <section class="section" id="value">
+  <!-- Social proof bar -->
+  <section class="proof-bar">
     <div class="container">
-      <div class="section-label reveal">Why GCS</div>
-      <h2 class="section-title reveal">One standard.<br>Every wall. Worldwide.</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-        <div class="card reveal reveal-delay-1">
-          <div class="card-icon" style="color: var(--color-stage-s2);">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <h3 class="card-title">Globally recognised</h3>
-          <p class="card-body">One qualification, recognised everywhere. Take your credentials from London to Sydney — they mean the same thing.</p>
+      <div class="proof-stats">
+        <div class="proof-stat reveal">
+          <span class="proof-number">5</span>
+          <span class="proof-label">Progressive stages</span>
         </div>
-        <div class="card reveal reveal-delay-2">
-          <div class="card-icon" style="color: var(--color-stage-s3);">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          </div>
-          <h3 class="card-title">Structured progression</h3>
-          <p class="card-body">Six stages from Early Years to Evolve. Each stage builds on the last across six skill domains — clear milestones, real achievement.</p>
+        <div class="proof-divider" aria-hidden="true"></div>
+        <div class="proof-stat reveal reveal-delay-1">
+          <span class="proof-number">6</span>
+          <span class="proof-label">Skill domains</span>
         </div>
-        <div class="card reveal reveal-delay-3">
-          <div class="card-icon" style="color: var(--color-stage-s4);">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h3 class="card-title">For everyone</h3>
-          <p class="card-body">Climbers get a clear pathway. Parents see real progress. Coaches deliver structured sessions. Centres grow their business.</p>
+        <div class="proof-divider" aria-hidden="true"></div>
+        <div class="proof-stat reveal reveal-delay-2">
+          <span class="proof-number">100+</span>
+          <span class="proof-label">Territories worldwide</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- How it works (summary) -->
+  <!-- Problem -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">The problem</div>
+      <h2 class="section-title reveal">Climbing has no global standard.</h2>
+      <p class="section-body reveal">
+        Indoor climbing is one of the fastest-growing sports in the world. But there's no
+        structured pathway, no portable credentials, and no way for parents to see what
+        their children are actually learning.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+        <div class="problem-card reveal reveal-delay-1">
+          <div class="problem-icon" style="--accent: var(--color-stage-ey);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          </div>
+          <h3>No visible progression</h3>
+          <p>Sessions feel like "just climbing." No stages, no milestones, no way to measure development over time.</p>
+        </div>
+        <div class="problem-card reveal reveal-delay-2">
+          <div class="problem-icon" style="--accent: var(--color-stage-s1);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Qualifications don't travel</h3>
+          <p>Instructor certifications are country-specific. Move abroad and your credentials mean nothing.</p>
+        </div>
+        <div class="problem-card reveal reveal-delay-3">
+          <div class="problem-icon" style="--accent: var(--color-stage-s3);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Parents are in the dark</h3>
+          <p>No feedback loop. Parents drop their child off and have no idea what they're learning or how they're progressing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution -->
   <section class="section-dark">
     <div class="section">
       <div class="container">
-        <div class="section-label reveal" style="color: var(--color-stage-s1);">The Framework</div>
-        <h2 class="section-title reveal" style="color: #FFFFFF;">Six stages. Six domains.<br>One global standard.</h2>
-        <p class="section-body reveal" style="color: rgba(255,255,255,0.65);">
-          Every climber progresses through structured stages, assessed across six skill domains.
-          Like belt colours in martial arts — visible, meaningful, and universally understood.
-        </p>
-        <a href="/how-it-works" class="btn btn-outline-light reveal">Explore the framework</a>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div>
+            <div class="section-label reveal" style="color: var(--color-stage-s2);">The solution</div>
+            <h2 class="section-title reveal" style="color: #FFFFFF;">
+              Structured progression.<br>Digital tracking.<br>Global recognition.
+            </h2>
+            <p class="reveal" style="color: rgba(255,255,255,0.6); font-size: 16px; line-height: 1.7; margin-bottom: 32px;">
+              GCS gives every climber a clear pathway — from Early Years through to Stage 5.
+              Progress is tracked digitally across six skill domains, visible to parents in real-time,
+              and recognised at accredited centres worldwide.
+            </p>
+            <a href="/how-it-works" class="btn btn-outline-light reveal">Explore the framework</a>
+          </div>
+          <div class="solution-features">
+            <div class="solution-feature reveal reveal-delay-1">
+              <div class="solution-number">01</div>
+              <div>
+                <h3>Structured stages</h3>
+                <p>Five progressive stages plus Early Years — like belt colours in martial arts. Clear milestones, real achievement.</p>
+              </div>
+            </div>
+            <div class="solution-feature reveal reveal-delay-2">
+              <div class="solution-number">02</div>
+              <div>
+                <h3>Six skill domains</h3>
+                <p>Movement, strength, mental skills, safety, route reading, and climbing knowledge — assessed holistically.</p>
+              </div>
+            </div>
+            <div class="solution-feature reveal reveal-delay-3">
+              <div class="solution-number">03</div>
+              <div>
+                <h3>Digital platform</h3>
+                <p>Coach app, parent dashboard, learner profiles. Progress tracked automatically. Credentials verified globally.</p>
+              </div>
+            </div>
+            <div class="solution-feature reveal reveal-delay-4">
+              <div class="solution-number">04</div>
+              <div>
+                <h3>Parent visibility</h3>
+                <p>Real-time updates after every session. See exactly where your child is and what comes next.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -86,23 +182,31 @@ import Layout from '../layouts/Layout.astro';
       <h2 class="section-title reveal">Built for the whole climbing ecosystem.</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
         <div class="audience-card reveal reveal-delay-1">
-          <h3>Climbers &amp; Parents</h3>
-          <p>Track progress through clear stages. See exactly where you are and what comes next. Share achievements and earn recognised credentials.</p>
+          <span class="audience-tag" style="--tag-color: var(--color-stage-s2);">Climbers & Parents</span>
+          <h3>See real progress, not just sessions.</h3>
+          <p>Track your child's development across six skill domains. Watch them earn stages.
+            Download certificates. Know exactly where they are and what comes next.</p>
           <a href="/how-it-works">Learn about stages &rarr;</a>
         </div>
         <div class="audience-card reveal reveal-delay-2">
-          <h3>Coaches &amp; Instructors</h3>
-          <p>Deliver structured sessions backed by a global curriculum. Mark progress digitally. Build your professional credentials with GCS certification.</p>
+          <span class="audience-tag" style="--tag-color: var(--color-stage-s3);">Coaches & Instructors</span>
+          <h3>Deliver structured sessions with confidence.</h3>
+          <p>A global curriculum, digital progress tracking, and professional credentials.
+            Mark elements during sessions. Build your qualifications. Coach anywhere in the world.</p>
           <a href="/how-it-works">See coach tools &rarr;</a>
         </div>
         <div class="audience-card reveal reveal-delay-3">
-          <h3>Climbing Centres</h3>
-          <p>Differentiate with GCS accreditation. Drive participation, retention, and revenue through structured programming that parents and schools trust.</p>
+          <span class="audience-tag" style="--tag-color: var(--color-stage-s4);">Climbing Centres</span>
+          <h3>Grow with a trusted quality mark.</h3>
+          <p>GCS accreditation differentiates your centre. Drive participation and retention
+            with structured programming that parents and schools actively seek out.</p>
           <a href="/for-centres">Accredit your centre &rarr;</a>
         </div>
         <div class="audience-card reveal reveal-delay-4">
-          <h3>Franchise Partners</h3>
-          <p>Become a Master Franchisee and bring GCS to your territory. Exclusive rights, full support, and a proven model for the climbing industry.</p>
+          <span class="audience-tag" style="--tag-color: var(--color-stage-s5);">Franchise Partners</span>
+          <h3>Build GCS in your territory.</h3>
+          <p>Exclusive territorial rights. A complete platform and curriculum.
+            Recurring revenue from centre accreditations and participant fees. Full support from day one.</p>
           <a href="/for-franchisees">Franchise opportunity &rarr;</a>
         </div>
       </div>
@@ -111,10 +215,11 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- CTA -->
   <section class="section-brand">
+    <div class="cta-glow" aria-hidden="true"></div>
     <div class="section">
-      <div class="container" style="text-align: center;">
+      <div class="container" style="text-align: center; position: relative; z-index: 1;">
         <h2 class="section-title reveal" style="color: #FFFFFF; max-width: none;">Ready to raise the standard?</h2>
-        <p class="section-body reveal" style="color: rgba(255,255,255,0.65); max-width: 480px; margin-left: auto; margin-right: auto;">
+        <p class="section-body reveal" style="color: rgba(255,255,255,0.55); max-width: 480px; margin-left: auto; margin-right: auto;">
           Whether you're a climbing centre, prospective franchisee, or just curious — we'd love to hear from you.
         </p>
         <div class="reveal" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
@@ -129,30 +234,74 @@ import Layout from '../layouts/Layout.astro';
 <style>
   /* Hero */
   .hero {
-    padding: 160px 48px 100px;
+    padding: 160px 48px 80px;
     position: relative;
+    overflow: hidden;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero-glow {
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(91, 154, 107, 0.08) 0%,
+      rgba(78, 151, 168, 0.05) 40%,
+      transparent 70%
+    );
+    pointer-events: none;
   }
   .hero-content {
-    max-width: 640px;
+    max-width: 680px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+  }
+  .hero-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-stage-s2);
+    animation: pulse 2s ease-in-out infinite;
   }
   .hero-title {
     font-family: var(--font-display);
     font-weight: 800;
-    font-size: clamp(40px, 6vw, 64px);
+    font-size: clamp(40px, 6vw, 68px);
     line-height: 1.05;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.035em;
     color: var(--color-text);
-    margin: 12px 0 24px;
+    margin-bottom: 24px;
   }
   .hero-title em {
     font-style: normal;
-    color: var(--color-stage-s3);
+    background: linear-gradient(135deg, var(--color-stage-s2), var(--color-stage-s3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   .hero-subtitle {
     font-size: 18px;
     line-height: 1.7;
     color: var(--color-text-secondary);
-    max-width: 520px;
+    max-width: 540px;
     margin-bottom: 36px;
   }
   .hero-actions {
@@ -161,38 +310,198 @@ import Layout from '../layouts/Layout.astro';
     flex-wrap: wrap;
   }
 
-  /* Stage pills */
-  .hero-stage-visual {
-    margin-top: 64px;
+  /* Stage track */
+  .hero-stages {
+    margin-top: 72px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
-  .stage-pills {
+  .stage-track {
     display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .stage-pill {
-    display: inline-flex;
     align-items: center;
-    padding: 8px 20px;
-    border-radius: 24px;
+    gap: 0;
+    min-width: max-content;
+  }
+  .stage-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 2px solid var(--stage-color);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease;
+    cursor: default;
+  }
+  .stage-node:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  }
+  .stage-label {
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 14px;
-    color: #FFFFFF;
-    background: var(--stage-color);
+    color: var(--color-text);
+  }
+  .stage-ages {
+    font-size: 12px;
+    color: var(--color-text-muted);
+  }
+  .stage-connector {
+    width: 32px;
+    height: 2px;
+    background: var(--color-border);
+    flex-shrink: 0;
+  }
+
+  /* Scroll hint */
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: var(--color-border);
+    position: relative;
+    overflow: hidden;
+  }
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: var(--color-text-muted);
+    animation: scrollDown 2s ease-in-out infinite;
+  }
+
+  /* Proof bar */
+  .proof-bar {
+    padding: 48px;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .proof-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+  }
+  .proof-stat {
+    text-align: center;
+  }
+  .proof-number {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(36px, 4vw, 52px);
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+    display: block;
+    line-height: 1;
+  }
+  .proof-label {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-top: 8px;
+    display: block;
+  }
+  .proof-divider {
+    width: 1px;
+    height: 48px;
+    background: var(--color-border);
+  }
+
+  /* Problem cards */
+  .problem-card {
+    padding: 32px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .problem-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease-out-expo);
+  }
+  .problem-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-lg);
+    border-color: var(--color-text-muted);
+  }
+  .problem-card:hover::after {
+    transform: scaleX(1);
+  }
+  .problem-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--accent);
+  }
+  .problem-card h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .problem-card p {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
   }
 
   /* Dark section */
   .section-dark {
     background: var(--color-brand);
   }
-  .section-dark .section-title {
-    color: #FFFFFF;
-  }
 
-  /* Brand section */
-  .section-brand {
-    background: var(--color-brand);
+  /* Solution features */
+  .solution-features {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .solution-feature {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .solution-number {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.25);
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .solution-feature h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+  .solution-feature p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.65;
   }
 
   /* Audience cards */
@@ -200,16 +509,32 @@ import Layout from '../layouts/Layout.astro';
     padding: 32px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-card);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease, border-color 0.3s ease;
   }
   .audience-card:hover {
-    border-color: var(--color-text-muted);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-card-lg);
+    border-color: var(--color-text-muted);
+  }
+  .audience-tag {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--tag-color);
+    border-left: 3px solid var(--tag-color);
+    padding-left: 10px;
+    margin-bottom: 16px;
   }
   .audience-card h3 {
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 20px;
+    line-height: 1.3;
     margin-bottom: 12px;
   }
   .audience-card p {
@@ -224,30 +549,60 @@ import Layout from '../layouts/Layout.astro';
     font-weight: 600;
     color: var(--color-stage-s3);
     text-decoration: none;
+    transition: color 0.2s ease;
   }
   .audience-card a:hover {
-    text-decoration: underline;
+    color: var(--color-stage-s4);
   }
 
-  /* Card enhancements */
-  .card-icon {
-    margin-bottom: 16px;
+  /* Brand CTA */
+  .section-brand {
+    background: var(--color-brand);
+    position: relative;
+    overflow: hidden;
   }
-  .card-title {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 18px;
-    margin-bottom: 8px;
+  .cta-glow {
+    position: absolute;
+    bottom: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(101, 116, 184, 0.15) 0%,
+      rgba(139, 110, 175, 0.08) 50%,
+      transparent 70%
+    );
+    pointer-events: none;
   }
-  .card-body {
-    font-size: 15px;
-    color: var(--color-text-secondary);
-    line-height: 1.65;
+
+  /* Animations */
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  @keyframes scrollDown {
+    0% { top: -50%; }
+    100% { top: 150%; }
   }
 
   @media (max-width: 900px) {
     .hero {
       padding: 120px 24px 64px;
+      min-height: auto;
+    }
+    .proof-stats {
+      flex-direction: column;
+      gap: 24px;
+    }
+    .proof-divider {
+      width: 48px;
+      height: 1px;
+    }
+    .scroll-hint {
+      display: none;
     }
   }
 </style>
