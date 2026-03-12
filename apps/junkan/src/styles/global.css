@@ -23,18 +23,6 @@
     U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
-/* Self-hosted Manrope display font */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 500 800;
-  font-display: swap;
-  src: url('/fonts/manrope-latin-variable.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
-    U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
 @theme {
   /* Junkan Brand Colors */
   --color-background: #F7F5F3;
@@ -54,10 +42,12 @@
   --color-matcha-muted: #F2FAF5;
   --color-shu: #D95A50;
   --color-shu-muted: #FDF4F3;
+  --color-warning: #F59E0B;
+  --color-warning-muted: #FFFBEB;
 
   /* Typography */
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
   /* Keep legacy alias */
   --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
 
@@ -234,7 +224,7 @@ body {
 
   /* Section typography */
   .section-label {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -244,7 +234,7 @@ body {
 
   .section-title {
     font-family: var(--font-display);
-    font-weight: 800;
+    font-weight: 600;
     font-size: clamp(32px, 4vw, 52px);
     line-height: 1.1;
     letter-spacing: -0.04em;
