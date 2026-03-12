@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contact — GCS"
+  description="Get in touch with the Global Climbing Standard team. Enquiries about centre accreditation, franchise opportunities, or general questions."
+>
+  <!-- Hero -->
+  <section class="hero-page">
+    <div class="container">
+      <div class="section-label reveal" style="color: var(--color-stage-s3);">Contact</div>
+      <h1 class="section-title reveal" style="font-size: clamp(36px, 5vw, 56px);">
+        Get in touch.
+      </h1>
+      <p class="section-body reveal">
+        Whether you're interested in centre accreditation, a franchise opportunity,
+        or just want to learn more — we'd love to hear from you.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact options -->
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="contact-card reveal reveal-delay-1">
+          <h3>Centre Accreditation</h3>
+          <p>Interested in becoming a GCS-accredited climbing centre? Tell us about your facility.</p>
+          <a href="mailto:centres@globalclimbingstandard.com">centres@globalclimbingstandard.com</a>
+        </div>
+        <div class="contact-card reveal reveal-delay-2">
+          <h3>Franchise Enquiries</h3>
+          <p>Want to bring GCS to your territory as a Master Franchisee? Let's discuss the opportunity.</p>
+          <a href="mailto:franchise@globalclimbingstandard.com">franchise@globalclimbingstandard.com</a>
+        </div>
+        <div class="contact-card reveal reveal-delay-3">
+          <h3>General Enquiries</h3>
+          <p>Questions about GCS, partnerships, or anything else? We're happy to help.</p>
+          <a href="mailto:hello@globalclimbingstandard.com">hello@globalclimbingstandard.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-page {
+    padding: 160px 48px 80px;
+  }
+
+  .contact-card {
+    padding: 32px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .contact-card h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+  }
+  .contact-card p {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+    flex: 1;
+  }
+  .contact-card a {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-stage-s3);
+    text-decoration: none;
+  }
+  .contact-card a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 900px) {
+    .hero-page {
+      padding: 120px 24px 48px;
+    }
+  }
+</style>

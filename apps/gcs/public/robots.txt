@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://globalclimbingstandard.com/sitemap-index.xml

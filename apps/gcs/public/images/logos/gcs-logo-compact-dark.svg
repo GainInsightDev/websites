@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 95 58" width="95" height="58">
+  <!-- GCS text -->
+  <text
+    x="0"
+    y="46"
+    font-family="Outfit"
+    font-weight="900"
+    font-size="42"
+    letter-spacing="2"
+    fill="#ffffff"
+  >GCS</text>
+
+  <!-- Horizontal stage colour bar underneath (6 rounded rects, 15px wide, 3px tall, 1px gap) -->
+  <!-- Total width: 6*15 + 5*1 = 95px — matches GCS text width -->
+  <rect x="0"  y="53" width="15" height="3" rx="1.5" ry="1.5" fill="#E8956A"/>
+  <rect x="16" y="53" width="15" height="3" rx="1.5" ry="1.5" fill="#D4A843"/>
+  <rect x="32" y="53" width="15" height="3" rx="1.5" ry="1.5" fill="#5B9A6B"/>
+  <rect x="48" y="53" width="15" height="3" rx="1.5" ry="1.5" fill="#4E97A8"/>
+  <rect x="64" y="53" width="15" height="3" rx="1.5" ry="1.5" fill="#6574B8"/>
+  <rect x="80" y="53" width="15" height="3" rx="1.5" ry="1.5" fill="#8B6EAF"/>
+</svg>

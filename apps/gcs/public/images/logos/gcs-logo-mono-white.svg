@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 95 58" width="95" height="58">
+  <!-- GCS text in white -->
+  <text
+    x="0"
+    y="46"
+    font-family="Outfit"
+    font-weight="900"
+    font-size="42"
+    letter-spacing="2"
+    fill="#ffffff"
+  >GCS</text>
+
+  <!-- Horizontal bar in white at 50% opacity (6 rounded rects, 15px wide, 3px tall, 1px gap) -->
+  <rect x="0"  y="53" width="15" height="3" rx="1.5" ry="1.5" fill="rgba(255,255,255,0.5)"/>
+  <rect x="16" y="53" width="15" height="3" rx="1.5" ry="1.5" fill="rgba(255,255,255,0.5)"/>
+  <rect x="32" y="53" width="15" height="3" rx="1.5" ry="1.5" fill="rgba(255,255,255,0.5)"/>
+  <rect x="48" y="53" width="15" height="3" rx="1.5" ry="1.5" fill="rgba(255,255,255,0.5)"/>
+  <rect x="64" y="53" width="15" height="3" rx="1.5" ry="1.5" fill="rgba(255,255,255,0.5)"/>
+  <rect x="80" y="53" width="15" height="3" rx="1.5" ry="1.5" fill="rgba(255,255,255,0.5)"/>
+</svg>

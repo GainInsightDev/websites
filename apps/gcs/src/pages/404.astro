@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Page Not Found — GCS">
+  <section class="not-found">
+    <div class="container">
+      <h1>404</h1>
+      <p>Page not found. The route you're looking for doesn't exist.</p>
+      <a href="/" class="btn btn-primary">Back to home</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .not-found {
+    padding: 200px 48px 120px;
+    text-align: center;
+  }
+  .not-found h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 96px;
+    color: var(--color-text-muted);
+    margin-bottom: 16px;
+  }
+  .not-found p {
+    font-size: 18px;
+    color: var(--color-text-secondary);
+    margin-bottom: 32px;
+  }
+</style>

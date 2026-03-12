@@ -59,6 +59,7 @@ export const teamMember = defineType({
           { title: 'Senti', value: 'senti' },
           { title: 'GainInsight', value: 'gaininsight' },
           { title: 'Juncta', value: 'juncta' },
+          { title: 'GCS', value: 'gcs' },
         ],
       },
       validation: (rule) => rule.required(),

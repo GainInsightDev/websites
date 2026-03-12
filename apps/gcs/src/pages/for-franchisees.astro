@@ -1,0 +1,162 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const highlights = [
+  { title: 'Exclusive territory', body: 'Operate as the sole GCS Master Franchisee in your market. Full territorial exclusivity with defined boundaries.' },
+  { title: 'Proven model', body: 'Built on the PADI franchise model — the most successful sports certification franchise in history. Adapted for the climbing industry.' },
+  { title: 'Full platform', body: 'Mobile apps (coach, learner, parent), web dashboards, digital credentials, payment processing — all provided and maintained centrally.' },
+  { title: 'Complete curriculum', body: 'A structured 5-stage, 6-domain climbing framework ready to deploy. No curriculum development needed.' },
+  { title: 'Training & support', body: 'Comprehensive onboarding, ongoing operational support, marketing materials, and a global franchisee network.' },
+  { title: 'Finance available', body: 'Franchise fees from GBP 10,000-20,000 depending on territory, with finance options available through our lending partner.' },
+];
+---
+
+<Layout
+  title="Franchise Opportunity — GCS"
+  description="Become a GCS Master Franchisee. Bring the Global Climbing Standard to your territory with exclusive rights, full support, and a proven model."
+>
+  <!-- Hero -->
+  <section class="hero-page">
+    <div class="container">
+      <div class="section-label reveal" style="color: var(--color-stage-s4);">Franchise Opportunity</div>
+      <h1 class="section-title reveal" style="font-size: clamp(36px, 5vw, 56px);">
+        Bring GCS to<br>your territory.
+      </h1>
+      <p class="section-body reveal">
+        Become a Master Franchisee and build the GCS network in your market.
+        Exclusive territory rights, a complete platform, and the backing of a global brand.
+      </p>
+      <a href="/contact" class="btn btn-primary reveal">Express interest</a>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">The Opportunity</div>
+      <h2 class="section-title reveal">What you get as a Master Franchisee.</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+        {highlights.map((item, i) => (
+          <div class={`card reveal reveal-delay-${(i % 4) + 1}`}>
+            <h3 class="card-title">{item.title}</h3>
+            <p class="card-body">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Revenue model -->
+  <section class="section-dark">
+    <div class="section">
+      <div class="container">
+        <div class="section-label reveal" style="color: var(--color-stage-s1);">Revenue</div>
+        <h2 class="section-title reveal" style="color: #FFFFFF;">Multiple revenue streams.</h2>
+        <p class="section-body reveal" style="color: rgba(255,255,255,0.65);">
+          Franchisees earn from centre accreditation fees, participant registration and progression fees,
+          instructor certification, and materials. Recurring revenue that grows with your network.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ideal candidate -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">Ideal Candidate</div>
+      <h2 class="section-title reveal">Who we're looking for.</h2>
+      <div class="candidate-list">
+        <div class="candidate-item reveal reveal-delay-1">
+          <span class="check">&#10003;</span>
+          <p>Experience in the climbing industry — centre operator, instructor, or industry body</p>
+        </div>
+        <div class="candidate-item reveal reveal-delay-2">
+          <span class="check">&#10003;</span>
+          <p>Business acumen and entrepreneurial drive</p>
+        </div>
+        <div class="candidate-item reveal reveal-delay-3">
+          <span class="check">&#10003;</span>
+          <p>Strong local market knowledge and industry relationships</p>
+        </div>
+        <div class="candidate-item reveal reveal-delay-4">
+          <span class="check">&#10003;</span>
+          <p>Passion for climbing and commitment to raising standards</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-brand">
+    <div class="section">
+      <div class="container" style="text-align: center;">
+        <h2 class="section-title reveal" style="color: #FFFFFF; max-width: none;">Interested in a franchise?</h2>
+        <p class="section-body reveal" style="color: rgba(255,255,255,0.65); margin-left: auto; margin-right: auto;">
+          Submit an Expression of Interest and we'll send you the full franchise prospectus.
+        </p>
+        <a href="/contact" class="btn btn-outline-light reveal">Express interest</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-page {
+    padding: 160px 48px 80px;
+  }
+  .section-dark {
+    background: var(--color-brand);
+  }
+  .section-brand {
+    background: var(--color-brand);
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .card-body {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+  }
+
+  .candidate-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+    max-width: 600px;
+  }
+  .candidate-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .check {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-stage-s2);
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .candidate-item p {
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .hero-page {
+      padding: 120px 24px 48px;
+    }
+  }
+</style>

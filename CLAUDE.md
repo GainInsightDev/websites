@@ -16,6 +16,7 @@ Monorepo for GainInsight marketing websites, migrating from React to Astro with 
 | `apps/clik/` | clik.audio - Astro site |
 | `apps/junkan/` | junkan.ai - Astro site |
 | `apps/juncta/` | juncta.ai - Astro site (AI project management) |
+| `apps/gcs/` | globalclimbingstandard.com - Astro site (climbing qualification framework) |
 | `packages/sanity-studio/` | Shared Sanity CMS Studio |
 | `packages/shared/` | Shared utilities and site config |
 
@@ -38,6 +39,7 @@ Monorepo for GainInsight marketing websites, migrating from React to Astro with 
 | clik.audio | `clik.audio` | `E2MN4CE4PG7QAR` |
 | junkan.ai | `junkan.ai` | `E2RK3RXTOQXX61` |
 | juncta.ai | `juncta.ai` | `E2E38PLLUKNAZD` |
+| globalclimbingstandard.com | TBD | TBD |
 
 ## Linear
 
@@ -86,6 +88,7 @@ Each site has its own independent brand guidelines. They are **not** sub-brands 
 | Recon1 | `docs/brand-guidelines.md` in recon1 repo | `recon1.git` |
 | Juncta | `docs/brand-guidelines.md` in helm repo | `helm.git` |
 | Pensionable | `apps/pensionable/docs/brand-guidelines.md` | None (this monorepo) |
+| GCS | `docs/design/brand-guidelines.md` in gcs repo | `gcs.git` |
 
 Brand guidelines follow the AgentFlow template at `.claude/templates/brand-guidelines-template.md`.
 

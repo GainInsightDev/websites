@@ -1,0 +1,118 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="About — GCS"
+  description="GCS is the Global Climbing Standard — a globally portable climbing qualification framework created by ClimbHQ Limited."
+>
+  <!-- Hero -->
+  <section class="hero-page">
+    <div class="container">
+      <div class="section-label reveal" style="color: var(--color-stage-s3);">About GCS</div>
+      <h1 class="section-title reveal" style="font-size: clamp(36px, 5vw, 56px);">
+        Building the global standard<br>for climbing education.
+      </h1>
+      <p class="section-body reveal">
+        GCS is the world's only globally portable climbing standard — a structured
+        qualification framework that brings the rigour of PADI to the climbing industry.
+      </p>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+        <div>
+          <div class="section-label reveal">The Problem</div>
+          <h2 class="section-title reveal">Climbing has no global standard.</h2>
+        </div>
+        <div class="reveal">
+          <p class="about-text">
+            Indoor climbing is growing 10-15% annually — driven by Olympic inclusion and a new generation
+            of climbers. But the industry has no globally recognised qualification framework.
+          </p>
+          <p class="about-text">
+            Existing certifications are fragmented by country, outdoor-focused, non-portable, and entirely
+            analogue. Instructors can't take qualifications abroad. Centres can't differentiate on coaching
+            quality. Parents have zero visibility into their child's development.
+          </p>
+          <p class="about-text">
+            GCS changes that.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision -->
+  <section class="section-dark">
+    <div class="section">
+      <div class="container">
+        <div class="section-label reveal" style="color: var(--color-stage-s1);">Vision</div>
+        <h2 class="section-title reveal" style="color: #FFFFFF;">
+          Every serious climbing centre,<br>GCS-accredited.
+        </h2>
+        <p class="section-body reveal" style="color: rgba(255,255,255,0.65); max-width: 600px;">
+          We're building towards a world where every instructor carries a GCS credential, every parent
+          trusts GCS centres for structured coaching, and every climber has a clear, portable pathway
+          from first climb to expert.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ClimbHQ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">ClimbHQ</div>
+      <h2 class="section-title reveal">Built by climbers, for climbing.</h2>
+      <div class="about-text reveal" style="max-width: 640px;">
+        <p class="about-text">
+          GCS is created by ClimbHQ Limited — a team that combines deep climbing industry experience
+          with technology expertise. We're building the standard, the digital platform, and the global
+          franchise network to bring it to every climbing wall in the world.
+        </p>
+        <p class="about-text">
+          Our technology partner, Gain Insight, provides the AI and platform engineering
+          that powers the GCS digital experience — from mobile apps to web dashboards.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container" style="text-align: center;">
+      <h2 class="section-title reveal" style="max-width: none;">Want to be part of it?</h2>
+      <div class="reveal" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="/for-centres" class="btn btn-primary">Accredit your centre</a>
+        <a href="/for-franchisees" class="btn btn-secondary">Franchise opportunity</a>
+        <a href="/contact" class="btn btn-secondary">Get in touch</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-page {
+    padding: 160px 48px 80px;
+  }
+  .section-dark {
+    background: var(--color-brand);
+  }
+
+  .about-text {
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 900px) {
+    .hero-page {
+      padding: 120px 24px 48px;
+    }
+  }
+</style>

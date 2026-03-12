@@ -1,0 +1,165 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const benefits = [
+  { title: 'Increased participation', body: 'Structured programmes drive repeat visits. PADI centres see 3x the retention of non-PADI centres — GCS brings the same model to climbing.' },
+  { title: 'New revenue stream', body: 'Registration fees, level progression fees, and certification fees create recurring income beyond day passes and memberships.' },
+  { title: 'Competitive differentiation', body: 'GCS accreditation signals quality. Parents and schools actively seek accredited centres — it\'s a trust mark that drives new business.' },
+  { title: 'Turnkey curriculum', body: 'No need to design your own programme. GCS provides the curriculum, digital platform, materials, and marketing support.' },
+  { title: 'Coach development', body: 'Your instructors earn globally recognised GCS coaching certifications, raising your team\'s professional credentials.' },
+  { title: 'Digital platform', body: 'Track every participant\'s progress digitally. Parents see updates in real-time. Reporting and analytics come built-in.' },
+];
+---
+
+<Layout
+  title="For Climbing Centres — GCS"
+  description="Accredit your climbing centre with the Global Climbing Standard. Drive participation, retention, and revenue with a structured qualification framework."
+>
+  <!-- Hero -->
+  <section class="hero-page">
+    <div class="container">
+      <div class="section-label reveal" style="color: var(--color-stage-s2);">For Centres</div>
+      <h1 class="section-title reveal" style="font-size: clamp(36px, 5vw, 56px);">
+        Grow your centre with<br>structured progression.
+      </h1>
+      <p class="section-body reveal">
+        GCS accreditation gives your centre a proven framework for coaching, a new revenue stream,
+        and a trust mark that parents and schools recognise.
+      </p>
+      <a href="/contact" class="btn btn-primary reveal">Apply for accreditation</a>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">Benefits</div>
+      <h2 class="section-title reveal">Why centres choose GCS.</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+        {benefits.map((item, i) => (
+          <div class={`card reveal reveal-delay-${(i % 4) + 1}`}>
+            <h3 class="card-title">{item.title}</h3>
+            <p class="card-body">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How accreditation works -->
+  <section class="section-dark">
+    <div class="section">
+      <div class="container">
+        <div class="section-label reveal" style="color: var(--color-stage-s1);">Process</div>
+        <h2 class="section-title reveal" style="color: #FFFFFF;">How accreditation works.</h2>
+        <div class="steps-list">
+          <div class="step reveal reveal-delay-1">
+            <span class="step-number">1</span>
+            <div>
+              <h3>Apply</h3>
+              <p>Contact your local GCS Master Franchisee or apply directly through our website.</p>
+            </div>
+          </div>
+          <div class="step reveal reveal-delay-2">
+            <span class="step-number">2</span>
+            <div>
+              <h3>Assess</h3>
+              <p>We review your facility, coaching staff, and safety standards to ensure readiness.</p>
+            </div>
+          </div>
+          <div class="step reveal reveal-delay-3">
+            <span class="step-number">3</span>
+            <div>
+              <h3>Train</h3>
+              <p>Your instructors complete GCS certification training — learning the framework and digital tools.</p>
+            </div>
+          </div>
+          <div class="step reveal reveal-delay-4">
+            <span class="step-number">4</span>
+            <div>
+              <h3>Launch</h3>
+              <p>Go live with GCS sessions. We provide curriculum, materials, platform access, and marketing support.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container" style="text-align: center;">
+      <h2 class="section-title reveal" style="max-width: none;">Ready to accredit your centre?</h2>
+      <p class="section-body reveal" style="margin-left: auto; margin-right: auto;">
+        Get in touch to discuss accreditation for your climbing centre.
+      </p>
+      <a href="/contact" class="btn btn-primary reveal">Apply for accreditation</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-page {
+    padding: 160px 48px 80px;
+  }
+  .section-dark {
+    background: var(--color-brand);
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .card-body {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+  }
+
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 40px;
+    max-width: 600px;
+  }
+  .step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .step-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .step h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+  }
+  .step p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .hero-page {
+      padding: 120px 24px 48px;
+    }
+  }
+</style>

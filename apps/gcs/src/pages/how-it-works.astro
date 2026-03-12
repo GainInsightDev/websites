@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const stages = [
+  { name: 'Early Years', token: 'var(--color-stage-ey)', description: 'Introduction to climbing for young learners. Building confidence, basic movement skills, and a love of the sport.' },
+  { name: 'Stage 1: Discover', token: 'var(--color-stage-s1)', description: 'Foundation techniques. Learning fundamental movement patterns, basic safety, and route reading.' },
+  { name: 'Stage 2: Explore', token: 'var(--color-stage-s2)', description: 'Expanding skills. More complex techniques, problem-solving on the wall, and building endurance.' },
+  { name: 'Stage 3: Develop', token: 'var(--color-stage-s3)', description: 'Refining ability. Advanced footwork, route strategy, and developing personal climbing style.' },
+  { name: 'Stage 4: Perform', token: 'var(--color-stage-s4)', description: 'High-level performance. Technical mastery, mental preparation, and competitive readiness.' },
+  { name: 'Stage 5: Evolve', token: 'var(--color-stage-s5)', description: 'Expert level. Coaching others, pushing boundaries, and contributing to the climbing community.' },
+];
+
+const domains = [
+  { name: 'Movement & Technique', description: 'Body positioning, footwork, handholds, and efficient movement on the wall.' },
+  { name: 'Strength & Conditioning', description: 'Physical preparation — grip strength, endurance, flexibility, and injury prevention.' },
+  { name: 'Mental Skills', description: 'Focus, confidence, managing fear, problem-solving under pressure.' },
+  { name: 'Safety & Awareness', description: 'Belaying, equipment checks, hazard recognition, and responsible climbing.' },
+  { name: 'Route Reading', description: 'Analysing routes, planning sequences, and adapting strategies on the wall.' },
+  { name: 'Climbing Knowledge', description: 'Understanding grades, styles, ethics, history, and the broader climbing world.' },
+];
+---
+
+<Layout
+  title="How it Works — GCS"
+  description="Learn how the Global Climbing Standard's 5-stage framework and 6 skill domains create a clear progression pathway for every climber."
+>
+  <!-- Hero -->
+  <section class="hero-page">
+    <div class="container">
+      <div class="section-label reveal" style="color: var(--color-stage-s2);">The Framework</div>
+      <h1 class="section-title reveal" style="font-size: clamp(36px, 5vw, 56px);">
+        A clear pathway from<br>first climb to expert.
+      </h1>
+      <p class="section-body reveal">
+        GCS assesses climbers across six skill domains as they progress through structured stages.
+        Think of it like belt colours in martial arts — visible, meaningful, and universally understood.
+      </p>
+    </div>
+  </section>
+
+  <!-- Stages -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">Stages</div>
+      <h2 class="section-title reveal">Six stages of progression.</h2>
+      <div class="stages-grid">
+        {stages.map((stage, i) => (
+          <div class={`stage-card reveal reveal-delay-${i + 1}`}>
+            <div class="stage-indicator" style={`background: ${stage.token};`}></div>
+            <h3>{stage.name}</h3>
+            <p>{stage.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Domains -->
+  <section class="section-dark">
+    <div class="section">
+      <div class="container">
+        <div class="section-label reveal" style="color: var(--color-stage-s1);">Skill Domains</div>
+        <h2 class="section-title reveal" style="color: #FFFFFF;">Assessed across six dimensions.</h2>
+        <p class="section-body reveal" style="color: rgba(255,255,255,0.65);">
+          Every stage requires demonstrated competency across all six domains.
+          This ensures well-rounded development — not just strong fingers.
+        </p>
+        <div class="domains-grid">
+          {domains.map((domain, i) => (
+            <div class={`domain-card reveal reveal-delay-${i + 1}`}>
+              <h3>{domain.name}</h3>
+              <p>{domain.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container" style="text-align: center;">
+      <h2 class="section-title reveal" style="max-width: none;">Want to bring GCS to your centre?</h2>
+      <div class="reveal" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="/for-centres" class="btn btn-primary">Accredit your centre</a>
+        <a href="/contact" class="btn btn-secondary">Ask a question</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-page {
+    padding: 160px 48px 80px;
+  }
+  .section-dark {
+    background: var(--color-brand);
+  }
+
+  .stages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .stage-card {
+    padding: 28px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .stage-indicator {
+    width: 48px;
+    height: 6px;
+    border-radius: 3px;
+  }
+  .stage-card h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .stage-card p {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .domains-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .domain-card {
+    padding: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-card);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .domain-card h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+  }
+  .domain-card p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .hero-page {
+      padding: 120px 24px 48px;
+    }
+  }
+</style>

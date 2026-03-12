@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 62" width="300" height="62">
+  <!-- GCS main text -->
+  <text
+    x="0"
+    y="50"
+    font-family="Outfit"
+    font-weight="900"
+    font-size="52"
+    letter-spacing="3"
+    fill="#ffffff"
+  >GCS</text>
+
+  <!-- Stage colour divider bar (vertical, 6 rounded rects) -->
+  <!-- Positioned well clear of the S, with breathing room -->
+  <rect x="128" y="1"  width="4" height="9" rx="2" ry="2" fill="#E8956A"/>
+  <rect x="128" y="11" width="4" height="9" rx="2" ry="2" fill="#D4A843"/>
+  <rect x="128" y="21" width="4" height="9" rx="2" ry="2" fill="#5B9A6B"/>
+  <rect x="128" y="31" width="4" height="9" rx="2" ry="2" fill="#4E97A8"/>
+  <rect x="128" y="41" width="4" height="9" rx="2" ry="2" fill="#6574B8"/>
+  <rect x="128" y="51" width="4" height="9" rx="2" ry="2" fill="#8B6EAF"/>
+
+  <!-- Stacked wordmark: GLOBAL / CLIMBING / STANDARD -->
+  <text
+    x="144"
+    y="20"
+    font-family="Outfit"
+    font-weight="700"
+    font-size="13"
+    letter-spacing="2.5"
+    fill="#ffffff"
+  >GLOBAL</text>
+  <text
+    x="144"
+    y="36"
+    font-family="Outfit"
+    font-weight="700"
+    font-size="13"
+    letter-spacing="2.5"
+    fill="#ffffff"
+  >CLIMBING</text>
+  <text
+    x="144"
+    y="52"
+    font-family="Outfit"
+    font-weight="700"
+    font-size="13"
+    letter-spacing="2.5"
+    fill="#ffffff"
+  >STANDARD</text>
+</svg>
