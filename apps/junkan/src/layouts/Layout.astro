@@ -12,10 +12,12 @@ interface Props {
 const {
   title = 'Junkan — Every item, expertly sold.',
   description = 'Photograph your item. Our AI handles identification, research, pricing, and listing across every marketplace.',
-  ogImage = '/images/logos/junkan_logo.png',
+  ogImage = '/images/junkan-og.png',
 } = Astro.props;
 
-const canonicalUrl = new URL(Astro.url.pathname, 'https://junkan.ai').href;
+const siteUrl = 'https://junkan.ai';
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const ogImageUrl = new URL(ogImage, siteUrl).href;
 ---
 
 <!DOCTYPE html>
@@ -23,6 +25,8 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://junkan.ai').href;
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -33,14 +37,47 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://junkan.ai').href;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:site_name" content="Junkan" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": `${siteUrl}/#organization`,
+          "name": "Junkan",
+          "url": siteUrl,
+          "logo": {
+            "@type": "ImageObject",
+            "url": `${siteUrl}/favicon.svg`
+          },
+          "description": "AI-powered resale intelligence. Photograph your item, our AI handles identification, research, pricing, and listing across every marketplace."
+        },
+        {
+          "@type": "WebSite",
+          "@id": `${siteUrl}/#website`,
+          "url": siteUrl,
+          "name": "Junkan",
+          "publisher": { "@id": `${siteUrl}/#organization` }
+        },
+        {
+          "@type": "WebPage",
+          "@id": canonicalUrl,
+          "url": canonicalUrl,
+          "name": title,
+          "description": description,
+          "isPartOf": { "@id": `${siteUrl}/#website` }
+        }
+      ]
+    })} />
 
     <!-- Self-hosted fonts (eliminates FOUT) -->
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -48,7 +85,7 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://junkan.ai').href;
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TYDEM7VYGL"></script>
-    <script>
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
