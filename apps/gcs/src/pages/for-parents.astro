@@ -1,0 +1,343 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const benefits = [
+  { title: 'See real progress', icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`, accent: 'var(--color-stage-s2)', body: 'No more guessing. After every session, see exactly which skills your child worked on and how they\'re progressing across six development areas.' },
+  { title: 'Stages that mean something', icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>`, accent: 'var(--color-stage-s1)', body: 'Like belt colours in martial arts, GCS stages give your child visible milestones to work towards. Each stage earned is a real achievement — with a globally recognised credential.' },
+  { title: 'More than a sport', icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>`, accent: 'var(--color-stage-s3)', body: 'Climbing builds fitness, problem-solving, teamwork, confidence, and resilience. GCS tracks development across all six domains — your child is learning life skills, not just moves.' },
+  { title: 'Trusted quality', icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`, accent: 'var(--color-stage-s4)', body: 'GCS-accredited centres meet rigorous standards for coaching, safety, and curriculum delivery. When you see the GCS mark, you know your child is in good hands.' },
+  { title: 'Digital certificates', icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>`, accent: 'var(--color-stage-ey)', body: 'When your child completes a stage, they earn a digital GCS credential — verifiable worldwide. It\'s theirs to keep, share, and build on wherever they climb.' },
+  { title: 'Works anywhere', icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`, accent: 'var(--color-stage-s5)', body: 'Moving house? Travelling? GCS qualifications are globally portable. Your child picks up where they left off at any accredited centre in the world.' },
+];
+
+const howItWorks = [
+  { step: '01', title: 'Find a GCS centre', description: 'Look for the GCS accreditation mark at your local climbing centre. All accredited centres deliver the same structured curriculum.' },
+  { step: '02', title: 'Enrol your child', description: 'Register for GCS sessions. Your child gets a digital profile where all their progress is tracked from day one.' },
+  { step: '03', title: 'Watch them grow', description: 'After each session, see updates on which skills were worked on. Track progress across all six domains in real-time via the parent dashboard.' },
+  { step: '04', title: 'Celebrate stages', description: 'As your child masters each stage, they earn a GCS credential — a real achievement they can be proud of, recognised at centres worldwide.' },
+];
+---
+
+<Layout
+  title="For Parents — GCS"
+  description="See your child's climbing progress in real-time. GCS gives parents visibility into structured coaching, skill development, and stage achievements."
+>
+  <!-- Hero -->
+  <section class="hero-page">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="container">
+      <span class="hero-badge reveal">
+        <span class="hero-badge-dot" style="background: var(--color-stage-ey);"></span>
+        For Parents
+      </span>
+      <h1 class="hero-title reveal">
+        Finally see what your child<br><em>is actually learning.</em>
+      </h1>
+      <p class="hero-subtitle reveal">
+        No more dropping your child off and hoping for the best. GCS gives you real-time
+        visibility into structured coaching, skill development, and measurable progress.
+      </p>
+      <div class="hero-actions reveal">
+        <a href="/how-it-works" class="btn btn-primary">See how it works</a>
+        <a href="/contact" class="btn btn-secondary">Find a centre</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proof bar -->
+  <section class="proof-bar">
+    <div class="container">
+      <div class="proof-stats">
+        <div class="proof-stat reveal">
+          <span class="proof-number">6</span>
+          <span class="proof-label">Skill domains tracked</span>
+        </div>
+        <div class="proof-divider" aria-hidden="true"></div>
+        <div class="proof-stat reveal reveal-delay-1">
+          <span class="proof-number">5</span>
+          <span class="proof-label">Stages to earn</span>
+        </div>
+        <div class="proof-divider" aria-hidden="true"></div>
+        <div class="proof-stat reveal reveal-delay-2">
+          <span class="proof-number">100%</span>
+          <span class="proof-label">Digital tracking</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">Why parents love GCS</div>
+      <h2 class="section-title reveal">Climbing with purpose.</h2>
+      <p class="section-body reveal">
+        GCS transforms "just climbing" into a structured journey with visible milestones,
+        real achievements, and skills that go far beyond the wall.
+      </p>
+      <div class="benefits-grid">
+        {benefits.map((item, i) => (
+          <div class={`benefit-card reveal reveal-delay-${(i % 4) + 1}`} style={`--accent: ${item.accent};`}>
+            <div class="benefit-icon" set:html={item.icon}></div>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works for parents -->
+  <section class="section-dark">
+    <div class="how-glow" aria-hidden="true"></div>
+    <div class="section">
+      <div class="container">
+        <div class="section-label reveal">How it works</div>
+        <h2 class="section-title reveal">
+          Four steps to <em class="gradient-text">real visibility.</em>
+        </h2>
+        <div class="steps-grid">
+          {howItWorks.map((item, i) => (
+            <div class={`step-card reveal reveal-delay-${i + 1}`}>
+              <div class="step-number">{item.step}</div>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Life skills callout -->
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+        <div>
+          <div class="section-label reveal">Beyond the wall</div>
+          <h2 class="section-title reveal">Learning a lifestyle,<br>not just a sport.</h2>
+        </div>
+        <div>
+          <p class="life-text reveal">
+            Your child isn't just learning to climb — they're developing skills that
+            transfer to every part of life. GCS tracks development across six domains
+            that go far beyond physical technique.
+          </p>
+          <div class="life-skills">
+            <div class="life-skill reveal reveal-delay-1" style="--skill-color: var(--color-stage-ey);">
+              <span class="life-dot"></span>
+              <span>Fitness & strength</span>
+            </div>
+            <div class="life-skill reveal reveal-delay-1" style="--skill-color: var(--color-stage-s1);">
+              <span class="life-dot"></span>
+              <span>Problem-solving</span>
+            </div>
+            <div class="life-skill reveal reveal-delay-2" style="--skill-color: var(--color-stage-s2);">
+              <span class="life-dot"></span>
+              <span>Teamwork & socialising</span>
+            </div>
+            <div class="life-skill reveal reveal-delay-2" style="--skill-color: var(--color-stage-s3);">
+              <span class="life-dot"></span>
+              <span>Confidence & resilience</span>
+            </div>
+            <div class="life-skill reveal reveal-delay-3" style="--skill-color: var(--color-stage-s4);">
+              <span class="life-dot"></span>
+              <span>Focus & discipline</span>
+            </div>
+            <div class="life-skill reveal reveal-delay-3" style="--skill-color: var(--color-stage-s5);">
+              <span class="life-dot"></span>
+              <span>Safety awareness</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-brand">
+    <div class="cta-glow" aria-hidden="true"></div>
+    <div class="section">
+      <div class="container" style="text-align: center; position: relative; z-index: 1;">
+        <h2 class="section-title reveal" style="max-width: none;">Ready to see the difference?</h2>
+        <p class="section-body reveal" style="max-width: 480px; margin-left: auto; margin-right: auto;">
+          Find a GCS-accredited centre near you and give your child a climbing journey
+          that goes somewhere.
+        </p>
+        <div class="reveal" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="/contact" class="btn btn-outline-light">Find a centre</a>
+          <a href="/how-it-works" class="btn btn-outline-light">See the framework</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Hero overrides */
+  .hero-title em {
+    background: linear-gradient(135deg, var(--color-stage-ey), var(--color-stage-s2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Benefits grid */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .benefit-card {
+    padding: 32px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .benefit-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease-out-expo);
+  }
+  .benefit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-lg);
+    border-color: var(--color-text-muted);
+  }
+  .benefit-card:hover::after {
+    transform: scaleX(1);
+  }
+  .benefit-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--accent);
+  }
+  .benefit-card h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .benefit-card p {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+  }
+
+  /* How it works steps */
+  .how-glow {
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(232, 149, 106, 0.12) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .step-card {
+    padding: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-card);
+    background: rgba(255, 255, 255, 0.03);
+    transition: transform 0.3s var(--ease-spring), background 0.3s ease, border-color 0.3s ease;
+  }
+  .step-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  .step-number {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 32px;
+    letter-spacing: -0.02em;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+  .step-card h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+  }
+  .step-card p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.65;
+  }
+
+  /* Life skills */
+  .life-text {
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+    margin-bottom: 28px;
+  }
+  .life-skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .life-skill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    padding: 10px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    transition: border-color 0.2s ease, transform 0.2s var(--ease-spring);
+  }
+  .life-skill:hover {
+    border-color: var(--skill-color);
+    transform: translateX(4px);
+  }
+  .life-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--skill-color);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 900px) {
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+    .life-skills {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

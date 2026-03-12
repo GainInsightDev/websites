@@ -1,10 +1,13 @@
 ---
 const navLinks = [
   { label: 'How it works', href: '/how-it-works' },
+  { label: 'For Parents', href: '/for-parents' },
   { label: 'For Centres', href: '/for-centres' },
   { label: 'Franchises', href: '/for-franchisees' },
   { label: 'About', href: '/about' },
 ];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <nav class="nav" id="nav">
@@ -13,7 +16,7 @@ const navLinks = [
   </a>
   <ul class="nav-links">
     {navLinks.map((link) => (
-      <li><a href={link.href}>{link.label}</a></li>
+      <li><a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined} class={currentPath === link.href ? 'active' : ''}>{link.label}</a></li>
     ))}
     <li><a href="/contact" class="nav-cta">Get in touch</a></li>
   </ul>
@@ -36,7 +39,7 @@ const navLinks = [
 <div id="mobile-menu" class="mobile-menu hidden">
   <div class="mobile-menu-inner">
     {navLinks.map((link) => (
-      <a href={link.href} class="mobile-menu-link">{link.label}</a>
+      <a href={link.href} class={`mobile-menu-link${currentPath === link.href ? ' active' : ''}`}>{link.label}</a>
     ))}
     <a href="/contact" class="btn btn-primary" style="width:100%; text-align:center;">Get in touch</a>
   </div>
@@ -92,6 +95,9 @@ const navLinks = [
   .nav-links a:hover {
     color: var(--color-text);
   }
+  .nav-links a.active {
+    color: var(--color-text);
+  }
   .nav-cta {
     padding: 10px 22px;
     background: var(--color-brand);
@@ -119,9 +125,14 @@ const navLinks = [
     z-index: 99;
     background: var(--color-surface);
     border-bottom: 1px solid var(--color-border);
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.25s ease, transform 0.25s ease;
   }
   .mobile-menu.hidden {
-    display: none;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
   }
   .mobile-menu-inner {
     padding: 16px 24px;
@@ -137,7 +148,8 @@ const navLinks = [
     text-decoration: none;
     padding: 8px 0;
   }
-  .mobile-menu-link:hover {
+  .mobile-menu-link:hover,
+  .mobile-menu-link.active {
     color: var(--color-text);
   }
 

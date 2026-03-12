@@ -16,7 +16,7 @@ import Layout from '../layouts/Layout.astro';
           A climbing journey that<br><em>goes somewhere.</em>
         </h1>
         <p class="hero-subtitle">
-          GCS is the world's first globally portable climbing qualification.
+          GCS is the world's only globally portable climbing qualification.
           Five stages. Six skill domains. One standard — recognised at every wall, in every country.
         </p>
         <div class="hero-actions">
@@ -183,10 +183,11 @@ import Layout from '../layouts/Layout.astro';
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
         <div class="audience-card reveal reveal-delay-1">
           <span class="audience-tag" style="--tag-color: var(--color-stage-s2);">Climbers & Parents</span>
-          <h3>See real progress, not just sessions.</h3>
-          <p>Track your child's development across six skill domains. Watch them earn stages.
-            Download certificates. Know exactly where they are and what comes next.</p>
-          <a href="/how-it-works">Learn about stages &rarr;</a>
+          <h3>More than a sport. A pathway.</h3>
+          <p>Your child isn't just learning to climb — they're building fitness, problem-solving,
+            teamwork, and confidence. Track their development across six skill domains. Watch them
+            earn stages. Know exactly where they are and what comes next.</p>
+          <a href="/for-parents">Learn more &rarr;</a>
         </div>
         <div class="audience-card reveal reveal-delay-2">
           <span class="audience-tag" style="--tag-color: var(--color-stage-s3);">Coaches & Instructors</span>
@@ -379,42 +380,6 @@ import Layout from '../layouts/Layout.astro';
     animation: scrollDown 2s ease-in-out infinite;
   }
 
-  /* Proof bar */
-  .proof-bar {
-    padding: 48px;
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-  }
-  .proof-stats {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 48px;
-  }
-  .proof-stat {
-    text-align: center;
-  }
-  .proof-number {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(36px, 4vw, 52px);
-    letter-spacing: -0.02em;
-    color: var(--color-text);
-    display: block;
-    line-height: 1;
-  }
-  .proof-label {
-    font-size: 14px;
-    color: var(--color-text-muted);
-    margin-top: 8px;
-    display: block;
-  }
-  .proof-divider {
-    width: 1px;
-    height: 48px;
-    background: var(--color-border);
-  }
-
   /* Problem cards */
   .problem-card {
     padding: 32px;
@@ -467,11 +432,6 @@ import Layout from '../layouts/Layout.astro';
     line-height: 1.65;
   }
 
-  /* Dark section */
-  .section-dark {
-    background: var(--color-brand);
-  }
-
   /* Solution features */
   .solution-features {
     display: flex;
@@ -487,7 +447,7 @@ import Layout from '../layouts/Layout.astro';
     font-family: var(--font-display);
     font-weight: 800;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.4);
     flex-shrink: 0;
     padding-top: 2px;
   }
@@ -555,34 +515,7 @@ import Layout from '../layouts/Layout.astro';
     color: var(--color-stage-s4);
   }
 
-  /* Brand CTA */
-  .section-brand {
-    background: var(--color-brand);
-    position: relative;
-    overflow: hidden;
-  }
-  .cta-glow {
-    position: absolute;
-    bottom: -200px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(
-      circle,
-      rgba(101, 116, 184, 0.15) 0%,
-      rgba(139, 110, 175, 0.08) 50%,
-      transparent 70%
-    );
-    pointer-events: none;
-  }
-
   /* Animations */
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-  }
   @keyframes scrollDown {
     0% { top: -50%; }
     100% { top: 150%; }
@@ -592,14 +525,6 @@ import Layout from '../layouts/Layout.astro';
     .hero {
       padding: 120px 24px 64px;
       min-height: auto;
-    }
-    .proof-stats {
-      flex-direction: column;
-      gap: 24px;
-    }
-    .proof-divider {
-      width: 48px;
-      height: 1px;
     }
     .scroll-hint {
       display: none;

@@ -135,75 +135,6 @@ const benefits = [
 </Layout>
 
 <style>
-  /* Hero */
-  .hero-page {
-    padding: 160px 48px 80px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-glow {
-    position: absolute;
-    top: -200px;
-    right: -200px;
-    width: 800px;
-    height: 800px;
-    border-radius: 50%;
-    background: radial-gradient(
-      circle,
-      rgba(91, 154, 107, 0.08) 0%,
-      rgba(78, 151, 168, 0.05) 40%,
-      transparent 70%
-    );
-    pointer-events: none;
-  }
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--font-display);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-    margin-bottom: 20px;
-  }
-  .hero-badge-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--color-stage-s2);
-    animation: pulse 2s ease-in-out infinite;
-  }
-  .hero-title {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(40px, 6vw, 64px);
-    line-height: 1.05;
-    letter-spacing: -0.035em;
-    color: var(--color-text);
-    margin-bottom: 24px;
-  }
-  .hero-title em {
-    font-style: normal;
-    background: linear-gradient(135deg, var(--color-stage-s2), var(--color-stage-s3));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .hero-subtitle {
-    font-size: 18px;
-    line-height: 1.7;
-    color: var(--color-text-secondary);
-    max-width: 580px;
-    margin-bottom: 36px;
-  }
-  .hero-actions {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
   /* Benefits grid */
   .benefits-grid {
     display: grid;
@@ -263,11 +194,6 @@ const benefits = [
   }
 
   /* Process */
-  .section-dark {
-    background: var(--color-brand);
-    position: relative;
-    overflow: hidden;
-  }
   .process-glow {
     position: absolute;
     top: -200px;
@@ -281,13 +207,6 @@ const benefits = [
       transparent 70%
     );
     pointer-events: none;
-  }
-  .gradient-text {
-    font-style: normal;
-    background: linear-gradient(135deg, var(--color-stage-s1), var(--color-stage-s3));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
   .process-steps {
     display: flex;
@@ -306,7 +225,7 @@ const benefits = [
     font-weight: 800;
     font-size: 32px;
     letter-spacing: -0.02em;
-    color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.4);
     flex-shrink: 0;
     line-height: 1;
     padding-top: 4px;
@@ -324,80 +243,7 @@ const benefits = [
     line-height: 1.65;
   }
 
-  /* Proof bar */
-  .proof-bar {
-    padding: 48px;
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-  }
-  .proof-stats {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 48px;
-  }
-  .proof-stat { text-align: center; }
-  .proof-number {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(36px, 4vw, 52px);
-    letter-spacing: -0.02em;
-    color: var(--color-text);
-    display: block;
-    line-height: 1;
-  }
-  .proof-label {
-    font-size: 14px;
-    color: var(--color-text-muted);
-    margin-top: 8px;
-    display: block;
-  }
-  .proof-divider {
-    width: 1px;
-    height: 48px;
-    background: var(--color-border);
-  }
-
-  /* Brand CTA */
-  .section-brand {
-    background: var(--color-brand);
-    position: relative;
-    overflow: hidden;
-  }
-  .cta-glow {
-    position: absolute;
-    bottom: -200px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(
-      circle,
-      rgba(101, 116, 184, 0.15) 0%,
-      rgba(139, 110, 175, 0.08) 50%,
-      transparent 70%
-    );
-    pointer-events: none;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-  }
-
   @media (max-width: 900px) {
-    .hero-page {
-      padding: 120px 24px 48px;
-    }
-    .proof-stats {
-      flex-direction: column;
-      gap: 24px;
-    }
-    .proof-divider {
-      width: 48px;
-      height: 1px;
-    }
     .benefits-grid {
       grid-template-columns: 1fr;
     }

@@ -104,65 +104,22 @@ const contacts = [
 </Layout>
 
 <style>
-  /* Hero */
-  .hero-page {
-    padding: 160px 48px 80px;
-    position: relative;
-    overflow: hidden;
-  }
+  /* Hero overrides */
   .hero-glow {
-    position: absolute;
-    top: -200px;
-    right: -200px;
-    width: 800px;
-    height: 800px;
-    border-radius: 50%;
     background: radial-gradient(
       circle,
       rgba(91, 154, 107, 0.06) 0%,
       rgba(78, 151, 168, 0.05) 40%,
       transparent 70%
     );
-    pointer-events: none;
-  }
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--font-display);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-    margin-bottom: 20px;
-  }
-  .hero-badge-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    animation: pulse 2s ease-in-out infinite;
-  }
-  .hero-title {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(40px, 6vw, 64px);
-    line-height: 1.05;
-    letter-spacing: -0.035em;
-    color: var(--color-text);
-    margin-bottom: 24px;
   }
   .hero-title em {
-    font-style: normal;
     background: linear-gradient(135deg, var(--color-stage-s3), var(--color-stage-s5));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .hero-subtitle {
-    font-size: 18px;
-    line-height: 1.7;
-    color: var(--color-text-secondary);
     max-width: 540px;
   }
 
@@ -240,11 +197,6 @@ const contacts = [
   }
 
   /* Info section */
-  .section-dark {
-    background: var(--color-brand);
-    position: relative;
-    overflow: hidden;
-  }
   .info-glow {
     position: absolute;
     bottom: -200px;
@@ -285,15 +237,7 @@ const contacts = [
     color: rgba(255, 255, 255, 0.7);
   }
 
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-  }
-
   @media (max-width: 900px) {
-    .hero-page {
-      padding: 120px 24px 48px;
-    }
     .contact-grid {
       grid-template-columns: 1fr;
     }
