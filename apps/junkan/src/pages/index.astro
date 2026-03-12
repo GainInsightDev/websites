@@ -88,61 +88,95 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- ═══════ SOLUTION / PIPELINE ═══════ -->
-  <section class="pipeline-section" id="solution">
-    <div class="pipeline-inner">
-      <div class="pipeline-header">
+  <section class="solution-section" id="solution">
+    <div class="solution-inner">
+      <div class="solution-header">
         <div class="section-label reveal">The solution</div>
-        <h2 class="section-title reveal reveal-delay-1" style="margin-left:auto;margin-right:auto;max-width:600px;">Photograph it.<br>We handle the rest.</h2>
-        <p class="section-body reveal reveal-delay-2" style="margin-left:auto;margin-right:auto;max-width:520px;">Junkan's AI pipeline takes your item from photo to sold — identifying it, researching comparable sales, calculating optimal pricing, and listing it where it'll sell best.</p>
+        <h2 class="section-title reveal reveal-delay-1">Photograph it.<br>We handle the rest.</h2>
+        <p class="section-body reveal reveal-delay-2">Junkan's AI pipeline takes your item from photo to sold — identifying it, researching comparable sales, calculating optimal pricing, and listing it where it'll sell best.</p>
       </div>
 
-      <div class="pipeline" id="pipeline">
-        <!-- SVG line drawn by JS to connect circle centres -->
-        <svg class="pipeline-line-svg" id="pipelineSvg" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="pipelineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#4B7BE5" />
-              <stop offset="75%" stop-color="#4B7BE5" />
-              <stop offset="100%" stop-color="#3DA66A" />
-            </linearGradient>
-          </defs>
-          <line class="pipeline-track" id="pipelineTrack" x1="0" y1="24" x2="100" y2="24" />
-          <line class="pipeline-glow" id="pipelineGlow" x1="0" y1="24" x2="100" y2="24" />
-          <line class="pipeline-flow" id="pipelineFlow" x1="0" y1="24" x2="100" y2="24" />
-          <line class="pipeline-head-halo" id="pipelineHeadHalo" x1="0" y1="24" x2="0" y2="24" />
-          <line class="pipeline-head" id="pipelineHead" x1="0" y1="24" x2="0" y2="24" />
-        </svg>
-
-        <div class="pipeline-step">
-          <div class="step-circle" data-step="0">
-            <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" stroke="#4B7BE5" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="13" r="4" stroke="#4B7BE5" stroke-width="1.25"/></svg>
+      <div class="steps-list">
+        <!-- Step 1: Identify -->
+        <div class="step-row reveal">
+          <div class="step-content">
+            <div class="step-number">1</div>
+            <div class="step-text">
+              <h3>Snap a Photo</h3>
+              <p>Take a quick photo of the item. Our AI instantly recognises the brand, model, condition, and key attributes — no manual data entry needed.</p>
+            </div>
           </div>
-          <div class="step-label">Identify</div>
-          <div class="step-desc">AI recognises the item, brand, model, condition, and key attributes from your photos</div>
+          <div class="step-visual step-visual-ai">
+            <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+              <rect x="20" y="30" width="80" height="60" rx="8" stroke="var(--color-ai)" stroke-width="2"/>
+              <circle cx="60" cy="55" r="16" stroke="var(--color-ai)" stroke-width="2"/>
+              <circle cx="60" cy="55" r="8" fill="var(--color-ai-muted)" stroke="var(--color-ai)" stroke-width="1.5"/>
+              <rect x="30" y="36" width="12" height="8" rx="2" fill="var(--color-ai-muted)"/>
+              <path d="M44 30L50 20H70L76 30" stroke="var(--color-ai)" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="60" cy="55" r="3" fill="var(--color-ai)" opacity="0.6"/>
+            </svg>
+          </div>
         </div>
 
-        <div class="pipeline-step">
-          <div class="step-circle" data-step="1">
-            <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="#4B7BE5" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <!-- Step 2: Research -->
+        <div class="step-row step-row-reverse reveal reveal-delay-1">
+          <div class="step-content">
+            <div class="step-number">2</div>
+            <div class="step-text">
+              <h3>Automatic Research</h3>
+              <p>Junkan scans completed sales across eBay, Vinted, and Depop in seconds — building a real-time pricing picture so you know exactly what the item is worth.</p>
+            </div>
           </div>
-          <div class="step-label">Research</div>
-          <div class="step-desc">Scans completed sales across eBay, Vinted, and Depop to build a real-time pricing picture</div>
+          <div class="step-visual step-visual-ai">
+            <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+              <circle cx="52" cy="52" r="28" stroke="var(--color-ai)" stroke-width="2"/>
+              <line x1="72" y1="72" x2="95" y2="95" stroke="var(--color-ai)" stroke-width="3" stroke-linecap="round"/>
+              <rect x="38" y="42" width="28" height="3" rx="1.5" fill="var(--color-ai)" opacity="0.3"/>
+              <rect x="38" y="49" width="20" height="3" rx="1.5" fill="var(--color-ai)" opacity="0.3"/>
+              <rect x="38" y="56" width="24" height="3" rx="1.5" fill="var(--color-ai)" opacity="0.3"/>
+            </svg>
+          </div>
         </div>
 
-        <div class="pipeline-step">
-          <div class="step-circle" data-step="2">
-            <span class="step-currency">&pound;</span>
+        <!-- Step 3: Price -->
+        <div class="step-row reveal reveal-delay-2">
+          <div class="step-content">
+            <div class="step-number">3</div>
+            <div class="step-text">
+              <h3>Smart Pricing</h3>
+              <p>Our algorithm calculates the net profit per platform after all fees, recommending the optimal pricing strategy to maximise your returns.</p>
+            </div>
           </div>
-          <div class="step-label">Price</div>
-          <div class="step-desc">Calculates net profit per platform after all fees, recommending the optimal sales strategy</div>
+          <div class="step-visual step-visual-matcha">
+            <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+              <rect x="25" y="25" width="70" height="70" rx="12" stroke="var(--color-matcha)" stroke-width="2"/>
+              <text x="60" y="68" text-anchor="middle" font-family="var(--font-body)" font-size="28" font-weight="600" fill="var(--color-matcha)">£</text>
+              <path d="M40 85L55 75L70 80L95 55" stroke="var(--color-matcha)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+              <circle cx="95" cy="55" r="3" fill="var(--color-matcha)" opacity="0.5"/>
+            </svg>
+          </div>
         </div>
 
-        <div class="pipeline-step">
-          <div class="step-circle" data-step="3">
-            <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="#3DA66A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <!-- Step 4: Sell -->
+        <div class="step-row step-row-reverse reveal reveal-delay-3">
+          <div class="step-content">
+            <div class="step-number step-number-matcha">4</div>
+            <div class="step-text">
+              <h3>List &amp; Sell</h3>
+              <p>Junkan creates optimised listings with compelling descriptions and posts them across marketplaces — then monitors until the sale completes.</p>
+            </div>
           </div>
-          <div class="step-label">Sell</div>
-          <div class="step-desc">Creates optimised listings and monitors them across marketplaces until the sale completes</div>
+          <div class="step-visual step-visual-matcha">
+            <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+              <rect x="20" y="28" width="35" height="64" rx="6" stroke="var(--color-matcha)" stroke-width="2"/>
+              <rect x="65" y="28" width="35" height="64" rx="6" stroke="var(--color-matcha)" stroke-width="2"/>
+              <path d="M42 60L52 70L78 44" stroke="var(--color-matcha)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="26" y="36" width="23" height="3" rx="1.5" fill="var(--color-matcha)" opacity="0.2"/>
+              <rect x="26" y="43" width="16" height="3" rx="1.5" fill="var(--color-matcha)" opacity="0.2"/>
+              <rect x="71" y="36" width="23" height="3" rx="1.5" fill="var(--color-matcha)" opacity="0.2"/>
+              <rect x="71" y="43" width="16" height="3" rx="1.5" fill="var(--color-matcha)" opacity="0.2"/>
+            </svg>
+          </div>
         </div>
       </div>
     </div>
@@ -503,147 +537,99 @@ import Layout from '../layouts/Layout.astro';
   }
 
   /* ═══════════════════════════════════════════════════
-     PIPELINE / SOLUTION
+     SOLUTION / STEPS
      ═══════════════════════════════════════════════════ */
-  .pipeline-section {
+  .solution-section {
     background: var(--color-surface);
     border-top: 1px solid var(--color-border-subtle);
     border-bottom: 1px solid var(--color-border-subtle);
   }
-  .pipeline-inner {
+  .solution-inner {
     max-width: 1200px;
     margin: 0 auto;
     padding: 120px 48px;
   }
-  .pipeline-header {
-    text-align: center;
+  .solution-header {
     margin-bottom: 80px;
   }
 
-  .pipeline {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .pipeline-line-svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 48px;
-    pointer-events: none;
-    z-index: 1;
-    overflow: visible;
-  }
-  .pipeline-track {
-    stroke: var(--color-border);
-    stroke-width: 1;
-    fill: none;
-  }
-  .pipeline-flow {
-    stroke: url(#pipelineGradient);
-    stroke-width: 2;
-    fill: none;
-    stroke-linecap: round;
-  }
-  .pipeline-glow {
-    stroke: url(#pipelineGradient);
-    stroke-width: 14;
-    fill: none;
-    stroke-linecap: round;
-    opacity: 0.25;
-    filter: blur(8px);
-  }
-  .pipeline-head {
-    fill: none;
-    stroke-width: 3;
-    stroke-linecap: round;
-    filter: blur(2px);
-    opacity: 0.9;
-  }
-  .pipeline-head-halo {
-    fill: none;
-    stroke-width: 20;
-    stroke-linecap: round;
-    filter: blur(12px);
-    opacity: 0.4;
-  }
-
-  .pipeline-step {
+  .steps-list {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-    padding: 0 16px;
+    gap: 64px;
   }
-  .step-circle {
+
+  .step-row {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 48px;
+    align-items: center;
+  }
+  .step-row-reverse {
+    grid-template-columns: 280px 1fr;
+  }
+  .step-row-reverse .step-content {
+    order: 2;
+  }
+  .step-row-reverse .step-visual {
+    order: 1;
+  }
+
+  .step-content {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .step-number {
+    flex-shrink: 0;
     width: 48px;
     height: 48px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
-    background: var(--color-surface);
-    border: 1.5px solid var(--color-border);
-    margin-bottom: 20px;
-    position: relative;
-    transition: border-color 0.5s ease, background 0.5s ease, transform 0.5s var(--ease-spring), box-shadow 0.5s ease;
-  }
-  .step-circle::after {
-    content: '';
-    position: absolute;
-    inset: -6px;
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    pointer-events: none;
-  }
-  .pipeline-step:nth-of-type(-n+3) .step-circle::after {
-    background: radial-gradient(circle, var(--ai-glow) 0%, transparent 70%);
-  }
-  .pipeline-step:nth-of-type(4) .step-circle::after {
-    background: radial-gradient(circle, rgba(61, 166, 106, 0.15) 0%, transparent 70%);
-  }
-  .step-circle.lit {
-    border-color: var(--color-ai);
-    background: rgba(240, 245, 255, 0.6);
-    transform: scale(1.06);
-  }
-  .step-circle.lit::after {
-    opacity: 1;
-  }
-  .pipeline-step:last-of-type .step-circle.lit {
-    border-color: var(--color-matcha);
-    background: rgba(242, 250, 245, 0.6);
-  }
-  .step-currency {
-    font-family: var(--font-body);
-    font-weight: 400;
-    font-size: 20px;
-    color: var(--color-ai);
-    letter-spacing: -0.01em;
-    line-height: 1;
-  }
-  .step-label {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 16px;
-    letter-spacing: -0.02em;
-    margin-bottom: 6px;
+    font-size: 18px;
+    color: var(--color-ai);
+    background: var(--color-ai-muted);
+    border: 1.5px solid var(--color-ai);
   }
-  .step-desc {
-    font-size: 13px;
-    font-weight: 400;
+  .step-number-matcha {
+    color: var(--color-matcha);
+    background: var(--color-matcha-muted);
+    border-color: var(--color-matcha);
+  }
+  .step-text h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    color: var(--color-text);
+  }
+  .step-text p {
+    font-size: 16px;
+    font-weight: 350;
+    line-height: 1.65;
     color: var(--color-text-secondary);
-    line-height: 1.5;
-    max-width: 200px;
+    max-width: 480px;
+  }
+
+  .step-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 200px;
+    border-radius: var(--radius-card-lg);
+    border: 1px solid var(--color-border);
+  }
+  .step-visual-ai {
+    background: var(--color-ai-muted);
+  }
+  .step-visual-matcha {
+    background: var(--color-matcha-muted);
   }
 
   /* ═══════════════════════════════════════════════════
@@ -913,14 +899,17 @@ import Layout from '../layouts/Layout.astro';
     .hero { padding: 100px 24px 60px; }
     .problem-grid,
     .segments-grid { grid-template-columns: 1fr; }
-    .pipeline { grid-template-columns: repeat(2, 1fr); gap: 32px 0; }
-    .pipeline-line-svg { display: none; }
+    .step-row,
+    .step-row-reverse { grid-template-columns: 1fr; gap: 24px; }
+    .step-row-reverse .step-content { order: 1; }
+    .step-row-reverse .step-visual { order: 2; }
+    .step-visual { width: 100%; height: 160px; }
     .social-proof { flex-wrap: wrap; gap: 24px; padding: 32px 24px; }
     .stat-section { padding: 100px 24px; }
     .cta-section { padding: 100px 24px; }
     .pricing-callout { flex-direction: column; gap: 24px; padding: 32px 24px; }
     .pricing-divider { width: 64px; height: 1px; }
-    .pipeline-inner { padding: 80px 24px; }
+    .solution-inner { padding: 80px 24px; }
     .hero-actions { flex-direction: column; }
   }
 </style>
@@ -946,159 +935,4 @@ import Layout from '../layouts/Layout.astro';
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Pipeline animation
-  function easeOutExpo(t: number): number {
-    return t >= 1 ? 1 : 1 - Math.pow(2, -10 * t);
-  }
-
-  function lerpColor(a: string, b: string, t: number): string {
-    const ah = parseInt(a.replace('#',''), 16);
-    const bh = parseInt(b.replace('#',''), 16);
-    const ar = (ah >> 16) & 0xff, ag = (ah >> 8) & 0xff, ab = ah & 0xff;
-    const br = (bh >> 16) & 0xff, bg = (bh >> 8) & 0xff, bb = bh & 0xff;
-    const rr = Math.round(ar + (br - ar) * t);
-    const rg = Math.round(ag + (bg - ag) * t);
-    const rb = Math.round(ab + (bb - ab) * t);
-    return `rgb(${rr},${rg},${rb})`;
-  }
-
-  function initPipeline() {
-    const pipeline = document.getElementById('pipeline');
-    const svg = document.getElementById('pipelineSvg');
-    const track = document.getElementById('pipelineTrack');
-    const flow = document.getElementById('pipelineFlow');
-    const glow = document.getElementById('pipelineGlow');
-    const head = document.getElementById('pipelineHead');
-    const headHalo = document.getElementById('pipelineHeadHalo');
-    if (!pipeline || !svg) return;
-    const circles = pipeline.querySelectorAll('.step-circle');
-    if (circles.length < 2) return;
-
-    const pipelineRect = pipeline.getBoundingClientRect();
-    const centres = Array.from(circles).map(c => {
-      const r = c.getBoundingClientRect();
-      return {
-        x: r.left + r.width / 2 - pipelineRect.left,
-        y: r.top + r.height / 2 - pipelineRect.top
-      };
-    });
-
-    const svgH = centres[0].y * 2 + 24;
-    svg.setAttribute('viewBox', `0 0 ${pipelineRect.width} ${svgH}`);
-    svg.style.height = svgH + 'px';
-    svg.style.width = '100%';
-
-    const y = centres[0].y;
-    const x1 = centres[0].x;
-    const x2 = centres[centres.length - 1].x;
-    const lineLength = x2 - x1;
-
-    track?.setAttribute('x1', String(x1));
-    track?.setAttribute('y1', String(y));
-    track?.setAttribute('x2', String(x2));
-    track?.setAttribute('y2', String(y));
-
-    [flow, glow, head, headHalo].forEach(el => {
-      el?.setAttribute('x1', String(x1));
-      el?.setAttribute('y1', String(y));
-      el?.setAttribute('x2', String(x1));
-      el?.setAttribute('y2', String(y));
-    });
-
-    const fractions = centres.map(c => (c.x - x1) / lineLength);
-    const litState = new Array(circles.length).fill(false);
-
-    const pipelineObs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          pipelineObs.unobserve(entry.target);
-          animatePipeline({ flow: flow!, glow: glow!, head: head!, headHalo: headHalo!, x1, x2, y, lineLength, circles, fractions, litState });
-        }
-      });
-    }, { threshold: 0.25 });
-
-    pipelineObs.observe(pipeline);
-  }
-
-  function animatePipeline({ flow, glow, head, headHalo, x1, x2, y, lineLength, circles, fractions, litState }: any) {
-    const duration = 2200;
-    const headLength = 60;
-    let start: number | null = null;
-    const aiBlue = '#4B7BE5';
-    const matchaGreen = '#3DA66A';
-
-    function tick(timestamp: number) {
-      if (!start) start = timestamp;
-      const elapsed = timestamp - start;
-      const rawProgress = Math.min(elapsed / duration, 1);
-      const progress = easeOutExpo(rawProgress);
-      const currentX = x1 + lineLength * progress;
-
-      flow.setAttribute('x2', String(currentX));
-      glow.setAttribute('x2', String(currentX));
-
-      const headStart = Math.max(x1, currentX - headLength);
-      const headColor = lerpColor(aiBlue, matchaGreen, progress);
-
-      head.setAttribute('x1', String(headStart));
-      head.setAttribute('x2', String(currentX));
-      head.setAttribute('y1', String(y));
-      head.setAttribute('y2', String(y));
-      head.setAttribute('stroke', headColor);
-
-      headHalo.setAttribute('x1', String(headStart));
-      headHalo.setAttribute('x2', String(currentX));
-      headHalo.setAttribute('y1', String(y));
-      headHalo.setAttribute('y2', String(y));
-      headHalo.setAttribute('stroke', headColor);
-
-      if (rawProgress >= 1) {
-        head.style.transition = 'opacity 0.6s ease';
-        head.style.opacity = '0';
-        headHalo.style.transition = 'opacity 0.6s ease';
-        headHalo.style.opacity = '0';
-      }
-
-      fractions.forEach((frac: number, i: number) => {
-        if (!litState[i] && progress >= frac) {
-          litState[i] = true;
-          circles[i].classList.add('lit');
-        }
-      });
-
-      if (rawProgress < 1) {
-        requestAnimationFrame(tick);
-      }
-    }
-
-    requestAnimationFrame(tick);
-  }
-
-  // Init after layout settles
-  window.addEventListener('load', () => {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => initPipeline());
-    });
-  });
-
-  // Re-measure on resize
-  let resizeTimer: ReturnType<typeof setTimeout>;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      const pipeline = document.getElementById('pipeline');
-      if (!pipeline) return;
-      const circles = pipeline.querySelectorAll('.step-circle');
-      circles.forEach(c => c.classList.remove('lit'));
-      const head = document.getElementById('pipelineHead');
-      const headHalo = document.getElementById('pipelineHeadHalo');
-      [head, headHalo].forEach(el => {
-        if (el instanceof HTMLElement || el instanceof SVGElement) {
-          (el as any).style.transition = '';
-          (el as any).style.opacity = '';
-        }
-      });
-      initPipeline();
-    }, 300);
-  });
 </script>
