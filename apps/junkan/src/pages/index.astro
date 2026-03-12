@@ -97,17 +97,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <div class="solution-layout reveal">
-        <!-- Left: Lifestyle images -->
-        <div class="solution-images">
-          <div class="solution-image-card">
-            <img src="/images/thrift-store.jpg" alt="Woman browsing secondhand clothing at a vintage thrift store" width="800" height="533" loading="lazy" />
-          </div>
-          <div class="solution-image-card">
-            <img src="/images/phone-scanning.jpg" alt="Person browsing clothing listings with prices on a mobile app" width="800" height="1200" loading="lazy" />
-          </div>
-        </div>
-
-        <!-- Right: Steps -->
+        <!-- Left: Steps -->
         <div class="solution-steps">
           <div class="solution-step reveal reveal-delay-1">
             <div class="step-icon step-icon-ai">
@@ -147,6 +137,21 @@ import Layout from '../layouts/Layout.astro';
               <h3>List &amp; Sell</h3>
               <p>Junkan creates optimised listings with compelling descriptions and posts them across marketplaces — then monitors until the sale completes.</p>
             </div>
+          </div>
+        </div>
+
+        <!-- Right: Images (2 top + 1 bottom) -->
+        <div class="solution-images">
+          <div class="solution-images-top">
+            <div class="solution-image-card">
+              <img src="/images/thrift-store.jpg" alt="Woman browsing secondhand clothing at a vintage thrift store" width="800" height="533" loading="lazy" />
+            </div>
+            <div class="solution-image-card">
+              <img src="/images/item-inspection.jpg" alt="Two people inspecting clothing items at a thrift store" width="800" height="533" loading="lazy" />
+            </div>
+          </div>
+          <div class="solution-image-card solution-image-wide">
+            <img src="/images/product-listing.jpg" alt="Sneakers photographed for online resale listing" width="800" height="533" loading="lazy" />
           </div>
         </div>
       </div>
@@ -528,20 +533,28 @@ import Layout from '../layouts/Layout.astro';
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 64px;
-    align-items: center;
+    align-items: start;
   }
 
   .solution-images {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
+  }
+  .solution-images-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
   }
   .solution-image-card {
-    border-radius: var(--radius-card-lg);
+    border-radius: var(--radius-card);
     overflow: hidden;
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-card);
-    height: 260px;
+    height: 200px;
+  }
+  .solution-image-wide {
+    height: 240px;
   }
   .solution-image-card img {
     display: block;
@@ -869,6 +882,7 @@ import Layout from '../layouts/Layout.astro';
     .segments-grid { grid-template-columns: 1fr; }
     .solution-layout { grid-template-columns: 1fr; gap: 48px; }
     .solution-images { order: 2; }
+    .solution-images-top { grid-template-columns: 1fr; }
     .social-proof { flex-wrap: wrap; gap: 24px; padding: 32px 24px; }
     .stat-section { padding: 100px 24px; }
     .cta-section { padding: 100px 24px; }
