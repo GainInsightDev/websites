@@ -2,12 +2,27 @@
 import Layout from '../layouts/Layout.astro';
 
 const highlights = [
-  { title: 'Exclusive territory', body: 'Operate as the sole GCS Master Franchisee in your market. Full territorial exclusivity with defined boundaries.' },
-  { title: 'Proven model', body: 'Built on the PADI franchise model — the most successful sports certification franchise in history. Adapted for the climbing industry.' },
-  { title: 'Full platform', body: 'Mobile apps (coach, learner, parent), web dashboards, digital credentials, payment processing — all provided and maintained centrally.' },
-  { title: 'Complete curriculum', body: 'A structured 5-stage, 6-domain climbing framework ready to deploy. No curriculum development needed.' },
-  { title: 'Training & support', body: 'Comprehensive onboarding, ongoing operational support, marketing materials, and a global franchisee network.' },
-  { title: 'Finance available', body: 'Franchise fees from GBP 10,000-20,000 depending on territory, with finance options available through our lending partner.' },
+  { title: 'Exclusive territory', icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`, accent: 'var(--color-stage-ey)', body: 'Operate as the sole GCS Master Franchisee in your market. Full territorial exclusivity with defined boundaries and protected rights.' },
+  { title: 'Proven franchise model', icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`, accent: 'var(--color-stage-s1)', body: 'Built on the most successful franchise model in sports certification. Adapted specifically for the indoor climbing industry.' },
+  { title: 'Complete digital platform', icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`, accent: 'var(--color-stage-s2)', body: 'Coach app, learner app, parent dashboard, web management console — all provided and maintained centrally. Zero platform development cost.' },
+  { title: 'Ready-made curriculum', icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`, accent: 'var(--color-stage-s3)', body: 'A structured 5-stage, 6-domain climbing framework ready to deploy. Curriculum, assessment criteria, and training materials included.' },
+  { title: 'Training & support', icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`, accent: 'var(--color-stage-s4)', body: 'Comprehensive onboarding, ongoing operational support, marketing materials, and a global franchisee network for shared learning.' },
+  { title: 'Finance available', icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`, accent: 'var(--color-stage-s5)', body: 'Franchise fees from GBP 10,000–20,000 depending on territory size and market potential. Finance options available through our lending partner.' },
+];
+
+const revenue = [
+  { stream: 'Centre accreditation fees', description: 'Annual fees from each climbing centre in your territory that joins the GCS network.' },
+  { stream: 'Participant registration', description: 'Per-participant registration when climbers join the GCS programme at an accredited centre.' },
+  { stream: 'Stage progression fees', description: 'Fees when participants advance between stages — recurring revenue tied to engagement.' },
+  { stream: 'Instructor certification', description: 'Training and certification fees for coaches earning GCS coaching credentials.' },
+];
+
+const candidates = [
+  'Experience in the climbing industry — centre operator, instructor, or industry body',
+  'Business acumen and entrepreneurial drive',
+  'Strong local market knowledge and industry relationships',
+  'Passion for climbing and commitment to raising standards',
+  'Ability to build and manage a network of climbing centres',
 ];
 ---
 
@@ -17,16 +32,23 @@ const highlights = [
 >
   <!-- Hero -->
   <section class="hero-page">
+    <div class="hero-glow" aria-hidden="true"></div>
     <div class="container">
-      <div class="section-label reveal" style="color: var(--color-stage-s4);">Franchise Opportunity</div>
-      <h1 class="section-title reveal" style="font-size: clamp(36px, 5vw, 56px);">
-        Bring GCS to<br>your territory.
+      <span class="hero-badge reveal">
+        <span class="hero-badge-dot" style="background: var(--color-stage-s4);"></span>
+        Franchise Opportunity
+      </span>
+      <h1 class="hero-title reveal">
+        Bring GCS to<br><em>your territory.</em>
       </h1>
-      <p class="section-body reveal">
+      <p class="hero-subtitle reveal">
         Become a Master Franchisee and build the GCS network in your market.
-        Exclusive territory rights, a complete platform, and the backing of a global brand.
+        Exclusive territorial rights, a complete platform, and the backing of a global brand.
       </p>
-      <a href="/contact" class="btn btn-primary reveal">Express interest</a>
+      <div class="hero-actions reveal">
+        <a href="/contact" class="btn btn-primary">Express interest</a>
+        <a href="/how-it-works" class="btn btn-secondary">See the framework</a>
+      </div>
     </div>
   </section>
 
@@ -35,11 +57,12 @@ const highlights = [
     <div class="container">
       <div class="section-label reveal">The Opportunity</div>
       <h2 class="section-title reveal">What you get as a Master Franchisee.</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+      <div class="highlights-grid">
         {highlights.map((item, i) => (
-          <div class={`card reveal reveal-delay-${(i % 4) + 1}`}>
-            <h3 class="card-title">{item.title}</h3>
-            <p class="card-body">{item.body}</p>
+          <div class={`highlight-card reveal reveal-delay-${(i % 4) + 1}`} style={`--accent: ${item.accent};`}>
+            <div class="highlight-icon" set:html={item.icon}></div>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
           </div>
         ))}
       </div>
@@ -48,14 +71,32 @@ const highlights = [
 
   <!-- Revenue model -->
   <section class="section-dark">
+    <div class="revenue-glow" aria-hidden="true"></div>
     <div class="section">
       <div class="container">
-        <div class="section-label reveal" style="color: var(--color-stage-s1);">Revenue</div>
-        <h2 class="section-title reveal" style="color: #FFFFFF;">Multiple revenue streams.</h2>
-        <p class="section-body reveal" style="color: rgba(255,255,255,0.65);">
-          Franchisees earn from centre accreditation fees, participant registration and progression fees,
-          instructor certification, and materials. Recurring revenue that grows with your network.
-        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div>
+            <div class="section-label reveal" style="color: var(--color-stage-s1);">Revenue</div>
+            <h2 class="section-title reveal" style="color: #FFFFFF;">
+              Multiple <em class="gradient-text">revenue streams.</em>
+            </h2>
+            <p class="reveal" style="color: rgba(255,255,255,0.6); font-size: 16px; line-height: 1.7;">
+              Franchisees earn from multiple sources that grow as your network expands.
+              Recurring revenue tied to centre activity — not one-off transactions.
+            </p>
+          </div>
+          <div class="revenue-list">
+            {revenue.map((item, i) => (
+              <div class={`revenue-item reveal reveal-delay-${i + 1}`}>
+                <div class="revenue-number">{String(i + 1).padStart(2, '0')}</div>
+                <div>
+                  <h3>{item.stream}</h3>
+                  <p>{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -66,32 +107,25 @@ const highlights = [
       <div class="section-label reveal">Ideal Candidate</div>
       <h2 class="section-title reveal">Who we're looking for.</h2>
       <div class="candidate-list">
-        <div class="candidate-item reveal reveal-delay-1">
-          <span class="check">&#10003;</span>
-          <p>Experience in the climbing industry — centre operator, instructor, or industry body</p>
-        </div>
-        <div class="candidate-item reveal reveal-delay-2">
-          <span class="check">&#10003;</span>
-          <p>Business acumen and entrepreneurial drive</p>
-        </div>
-        <div class="candidate-item reveal reveal-delay-3">
-          <span class="check">&#10003;</span>
-          <p>Strong local market knowledge and industry relationships</p>
-        </div>
-        <div class="candidate-item reveal reveal-delay-4">
-          <span class="check">&#10003;</span>
-          <p>Passion for climbing and commitment to raising standards</p>
-        </div>
+        {candidates.map((item, i) => (
+          <div class={`candidate-item reveal reveal-delay-${(i % 4) + 1}`} style={`--check-color: ${highlights[i].accent};`}>
+            <span class="check-circle">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <p>{item}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="section-brand">
+    <div class="cta-glow" aria-hidden="true"></div>
     <div class="section">
-      <div class="container" style="text-align: center;">
+      <div class="container" style="text-align: center; position: relative; z-index: 1;">
         <h2 class="section-title reveal" style="color: #FFFFFF; max-width: none;">Interested in a franchise?</h2>
-        <p class="section-body reveal" style="color: rgba(255,255,255,0.65); margin-left: auto; margin-right: auto;">
+        <p class="section-body reveal" style="color: rgba(255,255,255,0.55); max-width: 480px; margin-left: auto; margin-right: auto;">
           Submit an Expression of Interest and we'll send you the full franchise prospectus.
         </p>
         <a href="/contact" class="btn btn-outline-light reveal">Express interest</a>
@@ -101,49 +135,219 @@ const highlights = [
 </Layout>
 
 <style>
+  /* Hero */
   .hero-page {
     padding: 160px 48px 80px;
+    position: relative;
+    overflow: hidden;
   }
-  .section-dark {
-    background: var(--color-brand);
+  .hero-glow {
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(101, 116, 184, 0.08) 0%,
+      rgba(139, 110, 175, 0.05) 40%,
+      transparent 70%
+    );
+    pointer-events: none;
   }
-  .section-brand {
-    background: var(--color-brand);
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+  }
+  .hero-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: var(--color-text);
+    margin-bottom: 24px;
+  }
+  .hero-title em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--color-stage-s4), var(--color-stage-s5));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-subtitle {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    max-width: 580px;
+    margin-bottom: 36px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
   }
 
-  .card-title {
+  /* Highlights grid */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .highlight-card {
+    padding: 32px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .highlight-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease-out-expo);
+  }
+  .highlight-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-lg);
+    border-color: var(--color-text-muted);
+  }
+  .highlight-card:hover::after {
+    transform: scaleX(1);
+  }
+  .highlight-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--accent);
+  }
+  .highlight-card h3 {
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 18px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
-  .card-body {
+  .highlight-card p {
     font-size: 15px;
     color: var(--color-text-secondary);
     line-height: 1.65;
   }
 
+  /* Revenue section */
+  .section-dark {
+    background: var(--color-brand);
+    position: relative;
+    overflow: hidden;
+  }
+  .revenue-glow {
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(101, 116, 184, 0.12) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+  .gradient-text {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--color-stage-s1), var(--color-stage-s3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .revenue-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .revenue-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .revenue-number {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.25);
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .revenue-item h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+  .revenue-item p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.65;
+  }
+
+  /* Candidate list */
   .candidate-list {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-top: 32px;
-    max-width: 600px;
+    gap: 20px;
+    margin-top: 40px;
+    max-width: 640px;
   }
   .candidate-item {
     display: flex;
     gap: 16px;
-    align-items: flex-start;
+    align-items: center;
+    padding: 16px 20px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease, border-color 0.3s ease;
   }
-  .check {
+  .candidate-item:hover {
+    transform: translateX(8px);
+    box-shadow: var(--shadow-card-lg);
+    border-color: var(--color-text-muted);
+  }
+  .check-circle {
     flex-shrink: 0;
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    background: var(--color-stage-s2);
+    background: var(--check-color);
     color: #FFFFFF;
-    font-size: 14px;
-    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -151,12 +355,46 @@ const highlights = [
   .candidate-item p {
     font-size: 16px;
     color: var(--color-text-secondary);
-    line-height: 1.6;
+    line-height: 1.5;
+  }
+
+  /* Brand CTA */
+  .section-brand {
+    background: var(--color-brand);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-glow {
+    position: absolute;
+    bottom: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(101, 116, 184, 0.15) 0%,
+      rgba(139, 110, 175, 0.08) 50%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
   }
 
   @media (max-width: 900px) {
     .hero-page {
       padding: 120px 24px 48px;
+    }
+    .highlights-grid {
+      grid-template-columns: 1fr;
+    }
+    .candidate-item:hover {
+      transform: translateX(4px);
     }
   }
 </style>

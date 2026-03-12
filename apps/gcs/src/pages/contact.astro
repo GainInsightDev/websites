@@ -1,5 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const contacts = [
+  {
+    title: 'Centre Accreditation',
+    description: 'Interested in becoming a GCS-accredited climbing centre? Tell us about your facility and we\'ll walk you through the process.',
+    email: 'centres@globalclimbingstandard.com',
+    accent: 'var(--color-stage-s2)',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+  },
+  {
+    title: 'Franchise Enquiries',
+    description: 'Want to bring GCS to your territory as a Master Franchisee? We\'ll send you the prospectus and discuss the opportunity.',
+    email: 'franchise@globalclimbingstandard.com',
+    accent: 'var(--color-stage-s4)',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+  },
+  {
+    title: 'General Enquiries',
+    description: 'Questions about GCS, partnerships, the framework, or anything else? We\'re happy to help.',
+    email: 'hello@globalclimbingstandard.com',
+    accent: 'var(--color-stage-s3)',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
+  },
+];
 ---
 
 <Layout
@@ -8,36 +32,71 @@ import Layout from '../layouts/Layout.astro';
 >
   <!-- Hero -->
   <section class="hero-page">
+    <div class="hero-glow" aria-hidden="true"></div>
     <div class="container">
-      <div class="section-label reveal" style="color: var(--color-stage-s3);">Contact</div>
-      <h1 class="section-title reveal" style="font-size: clamp(36px, 5vw, 56px);">
-        Get in touch.
+      <span class="hero-badge reveal">
+        <span class="hero-badge-dot" style="background: var(--color-stage-s3);"></span>
+        Contact
+      </span>
+      <h1 class="hero-title reveal">
+        Get in <em>touch.</em>
       </h1>
-      <p class="section-body reveal">
+      <p class="hero-subtitle reveal">
         Whether you're interested in centre accreditation, a franchise opportunity,
         or just want to learn more — we'd love to hear from you.
       </p>
     </div>
   </section>
 
-  <!-- Contact options -->
+  <!-- Contact cards -->
   <section class="section">
     <div class="container">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="contact-card reveal reveal-delay-1">
-          <h3>Centre Accreditation</h3>
-          <p>Interested in becoming a GCS-accredited climbing centre? Tell us about your facility.</p>
-          <a href="mailto:centres@globalclimbingstandard.com">centres@globalclimbingstandard.com</a>
-        </div>
-        <div class="contact-card reveal reveal-delay-2">
-          <h3>Franchise Enquiries</h3>
-          <p>Want to bring GCS to your territory as a Master Franchisee? Let's discuss the opportunity.</p>
-          <a href="mailto:franchise@globalclimbingstandard.com">franchise@globalclimbingstandard.com</a>
-        </div>
-        <div class="contact-card reveal reveal-delay-3">
-          <h3>General Enquiries</h3>
-          <p>Questions about GCS, partnerships, or anything else? We're happy to help.</p>
-          <a href="mailto:hello@globalclimbingstandard.com">hello@globalclimbingstandard.com</a>
+      <div class="contact-grid">
+        {contacts.map((contact, i) => (
+          <div class={`contact-card reveal reveal-delay-${i + 1}`} style={`--accent: ${contact.accent};`}>
+            <div class="contact-icon" set:html={contact.icon}></div>
+            <h3>{contact.title}</h3>
+            <p>{contact.description}</p>
+            <a href={`mailto:${contact.email}`} class="contact-email">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              {contact.email}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Location / info -->
+  <section class="section-dark">
+    <div class="info-glow" aria-hidden="true"></div>
+    <div class="section">
+      <div class="container">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div>
+            <div class="section-label reveal" style="color: var(--color-stage-s1);">Organisation</div>
+            <h2 class="section-title reveal" style="color: #FFFFFF;">
+              ClimbHQ Limited
+            </h2>
+            <p class="reveal" style="color: rgba(255,255,255,0.55); font-size: 16px; line-height: 1.75;">
+              GCS is created and operated by ClimbHQ Limited.
+              Technology partner: Gain Insight.
+            </p>
+          </div>
+          <div class="info-items">
+            <div class="info-item reveal reveal-delay-1">
+              <h4>Website</h4>
+              <p>globalclimbingstandard.com</p>
+            </div>
+            <div class="info-item reveal reveal-delay-2">
+              <h4>Short domain</h4>
+              <p>gc-standard.com</p>
+            </div>
+            <div class="info-item reveal reveal-delay-3">
+              <h4>General email</h4>
+              <p>hello@globalclimbingstandard.com</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -45,10 +104,74 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
+  /* Hero */
   .hero-page {
     padding: 160px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-glow {
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(91, 154, 107, 0.06) 0%,
+      rgba(78, 151, 168, 0.05) 40%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+  }
+  .hero-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: var(--color-text);
+    margin-bottom: 24px;
+  }
+  .hero-title em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--color-stage-s3), var(--color-stage-s5));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-subtitle {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    max-width: 540px;
   }
 
+  /* Contact cards */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+  }
   .contact-card {
     padding: 32px;
     border: 1px solid var(--color-border);
@@ -56,6 +179,39 @@ import Layout from '../layouts/Layout.astro';
     display: flex;
     flex-direction: column;
     gap: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .contact-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease-out-expo);
+  }
+  .contact-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-lg);
+    border-color: var(--color-text-muted);
+  }
+  .contact-card:hover::after {
+    transform: scaleX(1);
+  }
+  .contact-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
   }
   .contact-card h3 {
     font-family: var(--font-display);
@@ -68,20 +224,78 @@ import Layout from '../layouts/Layout.astro';
     line-height: 1.65;
     flex: 1;
   }
-  .contact-card a {
+  .contact-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-family: var(--font-display);
     font-size: 14px;
     font-weight: 600;
-    color: var(--color-stage-s3);
+    color: var(--accent);
     text-decoration: none;
+    transition: opacity 0.2s ease;
   }
-  .contact-card a:hover {
-    text-decoration: underline;
+  .contact-email:hover {
+    opacity: 0.8;
+  }
+
+  /* Info section */
+  .section-dark {
+    background: var(--color-brand);
+    position: relative;
+    overflow: hidden;
+  }
+  .info-glow {
+    position: absolute;
+    bottom: -200px;
+    left: -200px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(101, 116, 184, 0.12) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+  .info-items {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .info-item {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .info-item:last-child {
+    border-bottom: none;
+  }
+  .info-item h4 {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    margin-bottom: 4px;
+  }
+  .info-item p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
   }
 
   @media (max-width: 900px) {
     .hero-page {
       padding: 120px 24px 48px;
+    }
+    .contact-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
