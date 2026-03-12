@@ -20,15 +20,6 @@ const pillars = [
       ))}
     </div>
 
-    <div class="rel-quote reveal">
-      <div class="rel-quote-bar"></div>
-      <div>
-        <div class="rel-quote-text">
-          It feels less like using software and more like having the best colleague you've ever worked with.
-        </div>
-        <div class="rel-quote-attribution">— Juncta Vision Document</div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -44,7 +35,6 @@ const pillars = [
   .rel-pillars {
     display: flex;
     gap: 48px;
-    margin-bottom: 56px;
   }
   .rel-pillar { flex: 1; }
   .rel-pillar-title {
@@ -58,31 +48,6 @@ const pillars = [
     color: var(--color-text-mid);
     line-height: 1.7;
   }
-  .rel-quote {
-    display: flex;
-    align-items: flex-start;
-  }
-  .rel-quote-bar {
-    width: 3px;
-    min-height: 40px;
-    background-color: var(--color-accent);
-    flex-shrink: 0;
-    margin-right: 16px;
-    align-self: stretch;
-  }
-  .rel-quote-text {
-    font-size: 22px;
-    font-style: italic;
-    color: var(--color-text);
-    line-height: 1.45;
-    margin-bottom: 8px;
-  }
-  .rel-quote-attribution {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--color-text-light);
-  }
-
   @media (max-width: 900px) {
     .rel-section { padding: 80px 24px; }
     .rel-pillars { flex-direction: column; gap: 24px; }
