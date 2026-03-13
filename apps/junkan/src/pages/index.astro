@@ -5,56 +5,72 @@ import Layout from '../layouts/Layout.astro';
 <Layout>
   <!-- ═══════ HERO ═══════ -->
   <section class="hero" id="hero">
-    <div class="hero-enso" id="heroEnso">
-      <img src="/images/logos/junkan_enso.png" alt="" width="600" height="600" class="hero-enso-img" aria-hidden="true" />
-    </div>
-
     <!-- Atmospheric gradient -->
     <div class="hero-atmosphere"></div>
 
-    <div class="hero-content">
-      <div class="hero-badge reveal reveal-delay-1">
-        <span class="hero-badge-dot"></span>
-        Now in early access
-      </div>
-      <h1 class="hero-title reveal reveal-delay-2">
-        Every item,<br><span class="accent">expertly sold.</span>
-      </h1>
-      <p class="hero-subtitle reveal reveal-delay-3">
-        Photograph your item. Our AI handles identification, research, pricing, and listing across every marketplace. You step back.
-      </p>
-      <div class="hero-actions reveal reveal-delay-4">
-        <a href="#cta" class="btn btn-primary">
-          Get early access
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="#solution" class="btn btn-secondary">See how it works</a>
-      </div>
-    </div>
+    <div class="hero-split">
+      <!-- Left: Content -->
+      <div class="hero-content">
+        <div class="hero-badge reveal reveal-delay-1">
+          <span class="hero-badge-dot"></span>
+          Now in early access
+        </div>
+        <h1 class="hero-title reveal reveal-delay-2">
+          Every item,<br><span class="accent">expertly sold.</span>
+        </h1>
+        <p class="hero-subtitle reveal reveal-delay-3">
+          Photograph your item. Our AI handles identification, research, pricing, and listing across every marketplace. You step back.
+        </p>
+        <div class="hero-actions reveal reveal-delay-4">
+          <a href="#cta" class="btn btn-primary">
+            Get early access
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#solution" class="btn btn-secondary">See how it works</a>
+        </div>
 
-    <div class="hero-scroll-hint">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
+        <!-- Social proof inline -->
+        <div class="hero-proof reveal reveal-delay-5">
+          <div class="hero-proof-item">
+            <span class="hero-proof-value">11,200+</span>
+            <span class="hero-proof-label">UK charity shops</span>
+          </div>
+          <div class="hero-proof-divider"></div>
+          <div class="hero-proof-item">
+            <span class="hero-proof-value">40%</span>
+            <span class="hero-proof-label">Revenue left on the table</span>
+          </div>
+          <div class="hero-proof-divider"></div>
+          <div class="hero-proof-item">
+            <span class="hero-proof-value">&lt;2 min</span>
+            <span class="hero-proof-label">Photo to listed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Product visual -->
+      <div class="hero-visual reveal reveal-delay-3">
+        <div class="hero-visual-card">
+          <img src="/images/thrift-store.jpg" alt="Woman browsing secondhand clothing at a vintage thrift store" width="800" height="533" />
+          <!-- Floating stat cards -->
+          <div class="hero-float-card hero-float-card-top">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" stroke="var(--color-ai)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="13" r="4" stroke="var(--color-ai)" stroke-width="1.5"/></svg>
+            <div>
+              <div class="float-card-title">AI Identified</div>
+              <div class="float-card-desc">Nike Air Max 90 — Size 9</div>
+            </div>
+          </div>
+          <div class="hero-float-card hero-float-card-bottom">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="var(--color-matcha)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <div class="float-card-title" style="color: var(--color-matcha);">Listed &amp; Selling</div>
+              <div class="float-card-desc">eBay — £67.99</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
-
-  <!-- ═══════ SOCIAL PROOF ═══════ -->
-  <div class="social-proof">
-    <div class="proof-item reveal">
-      <div class="proof-value">11,200+</div>
-      <div class="proof-label">UK charity shops</div>
-    </div>
-    <div class="proof-divider"></div>
-    <div class="proof-item reveal reveal-delay-1">
-      <div class="proof-value">40%</div>
-      <div class="proof-label">Revenue left on the table</div>
-    </div>
-    <div class="proof-divider"></div>
-    <div class="proof-item reveal reveal-delay-2">
-      <div class="proof-value">&lt;2 min</div>
-      <div class="proof-label">From photo to listed</div>
-    </div>
-  </div>
 
   <!-- ═══════ PROBLEM ═══════ -->
   <section class="section" id="problem">
@@ -240,9 +256,7 @@ import Layout from '../layouts/Layout.astro';
   .hero {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
     padding: 120px 48px 80px;
     position: relative;
     overflow: hidden;
@@ -261,31 +275,21 @@ import Layout from '../layouts/Layout.astro';
     pointer-events: none;
   }
 
-  .hero-enso {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: min(600px, 50vw);
-    height: min(600px, 50vw);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 1.2s ease;
-  }
-  .hero-enso.visible {
-    opacity: 0.12;
-  }
-  .hero-enso-img {
+  .hero-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
     width: 100%;
-    height: 100%;
-    object-fit: contain;
+    position: relative;
+    z-index: 2;
   }
 
   .hero-content {
     position: relative;
-    z-index: 2;
-    text-align: center;
-    max-width: 800px;
+    text-align: left;
   }
 
   .hero-badge {
@@ -313,8 +317,8 @@ import Layout from '../layouts/Layout.astro';
   .hero-title {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: clamp(42px, 6.5vw, 80px);
-    line-height: 1.05;
+    font-size: clamp(36px, 4vw, 64px);
+    line-height: 1.08;
     letter-spacing: -0.045em;
     color: var(--color-text);
     margin-bottom: 24px;
@@ -327,93 +331,122 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .hero-subtitle {
-    font-size: clamp(17px, 1.5vw, 20px);
+    font-size: clamp(16px, 1.3vw, 19px);
     font-weight: 350;
     line-height: 1.6;
     color: var(--color-text-secondary);
-    max-width: 540px;
-    margin: 0 auto 48px;
+    max-width: 480px;
+    margin-bottom: 36px;
   }
 
   .hero-actions {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 16px;
+    margin-bottom: 48px;
   }
 
-  .hero-scroll-hint {
-    position: absolute;
-    bottom: 32px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    opacity: 0;
-    animation: fadeInUp 0.6s 2.2s var(--ease-out-expo) forwards;
-  }
-  .hero-scroll-hint span {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--color-light);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-  .scroll-line {
-    width: 1px;
-    height: 32px;
-    background: var(--color-border);
-    position: relative;
-    overflow: hidden;
-  }
-  .scroll-line::after {
-    content: '';
-    position: absolute;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    background: var(--color-text-muted);
-    animation: scrollDown 1.8s ease-in-out infinite;
-  }
-
-  /* ═══════════════════════════════════════════════════
-     SOCIAL PROOF BAR
-     ═══════════════════════════════════════════════════ */
-  .social-proof {
-    padding: 48px;
+  /* Hero social proof (inline) */
+  .hero-proof {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 48px;
+    gap: 24px;
+    padding-top: 32px;
     border-top: 1px solid var(--color-border-subtle);
-    border-bottom: 1px solid var(--color-border-subtle);
-    background: var(--color-surface);
   }
-  .proof-item {
+  .hero-proof-item {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 4px;
+    gap: 2px;
   }
-  .proof-value {
+  .hero-proof-value {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 28px;
+    font-size: 22px;
     letter-spacing: -0.03em;
     color: var(--color-text);
   }
-  .proof-label {
-    font-size: 13px;
+  .hero-proof-label {
+    font-size: 12px;
     font-weight: 450;
     color: var(--color-text-muted);
   }
-  .proof-divider {
+  .hero-proof-divider {
     width: 1px;
-    height: 40px;
+    height: 32px;
     background: var(--color-border);
+  }
+
+  /* Hero visual (right side) */
+  .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .hero-visual-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06);
+    border: 1px solid var(--color-border);
+  }
+  .hero-visual-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Floating stat cards */
+  .hero-float-card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1), 0 1px 4px rgba(0,0,0,0.05);
+    z-index: 3;
+    white-space: nowrap;
+  }
+  .hero-float-card svg {
+    flex-shrink: 0;
+  }
+  .hero-float-card-top {
+    top: 16%;
+    left: -24px;
+    animation: floatCardIn 0.8s 0.8s var(--ease-out-expo) both;
+  }
+  .hero-float-card-bottom {
+    bottom: 16%;
+    right: -24px;
+    animation: floatCardIn 0.8s 1.2s var(--ease-out-expo) both;
+  }
+  .float-card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-ai);
+    letter-spacing: -0.01em;
+  }
+  .float-card-desc {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+  }
+
+  @keyframes floatCardIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   /* ═══════════════════════════════════════════════════
@@ -878,27 +911,30 @@ import Layout from '../layouts/Layout.astro';
      ═══════════════════════════════════════════════════ */
   @media (max-width: 900px) {
     .hero { padding: 100px 24px 60px; }
+    .hero-split { grid-template-columns: 1fr; gap: 48px; }
+    .hero-content { text-align: center; }
+    .hero-subtitle { margin-left: auto; margin-right: auto; }
+    .hero-actions { justify-content: center; flex-direction: column; }
+    .hero-proof { justify-content: center; flex-wrap: wrap; gap: 16px; }
+    .hero-visual { order: -1; }
+    .hero-float-card-top { left: 8px; }
+    .hero-float-card-bottom { right: 8px; }
     .problem-grid,
     .segments-grid { grid-template-columns: 1fr; }
     .solution-layout { grid-template-columns: 1fr; gap: 48px; }
     .solution-images { order: 2; }
     .solution-images-top { grid-template-columns: 1fr; }
-    .social-proof { flex-wrap: wrap; gap: 24px; padding: 32px 24px; }
     .stat-section { padding: 100px 24px; }
     .cta-section { padding: 100px 24px; }
     .pricing-callout { flex-direction: column; gap: 24px; padding: 32px 24px; }
     .pricing-divider { width: 64px; height: 1px; }
     .solution-inner { padding: 80px 24px; }
-    .hero-actions { flex-direction: column; }
   }
 </style>
 
 <script>
-  // Enso reveal on load
+  // Hero reveal on load
   window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.getElementById('heroEnso')?.classList.add('visible');
-    }, 400);
     document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible'));
   });
 
