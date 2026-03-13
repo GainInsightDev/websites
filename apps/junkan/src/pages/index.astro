@@ -405,9 +405,8 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .hero-split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
@@ -418,7 +417,8 @@ import Layout from '../layouts/Layout.astro';
 
   .hero-content {
     position: relative;
-    text-align: left;
+    text-align: center;
+    max-width: 680px;
   }
 
   .hero-badge {
@@ -464,13 +464,14 @@ import Layout from '../layouts/Layout.astro';
     font-weight: 350;
     line-height: 1.6;
     color: var(--color-text-secondary);
-    max-width: 480px;
-    margin-bottom: 36px;
+    max-width: 540px;
+    margin: 0 auto 36px;
   }
 
   .hero-actions {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 16px;
     margin-bottom: 48px;
   }
@@ -479,9 +480,11 @@ import Layout from '../layouts/Layout.astro';
   .hero-proof {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 24px;
     padding-top: 32px;
     border-top: 1px solid var(--color-border-subtle);
+    margin-bottom: 48px;
   }
   .hero-proof-item {
     display: flex;
@@ -521,14 +524,14 @@ import Layout from '../layouts/Layout.astro';
     box-shadow: 0 24px 64px rgba(0,0,0,0.10), 0 4px 16px rgba(0,0,0,0.05);
     overflow: hidden;
     width: 100%;
-    max-width: 580px;
-    font-size: 11px;
+    max-width: 900px;
+    font-size: 12px;
     background: var(--color-background);
   }
 
   /* Mini sidebar */
   .hero-sidebar {
-    width: 152px;
+    width: 180px;
     background: #fff;
     border-right: 1px solid var(--color-border);
     display: flex;
@@ -1313,14 +1316,10 @@ import Layout from '../layouts/Layout.astro';
      ═══════════════════════════════════════════════════ */
   @media (max-width: 900px) {
     .hero { padding: 100px 24px 60px; }
-    .hero-split { grid-template-columns: 1fr; gap: 48px; }
-    .hero-content { text-align: center; }
-    .hero-subtitle { margin-left: auto; margin-right: auto; }
-    .hero-actions { justify-content: center; flex-direction: column; }
-    .hero-proof { justify-content: center; flex-wrap: wrap; gap: 16px; }
-    .hero-visual { order: -1; }
+    .hero-actions { flex-direction: column; }
+    .hero-proof { flex-wrap: wrap; gap: 16px; }
     .hero-app-shell { max-width: 100%; }
-    .hero-sidebar { width: 120px; }
+    .hero-sidebar { display: none; }
     .hero-stats-row { grid-template-columns: repeat(2, 1fr); }
     .problem-grid,
     .segments-grid { grid-template-columns: 1fr; }
