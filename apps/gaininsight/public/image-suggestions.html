@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Suggestions — Gain Insight</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #0a0c10; color: #e2e4e9; line-height: 1.6; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 48px 0 32px; border-bottom: 1px solid #1e2028; margin-bottom: 48px; }
+  header h1 { font-size: 36px; font-weight: 300; margin-bottom: 8px; }
+  header p { color: #8a8f9e; font-size: 16px; }
+  .section { margin-bottom: 64px; }
+  .section-header { margin-bottom: 24px; }
+  .section-header h2 { font-size: 24px; font-weight: 500; margin-bottom: 4px; }
+  .section-header .where { color: #6a87ab; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .section-header p { color: #8a8f9e; font-size: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+  .card { background: #14161c; border: 1px solid #1e2028; border-radius: 12px; overflow: hidden; transition: border-color 0.2s; }
+  .card:hover { border-color: #6a87ab; }
+  .card img { width: 100%; height: 220px; object-fit: cover; display: block; }
+  .card-body { padding: 16px; }
+  .card-body h3 { font-size: 14px; font-weight: 500; margin-bottom: 4px; line-height: 1.4; }
+  .card-body .source { color: #6a87ab; font-size: 12px; margin-bottom: 8px; }
+  .card-body .notes { color: #8a8f9e; font-size: 13px; }
+  .badge { display: inline-block; background: rgba(106,135,171,0.15); color: #6a87ab; font-size: 11px; padding: 2px 8px; border-radius: 4px; margin-right: 6px; }
+  .badge-green { background: rgba(74,222,128,0.1); color: #4ade80; }
+  .badge-amber { background: rgba(251,191,36,0.1); color: #fbbf24; }
+  footer { padding: 48px 0; border-top: 1px solid #1e2028; color: #8a8f9e; font-size: 13px; text-align: center; }
+  a { color: #6a87ab; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Image Suggestions for gaininsight.global</h1>
+    <p>Curated image options organised by page location. Review and let Holly know which direction you prefer.</p>
+  </header>
+
+  <!-- SECTION 1: Homepage Hero -->
+  <div class="section">
+    <div class="section-header">
+      <div class="where">Homepage &rarr; Hero Section (right side)</div>
+      <h2>Collaborative Workspace / Editorial</h2>
+      <p>A side image (40% width) adding emotional weight to "Domain expertise meets AI capability." Should feel editorial, not stock.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <img src="https://thumbs.dreamstime.com/b/focused-team-collaboration-office-setting-man-pointing-women-working-tasks-professionals-intently-busy-desk-304286848.jpg" alt="Team collaboration" loading="lazy" width="800" height="533">
+        <div class="card-body">
+          <h3>Focused team collaboration in office setting</h3>
+          <div class="source">Dreamstime <span class="badge badge-amber">Licensed</span></div>
+          <div class="notes">Muted tones, editorial feel. Good for hero — shows collaboration without being generic.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://clickup.com/blog/wp-content/uploads/2024/09/collaborative-spaces-help-people-work-better-together-1400x933.jpg" alt="Collaborative workspace" loading="lazy" width="1400" height="933">
+        <div class="card-body">
+          <h3>Modern collaborative workspace</h3>
+          <div class="source">ClickUp Blog <span class="badge badge-green">Editorial</span></div>
+          <div class="notes">Warm lighting, natural feel. The open workspace aesthetic matches GI's partnership ethos.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://cdn.create.vista.com/api/media/small/668760902/stock-photo-diverse-business-people-smiling-discussing-startup-ideas-gadgets-planning-coworking" alt="Startup discussion" loading="lazy" width="600" height="400">
+        <div class="card-body">
+          <h3>Diverse team discussing startup ideas</h3>
+          <div class="source">Vista Create <span class="badge badge-amber">Licensed</span></div>
+          <div class="notes">Relaxed, authentic feel. Could work well with desaturation to match brand palette.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: Case Study Section Breaks -->
+  <div class="section">
+    <div class="section-header">
+      <div class="where">Case Study &rarr; Section Break Images (full-width)</div>
+      <h2>FinTech / Data / Technology</h2>
+      <p>Full-width images between major case study sections (The Challenge, Our Approach, etc.). Currently 300+ lines of text with zero visual content.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <img src="https://thumbs.dreamstime.com/b/glowing-blue-lights-network-infrastructure-data-center-server-room-embody-concept-technology-366876691.jpg" alt="Data center blue lights" loading="lazy" width="800" height="449">
+        <div class="card-body">
+          <h3>Data center server infrastructure — blue lighting</h3>
+          <div class="source">Dreamstime <span class="badge badge-amber">Licensed</span></div>
+          <div class="notes">Perfect for "The Challenge" section break. Blue tones match the Steel palette. Communicates scale and complexity.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://thumbs.dreamstime.com/b/dark-server-room-modern-data-center-storage-blue-lights-98504078.jpg" alt="Dark server room" loading="lazy" width="800" height="534">
+        <div class="card-body">
+          <h3>Modern data center storage — atmospheric</h3>
+          <div class="source">Dreamstime <span class="badge badge-amber">Licensed</span></div>
+          <div class="notes">Darker mood, fits the dark-section aesthetic. Good for "Our Approach" or "Technical Architecture" breaks.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://thumbs.dreamstime.com/b/inside-digital-fortress-modern-data-center-glowing-infrastructure-high-tech-featuring-rows-servers-cables-382979274.jpg" alt="High-tech data center" loading="lazy" width="800" height="452">
+        <div class="card-body">
+          <h3>High-tech data center infrastructure</h3>
+          <div class="source">Dreamstime <span class="badge badge-amber">Licensed</span></div>
+          <div class="notes">Vibrant blues and greens. Best for a "Results" or "Technical Excellence" section break.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.presentationgo.com/2025/10/futuristic-circuit-technology-background-1024x574.jpg" alt="Circuit technology abstract" loading="lazy" width="1024" height="574">
+        <div class="card-body">
+          <h3>Abstract circuit lines — golden on dark</h3>
+          <div class="source">PresentationGo <span class="badge badge-green">Free</span></div>
+          <div class="notes">Abstract/artistic rather than photographic. Could work as a subtle full-width divider with low opacity overlay.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.presentationgo.com/2025/09/abstract-digital-data-wave-1024x574.jpg" alt="Digital data wave" loading="lazy" width="1024" height="574">
+        <div class="card-body">
+          <h3>Fluid digital data wave</h3>
+          <div class="source">PresentationGo <span class="badge badge-green">Free</span></div>
+          <div class="notes">Elegant flow aesthetic. Could represent data transformation — fitting for the Indigo case study theme.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://res.cloudinary.com/ducxztw9n/image/upload/c_limit,w_3840/f_auto/q_auto:good/v1/screenshot_desktop_application_ui_53e25b09c3?_a=BAVAZGAQ0" alt="FinTech dashboard UI" loading="lazy" width="1200" height="750">
+        <div class="card-body">
+          <h3>FinTech SaaS dashboard — Credyfix</h3>
+          <div class="source">Ron Design Lab <span class="badge badge-green">Reference</span></div>
+          <div class="notes">Not for direct use, but shows the kind of product UI that could appear as a device-framed screenshot in the case study.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: Contact — Gibraltar -->
+  <div class="section">
+    <div class="section-header">
+      <div class="where">Contact Page &rarr; Location Image</div>
+      <h2>Gibraltar — Rock & Mediterranean</h2>
+      <p>A tasteful location shot adding warmth and sense of place. Gain Insight is registered in Gibraltar (Company 124646).</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <img src="https://thumbs.dreamstime.com/b/gibraltar-skyline-aerial-view-mediterranean-sea-rock-europe-116130785.jpg" alt="Gibraltar skyline aerial" loading="lazy" width="800" height="551">
+        <div class="card-body">
+          <h3>Gibraltar skyline — aerial view over Mediterranean</h3>
+          <div class="source">Dreamstime <span class="badge badge-amber">Licensed</span></div>
+          <div class="notes">Stunning aerial perspective. Shows the Rock, city, and sea. High impact for contact page header.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://thumbs.dreamstime.com/b/rock-gibraltar-mediterranean-sea-landscape-nature-landmark-british-overseas-territory-iberian-peninsula-87775424.jpg" alt="Rock of Gibraltar landscape" loading="lazy" width="800" height="534">
+        <div class="card-body">
+          <h3>Rock of Gibraltar — Mediterranean landscape</h3>
+          <div class="source">Dreamstime <span class="badge badge-amber">Licensed</span></div>
+          <div class="notes">Classic composition. The Rock dominates — instantly recognisable. Good with a dark overlay for text readability.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://thumbs.dreamstime.com/b/aerial-view-gibraltar-its-marina-mediterranean-se-sea-as-seen-rock-74702377.jpg" alt="Gibraltar marina aerial" loading="lazy" width="800" height="534">
+        <div class="card-body">
+          <h3>Gibraltar marina — aerial from the Rock</h3>
+          <div class="source">Dreamstime <span class="badge badge-amber">Licensed</span></div>
+          <div class="notes">Shows the modern side of Gibraltar — marina, development. Warmer, more business-appropriate feel.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://thumbs.dreamstime.com/b/gibraltar-rock-copyspace-copy-space-landscape-mediterranean-sea-travel-town-overview-travelling-148353244.jpg" alt="Gibraltar Rock panorama" loading="lazy" width="800" height="534">
+        <div class="card-body">
+          <h3>Gibraltar Rock panorama — town and sea</h3>
+          <div class="source">Dreamstime <span class="badge badge-amber">Licensed</span></div>
+          <div class="notes">Wide shot with negative space on the right — perfect for overlaying contact details or a form.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: AI-Generated Images (Actual) -->
+  <div class="section">
+    <div class="section-header">
+      <div class="where">AI-Generated &rarr; Freepik Mystic (actual results)</div>
+      <h2>AI-Generated Custom Images</h2>
+      <p>These are actual AI-generated images, unique to Gain Insight. No licensing needed. Colour-matched to the brand palette. We can iterate on any of these.</p>
+    </div>
+    <div class="grid">
+      <div class="card" style="border: 1px solid #6a87ab;">
+        <img src="/images/editorial/workspace-hero.png" alt="AI: Workspace editorial" loading="lazy" width="1920" height="1080">
+        <div class="card-body">
+          <h3>Workspace Editorial — Homepage Hero</h3>
+          <div class="source">Freepik Mystic (realism) <span class="badge badge-green">AI-generated, no license</span></div>
+          <div class="notes">Prompt: "Editorial photograph of a modern tech startup workspace, two professionals reviewing data analytics, ambient blue-grey lighting, shallow depth of field, desaturated muted colour palette." For the homepage hero right side.</div>
+        </div>
+      </div>
+      <div class="card" style="border: 1px solid #6a87ab;">
+        <img src="/images/editorial/data-flow-abstract.png" alt="AI: Abstract data flow" loading="lazy" width="1920" height="1080">
+        <div class="card-body">
+          <h3>Abstract Data Flow — Case Study Section Break</h3>
+          <div class="source">Freepik Mystic (flexible) <span class="badge badge-green">AI-generated, no license</span></div>
+          <div class="notes">Prompt: "Abstract data flow visualisation on dark background, subtle blue and steel-grey light trails, minimal, digital transformation concept." For full-width breaks between case study sections.</div>
+        </div>
+      </div>
+      <div class="card" style="border: 1px solid #6a87ab;">
+        <img src="/images/editorial/gibraltar-golden-hour.png" alt="AI: Gibraltar at golden hour" loading="lazy" width="1920" height="1080">
+        <div class="card-body">
+          <h3>Gibraltar — Golden Hour — Contact Page</h3>
+          <div class="source">Freepik Mystic (realism) <span class="badge badge-green">AI-generated, no license</span></div>
+          <div class="notes">Prompt: "Gibraltar Rock at golden hour, warm Mediterranean light, panoramic view from the sea, calm turquoise water, editorial landscape." For the contact page location image.</div>
+        </div>
+      </div>
+      <div class="card" style="border: 1px solid #6a87ab;">
+        <img src="/images/editorial/server-rack-blue.png" alt="AI: Server rack blue" loading="lazy" width="1920" height="1080">
+        <div class="card-body">
+          <h3>Server Infrastructure — Case Study / Tech Section</h3>
+          <div class="source">Freepik Mystic (realism) <span class="badge badge-green">AI-generated, no license</span></div>
+          <div class="notes">Prompt: "Close-up of modern server rack, shallow depth of field, blue LED indicator lights, dark environment, cool blue and steel grey tones." For case study "Technical Architecture" section break.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>These are suggestions only — no images have been purchased or downloaded. Tell Holly which direction you prefer and she'll implement.</p>
+    <p style="margin-top: 8px;">Options: <strong>Stock photography</strong> (licensed per image) · <strong>AI-generated</strong> (free, unique, colour-matched) · <strong>Mix of both</strong></p>
+  </footer>
+</div>
+</body>
+</html>

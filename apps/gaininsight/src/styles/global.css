@@ -289,6 +289,15 @@ h1 em, h2 em {
     color: var(--color-text-dark);
   }
 
+  /* CTA texture — subtle radial gradient for depth */
+  .section-cta-texture {
+    position: relative;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 40%, rgba(106, 135, 171, 0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 80% 60%, rgba(106, 135, 171, 0.04) 0%, transparent 70%),
+      var(--color-bg-light);
+  }
+
   /* Section labels (short rule + small caps) */
   .section-label {
     display: flex;
