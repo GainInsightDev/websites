@@ -48,24 +48,104 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
-      <!-- Right: Product visual -->
+      <!-- Right: Product dashboard mockup -->
       <div class="hero-visual reveal reveal-delay-3">
-        <div class="hero-visual-card">
-          <img src="/images/thrift-store.jpg" alt="Woman browsing secondhand clothing at a vintage thrift store" width="800" height="533" />
-          <!-- Floating stat cards -->
-          <div class="hero-float-card hero-float-card-top">
-            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" stroke="var(--color-ai)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="13" r="4" stroke="var(--color-ai)" stroke-width="1.5"/></svg>
-            <div>
-              <div class="float-card-title">AI Identified</div>
-              <div class="float-card-desc">Nike Air Max 90 — Size 9</div>
+        <div class="hero-dashboard">
+          <!-- Dashboard top bar -->
+          <div class="dash-topbar">
+            <div class="dash-topbar-left">
+              <div class="dash-dot dash-dot-red"></div>
+              <div class="dash-dot dash-dot-yellow"></div>
+              <div class="dash-dot dash-dot-green"></div>
+            </div>
+            <div class="dash-topbar-title">Junkan — Item Dashboard</div>
+            <div class="dash-topbar-right">
+              <div class="dash-avatar">RK</div>
             </div>
           </div>
-          <div class="hero-float-card hero-float-card-bottom">
-            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="var(--color-matcha)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div>
-              <div class="float-card-title" style="color: var(--color-matcha);">Listed &amp; Selling</div>
-              <div class="float-card-desc">eBay — £67.99</div>
+
+          <!-- Dashboard stats row -->
+          <div class="dash-stats">
+            <div class="dash-stat-card">
+              <span class="dash-stat-label">Items Today</span>
+              <span class="dash-stat-value">47</span>
+              <span class="dash-stat-change dash-stat-up">+12%</span>
             </div>
+            <div class="dash-stat-card">
+              <span class="dash-stat-label">Revenue</span>
+              <span class="dash-stat-value">£1,284</span>
+              <span class="dash-stat-change dash-stat-up">+23%</span>
+            </div>
+            <div class="dash-stat-card">
+              <span class="dash-stat-label">Avg Price</span>
+              <span class="dash-stat-value">£27.30</span>
+              <span class="dash-stat-change dash-stat-up">+8%</span>
+            </div>
+          </div>
+
+          <!-- Item list -->
+          <div class="dash-section-label">Recent Items</div>
+          <div class="dash-items">
+            <div class="dash-item">
+              <div class="dash-item-thumb dash-thumb-blue">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="currentColor" stroke-width="1.5"/></svg>
+              </div>
+              <div class="dash-item-info">
+                <span class="dash-item-name">Nike Air Max 90</span>
+                <span class="dash-item-meta">Trainers · Size 9 · AI Confidence 97%</span>
+              </div>
+              <div class="dash-item-price">£67.99</div>
+              <div class="dash-item-status dash-status-listed">Listed</div>
+            </div>
+            <div class="dash-item">
+              <div class="dash-item-thumb dash-thumb-green">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="dash-item-info">
+                <span class="dash-item-name">Burberry Scarf</span>
+                <span class="dash-item-meta">Accessories · Cashmere · AI Confidence 94%</span>
+              </div>
+              <div class="dash-item-price">£89.00</div>
+              <div class="dash-item-status dash-status-sold">Sold</div>
+            </div>
+            <div class="dash-item">
+              <div class="dash-item-thumb dash-thumb-amber">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="13" r="4" stroke="currentColor" stroke-width="1.5"/></svg>
+              </div>
+              <div class="dash-item-info">
+                <span class="dash-item-name">Le Creuset Dutch Oven</span>
+                <span class="dash-item-meta">Homeware · 26cm · AI Confidence 99%</span>
+              </div>
+              <div class="dash-item-price">£142.00</div>
+              <div class="dash-item-status dash-status-pricing">Pricing</div>
+            </div>
+            <div class="dash-item">
+              <div class="dash-item-thumb dash-thumb-blue">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 014 17V5a2 2 0 012-2h14v14H6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="dash-item-info">
+                <span class="dash-item-name">1st Ed. Harry Potter</span>
+                <span class="dash-item-meta">Books · Hardback · AI Confidence 91%</span>
+              </div>
+              <div class="dash-item-price">£210.00</div>
+              <div class="dash-item-status dash-status-listed">Listed</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating stat cards -->
+        <div class="hero-float-card hero-float-card-top">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" stroke="var(--color-ai)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="13" r="4" stroke="var(--color-ai)" stroke-width="1.5"/></svg>
+          <div>
+            <div class="float-card-title">AI Identified</div>
+            <div class="float-card-desc">Nike Air Max 90 — Size 9</div>
+          </div>
+        </div>
+        <div class="hero-float-card hero-float-card-bottom">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke="var(--color-matcha)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 4L12 14.01l-3-3" stroke="var(--color-matcha)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <div class="float-card-title" style="color: var(--color-matcha);">Sold on eBay</div>
+            <div class="float-card-desc">Burberry Scarf — £89.00</div>
           </div>
         </div>
       </div>
@@ -383,19 +463,174 @@ import Layout from '../layouts/Layout.astro';
     display: flex;
     justify-content: center;
   }
-  .hero-visual-card {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06);
+
+  /* Dashboard mockup */
+  .hero-dashboard {
+    background: #fff;
+    border-radius: 16px;
     border: 1px solid var(--color-border);
-  }
-  .hero-visual-card img {
-    display: block;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.10), 0 4px 16px rgba(0,0,0,0.05);
+    overflow: hidden;
     width: 100%;
-    height: auto;
-    object-fit: cover;
+    max-width: 520px;
+    font-size: 13px;
   }
+  .dash-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: #fafafa;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .dash-topbar-left {
+    display: flex;
+    gap: 6px;
+  }
+  .dash-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .dash-dot-red { background: #FF5F57; }
+  .dash-dot-yellow { background: #FEBC2E; }
+  .dash-dot-green { background: #28C840; }
+  .dash-topbar-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    letter-spacing: -0.01em;
+  }
+  .dash-topbar-right { display: flex; }
+  .dash-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--color-ai);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dash-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 16px;
+  }
+  .dash-stat-card {
+    background: #fafafa;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .dash-stat-label {
+    font-size: 11px;
+    font-weight: 450;
+    color: var(--color-text-muted);
+  }
+  .dash-stat-value {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.03em;
+    color: var(--color-text);
+  }
+  .dash-stat-change {
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .dash-stat-up { color: var(--color-matcha); }
+
+  .dash-section-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0 16px 8px;
+  }
+
+  .dash-items {
+    padding: 0 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .dash-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--color-border-subtle);
+    background: #fff;
+    transition: background 0.2s ease;
+  }
+  .dash-item:first-child {
+    background: rgba(75, 123, 229, 0.04);
+    border-color: rgba(75, 123, 229, 0.15);
+  }
+  .dash-item-thumb {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .dash-thumb-blue { background: var(--color-ai-muted); color: var(--color-ai); }
+  .dash-thumb-green { background: var(--color-matcha-muted); color: var(--color-matcha); }
+  .dash-thumb-amber { background: #FEF3C7; color: #D97706; }
+  .dash-item-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .dash-item-name {
+    font-weight: 550;
+    font-size: 13px;
+    color: var(--color-text);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .dash-item-meta {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .dash-item-price {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+    flex-shrink: 0;
+  }
+  .dash-item-status {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 6px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .dash-status-listed { background: var(--color-ai-muted); color: var(--color-ai); }
+  .dash-status-sold { background: var(--color-matcha-muted); color: var(--color-matcha); }
+  .dash-status-pricing { background: #FEF3C7; color: #D97706; }
 
   /* Floating stat cards */
   .hero-float-card {
@@ -417,13 +652,13 @@ import Layout from '../layouts/Layout.astro';
     flex-shrink: 0;
   }
   .hero-float-card-top {
-    top: 16%;
-    left: -24px;
+    top: 12%;
+    left: -28px;
     animation: floatCardIn 0.8s 0.8s var(--ease-out-expo) both;
   }
   .hero-float-card-bottom {
-    bottom: 16%;
-    right: -24px;
+    bottom: 12%;
+    right: -28px;
     animation: floatCardIn 0.8s 1.2s var(--ease-out-expo) both;
   }
   .float-card-title {
