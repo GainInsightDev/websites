@@ -31,76 +31,154 @@ import Layout from '../layouts/Layout.astro';
 
     <!-- Dashboard + floating cards showcase -->
     <div class="hero-showcase reveal reveal-delay-3">
-      <!-- Central dashboard mockup -->
-      <div class="hero-dashboard">
-        <div class="hd-topbar">
-          <div class="hd-logo">
-            <svg width="14" height="14" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="var(--color-ai)" stroke-width="2"/><path d="M10 22C12 14 20 14 22 22" stroke="var(--color-ai)" stroke-width="2" stroke-linecap="round"/></svg>
-            <span>Junkan</span>
+      <!-- Full Junkan dashboard mockup (centre) -->
+      <div class="hero-visual">
+        <div class="hero-app-shell">
+          <!-- Mini sidebar -->
+          <div class="hero-sidebar">
+            <div class="hero-sidebar-logo">
+              <div class="hero-logo-circle">J</div>
+              <div class="hero-logo-text">
+                <span class="hero-logo-name">Junkan</span>
+                <span class="hero-logo-org">Oxfam Brixton</span>
+              </div>
+            </div>
+            <nav class="hero-sidebar-nav">
+              <a class="hero-nav-item hero-nav-active">
+                <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /></svg>
+                Dashboard
+              </a>
+              <a class="hero-nav-item hero-nav-cta">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+                Add Item
+              </a>
+              <a class="hero-nav-item">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
+                Items
+              </a>
+              <a class="hero-nav-item hero-nav-msg">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                Messages
+                <span class="hero-nav-badge">2</span>
+              </a>
+              <a class="hero-nav-item">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                Reports
+              </a>
+            </nav>
+            <div class="hero-sidebar-user">
+              <div class="hero-user-avatar">SM</div>
+              <div class="hero-user-text">
+                <span class="hero-user-name">Sarah Mitchell</span>
+                <span class="hero-user-role">Volunteer</span>
+              </div>
+            </div>
           </div>
-          <div class="hd-nav">
-            <span class="hd-nav-active">Dashboard</span>
-            <span>Inventory</span>
-            <span>Listings</span>
-            <span>Analytics</span>
-          </div>
-        </div>
-        <div class="hd-body">
-          <div class="hd-stats-row">
-            <div class="hd-stat">
-              <span class="hd-stat-label">Items Listed</span>
-              <span class="hd-stat-value">47</span>
-              <span class="hd-stat-trend hd-trend-up">↑ 12%</span>
+
+          <!-- Main area -->
+          <div class="hero-main">
+            <div class="hero-topbar">
+              <div class="hero-search">
+                <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                <span>Search items...</span>
+              </div>
+              <div class="hero-topbar-right">
+                <div class="hero-notif">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                  <span class="hero-notif-dot">3</span>
+                </div>
+                <div class="hero-topbar-avatar">SM</div>
+              </div>
             </div>
-            <div class="hd-stat">
-              <span class="hd-stat-label">Revenue</span>
-              <span class="hd-stat-value">£1,247</span>
-              <span class="hd-stat-trend hd-trend-up">↑ 15%</span>
-            </div>
-            <div class="hd-stat">
-              <span class="hd-stat-label">Avg Price</span>
-              <span class="hd-stat-value">£26.53</span>
-              <span class="hd-stat-trend hd-trend-up">↑ 3%</span>
-            </div>
-            <div class="hd-stat">
-              <span class="hd-stat-label">Sell-Through</span>
-              <span class="hd-stat-value">73%</span>
-              <span class="hd-stat-trend hd-trend-up">↑ 8%</span>
-            </div>
-          </div>
-          <div class="hd-table">
-            <div class="hd-table-head">
-              <span>Item</span><span>Status</span><span>Channel</span><span>Price</span>
-            </div>
-            <div class="hd-table-row">
-              <span>Vintage Jacket</span>
-              <span class="hd-badge hd-badge-matcha">Listed</span>
-              <span>eBay</span>
-              <span>£85.00</span>
-            </div>
-            <div class="hd-table-row">
-              <span>Designer Bag</span>
-              <span class="hd-badge hd-badge-ai">Sold</span>
-              <span>Vinted</span>
-              <span>£120.00</span>
-            </div>
-            <div class="hd-table-row">
-              <span>Levi's 501 Jeans</span>
-              <span class="hd-badge hd-badge-shu">Pending</span>
-              <span>Hybrid</span>
-              <span>£24.99</span>
-            </div>
-            <div class="hd-table-row">
-              <span>Nike Air Max</span>
-              <span class="hd-badge hd-badge-matcha">Listed</span>
-              <span>eBay</span>
-              <span>£45.00</span>
+
+            <div class="hero-dash-body">
+              <div class="hero-dash-welcome">Good morning, Sarah</div>
+              <div class="hero-dash-sub">Here's what's happening with your items today.</div>
+
+              <div class="hero-stats-row">
+                <div class="hero-stat">
+                  <span class="hero-stat-label">Items this week</span>
+                  <span class="hero-stat-val">47</span>
+                  <span class="hero-stat-trend">↑ 12%</span>
+                </div>
+                <div class="hero-stat">
+                  <span class="hero-stat-label">Total value</span>
+                  <span class="hero-stat-val">£1,247</span>
+                  <span class="hero-stat-trend">↑ 8%</span>
+                </div>
+                <div class="hero-stat">
+                  <span class="hero-stat-label">Pending</span>
+                  <span class="hero-stat-val">8</span>
+                  <span class="hero-stat-trend hero-stat-muted">Awaiting</span>
+                </div>
+                <div class="hero-stat">
+                  <span class="hero-stat-label">Active</span>
+                  <span class="hero-stat-val">23</span>
+                  <span class="hero-stat-trend hero-stat-muted">eBay & Vinted</span>
+                </div>
+              </div>
+
+              <div class="hero-activity">
+                <div class="hero-activity-head">
+                  <span class="hero-activity-title">Recent Activity</span>
+                  <div class="hero-activity-btns">
+                    <span class="hero-outline-btn">Filter</span>
+                    <span class="hero-outline-btn">Export</span>
+                  </div>
+                </div>
+                <table class="hero-table">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Title</th>
+                      <th>Category</th>
+                      <th>Price</th>
+                      <th>Status</th>
+                      <th>Route</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><div class="hero-tbl-thumb">V</div></td>
+                      <td class="hero-tbl-title">Vintage Leather Jacket</td>
+                      <td>Fashion</td>
+                      <td class="hero-tbl-price">£85.00</td>
+                      <td><span class="hero-badge hero-badge-matcha">Listed</span></td>
+                      <td><span class="hero-badge hero-badge-matcha-o">E-commerce</span></td>
+                    </tr>
+                    <tr>
+                      <td><div class="hero-tbl-thumb">C</div></td>
+                      <td class="hero-tbl-title">Ceramic Vase Set</td>
+                      <td>Homeware</td>
+                      <td class="hero-tbl-price">£12.00</td>
+                      <td><span class="hero-badge hero-badge-muted">In Shop</span></td>
+                      <td><span class="hero-badge hero-badge-shu-o">Shop Floor</span></td>
+                    </tr>
+                    <tr>
+                      <td><div class="hero-tbl-thumb">D</div></td>
+                      <td class="hero-tbl-title">Designer Handbag</td>
+                      <td>Accessories</td>
+                      <td class="hero-tbl-price">£120.00</td>
+                      <td><span class="hero-badge hero-badge-ai">Processing</span></td>
+                      <td><span class="hero-badge hero-badge-ai-o">Hybrid</span></td>
+                    </tr>
+                    <tr>
+                      <td><div class="hero-tbl-thumb">R</div></td>
+                      <td class="hero-tbl-title">Retro Gaming Console</td>
+                      <td>Electronics</td>
+                      <td class="hero-tbl-price">£45.00</td>
+                      <td><span class="hero-badge hero-badge-matcha">Listed</span></td>
+                      <td><span class="hero-badge hero-badge-ai-o">Hybrid</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Floating cards around dashboard -->
+      <!-- Floating cards evenly distributed around dashboard -->
       <div class="float-card float-tl reveal reveal-delay-4">
         <div class="fc-label">AI Identification</div>
         <div class="fc-body">
@@ -131,17 +209,11 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <div class="float-card float-ml reveal reveal-delay-5">
-        <div class="fc-label">Photo Capture</div>
-        <div class="fc-body fc-dark">
-          <div class="fc-viewfinder">
-            <div class="fc-vf-grid"><div class="fc-vf-h1"></div><div class="fc-vf-h2"></div><div class="fc-vf-v1"></div><div class="fc-vf-v2"></div></div>
-          </div>
-          <div class="fc-strip">
-            <span class="fc-strip-dot fc-sd-good"></span>
-            <span class="fc-strip-dot fc-sd-good"></span>
-            <span class="fc-strip-dot fc-sd-warn"></span>
-            <span class="fc-strip-dot fc-sd-active"></span>
-          </div>
+        <div class="fc-label">Queue Management</div>
+        <div class="fc-body">
+          <div class="fc-route"><span class="fc-dot fc-dot-matcha"></span>Ready<span class="fc-rprice">12</span></div>
+          <div class="fc-route fc-route-hl"><span class="fc-dot fc-dot-ai"></span>Processing<span class="fc-rprice">5</span></div>
+          <div class="fc-route"><span class="fc-dot fc-dot-shu"></span>Pending<span class="fc-rprice">3</span></div>
         </div>
       </div>
 
@@ -462,123 +534,354 @@ import Layout from '../layouts/Layout.astro';
     width: 100%;
     max-width: 1200px;
     margin: 0 auto 48px;
-    padding: 40px 0;
+    padding: 60px 0;
   }
 
-  /* Central dashboard */
-  .hero-dashboard {
+  /* Dashboard visual wrapper */
+  .hero-visual {
     position: relative;
     z-index: 2;
-    max-width: 640px;
-    margin: 0 auto;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 16px;
-    box-shadow: 0 16px 64px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
-    overflow: hidden;
-    font-size: 12px;
+    display: flex;
+    justify-content: center;
   }
-  .hd-topbar {
+
+  /* Full Junkan dashboard mockup */
+  .hero-app-shell {
+    display: flex;
+    border-radius: 14px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.10), 0 4px 16px rgba(0,0,0,0.05);
+    overflow: hidden;
+    width: 100%;
+    max-width: 580px;
+    font-size: 11px;
+    background: var(--color-background);
+  }
+
+  /* Mini sidebar */
+  .hero-sidebar {
+    width: 152px;
+    background: #fff;
+    border-right: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+  }
+  .hero-sidebar-logo {
     display: flex;
     align-items: center;
-    gap: 24px;
-    padding: 12px 20px;
+    gap: 8px;
+    padding: 12px 10px;
     border-bottom: 1px solid var(--color-border);
-    background: var(--color-bg);
   }
-  .hd-logo {
+  .hero-logo-circle {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--color-ai);
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .hero-logo-name {
+    display: block;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--color-text);
+    line-height: 1.2;
+  }
+  .hero-logo-org {
+    display: block;
+    font-size: 9px;
+    color: var(--color-text-muted);
+  }
+  .hero-sidebar-nav {
+    flex: 1;
+    padding: 8px 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .hero-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 450;
+    color: var(--color-text-muted);
+    text-decoration: none;
+  }
+  .hero-nav-active {
+    background: var(--color-ai-muted);
+    color: var(--color-text);
+    font-weight: 500;
+  }
+  .hero-nav-cta {
+    background: var(--color-ai);
+    color: #fff;
+    font-weight: 500;
+  }
+  .hero-nav-msg { position: relative; }
+  .hero-nav-badge {
+    margin-left: auto;
+    background: var(--color-shu);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 600;
+    padding: 0 4px;
+    border-radius: 8px;
+    line-height: 16px;
+  }
+  .hero-sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px;
+    border-top: 1px solid var(--color-border);
+  }
+  .hero-user-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--color-ai);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .hero-user-name {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+  .hero-user-role {
+    display: block;
+    font-size: 9px;
+    color: var(--color-text-muted);
+  }
+
+  /* Main content area */
+  .hero-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .hero-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 38px;
+    padding: 0 14px;
+    background: #fff;
+    border-bottom: 1px solid var(--color-border);
+    flex-shrink: 0;
+  }
+  .hero-search {
     display: flex;
     align-items: center;
     gap: 6px;
-    font-weight: 600;
-    font-size: 13px;
-    color: var(--color-text);
-  }
-  .hd-nav {
-    display: flex;
-    gap: 16px;
-    font-size: 12px;
+    padding: 4px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 11px;
     color: var(--color-text-muted);
   }
-  .hd-nav-active {
-    color: var(--color-ai);
-    font-weight: 500;
+  .hero-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
-  .hd-body {
-    padding: 20px;
+  .hero-notif {
+    position: relative;
+    color: var(--color-text-muted);
   }
-  .hd-stats-row {
+  .hero-notif-dot {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-shu);
+    color: #fff;
+    font-size: 8px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-topbar-avatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--color-ai);
+    color: #fff;
+    font-size: 8px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Dashboard body */
+  .hero-dash-body {
+    flex: 1;
+    padding: 14px;
+  }
+  .hero-dash-welcome {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 2px;
+  }
+  .hero-dash-sub {
+    font-size: 10px;
+    color: var(--color-text-muted);
+    margin-bottom: 12px;
+  }
+
+  /* Stats row */
+  .hero-stats-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 20px;
+    gap: 8px;
+    margin-bottom: 12px;
   }
-  .hd-stat {
+  .hero-stat {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 8px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    padding: 12px;
-    background: var(--color-bg);
-    border-radius: 10px;
-    border: 1px solid var(--color-border-subtle);
+    gap: 1px;
   }
-  .hd-stat-label {
-    font-size: 10px;
-    font-weight: 500;
+  .hero-stat-label {
+    font-size: 9px;
     color: var(--color-text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-weight: 450;
   }
-  .hd-stat-value {
+  .hero-stat-val {
     font-family: var(--font-display);
-    font-size: 20px;
     font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.03em;
     color: var(--color-text);
-    letter-spacing: -0.02em;
   }
-  .hd-stat-trend {
-    font-size: 10px;
+  .hero-stat-trend {
+    font-size: 9px;
     font-weight: 500;
+    color: var(--color-matcha);
   }
-  .hd-trend-up { color: var(--color-matcha); }
-  .hd-table {
-    border: 1px solid var(--color-border-subtle);
-    border-radius: 10px;
+  .hero-stat-muted {
+    color: var(--color-text-muted);
+    font-weight: 400;
+  }
+
+  /* Activity table */
+  .hero-activity {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
     overflow: hidden;
   }
-  .hd-table-head {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    padding: 8px 14px;
-    font-size: 10px;
-    font-weight: 600;
-    color: var(--color-text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    background: var(--color-bg);
-    border-bottom: 1px solid var(--color-border-subtle);
-  }
-  .hd-table-row {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    padding: 10px 14px;
-    font-size: 11px;
-    color: var(--color-text-secondary);
-    border-bottom: 1px solid var(--color-border-subtle);
+  .hero-activity-head {
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
   }
-  .hd-table-row:last-child { border-bottom: none; }
-  .hd-badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 6px;
+  .hero-activity-title {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  .hero-activity-btns {
+    display: flex;
+    gap: 6px;
+  }
+  .hero-outline-btn {
+    padding: 3px 8px;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
     font-size: 10px;
     font-weight: 500;
-    width: fit-content;
+    color: var(--color-text-secondary);
+    background: #fff;
   }
-  .hd-badge-matcha { background: rgba(61, 166, 106, 0.1); color: var(--color-matcha); }
-  .hd-badge-ai { background: rgba(75, 123, 229, 0.1); color: var(--color-ai); }
-  .hd-badge-shu { background: rgba(217, 90, 80, 0.1); color: var(--color-shu); }
+  .hero-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .hero-table th {
+    text-align: left;
+    padding: 5px 10px;
+    font-size: 9px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-top: 1px solid var(--color-border-subtle);
+    border-bottom: 1px solid var(--color-border-subtle);
+    background: #fafaf9;
+  }
+  .hero-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--color-border-subtle);
+    color: var(--color-text-secondary);
+    font-size: 10px;
+  }
+  .hero-table tr:last-child td { border-bottom: none; }
+  .hero-tbl-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+  .hero-tbl-title {
+    font-weight: 500;
+    color: var(--color-text);
+  }
+  .hero-tbl-price {
+    font-family: var(--font-display);
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  /* Badges */
+  .hero-badge {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .hero-badge-ai { background: var(--color-ai-muted); color: var(--color-ai); }
+  .hero-badge-matcha { background: var(--color-matcha-muted); color: var(--color-matcha); }
+  .hero-badge-muted { background: #f5f5f5; color: var(--color-text-muted); }
+  .hero-badge-ai-o { background: transparent; border: 1px solid rgba(75, 123, 229, 0.25); color: var(--color-ai); }
+  .hero-badge-matcha-o { background: transparent; border: 1px solid rgba(61, 166, 106, 0.25); color: var(--color-matcha); }
+  .hero-badge-shu-o { background: transparent; border: 1px solid rgba(217, 90, 80, 0.25); color: var(--color-shu); }
 
   /* Floating mockup cards around dashboard */
   .float-card {
@@ -598,13 +901,13 @@ import Layout from '../layouts/Layout.astro';
     z-index: 3;
   }
 
-  /* Card positions — distributed around the central dashboard */
-  .float-tl { top: 0; left: 0; transform: rotate(-2deg); }
-  .float-bl { bottom: 0; left: 2%; transform: rotate(1.5deg); }
-  .float-tr { top: 0; right: 0; transform: rotate(2deg); }
-  .float-ml { top: 50%; left: 0; transform: translateY(-50%) rotate(-1.5deg); }
-  .float-mr { top: 50%; right: 0; transform: translateY(-50%) rotate(1deg); }
-  .float-br { bottom: 0; right: 2%; transform: rotate(-1deg); }
+  /* Card positions — evenly distributed around dashboard */
+  .float-tl { top: -20px; left: 0; transform: rotate(-2deg); }
+  .float-bl { bottom: -20px; left: 3%; transform: rotate(1.5deg); }
+  .float-tr { top: -20px; right: 0; transform: rotate(2deg); }
+  .float-ml { top: 45%; left: 0; transform: translateY(-50%) rotate(-1.5deg); }
+  .float-mr { top: 45%; right: 0; transform: translateY(-50%) rotate(1deg); }
+  .float-br { bottom: -20px; right: 3%; transform: rotate(-1deg); }
 
   /* Social proof below showcase */
   .hero-proof {
@@ -1363,8 +1666,9 @@ import Layout from '../layouts/Layout.astro';
     .hero-header { margin-bottom: 32px; }
     .hero-actions { flex-direction: column; }
     .float-card { display: none; }
-    .hero-dashboard { max-width: 100%; }
-    .hd-stats-row { grid-template-columns: repeat(2, 1fr); }
+    .hero-app-shell { max-width: 100%; }
+    .hero-sidebar { width: 120px; }
+    .hero-stats-row { grid-template-columns: repeat(2, 1fr); }
     .hero-proof { flex-wrap: wrap; gap: 16px; }
     .problem-grid,
     .segments-grid { grid-template-columns: 1fr; }
