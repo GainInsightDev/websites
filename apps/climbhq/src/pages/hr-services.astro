@@ -1,0 +1,159 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const packages = [
+  {
+    name: 'Basics',
+    price: '£249',
+    featured: false,
+    features: [
+      'Policy templates and customisation',
+      'Quarterly compliance monitoring',
+      'Annual risk assessments',
+      'Basic time and attendance tracking',
+      '24/7 Q&A support',
+    ],
+  },
+  {
+    name: 'Essentials',
+    price: '£449',
+    featured: true,
+    features: [
+      'Everything in Basics',
+      '5 hours monthly HR consultancy',
+      'Recruitment support',
+      'Standard training library access',
+      'Performance review templates',
+      'Crisis management',
+      'Annual safety training',
+    ],
+  },
+  {
+    name: 'Complete',
+    price: '£949',
+    featured: false,
+    features: [
+      'Everything in Essentials',
+      'Fully customised policies',
+      'Monthly compliance reviews',
+      'Up to 15 hours monthly consultation',
+      'Full recruitment cycle management',
+      'Employee engagement initiatives',
+      'D&I strategy development',
+      'Wellness program design',
+      'Custom training delivery',
+      'Full HRIS setup & integration',
+    ],
+  },
+];
+
+const addons = [
+  { name: 'On-Site HR Support', price: '£300/day' },
+  { name: 'Employee Satisfaction Survey', price: '£575/annually' },
+  { name: 'Team Building Event', price: 'From £700' },
+  { name: 'Advanced Leadership Training', price: '£950/program' },
+];
+---
+
+<Layout title="HR Services — ClimbHQ" description="HR policies, recruitment, training, and compliance packages designed for climbing centres. Creating amazing workplaces.">
+  <!-- Hero -->
+  <section class="hero-page">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="container">
+      <span class="hero-badge reveal">
+        <span class="hero-badge-dot" aria-hidden="true"></span>
+        HR Services
+      </span>
+      <h1 class="hero-title reveal reveal-delay-1">Creating amazing <em>workplaces</em></h1>
+      <p class="hero-subtitle reveal reveal-delay-2">HR support packages designed to help your climbing centre create an amazing place to work, where team members know they are looked after and treated fairly.</p>
+      <div class="hero-actions reveal reveal-delay-3">
+        <a href="/contact" class="btn btn-primary">Get started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section">
+    <div class="section-label reveal">Packages</div>
+    <h2 class="section-title reveal">HR support that scales with you</h2>
+    <p class="section-body reveal">All packages include a dedicated HR consultant and are priced monthly per site.</p>
+    <div class="pricing-grid">
+      {packages.map((pkg) => (
+        <div class={`pricing-card reveal${pkg.featured ? ' featured' : ''}`}>
+          <h3 class="pricing-name">{pkg.name}</h3>
+          <p class="pricing-price">{pkg.price}</p>
+          <p class="pricing-period">per month</p>
+          <ul class="pricing-features">
+            {pkg.features.map((feature) => (
+              <li>{feature}</li>
+            ))}
+          </ul>
+          <a href="/contact" class={`btn ${pkg.featured ? 'btn-primary' : 'btn-secondary'}`} style="width: 100%;">Get in touch</a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Add-ons -->
+  <section class="section" style="border-top: 1px solid var(--color-border);">
+    <div class="section-label reveal">Add-on Services</div>
+    <h2 class="section-title reveal">Additional support when you need it</h2>
+    <div class="addon-grid">
+      {addons.map((addon, i) => (
+        <div class={`addon-item reveal reveal-delay-${i + 1}`}>
+          <div>
+            <span class="addon-name">{addon.name}</span>
+            <span class="addon-price">{addon.price}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-brand">
+    <div class="section" style="text-align: center; padding-top: 100px; padding-bottom: 100px;">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <h2 class="section-title reveal" style="position: relative;">Ready to build a better workplace?</h2>
+      <p class="section-body reveal" style="margin-left: auto; margin-right: auto; position: relative;">Let's discuss which HR package is right for your climbing centre.</p>
+      <div class="hero-actions reveal" style="justify-content: center; position: relative;">
+        <a href="/contact" class="btn btn-outline-light">Get in touch</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .addon-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+    max-width: 640px;
+  }
+  .addon-item {
+    padding: 20px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-btn);
+  }
+  .addon-name {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--color-text);
+    margin-bottom: 4px;
+  }
+  .addon-price {
+    font-size: 14px;
+    color: var(--color-brand);
+    font-weight: 600;
+  }
+
+  @media (max-width: 900px) {
+    .addon-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

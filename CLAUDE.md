@@ -17,6 +17,7 @@ Monorepo for GainInsight marketing websites, migrating from React to Astro with 
 | `apps/junkan/` | junkan.ai - Astro site |
 | `apps/juncta/` | juncta.ai - Astro site (AI project management) |
 | `apps/gcs/` | globalclimbingstandard.com - Astro site (climbing qualification framework) |
+| `apps/climbhq/` | climbhq.co.uk - Astro site (climbing centre services) |
 | `packages/sanity-studio/` | Shared Sanity CMS Studio |
 | `packages/shared/` | Shared utilities and site config |
 
@@ -40,6 +41,7 @@ Monorepo for GainInsight marketing websites, migrating from React to Astro with 
 | junkan.ai | `junkan.ai` | `E2RK3RXTOQXX61` |
 | juncta.ai | `juncta.ai` | `E2E38PLLUKNAZD` |
 | globalclimbingstandard.com | TBD | TBD |
+| climbhq.co.uk | `climbhq.co.uk` | `E5GY6UTIB24K7` |
 
 ## Linear
 

@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const team = [
+  { name: 'Rob', role: 'Chief Executive Officer', bio: 'Over 20 years experience in senior commercial and People leadership roles. Passion for innovation.' },
+  { name: 'Dave Swis', role: 'Chief Marketing Officer', bio: 'Commercial CMO with leisure operations background, specialising in membership growth and retention.' },
+  { name: 'Jez', role: 'Chief Commercial & Climbing Officer', bio: 'Industry advocate holding board and advisory roles in governance and commercial growth.' },
+  { name: 'Andy Mellor', role: 'Chief Financial Officer', bio: 'Commercial CFO with expertise in strategic financial management and leisure sector operations.' },
+  { name: 'Sam Beeny', role: 'Marketing Manager', bio: 'Background in brand strategy, content, and campaign delivery.' },
+];
+
+const timeline = [
+  { year: '1998', label: 'Club Formation' },
+  { year: '2007', label: 'Verify Climbing Club established' },
+  { year: '2015', label: 'Winning C4 Event' },
+  { year: '2020', label: 'Community Building' },
+];
+---
+
+<Layout title="About — ClimbHQ" description="Learn about ClimbHQ and the team behind the UK's leading climbing centre support services.">
+  <!-- Hero -->
+  <section class="hero-page">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="container">
+      <span class="hero-badge reveal">
+        <span class="hero-badge-dot" aria-hidden="true"></span>
+        About Us
+      </span>
+      <h1 class="hero-title reveal reveal-delay-1">Scaling to <em>new heights</em></h1>
+      <p class="hero-subtitle reveal reveal-delay-2">ClimbHQ is a commercial services provider specialising exclusively in supporting UK indoor climbing centres, bouldering gyms, and clip &amp; climb facilities.</p>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="section">
+    <div class="section-label reveal">Our Mission</div>
+    <h2 class="section-title reveal">The go-to provider for the indoor climbing sector</h2>
+    <p class="section-body reveal">We combine industry expertise with digital marketing strategies, innovative HR support, and finance &amp; data professionals. Our cost-effective packages and tailored solutions are designed specifically for climbing centres.</p>
+  </section>
+
+  <!-- Timeline -->
+  <section class="section-dark">
+    <div class="section" style="padding-top: 100px; padding-bottom: 100px;">
+      <div class="section-label reveal">Our Journey</div>
+      <h2 class="section-title reveal">Key milestones</h2>
+      <div class="timeline">
+        {timeline.map((item, i) => (
+          <div class={`timeline-item reveal reveal-delay-${i + 1}`}>
+            <span class="timeline-year">{item.year}</span>
+            <span class="timeline-label">{item.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="section">
+    <div class="section-label reveal">Leadership Team</div>
+    <h2 class="section-title reveal">The people behind ClimbHQ</h2>
+    <p class="section-body reveal">Experienced specialists across climbing, marketing, finance, and HR — all focused on helping your centre succeed.</p>
+    <div class="team-grid">
+      {team.map((member, i) => (
+        <div class={`card team-card reveal reveal-delay-${(i % 4) + 1}`}>
+          <div class="team-avatar" aria-hidden="true"></div>
+          <h3 class="team-name">{member.name}</h3>
+          <p class="team-role">{member.role}</p>
+          <p class="team-bio">{member.bio}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="border-top: 1px solid var(--color-border);">
+    <div class="section-label reveal">FAQ</div>
+    <h2 class="section-title reveal">Common questions</h2>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <h3 class="faq-question">Do you only work with climbing centres?</h3>
+        <p class="faq-answer">Yes — we exclusively serve indoor climbing centres, bouldering gyms, and clip &amp; climb facilities across the UK. This focus means we understand your specific challenges better than a generic agency.</p>
+      </div>
+      <div class="faq-item reveal reveal-delay-1">
+        <h3 class="faq-question">How is ClimbHQ different from a regular agency?</h3>
+        <p class="faq-answer">We're like having an in-house team rather than an outside agency. Our entire team has deep climbing industry experience, and our services are purpose-built for the sector.</p>
+      </div>
+      <div class="faq-item reveal reveal-delay-2">
+        <h3 class="faq-question">Do you offer one-time or ongoing packages?</h3>
+        <p class="faq-answer">Both. We offer ongoing monthly packages for sustained growth, as well as one-time project-based services. Results typically become visible within 1 to 6 months depending on the service.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-brand">
+    <div class="section" style="text-align: center; padding-top: 100px; padding-bottom: 100px;">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <h2 class="section-title reveal" style="position: relative;">Ready to work together?</h2>
+      <p class="section-body reveal" style="margin-left: auto; margin-right: auto; position: relative;">Discover how ClimbHQ can help your climbing centre grow.</p>
+      <div class="hero-actions reveal" style="justify-content: center; position: relative;">
+        <a href="/contact" class="btn btn-outline-light">Get in touch</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Timeline */
+  .timeline {
+    display: flex;
+    gap: 48px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+  }
+  .timeline-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 24px;
+    border-left: 2px solid rgba(255, 255, 255, 0.2);
+  }
+  .timeline-year {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 28px;
+    color: var(--color-brand);
+  }
+  .timeline-label {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* FAQ */
+  .faq-list {
+    margin-top: 32px;
+    max-width: 720px;
+  }
+  .faq-item {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .faq-question {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-text);
+    margin-bottom: 12px;
+  }
+  .faq-answer {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 900px) {
+    .timeline {
+      flex-direction: column;
+      gap: 32px;
+    }
+  }
+</style>

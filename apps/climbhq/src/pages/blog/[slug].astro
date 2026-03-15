@@ -1,0 +1,77 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { fetchAll, fetchBySlug } from '../../lib/sanity';
+
+export async function getStaticPaths() {
+  let posts: any[] = [];
+  try {
+    posts = await fetchAll('post', 'publishedAt desc');
+  } catch {
+    return [];
+  }
+  return posts.map((post: any) => ({
+    params: { slug: post.slug?.current },
+    props: { post },
+  }));
+}
+
+const { slug } = Astro.params;
+let post = Astro.props.post;
+if (!post) {
+  try {
+    post = await fetchBySlug('post', slug!);
+  } catch {
+    return Astro.redirect('/blog');
+  }
+}
+if (!post) return Astro.redirect('/blog');
+---
+
+<Layout title={`${post.title} — ClimbHQ Blog`} description={post.excerpt || `Read ${post.title} on the ClimbHQ blog.`}>
+  <article class="hero-page">
+    <div class="container" style="max-width: 720px;">
+      <a href="/blog" class="back-link reveal">← Back to blog</a>
+      <span class="blog-date reveal">
+        {new Date(post.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+      </span>
+      <h1 class="hero-title reveal reveal-delay-1" style="font-size: clamp(32px, 5vw, 48px);">{post.title}</h1>
+      {post.excerpt && <p class="hero-subtitle reveal reveal-delay-2">{post.excerpt}</p>}
+    </div>
+  </article>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="article-content" style="max-width: 720px; margin: 0 auto;">
+      <p class="section-body" style="max-width: 100%;">Blog content will be rendered from Sanity portable text.</p>
+    </div>
+  </section>
+
+  <section class="section" style="text-align: center; border-top: 1px solid var(--color-border);">
+    <a href="/blog" class="btn btn-secondary">← Back to all posts</a>
+  </section>
+</Layout>
+
+<style>
+  .back-link {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-brand);
+    text-decoration: none;
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+  .back-link:hover {
+    text-decoration: underline;
+  }
+  .blog-date {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    display: block;
+    margin-bottom: 16px;
+  }
+  .article-content {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+  }
+</style>
