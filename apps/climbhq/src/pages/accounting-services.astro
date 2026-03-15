@@ -4,8 +4,7 @@ import Layout from '../layouts/Layout.astro';
 const packages = [
   {
     name: 'Anchor',
-    price: '£500',
-    featured: false,
+    price: '£500 per month*',
     features: [
       'Bookkeeping management',
       'Expense tracking and income analysis',
@@ -16,26 +15,23 @@ const packages = [
   },
   {
     name: 'Ascend',
-    price: '£1,000',
-    featured: true,
+    price: '£1,000 per month*',
     features: [
       'Everything in Anchor',
-      'In-depth financial reports & KPI dashboards',
-      'Integrated KPI reporting',
-      'Membership & attendance stats',
-      'Monthly Finance Business Partner check-in',
+      'More in-depth financial reports and KPI Dashboards',
+      'Integrated KPI reporting (memberships, attendance stats)',
+      'Monthly dedicated Finance Business Partner check-in',
     ],
   },
   {
     name: 'Apex',
-    price: '£1,500',
-    featured: false,
+    price: '£1,500 per month*',
     features: [
       'Everything in Ascend',
-      'Annual financial business planning',
-      'Bespoke financial reporting & dashboards',
+      'Annual financial business planning with forecasts',
+      'Bespoke financial reporting and dashboards',
       'Cashflow forecasting',
-      'Half-day monthly CFO access & mentoring',
+      'Half-day monthly CFO access for mentoring',
     ],
   },
 ];
@@ -48,53 +44,40 @@ const addons = [
 ];
 ---
 
-<Layout title="Accounting Services — ClimbHQ" description="Bookkeeping, financial reporting, KPI dashboards, and CFO access for climbing centres. Clear numbers, no jargon.">
-  <!-- Hero -->
-  <section class="hero-page">
-    <div class="hero-glow" aria-hidden="true"></div>
-    <div class="container">
-      <span class="hero-badge reveal">
-        <span class="hero-badge-dot" aria-hidden="true"></span>
-        Accounting
-      </span>
-      <h1 class="hero-title reveal reveal-delay-1">Numbers that make <em>sense</em></h1>
-      <p class="hero-subtitle reveal reveal-delay-2">Modern accounting services using the latest systems and technology. No jargon — just easy-to-understand numbers that help you make informed decisions.</p>
-      <div class="hero-actions reveal reveal-delay-3">
-        <a href="/contact" class="btn btn-primary">Get started</a>
+<Layout title="Accounting Services — ClimbHQ" description="Bookkeeping, financial reporting, KPI dashboards, and CFO access for climbing centres.">
+  <!-- Banner -->
+  <section class="page-banner" style="background-image: url('/images/stock/climbing-man-rear.jpg');">
+    <h2>Accounting Services</h2>
+    <p>No Jargon, just easy to understand numbers that make sense and allow you to make informed decisions.</p>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section-navy" style="padding: 80px 48px;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="pricing-grid">
+        {packages.map((pkg) => (
+          <div class="pricing-card reveal">
+            <h3 class="pricing-name">{pkg.name}</h3>
+            <p class="pricing-price">{pkg.price}</p>
+            <ul class="pricing-features">
+              {pkg.features.map((feature) => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Pricing -->
-  <section class="section">
-    <div class="section-label reveal">Packages</div>
-    <h2 class="section-title reveal">Choose your level of support</h2>
-    <p class="section-body reveal">From bookkeeping basics to full CFO access — packages designed for climbing centres of all sizes.</p>
-    <div class="pricing-grid">
-      {packages.map((pkg) => (
-        <div class={`pricing-card reveal${pkg.featured ? ' featured' : ''}`}>
-          <h3 class="pricing-name">{pkg.name}</h3>
-          <p class="pricing-price">{pkg.price}</p>
-          <p class="pricing-period">from / per month</p>
-          <ul class="pricing-features">
-            {pkg.features.map((feature) => (
-              <li>{feature}</li>
-            ))}
-          </ul>
-          <a href="/contact" class={`btn ${pkg.featured ? 'btn-primary' : 'btn-secondary'}`} style="width: 100%;">Get in touch</a>
-        </div>
-      ))}
-    </div>
-  </section>
-
   <!-- Add-ons -->
-  <section class="section" style="border-top: 1px solid var(--color-border);">
-    <div class="section-label reveal">Add-on Services</div>
+  <section class="section" style="text-align: center;">
+    <p class="section-label reveal">ADD-ON SERVICES</p>
     <h2 class="section-title reveal">Additional support when you need it</h2>
     <div class="addon-grid">
       {addons.map((addon, i) => (
         <div class={`addon-item reveal reveal-delay-${i + 1}`}>
-          <span class="addon-check" aria-hidden="true">+</span>
+          <span class="addon-bullet" aria-hidden="true">+</span>
           <span>{addon}</span>
         </div>
       ))}
@@ -102,14 +85,11 @@ const addons = [
   </section>
 
   <!-- CTA -->
-  <section class="section-brand">
-    <div class="section" style="text-align: center; padding-top: 100px; padding-bottom: 100px;">
-      <div class="cta-glow" aria-hidden="true"></div>
-      <h2 class="section-title reveal" style="position: relative;">Ready for clear financial reporting?</h2>
-      <p class="section-body reveal" style="margin-left: auto; margin-right: auto; position: relative;">Let's discuss which accounting package is right for your climbing centre.</p>
-      <div class="hero-actions reveal" style="justify-content: center; position: relative;">
-        <a href="/contact" class="btn btn-outline-light">Get in touch</a>
-      </div>
+  <section class="section-navy" style="padding: 80px 48px; text-align: center;">
+    <div class="section">
+      <h2 class="section-title reveal" style="color: #FFFFFF;">Ready for clear financial reporting?</h2>
+      <p class="section-body reveal" style="margin-left: auto; margin-right: auto;">Let's discuss which accounting package is right for your climbing centre.</p>
+      <a href="/contact" class="btn btn-primary reveal">Get in touch</a>
     </div>
   </section>
 </Layout>
@@ -121,6 +101,9 @@ const addons = [
     gap: 16px;
     margin-top: 32px;
     max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
   }
   .addon-item {
     display: flex;
@@ -128,21 +111,19 @@ const addons = [
     gap: 12px;
     padding: 16px;
     background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-light);
     border-radius: var(--radius-btn);
     font-size: 15px;
-    color: var(--color-text-secondary);
+    color: var(--color-text-dark);
   }
-  .addon-check {
+  .addon-bullet {
     font-family: var(--font-display);
     font-weight: 700;
-    color: var(--color-brand);
+    color: var(--color-accent);
     font-size: 18px;
+    flex-shrink: 0;
   }
-
   @media (max-width: 900px) {
-    .addon-grid {
-      grid-template-columns: 1fr;
-    }
+    .addon-grid { grid-template-columns: 1fr; }
   }
 </style>

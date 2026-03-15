@@ -2,11 +2,8 @@
 const currentYear = new Date().getFullYear();
 
 const footerLinks = [
+  { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Marketing Services', href: '/marketing-services' },
-  { label: 'Accounting Services', href: '/accounting-services' },
-  { label: 'HR Services', href: '/hr-services' },
-  { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -18,136 +15,214 @@ const socialLinks = [
 ---
 
 <footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-brand-col">
+  <div class="footer-top">
+    <div class="footer-brand">
       <img src="/images/logos/climbhq-logo.svg" alt="ClimbHQ" width="140" height="40" class="footer-logo" />
-      <p class="footer-tagline">Professional head office services dedicated to helping climbing centres grow.</p>
+      <ul class="footer-nav">
+        {footerLinks.map((link) => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+  <div class="footer-main">
+    <div class="footer-col">
+      <h5 class="footer-heading">About ClimbHQ</h5>
+      <p class="footer-text">ClimbHQ is a commercial services provider dedicated to helping climbing centres grow. We combine industry expertise with digital marketing strategies to attract more visitors, boost engagement, and drive memberships.</p>
+      <img src="/images/logos/nicas-logo.png" alt="NICAS Partner" width="150" height="54" class="footer-nicas" />
       <div class="footer-social">
         {socialLinks.map((link) => (
           <a href={link.href} aria-label={link.label} target="_blank" rel="noopener noreferrer" class="social-link">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d={link.icon} /></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d={link.icon} /></svg>
           </a>
         ))}
       </div>
     </div>
-    <div class="footer-links-col">
-      <nav aria-label="Footer navigation">
-        {footerLinks.map((link) => (
-          <a href={link.href}>{link.label}</a>
-        ))}
-      </nav>
+    <div class="footer-col">
+      <h5 class="footer-heading">Contact Info</h5>
+      <p class="footer-text">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-right:6px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:hello@climbhq.co.uk" class="footer-email">hello@climbhq.co.uk</a>
+      </p>
     </div>
-    <div class="footer-contact-col">
-      <p class="footer-contact-label">Get in touch</p>
-      <a href="mailto:hello@climbhq.co.uk" class="footer-email">hello@climbhq.co.uk</a>
-      <p class="footer-legal">&copy; {currentYear} ClimbHQ. All rights reserved.</p>
+    <div class="footer-col">
+      <h5 class="footer-heading">Subscribe Our Newsletter</h5>
+      <form class="footer-newsletter">
+        <input type="email" placeholder="Email Address" class="footer-input" />
+        <button type="submit" class="footer-submit" aria-label="Subscribe">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </form>
+      <p class="footer-disclaimer">*Trust me, we will not spam your email</p>
     </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Copyright &copy; {currentYear} ClimbHQ All rights reserved.</p>
+    <ul class="footer-legal">
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms &amp; Conditions</a></li>
+    </ul>
   </div>
 </footer>
 
 <style>
   .footer {
-    background: var(--color-dark);
+    background: var(--color-footer-bg);
     color: #FFFFFF;
-    padding: 64px 48px 48px;
   }
-  .footer-inner {
+  .footer-top {
+    padding: 40px 48px 24px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .footer-brand {
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-logo {
+    height: 32px;
+    width: auto;
+    filter: brightness(0) invert(1);
+  }
+  .footer-nav {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .footer-nav a {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .footer-nav a:hover { color: #FFFFFF; }
+  .footer-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 48px;
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr;
     gap: 48px;
   }
-  .footer-logo {
-    height: 36px;
-    width: auto;
+  .footer-heading {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
     margin-bottom: 16px;
-    filter: brightness(0) invert(1);
+    text-transform: none;
   }
-  .footer-tagline {
+  .footer-text {
     font-size: 14px;
     color: rgba(255, 255, 255, 0.5);
-    line-height: 1.5;
-    margin-bottom: 20px;
-    max-width: 280px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .footer-email {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+  }
+  .footer-email:hover { color: var(--color-accent); }
+  .footer-nicas {
+    margin-bottom: 16px;
+    height: 40px;
+    width: auto;
   }
   .footer-social {
     display: flex;
-    gap: 12px;
+    gap: 10px;
   }
   .social-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.6);
     transition: background 0.2s ease, color 0.2s ease;
   }
   .social-link:hover {
-    background: var(--color-brand);
+    background: var(--color-accent);
     color: #FFFFFF;
   }
-  .footer-links-col nav {
+  .footer-newsletter {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    gap: 0;
   }
-  .footer-links-col a {
-    font-family: var(--font-display);
-    font-size: 14px;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.6);
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-  .footer-links-col a:hover {
+  .footer-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid var(--color-border);
+    background: rgba(255, 255, 255, 0.05);
     color: #FFFFFF;
-  }
-  .footer-contact-col {
-    text-align: right;
-  }
-  .footer-contact-label {
-    font-family: var(--font-display);
     font-size: 14px;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.4);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 12px;
+    border-radius: var(--radius-btn) 0 0 var(--radius-btn);
+    outline: none;
   }
-  .footer-email {
-    font-size: 16px;
-    color: var(--color-brand);
-    text-decoration: none;
-    transition: color 0.2s ease;
+  .footer-input::placeholder { color: rgba(255, 255, 255, 0.3); }
+  .footer-submit {
+    padding: 10px 16px;
+    background: var(--color-accent);
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    border-radius: 0 var(--radius-btn) var(--radius-btn) 0;
+    transition: background 0.2s ease;
   }
-  .footer-email:hover {
-    color: var(--color-brand-light);
+  .footer-submit:hover { background: var(--color-accent-hover); }
+  .footer-disclaimer {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.3);
+    margin-top: 8px;
+  }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 48px;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-bottom p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.35);
   }
   .footer-legal {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.3);
-    margin-top: 24px;
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
+  .footer-legal a {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.35);
+    text-decoration: none;
+  }
+  .footer-legal a:hover { color: rgba(255, 255, 255, 0.6); }
 
   @media (max-width: 900px) {
-    .footer {
-      padding: 48px 20px;
-    }
-    .footer-inner {
+    .footer-top { padding: 32px 20px 20px; }
+    .footer-brand { flex-direction: column; gap: 16px; }
+    .footer-main {
       grid-template-columns: 1fr;
-      gap: 28px;
+      padding: 32px 20px;
+      gap: 32px;
     }
-    .footer-contact-col {
-      text-align: left;
-    }
-    .footer-links-col a {
-      min-height: 44px;
-      display: flex;
-      align-items: center;
+    .footer-bottom {
+      flex-direction: column;
+      gap: 12px;
+      padding: 20px;
+      text-align: center;
     }
   }
 </style>

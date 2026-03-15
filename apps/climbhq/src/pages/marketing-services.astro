@@ -2,153 +2,171 @@
 import Layout from '../layouts/Layout.astro';
 
 const services = [
-  { name: 'Social Media Marketing', desc: 'Platform management across Instagram, Facebook, and TikTok with content creation and targeted ad campaigns to build community engagement.' },
-  { name: 'Search Engine Optimisation', desc: 'Keyword research and technical improvements to increase visibility in search results for local climbing centre searches.' },
-  { name: 'Pay-Per-Click Advertising', desc: 'Google Ads campaigns targeting potential climbers with focus on ROI maximisation.' },
-  { name: 'Email Marketing', desc: 'Professional messaging about classes, offers, and updates with personalised content and design.' },
-  { name: 'Website Design & Optimisation', desc: 'New website creation or existing site improvements emphasising user-friendly, conversion-focused design.' },
-  { name: 'Content Marketing', desc: 'Blog articles, guides, and downloadable resources positioning your centre as a climbing authority.' },
+  { name: 'Social Media Marketing', tagline: 'Get your centre noticed online.', desc: "We'll manage your social media accounts, create engaging content, and run targeted ad campaigns on platforms like Instagram, Facebook, and TikTok. From eye-catching posts to data-driven strategies, we'll connect you with your audience and build your community." },
+  { name: 'Search Engine Optimization (SEO)', tagline: 'Help climbers find you first.', desc: "We'll optimise your website to rank higher in search engine results, ensuring local climbers can easily find your centre. From keyword research to technical improvements, we'll boost your visibility and drive more traffic to your site." },
+  { name: 'Pay-Per-Click (PPC) Advertising', tagline: 'Turn clicks into climbers.', desc: "We'll run targeted PPC campaigns through Google Ads to help you reach potential climbers actively searching for climbing centres or related activities. Our goal is to maximise your return on investment and fill your walls." },
+  { name: 'Email Marketing Campaigns', tagline: 'Stay connected with your community.', desc: "We'll craft professional email campaigns that keep climbers in the loop about new classes, special offers, and centre updates. With personalized messaging and stunning designs, we'll help you build loyalty and engagement." },
+  { name: 'Website Design & Optimization', tagline: "Your centre's digital home, perfected.", desc: "From creating new websites to optimising existing ones, we'll ensure your online presence is as inviting and functional as your climbing walls. Our designs are clean, user-friendly, and built to convert visitors into loyal climbers." },
+  { name: 'Content Marketing', tagline: 'Tell your story, inspire action.', desc: "We'll create engaging blogs, articles, and downloadable resources tailored to your audience. Whether it's a guide for beginners or tips for experienced climbers, content marketing builds trust and positions your centre as an authority in the climbing world." },
 ];
 
 const packages = [
   {
     name: 'Base Camp',
-    price: '£499',
-    featured: false,
+    price: '£499 per month*',
     features: [
-      'Website audit',
-      '3 weekly social posts',
-      'Google My Business management',
+      'Website audit and SEO optimisation',
+      'Social media management - 3 social posts per week across 3 channels including graphic creation and copy writing.',
+      'Google My Business set up/management - monthly updates and optimisation',
     ],
   },
   {
     name: 'Summit Club',
-    price: '£999',
-    featured: true,
+    price: '£999 per month*',
     features: [
       'Everything in Base Camp',
-      '6 weekly social posts',
-      'CRM setup',
-      'Email newsletters',
-      'SMS campaigns',
-      'Blog creation',
-      'Paid awareness campaign',
+      'Social media management - 6 social posts per week across 3 channels including graphic creation and copy writing.',
+      'CRM set up with GoHighLevel',
+      'Email newsletter twice per month',
+      'SMS text campaign 2 per month',
+      'Blog creation for website',
+      'Advanced keyword monitoring and backlink building to increase SEO presence',
+      'Monthly strategy report',
+      '1 social media paid brand awareness campaign per month',
+      '*Text and email campaigns charged in units at the following rates:',
+      'Text: £0.05',
+      'Email: £0.60 per 1,000 sent',
     ],
   },
   {
     name: 'Peak Performer',
-    price: '£1,299',
-    featured: false,
+    price: '£1299 per month*',
     features: [
       'Everything in Summit Club',
-      '9 weekly social posts',
-      'Review outreach',
-      'Booking system integration',
-      '2 custom lead campaigns',
-      'Weekly newsletters',
-      'Quarterly reporting',
+      'Google My Business review outreach',
+      'Full integration of marketing CRM with booking systems and email automations.',
+      'Social media management - 9 social posts per week across 3 channels including graphic creation and copy writing.',
+      'Weekly newsletter',
+      '2* custom lead generation campaign on social media or Google Ads*',
+      'Landing page creation for lead generation campaigns',
+      '4 SMS campaigns per month',
+      'Quarterly deep dive reporting',
+      'Monthly status report',
+      '*Additional ad spend required for paid campaigns',
     ],
   },
 ];
 ---
 
-<Layout title="Marketing Services — ClimbHQ" description="Social media, SEO, PPC, email marketing, and content creation packages designed specifically for climbing centres.">
-  <!-- Hero -->
-  <section class="hero-page">
-    <div class="hero-glow" aria-hidden="true"></div>
-    <div class="container">
-      <span class="hero-badge reveal">
-        <span class="hero-badge-dot" aria-hidden="true"></span>
-        Marketing
-      </span>
-      <h1 class="hero-title reveal reveal-delay-1">Marketing that <em>climbs</em></h1>
-      <p class="hero-subtitle reveal reveal-delay-2">Digital marketing solutions built exclusively for climbing centres. Attract visitors, boost engagement, and drive memberships.</p>
-      <div class="hero-actions reveal reveal-delay-3">
-        <a href="/contact" class="btn btn-primary">Get started</a>
+<Layout title="Marketing Services — ClimbHQ" description="Digital marketing packages designed specifically for climbing centres. Social media, SEO, PPC, and more.">
+  <!-- Banner -->
+  <section class="page-banner" style="background-image: url('/images/stock/climbing-man-fit.jpg');">
+    <h2>Marketing Services</h2>
+    <p>The packages below are an example of our monthly, fixed cost service.<br/>Bespoke services are provided on request – Get in touch today to find out more!</p>
+  </section>
+
+  <!-- Services detail -->
+  <section class="services-section section-dark">
+    <div class="services-inner">
+      <div class="services-heading">
+        <p class="section-label reveal">HOW WE SUPPORT YOU</p>
+        <h2 class="section-title reveal" style="color: #FFFFFF;">The growth starts here</h2>
+        <a href="/contact" class="btn btn-primary reveal">Get in touch</a>
+      </div>
+      <div class="services-list">
+        {services.map((service, i) => (
+          <div class={`service-item reveal reveal-delay-${(i % 3) + 1}`}>
+            <div class="service-icon-circle" aria-hidden="true"></div>
+            <div>
+              <h3 class="service-name">{service.name}</h3>
+              <p class="service-tagline"><em>{service.tagline}</em></p>
+              <p class="service-desc">{service.desc}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Services -->
-  <section class="section">
-    <div class="section-label reveal">Our Services</div>
-    <h2 class="section-title reveal">Six core marketing services</h2>
-    <p class="section-body reveal">Everything your climbing centre needs to build a strong digital presence and attract more climbers.</p>
-    <div class="services-detail-grid">
-      {services.map((service, i) => (
-        <div class={`card reveal reveal-delay-${(i % 3) + 1}`}>
-          <h3 class="service-detail-name">{service.name}</h3>
-          <p class="service-detail-desc">{service.desc}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
   <!-- Pricing -->
-  <section class="section" style="border-top: 1px solid var(--color-border);">
-    <div class="section-label reveal">Pricing</div>
-    <h2 class="section-title reveal">Choose your package</h2>
-    <p class="section-body reveal">Transparent pricing with no hidden fees. All packages are monthly per site.</p>
-    <div class="pricing-grid">
-      {packages.map((pkg) => (
-        <div class={`pricing-card reveal${pkg.featured ? ' featured' : ''}`}>
-          <h3 class="pricing-name">{pkg.name}</h3>
-          <p class="pricing-price">{pkg.price}</p>
-          <p class="pricing-period">per month</p>
-          <ul class="pricing-features">
-            {pkg.features.map((feature) => (
-              <li>{feature}</li>
-            ))}
-          </ul>
-          <a href="/contact" class={`btn ${pkg.featured ? 'btn-primary' : 'btn-secondary'}`} style="width: 100%;">Get in touch</a>
-        </div>
-      ))}
-    </div>
-    <p class="pricing-note reveal">Additional costs apply for SMS (£0.05 per message) and email campaigns (£0.60 per 1,000 sent).</p>
-  </section>
-
-  <!-- CTA -->
-  <section class="section-brand">
-    <div class="section" style="text-align: center; padding-top: 100px; padding-bottom: 100px;">
-      <div class="cta-glow" aria-hidden="true"></div>
-      <h2 class="section-title reveal" style="position: relative;">Ready to boost your visibility?</h2>
-      <p class="section-body reveal" style="margin-left: auto; margin-right: auto; position: relative;">Let's discuss which marketing package is right for your climbing centre.</p>
-      <div class="hero-actions reveal" style="justify-content: center; position: relative;">
-        <a href="/contact" class="btn btn-outline-light">Get in touch</a>
+  <section class="section-navy" style="padding: 80px 48px;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="pricing-grid">
+        {packages.map((pkg) => (
+          <div class="pricing-card reveal">
+            <h3 class="pricing-name">{pkg.name}</h3>
+            <p class="pricing-price">{pkg.price}</p>
+            <ul class="pricing-features">
+              {pkg.features.map((feature) => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 </Layout>
 
 <style>
-  .services-detail-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 48px;
+  .services-section {
+    padding: 80px 48px;
   }
-  .service-detail-name {
+  .services-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 64px;
+  }
+  .services-heading {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+  }
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .service-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .service-icon-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+  }
+  .service-name {
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 18px;
-    color: var(--color-text);
-    margin-bottom: 12px;
+    color: #FFFFFF;
+    margin-bottom: 4px;
   }
-  .service-detail-desc {
-    font-size: 15px;
-    color: var(--color-text-secondary);
-    line-height: 1.6;
-  }
-  .pricing-note {
-    margin-top: 24px;
+  .service-tagline {
     font-size: 14px;
-    color: var(--color-text-muted);
-    text-align: center;
+    color: var(--color-accent);
+    margin-bottom: 8px;
+  }
+  .service-desc {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.7;
   }
 
   @media (max-width: 900px) {
-    .services-detail-grid {
+    .services-section { padding: 48px 20px; }
+    .services-inner {
       grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .services-heading {
+      position: static;
     }
   }
 </style>
