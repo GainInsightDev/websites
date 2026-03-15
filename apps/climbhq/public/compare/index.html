@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ClimbHQ: WordPress vs Astro Comparison</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; background: #111; color: #fff; padding: 32px; }
+    h1 { text-align: center; margin-bottom: 16px; font-size: 24px; }
+    .subtitle { text-align: center; color: #888; margin-bottom: 48px; font-size: 14px; }
+    .page-compare { margin-bottom: 64px; border: 1px solid #333; border-radius: 8px; overflow: hidden; }
+    .page-header { padding: 16px 24px; background: #222; display: flex; justify-content: space-between; align-items: center; }
+    .page-header h2 { font-size: 18px; }
+    .page-header span { color: #888; font-size: 14px; }
+    .compare-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; background: #333; }
+    .compare-col { background: #111; }
+    .compare-col h3 { padding: 8px 16px; background: #1a1a2e; font-size: 13px; text-align: center; color: #18abd7; }
+    .compare-col img { width: 100%; display: block; }
+  </style>
+</head>
+<body>
+  <h1>ClimbHQ: WordPress vs Astro — Visual Comparison</h1>
+  <p class="subtitle">Left = WordPress original (climbhq.co.uk) | Right = Astro migration (wbs-16.gaininsight.co.uk)</p>
+
+  <div class="page-compare">
+    <div class="page-header">
+      <h2>Homepage</h2>
+      <span>/</span>
+    </div>
+    <div class="compare-row">
+      <div class="compare-col">
+        <h3>WordPress (Original)</h3>
+        <img src="wp-homepage.png" alt="WordPress homepage" loading="lazy" />
+      </div>
+      <div class="compare-col">
+        <h3>Astro (New)</h3>
+        <img src="astro-homepage.png" alt="Astro homepage" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</body>
+</html>
