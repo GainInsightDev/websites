@@ -2,32 +2,38 @@
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import '../styles/elementor.css';
 
 interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  bodyClass?: string;
 }
 
 const {
-  title = 'ClimbHQ — Helping Grow Your Climbing Centre',
+  title = 'ClimbHQ — Supporting the growth of the climbing industry',
   description = 'Professional head office services for indoor climbing centres. Marketing, accounting, and HR support designed for the climbing sector.',
   ogImage = '/images/climbhq-og.png',
+  bodyClass = '',
 } = Astro.props;
 
 const siteUrl = 'https://climbhq.co.uk';
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
 const ogImageUrl = new URL(ogImage, siteUrl).href;
+
+// WordPress body classes needed for Elementor CSS selectors
+const wpBodyClasses = `elementor-default elementor-template-full-width elementor-kit-89 elementor-page ${bodyClass}`.trim();
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
@@ -85,29 +91,42 @@ const ogImageUrl = new URL(ogImage, siteUrl).href;
       ]
     })} />
 
-    <!-- Self-hosted fonts (Unbounded + Montserrat from WordPress) -->
+    <!-- Self-hosted fonts (Unbounded + Montserrat) -->
     <link rel="preload" href="/fonts/unbounded-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/montserrat-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Font Awesome for Elementor icons -->
+    <link rel="stylesheet" href="https://climbhq.co.uk/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min.css" />
+    <link rel="stylesheet" href="https://climbhq.co.uk/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css" />
+
+    <!-- JEG Elementor Kit (icon boxes, headings, mailchimp widgets) -->
+    <link rel="stylesheet" href="https://climbhq.co.uk/wp-content/plugins/jeg-elementor-kit/assets/css/elements/main.css" />
+    <link rel="stylesheet" href="https://climbhq.co.uk/wp-content/plugins/jeg-elementor-kit/assets/fonts/jkiticon/jkiticon.css" />
+
+    <!-- Elementor widget-specific CSS -->
+    <link rel="stylesheet" href="https://climbhq.co.uk/wp-content/plugins/elementor/assets/css/widget-icon-list.min.css" />
+    <link rel="stylesheet" href="https://climbhq.co.uk/wp-content/plugins/elementor/assets/css/widget-heading.min.css" />
+    <link rel="stylesheet" href="https://climbhq.co.uk/wp-content/plugins/elementor/assets/css/widget-image.min.css" />
+    <link rel="stylesheet" href="https://climbhq.co.uk/wp-content/plugins/elementor/assets/css/widget-image-box.min.css" />
+    <link rel="stylesheet" href="https://climbhq.co.uk/wp-content/plugins/elementor/assets/css/widget-divider.min.css" />
+    <link rel="stylesheet" href="https://climbhq.co.uk/wp-content/plugins/elementor/assets/css/widget-social-icons.min.css" />
+    <link rel="stylesheet" href="https://climbhq.co.uk/wp-content/plugins/elementor/assets/css/widget-spacer.min.css" />
   </head>
-  <body>
+  <body class={wpBodyClasses}>
+    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
     <Navbar />
-    <main>
-      <slot />
-    </main>
+
+    <slot />
+
     <Footer />
 
-    <!-- Scroll reveal observer -->
+    <!-- Lazyload backgrounds — replaces WP's IntersectionObserver script -->
     <script>
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      // Mark all Elementor parent containers as lazyloaded (WP does this via JS)
+      document.querySelectorAll('.e-con.e-parent:not(.e-lazyloaded)').forEach(el => {
+        el.classList.add('e-lazyloaded');
+      });
     </script>
   </body>
 </html>

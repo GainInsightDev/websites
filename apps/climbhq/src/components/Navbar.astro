@@ -1,4 +1,6 @@
 ---
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
@@ -9,166 +11,166 @@ const navLinks = [
   { label: 'Blog', href: '/blog' },
 ];
 
-const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+function isActive(href: string) {
+  const normalized = currentPath || '/';
+  return normalized === href || normalized === href.replace(/\/$/, '');
+}
 ---
 
-<nav class="nav" id="nav">
-  <a href="/" class="nav-logo" aria-label="ClimbHQ home">
-    <img src="/images/logos/climbhq-logo.svg" alt="ClimbHQ" width="160" height="40" />
-  </a>
-  <ul class="nav-links">
-    {navLinks.map((link) => (
-      <li><a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined} class={currentPath === link.href ? 'active' : ''}>{link.label}</a></li>
-    ))}
-  </ul>
+<!-- Desktop Header (hidden on tablet/mobile via Elementor CSS) -->
+<div data-elementor-type="header" data-elementor-id="123" class="elementor elementor-123 elementor-location-header">
+  <div class="elementor-element elementor-element-40ede056 e-con-full elementor-hidden-tablet elementor-hidden-mobile e-flex e-con e-parent e-lazyloaded" data-id="40ede056" data-element_type="container" data-e-type="container">
+    <div class="elementor-element elementor-element-50e1e8a2 e-con-full e-flex e-con e-child" data-id="50e1e8a2" data-element_type="container" data-e-type="container">
+      <div class="elementor-element elementor-element-75eab454 elementor-widget elementor-widget-image" data-id="75eab454" data-element_type="widget" id="header_logo">
+        <div class="elementor-widget-container">
+          <a href="/">
+            <img fetchpriority="high" width="2048" height="771" src="/images/logos/climbhq-logo.svg" class="attachment-full size-full" alt="ClimbHQ" decoding="async" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="elementor-element elementor-element-7defda31 e-con-full elementor-hidden-tablet e-flex e-con e-child" data-id="7defda31" data-element_type="container" data-e-type="container">
+      <div class="elementor-element elementor-element-8c4248c elementor-nav-menu__align-end elementor-widget__width-initial elementor-nav-menu--dropdown-tablet elementor-nav-menu__text-align-aside elementor-nav-menu--toggle elementor-nav-menu--burger elementor-widget elementor-widget-nav-menu" data-id="8c4248c" data-element_type="widget" id="mobile_menu">
+        <div class="elementor-widget-container">
+          <nav aria-label="Menu" class="elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-horizontal e--pointer-underline e--animation-fade">
+            <ul id="menu-1-8c4248c" class="elementor-nav-menu">
+              {navLinks.map((link) => (
+                <li class={`menu-item${isActive(link.href) ? ' current-menu-item' : ''}`}>
+                  <a href={link.href} class={`elementor-item${isActive(link.href) ? ' elementor-item-active' : ''}`} aria-current={isActive(link.href) ? 'page' : undefined}>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div class="elementor-menu-toggle" role="button" tabindex="0" aria-label="Menu Toggle" aria-expanded="false" id="desktop-menu-toggle">
+            <i aria-hidden="true" role="presentation" class="elementor-menu-toggle__icon--open eicon-menu-bar"></i>
+            <i aria-hidden="true" role="presentation" class="elementor-menu-toggle__icon--close eicon-close"></i>
+          </div>
+          <nav class="elementor-nav-menu--dropdown elementor-nav-menu__container" aria-hidden="true" id="desktop-dropdown">
+            <ul id="menu-2-8c4248c" class="elementor-nav-menu">
+              {navLinks.map((link) => (
+                <li class={`menu-item${isActive(link.href) ? ' current-menu-item' : ''}`}>
+                  <a href={link.href} class={`elementor-item${isActive(link.href) ? ' elementor-item-active' : ''}`} tabindex="-1">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <button
-    id="mobile-menu-btn"
-    class="mobile-menu-btn"
-    aria-label="Toggle menu"
-    aria-expanded="false"
-    aria-controls="mobile-menu"
-  >
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-      <line x1="3" y1="6" x2="21" y2="6" />
-      <line x1="3" y1="12" x2="21" y2="12" />
-      <line x1="3" y1="18" x2="21" y2="18" />
-    </svg>
-  </button>
-</nav>
+  <!-- Mobile Header (hidden on desktop via Elementor CSS) -->
+  <div class="elementor-element elementor-element-21332eb e-con-full elementor-hidden-desktop e-flex e-con e-parent e-lazyloaded" data-id="21332eb" data-element_type="container" data-e-type="container">
+    <div class="elementor-element elementor-element-5af4fd5 e-con-full e-flex e-con e-child" data-id="5af4fd5" data-element_type="container" data-e-type="container">
+      <div class="elementor-element elementor-element-44560ff elementor-widget elementor-widget-image" data-id="44560ff" data-element_type="widget">
+        <div class="elementor-widget-container">
+          <a href="/">
+            <img fetchpriority="high" width="2048" height="771" src="/images/logos/climbhq-logo.svg" class="attachment-full size-full" alt="ClimbHQ" decoding="async" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="elementor-element elementor-element-c2a7ab7 e-con-full e-flex e-con e-child" data-id="c2a7ab7" data-element_type="container" data-e-type="container">
+      <div class="elementor-element elementor-element-966b4bb elementor-widget elementor-widget-image" data-id="966b4bb" data-element_type="widget">
+        <div class="elementor-widget-container">
+          <button id="mobile-menu-btn" aria-label="Open menu" style="background:none;border:none;cursor:pointer;padding:0;">
+            <img width="800" height="800" src="https://climbhq.co.uk/wp-content/uploads/2025/03/mobile-menu-white.svg" class="attachment-large size-large" alt="Menu" decoding="async" style="width:42px;height:42px;" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<div id="mobile-menu" class="mobile-menu hidden">
-  <div class="mobile-menu-inner">
-    {navLinks.map((link) => (
-      <a href={link.href} class={`mobile-menu-link${currentPath === link.href ? ' active' : ''}`}>{link.label}</a>
-    ))}
+<!-- Mobile slide-out menu (simplified from WP popup) -->
+<div id="mobile-slide-menu" class="mobile-slide-menu" aria-hidden="true" style="display:none;">
+  <div class="mobile-slide-menu-inner">
+    <button id="mobile-menu-close" aria-label="Close menu" style="background:none;border:none;color:#fff;font-size:24px;cursor:pointer;position:absolute;top:16px;right:16px;">&times;</button>
+    <ul style="list-style:none;padding:0;margin:40px 0 0 0;">
+      {navLinks.map((link) => (
+        <li style="margin-bottom:0;">
+          <a href={link.href} style="display:block;padding:16px 24px;color:#18ABD7;font-family:'Unbounded',sans-serif;font-size:16px;font-weight:500;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.1);">
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
   </div>
 </div>
 
 <style>
-  .nav {
+  .mobile-slide-menu {
     position: fixed;
     top: 0;
-    left: 0;
     right: 0;
-    z-index: 100;
-    padding: 0 48px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--color-nav-bg);
+    width: 280px;
+    height: 100vh;
+    background: #03071F;
+    z-index: 100000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
   }
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
+  .mobile-slide-menu.open {
+    display: block !important;
+    transform: translateX(0);
   }
-  .nav-logo img {
-    height: 32px;
-    width: auto;
-    filter: brightness(0) invert(1);
-  }
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .nav-links a {
-    font-family: var(--font-heading);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--color-accent);
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-  .nav-links a:hover {
-    color: #FFFFFF;
-  }
-  .nav-links a.active {
-    color: #FFFFFF;
-  }
-  .mobile-menu-btn {
-    display: none;
-    padding: 10px;
-    min-width: 44px;
-    min-height: 44px;
-    background: none;
-    border: none;
-    color: #FFFFFF;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-  }
-  .mobile-menu {
+  .mobile-slide-menu-overlay {
     position: fixed;
-    top: 60px;
-    left: 0;
-    right: 0;
-    z-index: 99;
-    background: var(--color-nav-bg);
-    border-bottom: 1px solid var(--color-border);
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 99999;
+    display: none;
   }
-  .mobile-menu.hidden {
-    opacity: 0;
-    transform: translateY(-8px);
-    pointer-events: none;
-  }
-  .mobile-menu-inner {
-    padding: 16px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .mobile-menu-link {
-    font-family: var(--font-heading);
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--color-accent);
-    text-decoration: none;
-    padding: 12px 0;
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-  }
-  .mobile-menu-link:hover,
-  .mobile-menu-link.active {
-    color: #FFFFFF;
-  }
-
-  @media (max-width: 900px) {
-    .nav {
-      padding: 0 20px;
-    }
-    .nav-links {
-      display: none;
-    }
-    .mobile-menu-btn {
-      display: block;
-    }
+  .mobile-slide-menu-overlay.open {
+    display: block;
   }
 </style>
 
 <script>
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-slide-menu');
+  const mobileClose = document.getElementById('mobile-menu-close');
 
-  btn?.addEventListener('click', () => {
-    const isOpen = !menu?.classList.contains('hidden');
-    menu?.classList.toggle('hidden');
-    btn.setAttribute('aria-expanded', String(!isOpen));
-  });
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'mobile-slide-menu-overlay';
+  overlay.id = 'mobile-menu-overlay';
+  document.body.appendChild(overlay);
+
+  function openMobileMenu() {
+    if (mobileMenu) {
+      mobileMenu.style.display = 'block';
+      requestAnimationFrame(() => {
+        mobileMenu.classList.add('open');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+      });
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeMobileMenu() {
+    if (mobileMenu) {
+      mobileMenu.classList.remove('open');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        mobileMenu.style.display = 'none';
+      }, 300);
+    }
+  }
+
+  mobileBtn?.addEventListener('click', openMobileMenu);
+  mobileClose?.addEventListener('click', closeMobileMenu);
+  overlay.addEventListener('click', closeMobileMenu);
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !menu?.classList.contains('hidden')) {
-      menu?.classList.add('hidden');
-      btn?.setAttribute('aria-expanded', 'false');
-    }
+    if (e.key === 'Escape') closeMobileMenu();
   });
 </script>
