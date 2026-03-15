@@ -100,9 +100,10 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://gaininsight.ai').href;
     </style>
   </head>
   <body>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-steel focus:text-white focus:px-4 focus:py-2 focus:rounded-md focus:text-sm">Skip to content</a>
     <div class="scroll-progress" aria-hidden="true"></div>
     <Navbar />
-    <main class="pt-[80px]">
+    <main id="main-content" class="pt-[80px]">
       <slot />
     </main>
     <Footer />

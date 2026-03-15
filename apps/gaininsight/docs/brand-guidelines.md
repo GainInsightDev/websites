@@ -397,13 +397,81 @@ Gain Insight speaks like a **senior partner you trust** — not a startup pitchi
 
 ---
 
-## 8. Photography & People
+## 8. Photography & Imagery
+
+The site uses three categories of imagery, each with distinct rules. Every image must earn its place — if a section communicates clearly through typography and spacing alone, do not add an image.
+
+### 8.1 Portrait Photography (Partner Headshots)
 
 | Rule | Specification |
 |------|--------------|
-| Portraits | Always on white or off-white backgrounds. Never on dark. |
+| Background | Always white or off-white. Never on dark. |
 | Style | Clean, natural light. Editorial — not stock. People as themselves, not posed corporate. |
-| Partners | Each profile photograph consistent in format — same crop, same background. |
+| Consistency | All partner photos must use the same crop, same background, same format. |
+| Size | 128px circular crop with 2px `border-border-subtle` on dark cards. |
+| Missing portraits | Use initials fallback (same dimensions, elevated background). Never leave empty space. |
+
+### 8.2 Editorial People Photography
+
+Full-colour photographs of people working, collaborating, or discussing. These humanise the site and are **not** bound by the portrait rules above.
+
+| Rule | Specification |
+|------|--------------|
+| Best on | White or off-white background sections. Can also work as full-width banners with overlays. |
+| Overlay (on dark) | When placed between dark sections, use horizontal gradient: `rgba(15,17,24,0.5)` edges → `rgba(15,17,24,0.15)` centre. |
+| Dimensions (banner) | Full-width, 160–220px tall. `object-fit: cover`. |
+| Dimensions (inline) | Within a grid column at natural aspect ratio. `rounded-xl`. Hidden on mobile if in a side column. |
+| Style | Candid, editorial quality. Warm natural tones preferred. Avoid posed corporate stock. |
+| Limit | Maximum 1 editorial people image per page. |
+
+### 8.3 Palette Imagery (AI-Generated Abstract)
+
+Abstract or atmospheric images AI-generated to match the Steel blue (#6090BA) brand palette. These blend seamlessly between dark sections as visual breathers.
+
+| Rule | Specification |
+|------|--------------|
+| Colour | Must be colour-matched to the brand palette — Steel blue, dark backgrounds (#0F1118), muted tones. |
+| Role | Section breaks between content blocks on longer pages. Never as hero images or inline illustrations. |
+| Dimensions | Full-width, 160–220px tall. `object-fit: cover`. |
+| Overlay | Horizontal gradient: `rgba(15,17,24,0.5)` at edges → `rgba(15,17,24,0.15)` at centre. |
+| Alt text | Empty (`alt=""`) — these are decorative and should be hidden from screen readers. |
+| Reuse | Each image should appear on no more than 2 pages. Generate variations to avoid repetition. |
+| Generation | Use Freepik Mystic with "realism" model for photorealistic, "flexible" for abstract. Include brand colours as styling weights. |
+
+### 8.4 Landscape / Location Photography
+
+Full-colour place-specific photographs that communicate something concrete about Gain Insight (e.g., where the company is based).
+
+| Rule | Specification |
+|------|--------------|
+| Purpose | Must communicate something specific — a location, a place. Never purely decorative. |
+| Overlay | Vertical gradient: `rgba(15,17,24,0.3)` top → `rgba(15,17,24,0.7)` bottom (for text overlay). |
+| Dimensions | Full-width, 200–280px tall. `object-fit: cover`. |
+| Tone | Warm tones preferred — complement the cool Steel palette rather than competing with it. |
+| Limit | Maximum 1 landscape image across the entire site. |
+
+### 8.5 Image Placement Rules
+
+| Rule | Specification |
+|------|--------------|
+| Max per page | 0–2 images for standard pages. Up to 3 for long-form content (case studies). |
+| Section breaks | Palette imagery only. Place between major content blocks to prevent text fatigue. |
+| Heroes | Text-only preferred. The headline is always the primary focus. |
+| CTAs | Never add images to CTA sections — typography carries these. |
+| Cards | Project cards use venture logos (functional). Do not add decorative images to card grids. |
+| Earning placement | If removing an image leaves the section communicating just as clearly, the image shouldn't be there. |
+
+### 8.6 Technical Requirements
+
+| Rule | Specification |
+|------|--------------|
+| Format | PNG for AI-generated, JPEG for photography. Optimise for web. |
+| Resolution | 2K (2744×1528) source files. Displayed at full-width responsive. |
+| Attributes | All `<img>` tags must have explicit `width` and `height` to prevent CLS. |
+| Lazy loading | `loading="lazy"` for all images below the fold. |
+| Alt text | Descriptive for meaningful images, empty (`alt=""`) for decorative section breaks. |
+| Object fit | `object-fit: cover` with appropriate `object-position` for cropping control. |
+| Directory | All editorial images in `public/images/editorial/`. Portraits in `public/images/partners/`. |
 
 ---
 

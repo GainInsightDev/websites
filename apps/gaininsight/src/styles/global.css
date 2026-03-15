@@ -448,8 +448,8 @@ h1 em, h2 em {
   }
 
   .project-card-logo.logo-wide {
-    max-width: 80%;
-    max-height: 50%;
+    max-width: 96%;
+    max-height: 60%;
     min-height: 40px;
   }
 

@@ -3,225 +3,497 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image Suggestions — Gain Insight</title>
+<title>Image Options — Gain Insight</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: system-ui, -apple-system, sans-serif; background: #0a0c10; color: #e2e4e9; line-height: 1.6; }
   .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
   header { padding: 48px 0 32px; border-bottom: 1px solid #1e2028; margin-bottom: 48px; }
   header h1 { font-size: 36px; font-weight: 300; margin-bottom: 8px; }
-  header p { color: #8a8f9e; font-size: 16px; }
-  .section { margin-bottom: 64px; }
-  .section-header { margin-bottom: 24px; }
-  .section-header h2 { font-size: 24px; font-weight: 500; margin-bottom: 4px; }
-  .section-header .where { color: #6a87ab; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
-  .section-header p { color: #8a8f9e; font-size: 14px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
-  .card { background: #14161c; border: 1px solid #1e2028; border-radius: 12px; overflow: hidden; transition: border-color 0.2s; }
-  .card:hover { border-color: #6a87ab; }
-  .card img { width: 100%; height: 220px; object-fit: cover; display: block; }
+  header .subtitle { color: #e2e4e9; font-size: 16px; margin-bottom: 16px; }
+  header .meta { color: #8a8f9e; font-size: 14px; line-height: 1.8; }
+
+  .intro { background: #14161c; border: 1px solid #1e2028; border-radius: 12px; padding: 28px; margin-bottom: 56px; }
+  .intro h2 { font-size: 18px; font-weight: 500; margin-bottom: 12px; }
+  .intro p { font-size: 14px; color: #8a8f9e; margin-bottom: 8px; }
+  .intro strong { color: #e2e4e9; }
+
+  /* Placement sections */
+  .placement { margin-bottom: 64px; }
+  .placement-header { margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid #1e2028; }
+  .placement-header h2 { font-size: 24px; font-weight: 400; margin-bottom: 4px; }
+  .placement-header .page-tag { display: inline-block; background: rgba(96,144,186,0.12); color: #6090BA; font-size: 12px; padding: 2px 10px; border-radius: 4px; font-weight: 500; margin-right: 8px; }
+  .placement-header .type-tag { display: inline-block; font-size: 12px; padding: 2px 10px; border-radius: 4px; font-weight: 500; }
+  .type-people { background: rgba(251,191,36,0.12); color: #fbbf24; }
+  .type-palette { background: rgba(167,139,250,0.12); color: #a78bfa; }
+  .type-landscape { background: rgba(45,212,191,0.12); color: #2dd4bf; }
+  .type-keep { background: rgba(74,222,128,0.12); color: #4ade80; }
+  .placement-header .desc { color: #8a8f9e; font-size: 14px; margin-top: 8px; }
+  .placement-header .context { color: #6a7080; font-size: 13px; margin-top: 4px; font-style: italic; }
+
+  /* Carousel */
+  .carousel-wrap { position: relative; }
+  .carousel { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 4px 0 16px; scrollbar-width: thin; scrollbar-color: #2a2e38 transparent; }
+  .carousel::-webkit-scrollbar { height: 6px; }
+  .carousel::-webkit-scrollbar-track { background: transparent; }
+  .carousel::-webkit-scrollbar-thumb { background: #2a2e38; border-radius: 3px; }
+
+  .card { flex: 0 0 340px; scroll-snap-align: start; background: #14161c; border: 1px solid #1e2028; border-radius: 12px; overflow: hidden; transition: border-color 0.2s; }
+  .card:hover { border-color: #6090BA; }
+  .card-img { width: 100%; height: 220px; object-fit: cover; display: block; background: #0f1118; }
   .card-body { padding: 16px; }
-  .card-body h3 { font-size: 14px; font-weight: 500; margin-bottom: 4px; line-height: 1.4; }
-  .card-body .source { color: #6a87ab; font-size: 12px; margin-bottom: 8px; }
-  .card-body .notes { color: #8a8f9e; font-size: 13px; }
-  .badge { display: inline-block; background: rgba(106,135,171,0.15); color: #6a87ab; font-size: 11px; padding: 2px 8px; border-radius: 4px; margin-right: 6px; }
-  .badge-green { background: rgba(74,222,128,0.1); color: #4ade80; }
-  .badge-amber { background: rgba(251,191,36,0.1); color: #fbbf24; }
+  .card-body h3 { font-size: 14px; font-weight: 500; margin-bottom: 6px; line-height: 1.4; }
+  .card-body .source { font-size: 12px; margin-bottom: 8px; }
+  .card-body .source a { color: #6090BA; text-decoration: none; }
+  .card-body .source a:hover { text-decoration: underline; }
+  .card-body .notes { color: #8a8f9e; font-size: 13px; line-height: 1.5; }
+  .card-body .badge { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em; margin-right: 4px; }
+  .badge-premium { background: rgba(251,191,36,0.1); color: #fbbf24; }
+  .badge-stock { background: rgba(96,165,250,0.1); color: #60a5fa; }
+  .badge-existing { background: rgba(74,222,128,0.1); color: #4ade80; }
+
+  /* Existing images (already on site) */
+  .existing-slot { background: #14161c; border: 1px solid rgba(74,222,128,0.2); border-radius: 12px; padding: 20px; margin-bottom: 24px; }
+  .existing-slot .slot-label { font-size: 12px; font-weight: 600; color: #4ade80; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+  .existing-slot .slot-desc { font-size: 14px; color: #8a8f9e; }
+  .existing-slot img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-top: 12px; }
+
+  /* Scroll hint */
+  .scroll-hint { color: #6a7080; font-size: 12px; text-align: right; margin-bottom: 8px; }
+
+  /* Summary */
+  .summary { margin-top: 64px; margin-bottom: 48px; }
+  .summary h2 { font-size: 28px; font-weight: 400; margin-bottom: 16px; }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .summary-card { background: #14161c; border: 1px solid #1e2028; border-radius: 12px; padding: 20px; }
+  .summary-card h3 { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+  .summary-card .count { font-size: 28px; font-weight: 300; color: #6090BA; margin-bottom: 4px; }
+  .summary-card p { font-size: 13px; color: #8a8f9e; }
+
   footer { padding: 48px 0; border-top: 1px solid #1e2028; color: #8a8f9e; font-size: 13px; text-align: center; }
-  a { color: #6a87ab; text-decoration: none; }
+  footer p { margin-bottom: 4px; }
+  a { color: #6090BA; text-decoration: none; }
   a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 <div class="container">
   <header>
-    <h1>Image Suggestions for gaininsight.global</h1>
-    <p>Curated image options organised by page location. Review and let Holly know which direction you prefer.</p>
+    <h1>Image Options for gaininsight.ai</h1>
+    <p class="subtitle">Browse options for each image placement. Scroll horizontally through the carousel for each slot.</p>
+    <p class="meta">
+      For Andy Davidson &middot; 15 March 2026<br>
+      All images are full-colour editorial photography &mdash; no blue AI-palette images
+    </p>
   </header>
 
-  <!-- SECTION 1: Homepage Hero -->
-  <div class="section">
-    <div class="section-header">
-      <div class="where">Homepage &rarr; Hero Section (right side)</div>
-      <h2>Collaborative Workspace / Editorial</h2>
-      <p>A side image (40% width) adding emotional weight to "Domain expertise meets AI capability." Should feel editorial, not stock.</p>
+  <div class="intro">
+    <h2>How this page works</h2>
+    <p>Each section below represents a <strong>placement slot</strong> on the site &mdash; a specific location where an image could go. For each slot you'll see:</p>
+    <p>&bull; <strong>Green border</strong> = currently in use on the site (KEEP decisions from the strategy)</p>
+    <p>&bull; <strong>Carousel of options</strong> = full-colour editorial images you can scroll through. Pick the ones you like and I'll generate or source high-resolution versions.</p>
+    <p>&bull; Sources include Getty Images, iStock, Freepik, and Adobe Stock. These are preview thumbnails &mdash; full-res downloads require licensing.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SLOT 1: Contact — Gibraltar Banner -->
+  <!-- ============================================================ -->
+  <div class="placement">
+    <div class="placement-header">
+      <span class="page-tag">Contact Page</span>
+      <span class="type-tag type-keep">Currently In Use</span>
+      <h2>Gibraltar Location Banner</h2>
+      <p class="desc">Full-width banner between hero and contact form. 240px tall with vertical gradient overlay and "Gibraltar · Where we're based" caption.</p>
+      <p class="context">This is working well &mdash; showing it here for completeness. Andy mentioned we can discuss it later.</p>
     </div>
-    <div class="grid">
+
+    <div class="existing-slot">
+      <div class="slot-label">✓ Currently in use</div>
+      <div class="slot-desc">gibraltar-golden-hour.png — AI-generated golden-hour landscape. Warm Mediterranean tones with vertical gradient overlay.</div>
+      <img src="/images/editorial/gibraltar-golden-hour.png" alt="Gibraltar at golden hour" loading="lazy" width="2744" height="1528" style="object-position: center 40%;" />
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SLOT 2: Approach — Section Break -->
+  <!-- ============================================================ -->
+  <div class="placement">
+    <div class="placement-header">
+      <span class="page-tag">Approach Page</span>
+      <span class="type-tag type-keep">Currently In Use</span>
+      <h2>Section Break — "The Model" to "AI-First"</h2>
+      <p class="desc">Full-width section break between dark and off-white sections. 200px tall with horizontal gradient overlay.</p>
+      <p class="context">Abstract palette imagery — this works well as a transition. Keeping unless you want to replace with a people photo.</p>
+    </div>
+
+    <div class="existing-slot">
+      <div class="slot-label">✓ Currently in use</div>
+      <div class="slot-desc">data-flow-abstract.png — Abstract blue particle trails. Colour-matched to Steel palette.</div>
+      <img src="/images/editorial/data-flow-abstract.png" alt="Abstract data flow" loading="lazy" width="2744" height="1528" />
+    </div>
+
+    <p class="scroll-hint" style="margin-top: 16px;">Alternative: full-colour people options →</p>
+    <div class="carousel">
       <div class="card">
-        <img src="https://thumbs.dreamstime.com/b/focused-team-collaboration-office-setting-man-pointing-women-working-tasks-professionals-intently-busy-desk-304286848.jpg" alt="Team collaboration" loading="lazy" width="800" height="533">
+        <img class="card-img" src="https://media.gettyimages.com/id/2148852049/photo/energetic-team-collaboration-session.jpg?s=612x612&w=0&k=20&c=txQlRWetNjH4WcwTl7jjR_am6r3isfBBgeqEay5tV1M=" alt="Team collaboration session" loading="lazy" width="612" height="408" />
         <div class="card-body">
-          <h3>Focused team collaboration in office setting</h3>
-          <div class="source">Dreamstime <span class="badge badge-amber">Licensed</span></div>
-          <div class="notes">Muted tones, editorial feel. Good for hero — shows collaboration without being generic.</div>
+          <h3>Energetic team collaboration session</h3>
+          <div class="source"><span class="badge badge-stock">Getty</span> <a href="https://gettyimages.com/photos/modern-office-natural-light" target="_blank">View on Getty</a></div>
+          <div class="notes">Warm natural light, diverse team around a table. Good energy without being posed. Would crop well at 200px tall.</div>
         </div>
       </div>
       <div class="card">
-        <img src="https://clickup.com/blog/wp-content/uploads/2024/09/collaborative-spaces-help-people-work-better-together-1400x933.jpg" alt="Collaborative workspace" loading="lazy" width="1400" height="933">
+        <img class="card-img" src="https://media.gettyimages.com/id/2094337698/photo/diverse-team-collaborating-in-modern-co-working-space.jpg?s=612x612&w=0&k=20&c=em1rhm2pprX4tDkwb9aE0h8h6nIRow4hmUy_0aCc520=" alt="Co-working space" loading="lazy" width="612" height="408" />
         <div class="card-body">
-          <h3>Modern collaborative workspace</h3>
-          <div class="source">ClickUp Blog <span class="badge badge-green">Editorial</span></div>
-          <div class="notes">Warm lighting, natural feel. The open workspace aesthetic matches GI's partnership ethos.</div>
+          <h3>Diverse team in modern co-working space</h3>
+          <div class="source"><span class="badge badge-stock">Getty</span> <a href="https://gettyimages.com/photos/modern-office-natural-light" target="_blank">View on Getty</a></div>
+          <div class="notes">Relaxed, modern. Multiple people around laptops. Good editorial feel. Warm tones.</div>
         </div>
       </div>
       <div class="card">
-        <img src="https://cdn.create.vista.com/api/media/small/668760902/stock-photo-diverse-business-people-smiling-discussing-startup-ideas-gadgets-planning-coworking" alt="Startup discussion" loading="lazy" width="600" height="400">
+        <img class="card-img" src="https://media.istockphoto.com/id/998338578/photo/businesswoman-addressing-team-meeting-elevated-view.jpg?s=612x612&w=0&k=20&c=vPpkxRkUk9F14-rdQNCUeFnRSYNCj6JPQAnJ10I7nng=" alt="Team meeting elevated view" loading="lazy" width="612" height="408" />
         <div class="card-body">
-          <h3>Diverse team discussing startup ideas</h3>
-          <div class="source">Vista Create <span class="badge badge-amber">Licensed</span></div>
-          <div class="notes">Relaxed, authentic feel. Could work well with desaturation to match brand palette.</div>
+          <h3>Businesswoman addressing team meeting</h3>
+          <div class="source"><span class="badge badge-stock">iStock</span> <a href="https://istockphoto.com/photos/office-natural-light" target="_blank">View on iStock</a></div>
+          <div class="notes">Elevated angle, natural light. Good for a section break crop — the overhead perspective works at narrow heights.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://media.gettyimages.com/id/557608419/photo/confident-professionals-discussing-in-office.jpg?s=612x612&w=0&k=20&c=k5ihib0Vt85_4IZ-xvrnh-nOWHn4if4tjM8S0tuWW0U=" alt="Professionals discussing" loading="lazy" width="612" height="408" />
+        <div class="card-body">
+          <h3>Confident professionals discussing in office</h3>
+          <div class="source"><span class="badge badge-stock">Getty</span> <a href="https://gettyimages.com/photos/modern-office-natural-light" target="_blank">View on Getty</a></div>
+          <div class="notes">Two people in conversation. Intimate, editorial. Warm natural light. Fits the "partnership" narrative well.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- SECTION 2: Case Study Section Breaks -->
-  <div class="section">
-    <div class="section-header">
-      <div class="where">Case Study &rarr; Section Break Images (full-width)</div>
-      <h2>FinTech / Data / Technology</h2>
-      <p>Full-width images between major case study sections (The Challenge, Our Approach, etc.). Currently 300+ lines of text with zero visual content.</p>
+  <!-- ============================================================ -->
+  <!-- SLOT 3: Case Study — Section Break 1 -->
+  <!-- ============================================================ -->
+  <div class="placement">
+    <div class="placement-header">
+      <span class="page-tag">Case Study</span>
+      <span class="type-tag type-keep">Currently In Use</span>
+      <h2>Section Break 1 — After "The Challenge"</h2>
+      <p class="desc">Full-width 200px break between The Challenge (dark) and Our Approach (surface).</p>
     </div>
-    <div class="grid">
+
+    <div class="existing-slot">
+      <div class="slot-label">✓ Currently in use</div>
+      <div class="slot-desc">server-rack-blue.png — Server rack with blue LEDs. Photorealistic palette imagery.</div>
+      <img src="/images/editorial/server-rack-blue.png" alt="Server rack" loading="lazy" width="2744" height="1528" />
+    </div>
+
+    <p class="scroll-hint" style="margin-top: 16px;">Alternative: full-colour people options →</p>
+    <div class="carousel">
       <div class="card">
-        <img src="https://thumbs.dreamstime.com/b/glowing-blue-lights-network-infrastructure-data-center-server-room-embody-concept-technology-366876691.jpg" alt="Data center blue lights" loading="lazy" width="800" height="449">
+        <img class="card-img" src="https://media.gettyimages.com/id/2166223642/photo/focused-professionals-working-on-laptops-in-modern-office.jpg?s=612x612&w=0&k=20&c=meuRttsTLXvvadd00gnfyMSQnBSMVn1L8WOTlg4tHe4=" alt="Focused professionals" loading="lazy" width="612" height="408" />
         <div class="card-body">
-          <h3>Data center server infrastructure — blue lighting</h3>
-          <div class="source">Dreamstime <span class="badge badge-amber">Licensed</span></div>
-          <div class="notes">Perfect for "The Challenge" section break. Blue tones match the Steel palette. Communicates scale and complexity.</div>
+          <h3>Focused professionals on laptops in modern office</h3>
+          <div class="source"><span class="badge badge-stock">Getty</span></div>
+          <div class="notes">Quiet, focused work. Natural light. People genuinely engaged with screens — fits the "system archaeology" phase narrative.</div>
         </div>
       </div>
       <div class="card">
-        <img src="https://thumbs.dreamstime.com/b/dark-server-room-modern-data-center-storage-blue-lights-98504078.jpg" alt="Dark server room" loading="lazy" width="800" height="534">
+        <img class="card-img" src="https://media.gettyimages.com/id/2193765015/photo/female-business-owner-speaking-to-office-workers-in-modern-conference-room.jpg?s=612x612&w=0&k=20&c=cKfhf6wubAqm_p-FRwsFksel-BHO2Oq2No64rSwJa9A=" alt="Conference room" loading="lazy" width="612" height="408" />
         <div class="card-body">
-          <h3>Modern data center storage — atmospheric</h3>
-          <div class="source">Dreamstime <span class="badge badge-amber">Licensed</span></div>
-          <div class="notes">Darker mood, fits the dark-section aesthetic. Good for "Our Approach" or "Technical Architecture" breaks.</div>
+          <h3>Business owner speaking to team in modern conference room</h3>
+          <div class="source"><span class="badge badge-stock">Getty</span></div>
+          <div class="notes">Clean modern space. Good composition for a narrow crop. Professional but not corporate-stuffy.</div>
         </div>
       </div>
       <div class="card">
-        <img src="https://thumbs.dreamstime.com/b/inside-digital-fortress-modern-data-center-glowing-infrastructure-high-tech-featuring-rows-servers-cables-382979274.jpg" alt="High-tech data center" loading="lazy" width="800" height="452">
+        <img class="card-img" src="https://media.istockphoto.com/id/1010836040/photo/four-business-colleagues-stand-talking-in-a-meeting-room.jpg?s=612x612&w=0&k=20&c=t8m_5TPZHOVpSXqR2JPo39dpLZruKgy2TOGcWMzs1t4=" alt="Colleagues talking" loading="lazy" width="612" height="408" />
         <div class="card-body">
-          <h3>High-tech data center infrastructure</h3>
-          <div class="source">Dreamstime <span class="badge badge-amber">Licensed</span></div>
-          <div class="notes">Vibrant blues and greens. Best for a "Results" or "Technical Excellence" section break.</div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://images.presentationgo.com/2025/10/futuristic-circuit-technology-background-1024x574.jpg" alt="Circuit technology abstract" loading="lazy" width="1024" height="574">
-        <div class="card-body">
-          <h3>Abstract circuit lines — golden on dark</h3>
-          <div class="source">PresentationGo <span class="badge badge-green">Free</span></div>
-          <div class="notes">Abstract/artistic rather than photographic. Could work as a subtle full-width divider with low opacity overlay.</div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://images.presentationgo.com/2025/09/abstract-digital-data-wave-1024x574.jpg" alt="Digital data wave" loading="lazy" width="1024" height="574">
-        <div class="card-body">
-          <h3>Fluid digital data wave</h3>
-          <div class="source">PresentationGo <span class="badge badge-green">Free</span></div>
-          <div class="notes">Elegant flow aesthetic. Could represent data transformation — fitting for the Indigo case study theme.</div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://res.cloudinary.com/ducxztw9n/image/upload/c_limit,w_3840/f_auto/q_auto:good/v1/screenshot_desktop_application_ui_53e25b09c3?_a=BAVAZGAQ0" alt="FinTech dashboard UI" loading="lazy" width="1200" height="750">
-        <div class="card-body">
-          <h3>FinTech SaaS dashboard — Credyfix</h3>
-          <div class="source">Ron Design Lab <span class="badge badge-green">Reference</span></div>
-          <div class="notes">Not for direct use, but shows the kind of product UI that could appear as a device-framed screenshot in the case study.</div>
+          <h3>Four colleagues standing and talking in meeting room</h3>
+          <div class="source"><span class="badge badge-stock">iStock</span></div>
+          <div class="notes">Standing conversation, natural feel. Good diversity. The casual posture reads as editorial rather than stock.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- SECTION 3: Contact — Gibraltar -->
-  <div class="section">
-    <div class="section-header">
-      <div class="where">Contact Page &rarr; Location Image</div>
-      <h2>Gibraltar — Rock & Mediterranean</h2>
-      <p>A tasteful location shot adding warmth and sense of place. Gain Insight is registered in Gibraltar (Company 124646).</p>
+  <!-- ============================================================ -->
+  <!-- SLOT 4: Case Study — Section Break 2 -->
+  <!-- ============================================================ -->
+  <div class="placement">
+    <div class="placement-header">
+      <span class="page-tag">Case Study</span>
+      <span class="type-tag type-keep">Currently In Use</span>
+      <h2>Section Break 2 — After "Timeline"</h2>
+      <p class="desc">Full-width 200px break between Timeline (dark) and Results (surface).</p>
     </div>
-    <div class="grid">
+
+    <div class="existing-slot">
+      <div class="slot-label">✓ Currently in use</div>
+      <div class="slot-desc">data-flow-abstract.png — Abstract data flow trails. Same as Approach page break.</div>
+      <img src="/images/editorial/data-flow-abstract.png" alt="Abstract data flow" loading="lazy" width="2744" height="1528" />
+    </div>
+
+    <p class="scroll-hint" style="margin-top: 16px;">Alternative: full-colour people options →</p>
+    <div class="carousel">
       <div class="card">
-        <img src="https://thumbs.dreamstime.com/b/gibraltar-skyline-aerial-view-mediterranean-sea-rock-europe-116130785.jpg" alt="Gibraltar skyline aerial" loading="lazy" width="800" height="551">
+        <img class="card-img" src="https://media.gettyimages.com/id/691574631/photo/businessman-listening-to-presentation.jpg?s=612x612&w=0&k=20&c=KcmyPQP69ol11a4GisEqyobba-imd5MuBjfvPbEHJ9U=" alt="Presentation" loading="lazy" width="612" height="408" />
         <div class="card-body">
-          <h3>Gibraltar skyline — aerial view over Mediterranean</h3>
-          <div class="source">Dreamstime <span class="badge badge-amber">Licensed</span></div>
-          <div class="notes">Stunning aerial perspective. Shows the Rock, city, and sea. High impact for contact page header.</div>
+          <h3>Businessman listening to presentation</h3>
+          <div class="source"><span class="badge badge-stock">Getty</span></div>
+          <div class="notes">Warm tones, natural light. Someone engaged and listening — fits the "delivery" phase narrative. Profile angle crops well narrow.</div>
         </div>
       </div>
       <div class="card">
-        <img src="https://thumbs.dreamstime.com/b/rock-gibraltar-mediterranean-sea-landscape-nature-landmark-british-overseas-territory-iberian-peninsula-87775424.jpg" alt="Rock of Gibraltar landscape" loading="lazy" width="800" height="534">
+        <img class="card-img" src="https://media.istockphoto.com/id/998338684/photo/smiling-female-manager-listening-to-colleagues-at-a-meeting.jpg?s=612x612&w=0&k=20&c=tdjEQr9LBHcAwf7e1cvYIRU-ogrv2N8ep29f78OtHz0=" alt="Smiling manager" loading="lazy" width="612" height="408" />
         <div class="card-body">
-          <h3>Rock of Gibraltar — Mediterranean landscape</h3>
-          <div class="source">Dreamstime <span class="badge badge-amber">Licensed</span></div>
-          <div class="notes">Classic composition. The Rock dominates — instantly recognisable. Good with a dark overlay for text readability.</div>
+          <h3>Smiling manager listening to colleagues</h3>
+          <div class="source"><span class="badge badge-stock">iStock</span></div>
+          <div class="notes">Warm, human moment. The smile suggests success/satisfaction — fits before the "Results" section.</div>
         </div>
       </div>
       <div class="card">
-        <img src="https://thumbs.dreamstime.com/b/aerial-view-gibraltar-its-marina-mediterranean-se-sea-as-seen-rock-74702377.jpg" alt="Gibraltar marina aerial" loading="lazy" width="800" height="534">
+        <img class="card-img" src="https://media.istockphoto.com/id/1126709568/photo/colleagues-discussing-in-board-room.jpg?s=612x612&w=0&k=20&c=cEr12x74lCq4R4TkzTFZmXwqWwJjYLFrAM76AlbJMJw=" alt="Board room discussion" loading="lazy" width="612" height="408" />
         <div class="card-body">
-          <h3>Gibraltar marina — aerial from the Rock</h3>
-          <div class="source">Dreamstime <span class="badge badge-amber">Licensed</span></div>
-          <div class="notes">Shows the modern side of Gibraltar — marina, development. Warmer, more business-appropriate feel.</div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://thumbs.dreamstime.com/b/gibraltar-rock-copyspace-copy-space-landscape-mediterranean-sea-travel-town-overview-travelling-148353244.jpg" alt="Gibraltar Rock panorama" loading="lazy" width="800" height="534">
-        <div class="card-body">
-          <h3>Gibraltar Rock panorama — town and sea</h3>
-          <div class="source">Dreamstime <span class="badge badge-amber">Licensed</span></div>
-          <div class="notes">Wide shot with negative space on the right — perfect for overlaying contact details or a form.</div>
+          <h3>Colleagues discussing in boardroom</h3>
+          <div class="source"><span class="badge badge-stock">iStock</span></div>
+          <div class="notes">Low angle with glass reflections. Artistic composition. The floor reflection adds visual interest at narrow crop.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- SECTION 4: AI-Generated Images (Actual) -->
-  <div class="section">
-    <div class="section-header">
-      <div class="where">AI-Generated &rarr; Freepik Mystic (actual results)</div>
-      <h2>AI-Generated Custom Images</h2>
-      <p>These are actual AI-generated images, unique to Gain Insight. No licensing needed. Colour-matched to the brand palette. We can iterate on any of these.</p>
+  <!-- ============================================================ -->
+  <!-- SLOT 5: Homepage — "What we do" section break -->
+  <!-- ============================================================ -->
+  <div class="placement">
+    <div class="placement-header">
+      <span class="page-tag">Homepage</span>
+      <span class="type-tag type-people">People Photography</span>
+      <h2>Section Break — After "What We Do"</h2>
+      <p class="desc">A potential full-width section break (200px) between the dark "What we do" section and the off-white "How we work" cards. Currently no image here.</p>
+      <p class="context">The homepage is clean without images — but a single people photo here could humanise the site. Your call.</p>
     </div>
-    <div class="grid">
-      <div class="card" style="border: 1px solid #6a87ab;">
-        <img src="/images/editorial/workspace-hero.png" alt="AI: Workspace editorial" loading="lazy" width="1920" height="1080">
+
+    <p class="scroll-hint">Scroll to browse options →</p>
+    <div class="carousel">
+      <div class="card">
+        <img class="card-img" src="https://media.gettyimages.com/id/2148852049/photo/energetic-team-collaboration-session.jpg?s=612x612&w=0&k=20&c=txQlRWetNjH4WcwTl7jjR_am6r3isfBBgeqEay5tV1M=" alt="Team collaboration" loading="lazy" width="612" height="408" />
         <div class="card-body">
-          <h3>Workspace Editorial — Homepage Hero</h3>
-          <div class="source">Freepik Mystic (realism) <span class="badge badge-green">AI-generated, no license</span></div>
-          <div class="notes">Prompt: "Editorial photograph of a modern tech startup workspace, two professionals reviewing data analytics, ambient blue-grey lighting, shallow depth of field, desaturated muted colour palette." For the homepage hero right side.</div>
+          <h3>Energetic team collaboration</h3>
+          <div class="source"><span class="badge badge-stock">Getty</span></div>
+          <div class="notes">Full colour, warm light, genuine engagement. Multiple people around a table with laptops. Humanises the "What we do" text above.</div>
         </div>
       </div>
-      <div class="card" style="border: 1px solid #6a87ab;">
-        <img src="/images/editorial/data-flow-abstract.png" alt="AI: Abstract data flow" loading="lazy" width="1920" height="1080">
+      <div class="card">
+        <img class="card-img" src="https://t3.ftcdn.net/jpg/17/38/80/34/360_F_1738803474_6FKTLVIbYuBpkXzzGwk9Qo7nVlZx9VT6.jpg" alt="Late night working" loading="lazy" width="643" height="360" />
         <div class="card-body">
-          <h3>Abstract Data Flow — Case Study Section Break</h3>
-          <div class="source">Freepik Mystic (flexible) <span class="badge badge-green">AI-generated, no license</span></div>
-          <div class="notes">Prompt: "Abstract data flow visualisation on dark background, subtle blue and steel-grey light trails, minimal, digital transformation concept." For full-width breaks between case study sections.</div>
+          <h3>Team collaborating late evening with warm lighting</h3>
+          <div class="source"><span class="badge badge-stock">Adobe Stock</span></div>
+          <div class="notes">Warm interior lighting, diverse team with laptops. The evening setting feels dedicated and real. Good contrast with the off-white section below.</div>
         </div>
       </div>
-      <div class="card" style="border: 1px solid #6a87ab;">
-        <img src="/images/editorial/gibraltar-golden-hour.png" alt="AI: Gibraltar at golden hour" loading="lazy" width="1920" height="1080">
+      <div class="card">
+        <img class="card-img" src="https://media.gettyimages.com/id/520414828/photo/three-women-sitting-at-table-in-modern-office.jpg?s=612x612&w=0&k=20&c=SG-eCsphDMyCp4hppSWBxTUv-fJSg8eIVsLtDBJoHsA=" alt="Three women in office" loading="lazy" width="612" height="408" />
         <div class="card-body">
-          <h3>Gibraltar — Golden Hour — Contact Page</h3>
-          <div class="source">Freepik Mystic (realism) <span class="badge badge-green">AI-generated, no license</span></div>
-          <div class="notes">Prompt: "Gibraltar Rock at golden hour, warm Mediterranean light, panoramic view from the sea, calm turquoise water, editorial landscape." For the contact page location image.</div>
+          <h3>Three professionals at table in modern office</h3>
+          <div class="source"><span class="badge badge-stock">Getty</span></div>
+          <div class="notes">Clean, editorial. The angle and natural light make it feel candid. Good for a 200px crop — faces centred.</div>
         </div>
       </div>
-      <div class="card" style="border: 1px solid #6a87ab;">
-        <img src="/images/editorial/server-rack-blue.png" alt="AI: Server rack blue" loading="lazy" width="1920" height="1080">
+      <div class="card">
+        <img class="card-img" src="http://img.b2bpic.net/premium-photo/boardroom-speaker-woman-meeting-strategy-group-colleagues-listening-together-workshop-training-employees-business-journalist-notes-presentation-collaboration_590464-381832.jpg" alt="Speaker in boardroom" loading="lazy" width="626" height="418" />
         <div class="card-body">
-          <h3>Server Infrastructure — Case Study / Tech Section</h3>
-          <div class="source">Freepik Mystic (realism) <span class="badge badge-green">AI-generated, no license</span></div>
-          <div class="notes">Prompt: "Close-up of modern server rack, shallow depth of field, blue LED indicator lights, dark environment, cool blue and steel grey tones." For case study "Technical Architecture" section break.</div>
+          <h3>Speaker addressing colleagues in boardroom</h3>
+          <div class="source"><span class="badge badge-premium">Freepik Premium</span></div>
+          <div class="notes">Professional presentation context. Leadership and collaboration. Natural colours. The standing/seated contrast adds visual interest.</div>
         </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="http://img.b2bpic.net/premium-photo/businesspeople-marketing-growth-strategy-discussion-collaboration-meeting-using-teamwork-inside-modern-office-mindset-development-team-building-by-diverse-smart-creative-adults_590464-76861.jpg" alt="Strategy discussion" loading="lazy" width="626" height="438" />
+        <div class="card-body">
+          <h3>Marketing strategy discussion — diverse team</h3>
+          <div class="source"><span class="badge badge-premium">Freepik Premium</span></div>
+          <div class="notes">Engaged team around a table with papers and laptops. Natural light. Genuine collaboration feel — not posed.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SLOT 6: Contact — Hero split image -->
+  <!-- ============================================================ -->
+  <div class="placement">
+    <div class="placement-header">
+      <span class="page-tag">Contact Page</span>
+      <span class="type-tag type-people">People Photography</span>
+      <h2>Hero Image — Split Layout</h2>
+      <p class="desc">An image alongside the "Get in touch" hero text. Two-column layout: text left, image right. On white background.</p>
+      <p class="context">The contact page is the most human page — it's asking people to start a conversation. A warm people photo here could reinforce that invitation.</p>
+    </div>
+
+    <p class="scroll-hint">Scroll to browse options →</p>
+    <div class="carousel">
+      <div class="card">
+        <img class="card-img" src="https://media.gettyimages.com/id/2094337698/photo/diverse-team-collaborating-in-modern-co-working-space.jpg?s=612x612&w=0&k=20&c=em1rhm2pprX4tDkwb9aE0h8h6nIRow4hmUy_0aCc520=" alt="Co-working space" loading="lazy" width="612" height="408" />
+        <div class="card-body">
+          <h3>Diverse team collaborating in modern co-working space</h3>
+          <div class="source"><span class="badge badge-stock">Getty</span></div>
+          <div class="notes">Warm, relaxed, editorial. People genuinely working together. On white background (hero section) this would look natural.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://media.gettyimages.com/id/557608419/photo/confident-professionals-discussing-in-office.jpg?s=612x612&w=0&k=20&c=k5ihib0Vt85_4IZ-xvrnh-nOWHn4if4tjM8S0tuWW0U=" alt="Professionals discussing" loading="lazy" width="612" height="408" />
+        <div class="card-body">
+          <h3>Confident professionals discussing in office</h3>
+          <div class="source"><span class="badge badge-stock">Getty</span></div>
+          <div class="notes">Intimate two-person conversation. Perfect for "start a conversation" messaging. Warm natural tones, relaxed posture.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="http://img.b2bpic.net/premium-photo/diverse-team-collaborating-brainstorming-ideas-whiteboard_26440-73.jpg" alt="Whiteboard brainstorming" loading="lazy" width="3667" height="2000" />
+        <div class="card-body">
+          <h3>Diverse team brainstorming on whiteboard</h3>
+          <div class="source"><span class="badge badge-premium">Freepik Premium</span></div>
+          <div class="notes">Active collaboration. Whiteboard with visible content. Warm natural light. High-res source (3667×2000). The standing posture suggests energy and engagement.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="http://img.b2bpic.net/premium-photo/team-collaboration-modern-office-business-strategy-planning-diverse-professionals_1075135-3019.jpg" alt="Modern office strategy" loading="lazy" width="626" height="417" />
+        <div class="card-body">
+          <h3>Team collaboration in modern office — strategy planning</h3>
+          <div class="source"><span class="badge badge-premium">Freepik Premium</span></div>
+          <div class="notes">Clean, modern office. Multiple people engaged around a table. Professional but not stuffy. Warm palette.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="http://img.b2bpic.net/premium-photo/managers-discussing-strategy-using-sticky-notes-coworking-office_242111-45692.jpg" alt="Sticky notes strategy" loading="lazy" width="626" height="417" />
+        <div class="card-body">
+          <h3>Managers discussing strategy with sticky notes</h3>
+          <div class="source"><span class="badge badge-premium">Freepik Premium</span></div>
+          <div class="notes">Colourful sticky notes add visual interest. Two people in focused discussion. Feels real and editorial — not posed.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="http://img.b2bpic.net/premium-photo/concentrated-caucasian-coworkers-brainstorming-work_891700-129.jpg" alt="Coworkers brainstorming" loading="lazy" width="626" height="418" />
+        <div class="card-body">
+          <h3>Concentrated coworkers brainstorming</h3>
+          <div class="source"><span class="badge badge-premium">Freepik Premium</span></div>
+          <div class="notes">Focused, genuine concentration. Two people reviewing content together. Editorial quality — candid rather than posed.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SLOT 7: Approach — Hero split image -->
+  <!-- ============================================================ -->
+  <div class="placement">
+    <div class="placement-header">
+      <span class="page-tag">Approach Page</span>
+      <span class="type-tag type-people">People Photography</span>
+      <h2>Hero Image — Split Layout (Optional)</h2>
+      <p class="desc">An image alongside the "How we work" hero text. White background. Currently text-only.</p>
+      <p class="context">Optional — the Approach hero works fine text-only. But if you want to add warmth, these could work.</p>
+    </div>
+
+    <p class="scroll-hint">Scroll to browse options →</p>
+    <div class="carousel">
+      <div class="card">
+        <img class="card-img" src="http://img.b2bpic.net/premium-photo/business-team-starting-working-day-office_160672-41553.jpg" alt="Team starting day" loading="lazy" width="626" height="417" />
+        <div class="card-body">
+          <h3>Business team starting a working day</h3>
+          <div class="source"><span class="badge badge-premium">Freepik Premium</span></div>
+          <div class="notes">Warm morning light. Standing huddle with coffees. Casual, genuine, energetic. Perfect for "How we work."</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="http://img.b2bpic.net/premium-photo/diverse-group-professionals-engaging-collaborative-meeting-around-table_309199-39997.jpg" alt="Collaborative meeting" loading="lazy" width="626" height="351" />
+        <div class="card-body">
+          <h3>Diverse professionals in collaborative meeting</h3>
+          <div class="source"><span class="badge badge-premium">Freepik Premium</span></div>
+          <div class="notes">Wide aspect ratio — works well in a hero split. Engaged team around a table. Natural, warm colours.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="http://img.b2bpic.net/premium-photo/team-brainstorming-session-with-sticky-notes-whiteboard_1229620-2488.jpg" alt="Sticky notes brainstorm" loading="lazy" width="5504" height="3072" />
+        <div class="card-body">
+          <h3>Team brainstorming with sticky notes on whiteboard</h3>
+          <div class="source"><span class="badge badge-premium">Freepik Premium</span></div>
+          <div class="notes">Very high-res (5504×3072). Active brainstorming with visible sticky notes. Energetic, collaborative. The colourful notes add visual texture.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SLOT 8: Case Study — Optional Break 3 -->
+  <!-- ============================================================ -->
+  <div class="placement">
+    <div class="placement-header">
+      <span class="page-tag">Case Study</span>
+      <span class="type-tag type-people">People Photography</span>
+      <h2>Section Break 3 — Between Executive Summary and Challenge (Optional)</h2>
+      <p class="desc">An additional 160px section break to distribute visual pauses more evenly across the longest page.</p>
+      <p class="context">Low priority. The case study already has 2 breaks. A third would add variety but isn't essential.</p>
+    </div>
+
+    <p class="scroll-hint">Scroll to browse options →</p>
+    <div class="carousel">
+      <div class="card">
+        <img class="card-img" src="https://media.gettyimages.com/id/2148852049/photo/energetic-team-collaboration-session.jpg?s=612x612&w=0&k=20&c=txQlRWetNjH4WcwTl7jjR_am6r3isfBBgeqEay5tV1M=" alt="Team collaboration" loading="lazy" width="612" height="408" />
+        <div class="card-body">
+          <h3>Energetic team collaboration session</h3>
+          <div class="source"><span class="badge badge-stock">Getty</span></div>
+          <div class="notes">Warm, collaborative. As a 160px crop the faces would be partially visible — adding human texture without demanding focus.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://media.gettyimages.com/id/2166223642/photo/focused-professionals-working-on-laptops-in-modern-office.jpg?s=612x612&w=0&k=20&c=meuRttsTLXvvadd00gnfyMSQnBSMVn1L8WOTlg4tHe4=" alt="Focused professionals" loading="lazy" width="612" height="408" />
+        <div class="card-body">
+          <h3>Focused professionals on laptops</h3>
+          <div class="source"><span class="badge badge-stock">Getty</span></div>
+          <div class="notes">Quiet, concentrated work. The focus and laptop screens echo the "system archaeology" narrative of the case study.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="http://img.b2bpic.net/premium-photo/creative-team-collaboration-brainstorming-session-innovative-solutions_460232-14490.jpg" alt="Creative brainstorm" loading="lazy" width="626" height="417" />
+        <div class="card-body">
+          <h3>Creative team brainstorming for innovative solutions</h3>
+          <div class="source"><span class="badge badge-premium">Freepik Premium</span></div>
+          <div class="notes">Bright, creative energy. Full colour. The "innovation" angle fits the case study's AI transformation narrative.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SUMMARY -->
+  <!-- ============================================================ -->
+  <div class="summary">
+    <h2>Summary</h2>
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="count">4</div>
+        <h3>Current images on site</h3>
+        <p>2 palette section breaks (case study) · 1 palette break (approach) · 1 landscape banner (contact)</p>
+      </div>
+      <div class="summary-card">
+        <div class="count">4</div>
+        <h3>New placement slots shown</h3>
+        <p>Homepage break · Contact hero · Approach hero · Case study break 3</p>
+      </div>
+      <div class="summary-card">
+        <div class="count">20+</div>
+        <h3>Options to browse</h3>
+        <p>All full-colour editorial photography. No blue AI-palette people images.</p>
       </div>
     </div>
   </div>
 
   <footer>
-    <p>These are suggestions only — no images have been purchased or downloaded. Tell Holly which direction you prefer and she'll implement.</p>
-    <p style="margin-top: 8px;">Options: <strong>Stock photography</strong> (licensed per image) · <strong>AI-generated</strong> (free, unique, colour-matched) · <strong>Mix of both</strong></p>
+    <p>Tell Holly which images you like and which slots you want to fill.</p>
+    <p>She'll source high-res versions and implement them on the site.</p>
+    <p style="margin-top: 12px; color: #6a7080;">Image Strategy v3.0 · 15 March 2026</p>
   </footer>
 </div>
 </body>

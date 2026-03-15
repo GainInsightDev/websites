@@ -1,17 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+// Cache-bust version — increment when photos change
+const v = '12';
+
 const partners = [
-  { name: 'Andy Davidson', role: 'Managing Partner', photo: '/images/partners/andy-davidson.png', bio: 'Over 25 years as a technology entrepreneur. Founded and co-founded multiple seed-stage tech companies, raised over £20M in finance, and enjoyed two large eight-figure exits.', ventures: ['Gain Insight', 'Recon1', 'Pensionable.ai', 'Senti', 'Kaizen'] },
-  { name: 'Jason Rogers', role: 'Head of Data & Technology', photo: '/images/partners/jason-rogers.png', bio: '25 years in financial services and technology, bringing a unique blend of operational and technical expertise to every venture.', ventures: ['Gain Insight', 'Recon1', 'Pensionable.ai', 'Indigo'] },
-  { name: 'Mark Crump', role: 'Head of Pension Technology', photo: '/images/partners/mark-crump.png', bio: 'Over 20 years as CEO or CTO at pensions administration software companies. Deep expertise in pension scheme operations and technology.', ventures: ['Pensionable.ai'] },
-  { name: 'Spencer Lynch', role: 'Associate Partner — Pensions', photo: '/images/partners/spencer-lynch.png', bio: 'Senior technology leader in the pensions industry, specialising in creating, developing and taking to market innovative data and technology solutions.', ventures: ['Pensionable.ai'] },
-  { name: 'David Rich', role: 'Chief Data Officer', photo: '/images/partners/david-rich.png', bio: 'Over 25 years as a technology and data entrepreneur. Deep understanding of how to improve and unlock the power of data.', ventures: ['Pensionable.ai'] },
-  { name: 'Philip Alton', role: 'Founder & CEO', photo: '/images/partners/philip-alton.png', bio: 'Former emergency medicine doctor and NHS clinical entrepreneur. Bridging the gap between clinical practice and technology.', ventures: ['Senti'] },
-  { name: 'Kevin Kearney', role: 'Chief Operating Officer', photo: '/images/partners/kevin-kearney.png', bio: 'Reconciliation veteran with 28 years of finance experience across payments, gaming, and financial services.', ventures: ['Recon1'] },
-  { name: 'Stuart Sims', role: 'Chief Financial Officer', photo: '/images/partners/stuart-sims.png', bio: 'Chartered accountant with global finance expertise spanning multiple industries and geographies.', ventures: ['Recon1'] },
-  { name: 'Joanne Carter', role: 'Head of Accountancy', photo: '/images/partners/joanne-carter.png', bio: 'Experienced finance professional overseeing financial operations and compliance across the portfolio.', ventures: ['Gain Insight', 'Kaizen'] },
-  { name: 'Amy Lennox', role: 'Co-founder & Audiologist', bio: 'Clinical audiologist bringing frontline healthcare expertise to reimagine hearing screening technology.', ventures: ['CLIK'] },
+  { name: 'Andy Davidson', role: 'Managing Partner', photo: `/images/partners/andy-davidson.png?v=${v}`, bio: 'Over 25 years as a technology entrepreneur. Founded and co-founded multiple seed-stage tech companies, raised over £20M in finance, and enjoyed two large eight-figure exits.', ventures: ['Gain Insight', 'Recon1', 'Pensionable.ai', 'Senti', 'Kaizen'] },
+  { name: 'Jason Rogers', role: 'Head of Data & Technology', photo: `/images/partners/jason-rogers.png?v=${v}`, bio: '25 years in financial services and technology, bringing a unique blend of operational and technical expertise to every venture.', ventures: ['Gain Insight', 'Recon1', 'Pensionable.ai', 'Indigo'] },
+  { name: 'Mark Crump', role: 'Head of Pension Technology', photo: `/images/partners/mark-crump.png?v=${v}`, bio: 'Over 20 years as CEO or CTO at pensions administration software companies. Deep expertise in pension scheme operations and technology.', ventures: ['Pensionable.ai'] },
+  { name: 'Spencer Lynch', role: 'Associate Partner — Pensions', photo: `/images/partners/spencer-lynch.png?v=${v}`, bio: 'Senior technology leader in the pensions industry, specialising in creating, developing and taking to market innovative data and technology solutions.', ventures: ['Pensionable.ai'] },
+  { name: 'David Rich', role: 'Chief Data Officer', photo: `/images/partners/david-rich.png?v=${v}`, bio: 'Over 25 years as a technology and data entrepreneur. Deep understanding of how to improve and unlock the power of data.', ventures: ['Pensionable.ai'] },
+  { name: 'Dr Phil Alton', role: 'Founder & CEO', photo: `/images/partners/philip-alton.png?v=${v}`, bio: 'Former emergency medicine doctor and NHS clinical entrepreneur. Bridging the gap between clinical practice and technology.', ventures: ['Senti', 'CLIK'] },
+  { name: 'Kevin Kearney', role: 'Chief Operating Officer', photo: `/images/partners/kevin-kearney.png?v=${v}`, bio: 'Reconciliation veteran with 28 years of finance experience across payments, gaming, and financial services.', ventures: ['Recon1'] },
+  { name: 'Stuart Sims', role: 'Chief Financial Officer', photo: `/images/partners/stuart-sims.png?v=${v}`, bio: 'Chartered accountant with global finance expertise spanning multiple industries and geographies.', ventures: ['Recon1'] },
+  { name: 'Joanne Carter', role: 'Head of Accountancy', photo: `/images/partners/joanne-carter.png?v=${v}`, bio: 'Experienced finance professional overseeing financial operations and compliance across the portfolio.', ventures: ['Gain Insight', 'Kaizen'] },
+  { name: 'Amy Lennox', role: 'Co-founder & Audiologist', photo: `/images/partners/amy-lennox.png?v=${v}`, bio: 'Clinical audiologist bringing frontline healthcare expertise to reimagine hearing screening technology.', ventures: ['CLIK'] },
+  { name: 'Rob White', role: 'Commercial Director', photo: `/images/partners/rob-white.png?v=${v}`, bio: 'Experienced commercial leader in the climbing industry. Helping climbing centres grow through marketing, HR, and operational support.', ventures: ['GCS'] },
 ];
 ---
 
@@ -44,6 +48,7 @@ const partners = [
                 width="128"
                 height="128"
                 class="w-32 h-32 rounded-full object-cover border-2 border-border-subtle mb-4"
+                style="object-position: center 15%;"
                 loading="lazy"
               />
             ) : (
@@ -66,6 +71,19 @@ const partners = [
           </div>
         ))}
       </div>
+    </div>
+  </section>
+
+  <!-- CTA — offwhite -->
+  <section class="section section-offwhite text-center">
+    <div class="container reveal">
+      <h2 class="text-[40px] md:text-[48px] text-text-dark leading-[1.1] mb-6">
+        Want to <em>partner with us?</em>
+      </h2>
+      <p class="text-[16px] text-text-light leading-relaxed max-w-[420px] mx-auto mb-10 font-light">
+        If you have domain expertise and want to build something together, we'd like to hear from you.
+      </p>
+      <a href="/contact" class="btn btn-steel">Get in touch</a>
     </div>
   </section>
 </Layout>

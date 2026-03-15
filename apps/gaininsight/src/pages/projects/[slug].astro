@@ -91,6 +91,22 @@ const projectContent: Record<string, {
     ],
     caseStudyUrl: '/projects/indigo/case-study',
   },
+  gcs: {
+    overviewHeading: 'The world\'s only globally portable <em>climbing qualification.</em>',
+    overview: [
+      'Climbing centres worldwide face a common problem: qualifications don\'t transfer between walls. A climber assessed at one centre has to start again at another. There\'s no shared standard, no portable record, and no way to measure progression consistently across different facilities or countries.',
+      'The Global Climbing Standard (GCS) solves this. Five stages, six skill domains, one framework — designed with climbing centres, coaches, and parents in mind. A climber\'s progression is recorded digitally and recognised at every accredited wall, in every country.',
+      'Gain Insight built the technology platform that powers GCS — from the coach assessment app and learner progression tracking to the centre accreditation system and parent visibility dashboard. AI assists coaches with consistent assessment and helps centres manage their programmes at scale.',
+    ],
+    capabilitiesLabel: 'The Platform',
+    capabilitiesHeading: 'What we <em>built.</em>',
+    capabilities: [
+      { title: 'Coach assessment app', description: 'Tablet-first application for coaches to assess climbers against the GCS framework in real-time. Six skill domains scored consistently across every session.' },
+      { title: 'Learner progression tracking', description: 'Digital record of each climber\'s journey through the five stages. Portable between centres and countries — no more starting over.' },
+      { title: 'Centre accreditation system', description: 'Dashboard for climbing centres to manage their GCS programme, track coach activity, and maintain accreditation standards.' },
+      { title: 'Parent visibility', description: 'Parents can see their child\'s climbing progress, upcoming milestones, and achievements — building engagement and retention for centres.' },
+    ],
+  },
 };
 
 const content = projectContent[slug!];
@@ -151,6 +167,12 @@ const caseStudyLink = content?.caseStudyUrl ?? project.caseStudyUrl;
       </div>
     </div>
   </section>
+
+  <!-- People section break -->
+  <div class="relative overflow-hidden" style="height: 200px;">
+    <img src="https://media.gettyimages.com/id/2148852049/photo/energetic-team-collaboration-session.jpg?s=612x612&w=0&k=20&c=txQlRWetNjH4WcwTl7jjR_am6r3isfBBgeqEay5tV1M=" alt="" width="612" height="408" class="w-full h-full object-cover" style="object-position: center 40%;" loading="lazy" />
+    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(15,17,24,0.25) 0%, rgba(15,17,24,0.05) 50%, rgba(15,17,24,0.25) 100%);"></div>
+  </div>
 
   <!-- Overview — dark -->
   <section class="section section-dark">

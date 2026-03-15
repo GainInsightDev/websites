@@ -9,6 +9,7 @@ export const ventureLogo: Record<string, string> = {
   junkan: '/images/ventures/junkan.png',
   juncta: '/images/ventures/juncta.png',
   helm: '/images/ventures/juncta.png',
+  gcs: '/images/ventures/gcs-full-dark.svg',
 };
 
 /** Map project slug → original full-colour logo path (for light backgrounds / white stages) */
@@ -22,13 +23,14 @@ export const ventureLogoRaw: Record<string, string> = {
   junkan: '/images/ventures/junkan-raw.png',
   juncta: '/images/ventures/juncta-dark.png',
   helm: '/images/ventures/juncta-dark.png',
+  gcs: '/images/ventures/gcs-full-light.svg',
 };
 
 /** Logos with wide aspect ratios that need extra horizontal space on cards */
-export const wideLogoSlugs = new Set(['indigo', 'juncta', 'pensionable', 'recon1']);
+export const wideLogoSlugs = new Set(['indigo', 'juncta', 'pensionable', 'recon1', 'gcs']);
 
 /** Projects to hide from listings */
-export const hiddenSlugs = new Set(['gcs', 'mind', 'insight']);
+export const hiddenSlugs = new Set(['mind', 'insight']);
 
 /** Remap project data for display (Helm → Juncta) */
 export const projectOverrides: Record<string, { name: string; displaySlug: string; tagline: string; domain: string }> = {
