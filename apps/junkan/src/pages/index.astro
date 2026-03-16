@@ -1739,55 +1739,102 @@ import Layout from '../layouts/Layout.astro';
     line-height: 1.5;
   }
 
-  /* Phone mockups — 3D perspective */
+  /* Phone mockups — realistic iPhone 3D */
   .manage-phones {
     position: relative;
-    height: 520px;
-    perspective: 1200px;
+    height: 560px;
+    perspective: 1000px;
+    transform-style: preserve-3d;
   }
   .manage-phone {
-    width: 220px;
-    border-radius: 28px;
-    border: 3px solid #2C2C2C;
-    overflow: hidden;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.18), 0 8px 24px rgba(0,0,0,0.10);
     position: absolute;
-    background: var(--color-background);
-    transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo);
+    background: #1a1a1a;
+    border-radius: 44px;
+    padding: 12px;
+    box-shadow:
+      0 30px 80px rgba(0,0,0,0.25),
+      0 10px 30px rgba(0,0,0,0.15),
+      inset 0 1px 0 rgba(255,255,255,0.1);
+    transition: transform 0.6s var(--ease-out-expo), box-shadow 0.6s var(--ease-out-expo);
+  }
+  .manage-phone::before {
+    content: '';
+    position: absolute;
+    top: 80px;
+    right: -3px;
+    width: 3px;
+    height: 28px;
+    background: #333;
+    border-radius: 0 2px 2px 0;
+  }
+  .manage-phone::after {
+    content: '';
+    position: absolute;
+    top: 120px;
+    left: -3px;
+    width: 3px;
+    height: 50px;
+    background: #333;
+    border-radius: 2px 0 0 2px;
   }
   .manage-phone-back {
+    width: 230px;
     top: 0;
-    left: 10%;
+    left: 5%;
     z-index: 1;
-    transform: rotateY(12deg) rotateX(2deg) translateZ(-40px);
+    transform: rotateY(15deg) rotateX(3deg) scale(0.9);
     transform-origin: center center;
   }
   .manage-phone-front {
-    top: 40px;
-    right: 5%;
+    width: 260px;
+    top: 30px;
+    right: 0;
     z-index: 2;
-    transform: rotateY(-8deg) rotateX(2deg) translateZ(20px);
+    transform: rotateY(-10deg) rotateX(2deg) scale(1);
     transform-origin: center center;
   }
   .manage-phone:hover {
-    transform: rotateY(0) rotateX(0) translateZ(30px) translateY(-4px);
-    box-shadow: 0 32px 80px rgba(0,0,0,0.22), 0 12px 32px rgba(0,0,0,0.12);
+    box-shadow:
+      0 40px 100px rgba(0,0,0,0.30),
+      0 15px 40px rgba(0,0,0,0.18),
+      inset 0 1px 0 rgba(255,255,255,0.12);
+  }
+  .manage-phone-back:hover {
+    transform: rotateY(8deg) rotateX(1deg) scale(0.92) translateY(-4px);
+  }
+  .manage-phone-front:hover {
+    transform: rotateY(-4deg) rotateX(1deg) scale(1.02) translateY(-4px);
   }
   .mp-notch {
     position: absolute;
-    top: 0;
+    top: 12px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 18px;
-    background: #2C2C2C;
-    border-radius: 0 0 12px 12px;
+    width: 90px;
+    height: 24px;
+    background: #1a1a1a;
+    border-radius: 0 0 16px 16px;
     z-index: 10;
   }
+  .mp-notch::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #2a2a2a;
+    border: 1px solid #333;
+  }
   .mp-screen {
-    padding: 30px 14px 14px;
-    min-height: 400px;
+    background: var(--color-background);
+    border-radius: 32px;
+    padding: 36px 14px 14px;
+    min-height: 420px;
     font-size: 10px;
+    overflow: hidden;
   }
   .mp-header {
     display: flex;
@@ -2421,10 +2468,10 @@ import Layout from '../layouts/Layout.astro';
     .manage-section { padding: 80px 24px; }
     .manage-layout { grid-template-columns: 1fr; gap: 48px; }
     .manage-features { grid-template-columns: 1fr; }
-    .manage-phones { height: auto; perspective: none; display: flex; gap: 16px; justify-content: center; }
-    .manage-phone { position: static; width: 180px; transform: none; }
-    .manage-phone:hover { transform: translateY(-4px); }
-    .manage-phone-front { top: auto; right: auto; }
+    .manage-phones { height: 400px; perspective: 800px; }
+    .manage-phone-back { width: 170px; left: 10%; transform: rotateY(12deg) scale(0.85); }
+    .manage-phone-front { width: 190px; right: 10%; transform: rotateY(-8deg) scale(0.95); }
+    .mp-screen { min-height: 320px; padding: 32px 10px 10px; }
   }
 </style>
 
