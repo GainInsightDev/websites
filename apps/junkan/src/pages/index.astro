@@ -1706,8 +1706,8 @@ import Layout from '../layouts/Layout.astro';
     margin-bottom: 36px;
   }
   .manage-features {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
   }
   .manage-feature {
@@ -1739,29 +1739,39 @@ import Layout from '../layouts/Layout.astro';
     line-height: 1.5;
   }
 
-  /* Phone mockups */
+  /* Phone mockups — 3D perspective */
   .manage-phones {
     position: relative;
-    height: 480px;
+    height: 520px;
+    perspective: 1200px;
   }
   .manage-phone {
     width: 220px;
     border-radius: 28px;
     border: 3px solid #2C2C2C;
     overflow: hidden;
-    box-shadow: 0 16px 48px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.18), 0 8px 24px rgba(0,0,0,0.10);
     position: absolute;
     background: var(--color-background);
+    transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo);
   }
   .manage-phone-back {
     top: 0;
-    left: 20px;
+    left: 10%;
     z-index: 1;
+    transform: rotateY(12deg) rotateX(2deg) translateZ(-40px);
+    transform-origin: center center;
   }
   .manage-phone-front {
-    top: 60px;
-    right: 20px;
+    top: 40px;
+    right: 5%;
     z-index: 2;
+    transform: rotateY(-8deg) rotateX(2deg) translateZ(20px);
+    transform-origin: center center;
+  }
+  .manage-phone:hover {
+    transform: rotateY(0) rotateX(0) translateZ(30px) translateY(-4px);
+    box-shadow: 0 32px 80px rgba(0,0,0,0.22), 0 12px 32px rgba(0,0,0,0.12);
   }
   .mp-notch {
     position: absolute;
@@ -2410,8 +2420,10 @@ import Layout from '../layouts/Layout.astro';
     .cap-float { display: none; }
     .manage-section { padding: 80px 24px; }
     .manage-layout { grid-template-columns: 1fr; gap: 48px; }
-    .manage-phones { height: auto; position: static; display: flex; gap: 16px; justify-content: center; }
-    .manage-phone { position: static; width: 180px; }
+    .manage-features { grid-template-columns: 1fr; }
+    .manage-phones { height: auto; perspective: none; display: flex; gap: 16px; justify-content: center; }
+    .manage-phone { position: static; width: 180px; transform: none; }
+    .manage-phone:hover { transform: translateY(-4px); }
     .manage-phone-front { top: auto; right: auto; }
   }
 </style>
