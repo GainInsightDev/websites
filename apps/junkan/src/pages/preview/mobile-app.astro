@@ -1,0 +1,1001 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout>
+  <div class="preview-hero">
+    <div class="preview-container">
+      <div class="preview-badge">Mobile App</div>
+      <h1 class="preview-title">Junkan Mobile</h1>
+      <p class="preview-subtitle">The full Junkan experience in your pocket. Capture, identify, price, and list — all from your phone.</p>
+    </div>
+  </div>
+
+  <!-- Row 1: Core Flow -->
+  <section class="mobile-section">
+    <div class="mobile-header">
+      <h2 class="mobile-title">Core Flow</h2>
+      <p class="mobile-desc">Snap a photo, get an AI identification, and list in seconds.</p>
+    </div>
+    <div class="phone-row">
+      <!-- 1. Home / Dashboard -->
+      <div class="phone-wrapper">
+        <div class="phone-label">Home</div>
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen phone-screen-light">
+            <div class="ph-header">
+              <div class="ph-avatar">SM</div>
+              <div class="ph-greeting">
+                <div class="ph-greeting-name">Good morning, Sarah</div>
+                <div class="ph-greeting-org">Oxfam Brixton</div>
+              </div>
+              <div class="ph-notif">
+                <svg width="16" height="16" fill="none" stroke="var(--color-text-muted)" viewBox="0 0 24 24" stroke-width="2"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 00-4-5.7V5a2 2 0 10-4 0v.3C7.7 6.2 6 8.4 6 11v3.2c0 .5-.2 1-.6 1.4L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                <span class="ph-notif-badge">3</span>
+              </div>
+            </div>
+            <div class="ph-stats">
+              <div class="ph-stat">
+                <span class="ph-stat-val">47</span>
+                <span class="ph-stat-lbl">Items</span>
+              </div>
+              <div class="ph-stat">
+                <span class="ph-stat-val">£1,247</span>
+                <span class="ph-stat-lbl">Revenue</span>
+              </div>
+              <div class="ph-stat">
+                <span class="ph-stat-val">73%</span>
+                <span class="ph-stat-lbl">Sell-through</span>
+              </div>
+            </div>
+            <div class="ph-section-label">Recent items</div>
+            <div class="ph-item-list">
+              <div class="ph-item">
+                <div class="ph-item-thumb">V</div>
+                <div class="ph-item-info">
+                  <div class="ph-item-name">Vintage Jacket</div>
+                  <div class="ph-item-meta">eBay · £85.00</div>
+                </div>
+                <span class="ph-item-badge ph-badge-matcha">Listed</span>
+              </div>
+              <div class="ph-item">
+                <div class="ph-item-thumb">D</div>
+                <div class="ph-item-info">
+                  <div class="ph-item-name">Designer Bag</div>
+                  <div class="ph-item-meta">Vinted · £120.00</div>
+                </div>
+                <span class="ph-item-badge ph-badge-ai">Sold</span>
+              </div>
+              <div class="ph-item">
+                <div class="ph-item-thumb">L</div>
+                <div class="ph-item-info">
+                  <div class="ph-item-name">Levi's 501 Jeans</div>
+                  <div class="ph-item-meta">Hybrid · £24.99</div>
+                </div>
+                <span class="ph-item-badge ph-badge-shu">Pending</span>
+              </div>
+            </div>
+            <div class="ph-bottom-nav">
+              <div class="ph-nav-item ph-nav-active">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                Home
+              </div>
+              <div class="ph-nav-item">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                Items
+              </div>
+              <div class="ph-nav-item ph-nav-capture">
+                <svg width="20" height="20" fill="none" stroke="#fff" viewBox="0 0 24 24" stroke-width="2.5"><path d="M12 4v16m8-8H4"/></svg>
+              </div>
+              <div class="ph-nav-item">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                Analytics
+              </div>
+              <div class="ph-nav-item">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                Profile
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Photo Capture -->
+      <div class="phone-wrapper">
+        <div class="phone-label">Capture</div>
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen phone-screen-dark">
+            <div class="ph-viewfinder">
+              <div class="ph-vf-grid">
+                <div class="ph-vf-h1"></div><div class="ph-vf-h2"></div>
+                <div class="ph-vf-v1"></div><div class="ph-vf-v2"></div>
+              </div>
+              <div class="ph-vf-label">
+                <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.7)" viewBox="0 0 24 24" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                Position item in frame
+              </div>
+            </div>
+            <div class="ph-capture-bar">
+              <div class="ph-capture-gallery">
+                <div class="ph-gallery-thumb"></div>
+              </div>
+              <div class="ph-capture-btn"><div class="ph-capture-btn-inner"></div></div>
+              <div class="ph-capture-flip">
+                <svg width="16" height="16" fill="none" stroke="#fff" viewBox="0 0 24 24" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6M20.5 9A9 9 0 005.6 5.6L1 10m22 4l-4.6 4.4A9 9 0 013.5 15"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. AI Identification -->
+      <div class="phone-wrapper">
+        <div class="phone-label">AI Result</div>
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen phone-screen-light">
+            <div class="ph-result-header">
+              <div class="ph-result-badge">
+                <span class="ph-result-check">&#10003;</span>
+                Identified · 92%
+              </div>
+            </div>
+            <div class="ph-result-body">
+              <div class="ph-result-item">Levi's 501 Jeans</div>
+              <div class="ph-result-tags">
+                <span>Fashion</span><span>W32 L32</span><span>Good</span>
+              </div>
+              <div class="ph-result-prices">
+                <div class="ph-result-price">
+                  <span class="ph-rp-label">Shop</span>
+                  <span class="ph-rp-val">£18</span>
+                </div>
+                <div class="ph-result-price ph-result-price-hl">
+                  <span class="ph-rp-label">eBay</span>
+                  <span class="ph-rp-val">£24.99</span>
+                  <span class="ph-rp-rec">Best</span>
+                </div>
+                <div class="ph-result-price">
+                  <span class="ph-rp-label">Vinted</span>
+                  <span class="ph-rp-val">£22</span>
+                </div>
+              </div>
+              <div class="ph-result-profit">
+                Estimated profit: <strong>£18.74</strong>
+              </div>
+              <div class="ph-result-action">List on eBay →</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Row 2: Management & Analytics -->
+  <section class="mobile-section mobile-section-alt">
+    <div class="mobile-header">
+      <h2 class="mobile-title">Manage & Track</h2>
+      <p class="mobile-desc">Monitor your inventory, track listings, and view real-time analytics.</p>
+    </div>
+    <div class="phone-row">
+      <!-- 4. Item Detail -->
+      <div class="phone-wrapper">
+        <div class="phone-label">Item Detail</div>
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen phone-screen-light">
+            <div class="ph-detail-back">← Back</div>
+            <div class="ph-detail-body">
+              <div class="ph-detail-img">
+                <svg width="32" height="32" fill="none" stroke="var(--color-text-muted)" viewBox="0 0 24 24" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              </div>
+              <div class="ph-detail-title">Vintage Leather Jacket</div>
+              <div class="ph-detail-meta">Fashion · Size M · Good</div>
+              <div class="ph-detail-status">
+                <span class="ph-badge-matcha">Listed on eBay</span>
+              </div>
+              <div class="ph-detail-row">
+                <span>Listed price</span><strong>£85.00</strong>
+              </div>
+              <div class="ph-detail-row">
+                <span>Est. profit</span><strong>£62.30</strong>
+              </div>
+              <div class="ph-detail-row">
+                <span>Views</span><strong>142</strong>
+              </div>
+              <div class="ph-detail-row">
+                <span>Watchers</span><strong>8</strong>
+              </div>
+              <div class="ph-detail-actions">
+                <div class="ph-detail-btn ph-detail-btn-primary">Edit listing</div>
+                <div class="ph-detail-btn">Relist</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Analytics -->
+      <div class="phone-wrapper">
+        <div class="phone-label">Analytics</div>
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen phone-screen-light">
+            <div class="ph-analytics-header">
+              <div class="ph-analytics-title">Analytics</div>
+              <div class="ph-analytics-period">This week ▾</div>
+            </div>
+            <div class="ph-analytics-kpi">
+              <div class="ph-kpi">
+                <span class="ph-kpi-val">£1,247</span>
+                <span class="ph-kpi-lbl">Revenue</span>
+                <span class="ph-kpi-trend ph-trend-up">↑ 15%</span>
+              </div>
+              <div class="ph-kpi">
+                <span class="ph-kpi-val">342</span>
+                <span class="ph-kpi-lbl">Items sold</span>
+                <span class="ph-kpi-trend ph-trend-up">↑ 8%</span>
+              </div>
+            </div>
+            <div class="ph-analytics-chart">
+              <svg viewBox="0 0 240 80" class="ph-chart">
+                <polyline points="0,65 40,60 80,48 120,52 160,32 200,20 240,10" fill="none" stroke="var(--color-ai)" stroke-width="2.5"/>
+                <polyline points="0,65 40,60 80,48 120,52 160,32 200,20 240,10" fill="url(#chartGrad)" stroke="none"/>
+                <defs>
+                  <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--color-ai)" stop-opacity="0.15"/>
+                    <stop offset="100%" stop-color="var(--color-ai)" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="ph-analytics-channels">
+              <div class="ph-channel">
+                <div class="ph-channel-bar" style="width:72%"></div>
+                <span class="ph-channel-name">eBay</span>
+                <span class="ph-channel-val">£897</span>
+              </div>
+              <div class="ph-channel">
+                <div class="ph-channel-bar ph-channel-matcha" style="width:45%"></div>
+                <span class="ph-channel-name">Vinted</span>
+                <span class="ph-channel-val">£218</span>
+              </div>
+              <div class="ph-channel">
+                <div class="ph-channel-bar ph-channel-shu" style="width:22%"></div>
+                <span class="ph-channel-name">Shop</span>
+                <span class="ph-channel-val">£132</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Sold Success -->
+      <div class="phone-wrapper">
+        <div class="phone-label">Sold!</div>
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen phone-screen-light">
+            <div class="ph-sold-body">
+              <div class="ph-sold-circle">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              </div>
+              <div class="ph-sold-title">Item Sold!</div>
+              <div class="ph-sold-amount">£24.99</div>
+              <div class="ph-sold-detail">Levi's 501 Jeans</div>
+              <div class="ph-sold-channel">Sold on eBay to buyer_jane92</div>
+              <div class="ph-sold-profit">
+                Your profit: <strong>£18.74</strong>
+              </div>
+              <div class="ph-sold-breakdown">
+                <div class="ph-sold-row"><span>Sale price</span><span>£24.99</span></div>
+                <div class="ph-sold-row"><span>eBay fees</span><span>-£3.25</span></div>
+                <div class="ph-sold-row"><span>Postage</span><span>-£3.00</span></div>
+                <div class="ph-sold-row ph-sold-total"><span>Profit</span><span>£18.74</span></div>
+              </div>
+              <div class="ph-sold-action">View in inventory →</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .preview-hero {
+    padding: 140px 48px 60px;
+    text-align: center;
+  }
+  .preview-container {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .preview-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: var(--color-ai-muted);
+    color: var(--color-ai);
+    margin-bottom: 24px;
+  }
+  .preview-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    color: var(--color-text);
+    margin-bottom: 16px;
+  }
+  .preview-subtitle {
+    font-size: 18px;
+    font-weight: 350;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Sections */
+  .mobile-section {
+    padding: 60px 48px 80px;
+  }
+  .mobile-section-alt {
+    background: var(--color-bg-deep, #ECEAE7);
+  }
+  .mobile-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .mobile-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(24px, 3vw, 36px);
+    letter-spacing: -0.03em;
+    color: var(--color-text);
+    margin-bottom: 12px;
+  }
+  .mobile-desc {
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* Phone row */
+  .phone-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .phone-wrapper {
+    text-align: center;
+  }
+  .phone-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+
+  /* Phone frame */
+  .phone {
+    width: 260px;
+    border-radius: 32px;
+    border: 3px solid #2C2C2C;
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
+    position: relative;
+  }
+  .phone-notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 22px;
+    background: #2C2C2C;
+    border-radius: 0 0 14px 14px;
+    z-index: 10;
+  }
+  .phone-screen {
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+  }
+  .phone-screen-light {
+    background: var(--color-background, #F7F5F3);
+  }
+  .phone-screen-dark {
+    background: #1a1a1a;
+  }
+
+  /* ══════ Home screen ══════ */
+  .ph-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 34px 16px 12px;
+  }
+  .ph-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-ai);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ph-greeting-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  .ph-greeting-org {
+    font-size: 10px;
+    color: var(--color-text-muted);
+  }
+  .ph-notif {
+    margin-left: auto;
+    position: relative;
+    color: var(--color-text-muted);
+  }
+  .ph-notif-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-shu);
+    color: #fff;
+    font-size: 8px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ph-stats {
+    display: flex;
+    gap: 8px;
+    padding: 0 16px;
+    margin-bottom: 16px;
+  }
+  .ph-stat {
+    flex: 1;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 10px 8px;
+    text-align: center;
+  }
+  .ph-stat-val {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text);
+    letter-spacing: -0.02em;
+  }
+  .ph-stat-lbl {
+    display: block;
+    font-size: 9px;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+  }
+  .ph-section-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0 16px;
+    margin-bottom: 8px;
+  }
+  .ph-item-list {
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ph-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 10px;
+  }
+  .ph-item-thumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+  }
+  .ph-item-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+  .ph-item-meta {
+    font-size: 10px;
+    color: var(--color-text-muted);
+  }
+  .ph-item-badge {
+    margin-left: auto;
+    font-size: 9px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  .ph-badge-matcha { background: var(--color-matcha-muted); color: var(--color-matcha); }
+  .ph-badge-ai { background: var(--color-ai-muted); color: var(--color-ai); }
+  .ph-badge-shu { background: rgba(217, 90, 80, 0.08); color: var(--color-shu); }
+
+  /* Bottom nav */
+  .ph-bottom-nav {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px 8px 12px;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+  .ph-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    font-size: 9px;
+    color: var(--color-text-muted);
+  }
+  .ph-nav-active {
+    color: var(--color-ai);
+  }
+  .ph-nav-capture {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-ai);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -12px;
+  }
+
+  /* ══════ Capture screen ══════ */
+  .ph-viewfinder {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+  }
+  .ph-vf-grid {
+    position: absolute;
+    inset: 30px 16px 16px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+  }
+  .ph-vf-h1, .ph-vf-h2, .ph-vf-v1, .ph-vf-v2 {
+    position: absolute;
+    background: rgba(255,255,255,0.1);
+  }
+  .ph-vf-h1 { top: 33%; left: 0; right: 0; height: 1px; }
+  .ph-vf-h2 { top: 66%; left: 0; right: 0; height: 1px; }
+  .ph-vf-v1 { left: 33%; top: 0; bottom: 0; width: 1px; }
+  .ph-vf-v2 { left: 66%; top: 0; bottom: 0; width: 1px; }
+  .ph-vf-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    position: absolute;
+    bottom: 24px;
+  }
+  .ph-capture-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 16px 24px 24px;
+  }
+  .ph-gallery-thumb {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #333;
+    border: 1px solid #555;
+  }
+  .ph-capture-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ph-capture-btn-inner {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #fff;
+  }
+  .ph-capture-flip {
+    color: #fff;
+  }
+
+  /* ══════ AI Result screen ══════ */
+  .ph-result-header {
+    padding: 34px 16px 12px;
+    text-align: center;
+  }
+  .ph-result-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: var(--color-matcha-muted);
+    color: var(--color-matcha);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .ph-result-check {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .ph-result-body {
+    padding: 12px 16px;
+  }
+  .ph-result-item {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-text);
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .ph-result-tags {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .ph-result-tags span {
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+  .ph-result-prices {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .ph-result-price {
+    flex: 1;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 10px 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .ph-result-price-hl {
+    border-color: var(--color-ai);
+    background: var(--color-ai-muted);
+  }
+  .ph-rp-label {
+    font-size: 9px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+  }
+  .ph-rp-val {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  .ph-rp-rec {
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--color-ai);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .ph-result-profit {
+    text-align: center;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-bottom: 16px;
+  }
+  .ph-result-profit strong {
+    color: var(--color-matcha);
+    font-weight: 600;
+  }
+  .ph-result-action {
+    background: var(--color-ai);
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ══════ Item Detail screen ══════ */
+  .ph-detail-back {
+    padding: 34px 16px 8px;
+    font-size: 12px;
+    color: var(--color-ai);
+    font-weight: 500;
+  }
+  .ph-detail-body {
+    padding: 0 16px 16px;
+  }
+  .ph-detail-img {
+    width: 100%;
+    height: 100px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+  .ph-detail-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 4px;
+  }
+  .ph-detail-meta {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    margin-bottom: 10px;
+  }
+  .ph-detail-status {
+    margin-bottom: 14px;
+  }
+  .ph-detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--color-border-subtle);
+    font-size: 12px;
+    color: var(--color-text-secondary);
+  }
+  .ph-detail-row strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+  .ph-detail-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .ph-detail-btn {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+  }
+  .ph-detail-btn-primary {
+    background: var(--color-ai);
+    color: #fff;
+    border-color: var(--color-ai);
+  }
+
+  /* ══════ Analytics screen ══════ */
+  .ph-analytics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 34px 16px 12px;
+  }
+  .ph-analytics-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  .ph-analytics-period {
+    font-size: 11px;
+    color: var(--color-ai);
+    font-weight: 500;
+  }
+  .ph-analytics-kpi {
+    display: flex;
+    gap: 8px;
+    padding: 0 16px;
+    margin-bottom: 16px;
+  }
+  .ph-kpi {
+    flex: 1;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .ph-kpi-val {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-text);
+    letter-spacing: -0.02em;
+  }
+  .ph-kpi-lbl {
+    font-size: 10px;
+    color: var(--color-text-muted);
+  }
+  .ph-kpi-trend {
+    font-size: 10px;
+    font-weight: 500;
+  }
+  .ph-trend-up { color: var(--color-matcha); }
+  .ph-analytics-chart {
+    padding: 0 16px;
+    margin-bottom: 16px;
+  }
+  .ph-chart {
+    width: 100%;
+    height: 60px;
+  }
+  .ph-analytics-channels {
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .ph-channel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+  }
+  .ph-channel-bar {
+    height: 8px;
+    border-radius: 4px;
+    background: var(--color-ai);
+  }
+  .ph-channel-matcha { background: var(--color-matcha); }
+  .ph-channel-shu { background: var(--color-shu); }
+  .ph-channel-name {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    width: 40px;
+    flex-shrink: 0;
+  }
+  .ph-channel-val {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-left: auto;
+  }
+
+  /* ══════ Sold screen ══════ */
+  .ph-sold-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px 20px;
+    text-align: center;
+  }
+  .ph-sold-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-matcha);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .ph-sold-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 4px;
+  }
+  .ph-sold-amount {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-matcha);
+    letter-spacing: -0.03em;
+    margin-bottom: 4px;
+  }
+  .ph-sold-detail {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 2px;
+  }
+  .ph-sold-channel {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    margin-bottom: 12px;
+  }
+  .ph-sold-profit {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin-bottom: 20px;
+  }
+  .ph-sold-profit strong {
+    color: var(--color-matcha);
+  }
+  .ph-sold-breakdown {
+    width: 100%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 16px;
+  }
+  .ph-sold-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+  .ph-sold-row:last-child { border-bottom: none; }
+  .ph-sold-total {
+    font-weight: 600;
+    color: var(--color-matcha);
+  }
+  .ph-sold-action {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-ai);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .mobile-section { padding: 40px 24px 60px; }
+    .phone-row { gap: 32px; }
+  }
+</style>
