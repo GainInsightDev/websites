@@ -470,6 +470,109 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
+  <!-- ═══════ MANAGE & TRACK ═══════ -->
+  <section class="manage-section" id="manage">
+    <div class="manage-layout">
+      <!-- Left: Content -->
+      <div class="manage-content reveal">
+        <div class="section-label">Key features</div>
+        <h2 class="manage-title">Manage &amp; Track<br>every listing.</h2>
+        <p class="manage-body">From inventory to analytics, Junkan gives you full visibility across every item, every channel, and every sale — so you always know what's working.</p>
+
+        <div class="manage-features">
+          <div class="manage-feature">
+            <div class="manage-feature-icon mf-icon-ai">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h4>Inventory Dashboard</h4>
+              <p>See every item at a glance — status, channel, price, and profit. Filter by listed, pending, or sold.</p>
+            </div>
+          </div>
+          <div class="manage-feature">
+            <div class="manage-feature-icon mf-icon-matcha">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h4>Revenue Analytics</h4>
+              <p>Track revenue, sell-through rates, and channel performance with live charts and trend data.</p>
+            </div>
+          </div>
+          <div class="manage-feature">
+            <div class="manage-feature-icon mf-icon-shu">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h4>Fulfilment Tracking</h4>
+              <p>Monitor every sale from payment to delivery — with profit breakdowns and buyer details.</p>
+            </div>
+          </div>
+          <div class="manage-feature">
+            <div class="manage-feature-icon mf-icon-ai">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h4>Smart Notifications</h4>
+              <p>Get alerted when items sell, prices change, or action is needed — never miss a sale.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Mobile phone mockups -->
+      <div class="manage-phones reveal reveal-delay-2">
+        <!-- Analytics phone -->
+        <div class="manage-phone manage-phone-back">
+          <div class="mp-notch"></div>
+          <div class="mp-screen">
+            <div class="mp-header">
+              <span class="mp-header-title">Analytics</span>
+              <span class="mp-header-period">This week ▾</span>
+            </div>
+            <div class="mp-kpis">
+              <div class="mp-kpi">
+                <span class="mp-kpi-val">£1,247</span>
+                <span class="mp-kpi-lbl">Revenue</span>
+                <span class="mp-kpi-trend">↑ 15%</span>
+              </div>
+              <div class="mp-kpi">
+                <span class="mp-kpi-val">342</span>
+                <span class="mp-kpi-lbl">Items</span>
+                <span class="mp-kpi-trend">↑ 8%</span>
+              </div>
+            </div>
+            <svg viewBox="0 0 200 50" class="mp-chart"><polyline points="0,42 33,40 66,34 100,36 133,24 166,16 200,8" fill="none" stroke="var(--color-ai)" stroke-width="2"/></svg>
+            <div class="mp-channels">
+              <div class="mp-channel"><div class="mp-ch-bar" style="width:72%"></div><span>eBay</span><strong>£897</strong></div>
+              <div class="mp-channel"><div class="mp-ch-bar mp-ch-matcha" style="width:45%"></div><span>Vinted</span><strong>£218</strong></div>
+              <div class="mp-channel"><div class="mp-ch-bar mp-ch-shu" style="width:22%"></div><span>Shop</span><strong>£132</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sold phone (front, overlapping) -->
+        <div class="manage-phone manage-phone-front">
+          <div class="mp-notch"></div>
+          <div class="mp-screen mp-screen-sold">
+            <div class="mp-sold-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+            <div class="mp-sold-title">Item Sold!</div>
+            <div class="mp-sold-amount">£24.99</div>
+            <div class="mp-sold-item">Levi's 501 Jeans</div>
+            <div class="mp-sold-channel">Sold on eBay</div>
+            <div class="mp-sold-breakdown">
+              <div class="mp-sold-row"><span>Sale price</span><span>£24.99</span></div>
+              <div class="mp-sold-row"><span>Fees</span><span>-£3.25</span></div>
+              <div class="mp-sold-row"><span>Postage</span><span>-£3.00</span></div>
+              <div class="mp-sold-row mp-sold-total"><span>Profit</span><span>£18.74</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════ BIG STAT ═══════ -->
   <section class="stat-section" id="stat">
     <div class="reveal">
@@ -1571,6 +1674,258 @@ import Layout from '../layouts/Layout.astro';
   }
 
   /* ═══════════════════════════════════════════════════
+     MANAGE & TRACK SECTION
+     ═══════════════════════════════════════════════════ */
+  .manage-section {
+    padding: 120px 48px;
+    background: var(--color-bg-deep, #ECEAE7);
+    position: relative;
+  }
+  .manage-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+  }
+  .manage-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(28px, 3vw, 44px);
+    line-height: 1.12;
+    letter-spacing: -0.04em;
+    color: var(--color-text);
+    margin-bottom: 20px;
+  }
+  .manage-body {
+    font-size: clamp(15px, 1.1vw, 17px);
+    font-weight: 350;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    margin-bottom: 36px;
+  }
+  .manage-features {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .manage-feature {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .manage-feature-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .mf-icon-ai { background: var(--color-ai-muted); color: var(--color-ai); }
+  .mf-icon-matcha { background: var(--color-matcha-muted); color: var(--color-matcha); }
+  .mf-icon-shu { background: rgba(217, 90, 80, 0.08); color: var(--color-shu); }
+  .manage-feature h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 4px;
+  }
+  .manage-feature p {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  /* Phone mockups */
+  .manage-phones {
+    position: relative;
+    height: 480px;
+  }
+  .manage-phone {
+    width: 220px;
+    border-radius: 28px;
+    border: 3px solid #2C2C2C;
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
+    position: absolute;
+    background: var(--color-background);
+  }
+  .manage-phone-back {
+    top: 0;
+    left: 20px;
+    z-index: 1;
+  }
+  .manage-phone-front {
+    top: 60px;
+    right: 20px;
+    z-index: 2;
+  }
+  .mp-notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 18px;
+    background: #2C2C2C;
+    border-radius: 0 0 12px 12px;
+    z-index: 10;
+  }
+  .mp-screen {
+    padding: 30px 14px 14px;
+    min-height: 400px;
+    font-size: 10px;
+  }
+  .mp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .mp-header-title {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  .mp-header-period {
+    font-size: 10px;
+    color: var(--color-ai);
+    font-weight: 500;
+  }
+  .mp-kpis {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .mp-kpi {
+    flex: 1;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .mp-kpi-val {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text);
+    letter-spacing: -0.02em;
+  }
+  .mp-kpi-lbl {
+    font-size: 9px;
+    color: var(--color-text-muted);
+  }
+  .mp-kpi-trend {
+    font-size: 9px;
+    font-weight: 500;
+    color: var(--color-matcha);
+  }
+  .mp-chart {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 12px;
+  }
+  .mp-channels {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .mp-channel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+  }
+  .mp-ch-bar {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--color-ai);
+  }
+  .mp-ch-matcha { background: var(--color-matcha); }
+  .mp-ch-shu { background: var(--color-shu); }
+  .mp-channel span {
+    color: var(--color-text-secondary);
+    width: 36px;
+  }
+  .mp-channel strong {
+    margin-left: auto;
+    font-size: 10px;
+    color: var(--color-text);
+  }
+
+  /* Sold phone */
+  .mp-screen-sold {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 40px;
+  }
+  .mp-sold-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--color-matcha);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .mp-sold-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 2px;
+  }
+  .mp-sold-amount {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-matcha);
+    letter-spacing: -0.03em;
+    margin-bottom: 4px;
+  }
+  .mp-sold-item {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 2px;
+  }
+  .mp-sold-channel {
+    font-size: 10px;
+    color: var(--color-text-muted);
+    margin-bottom: 14px;
+  }
+  .mp-sold-breakdown {
+    width: 100%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 10px;
+  }
+  .mp-sold-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 10px;
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+  .mp-sold-row:last-child { border-bottom: none; }
+  .mp-sold-total {
+    font-weight: 600;
+    color: var(--color-matcha);
+  }
+
+  /* ═══════════════════════════════════════════════════
      PROBLEM CARDS
      ═══════════════════════════════════════════════════ */
   .problem-grid {
@@ -2053,6 +2408,11 @@ import Layout from '../layouts/Layout.astro';
     .capabilities-layout { grid-template-columns: 1fr; gap: 48px; }
     .cap-visual { order: -1; }
     .cap-float { display: none; }
+    .manage-section { padding: 80px 24px; }
+    .manage-layout { grid-template-columns: 1fr; gap: 48px; }
+    .manage-phones { height: auto; position: static; display: flex; gap: 16px; justify-content: center; }
+    .manage-phone { position: static; width: 180px; }
+    .manage-phone-front { top: auto; right: auto; }
   }
 </style>
 
