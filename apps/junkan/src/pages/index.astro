@@ -619,7 +619,7 @@ import Layout from '../layouts/Layout.astro';
         <h4 class="tc-title">Game-changer for our shop</h4>
         <p class="tc-quote">Junkan's AI pricing has transformed how we handle donated items. What used to take our volunteers hours of research now happens in seconds — and we're getting better prices.</p>
         <div class="tc-author">
-          <div class="tc-avatar tc-avatar-ai">SM</div>
+          <img src="/images/avatars/avatar-1.png" alt="Sarah Mitchell" width="36" height="36" class="tc-avatar-img" />
           <div class="tc-info">
             <span class="tc-name">Sarah Mitchell</span>
             <span class="tc-handle">Oxfam Brixton</span>
@@ -631,7 +631,7 @@ import Layout from '../layouts/Layout.astro';
         <h4 class="tc-title">Finally, proper pricing intelligence</h4>
         <p class="tc-quote">We were leaving money on the table with every sale. Junkan showed us exactly what items are worth across eBay, Vinted and Depop — our revenue jumped 35% in the first month.</p>
         <div class="tc-author">
-          <div class="tc-avatar tc-avatar-matcha">JR</div>
+          <img src="/images/avatars/avatar-3.png" alt="James Robinson" width="36" height="36" class="tc-avatar-img" />
           <div class="tc-info">
             <span class="tc-name">James Robinson</span>
             <span class="tc-handle">Cancer Research UK</span>
@@ -643,7 +643,7 @@ import Layout from '../layouts/Layout.astro';
         <h4 class="tc-title">Scales our operation effortlessly</h4>
         <p class="tc-quote">We process 200+ items a week. Before Junkan, each one needed manual research. Now our staff focus on sorting and the AI handles the expertise. It's like having a resale specialist on every shift.</p>
         <div class="tc-author">
-          <div class="tc-avatar tc-avatar-shu">PW</div>
+          <img src="/images/avatars/avatar-5.png" alt="Priya Williams" width="36" height="36" class="tc-avatar-img" />
           <div class="tc-info">
             <span class="tc-name">Priya Williams</span>
             <span class="tc-handle">British Heart Foundation</span>
@@ -655,7 +655,7 @@ import Layout from '../layouts/Layout.astro';
         <h4 class="tc-title">Perfect for casual sellers too</h4>
         <p class="tc-quote">I had a wardrobe full of clothes I wanted to sell but no idea where to start. Snapped photos, Junkan did the rest. Earned £340 from items I would have donated.</p>
         <div class="tc-author">
-          <div class="tc-avatar tc-avatar-ai">EK</div>
+          <img src="/images/avatars/avatar-4.png" alt="Emma Kelly" width="36" height="36" class="tc-avatar-img" />
           <div class="tc-info">
             <span class="tc-name">Emma Kelly</span>
             <span class="tc-handle">Casual seller, London</span>
@@ -663,28 +663,46 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
-      <div class="testimonial-card tc-card-cta">
-        <div class="tc-cta-content">
-          <div class="tc-cta-icon">
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h4 class="tc-cta-title">Join our early access</h4>
-          <p class="tc-cta-text">Be among the first to transform how you sell.</p>
-          <a href="/contact" class="tc-cta-btn">Get started →</a>
-        </div>
-      </div>
-
       <div class="testimonial-card">
         <h4 class="tc-title">The routing feature is brilliant</h4>
         <p class="tc-quote">Some items sell better in-shop, others online. Junkan's smart routing tells us exactly where each item will make the most profit. No more guesswork.</p>
         <div class="tc-author">
-          <div class="tc-avatar tc-avatar-matcha">DT</div>
+          <img src="/images/avatars/avatar-2.png" alt="David Thompson" width="36" height="36" class="tc-avatar-img" />
           <div class="tc-info">
             <span class="tc-name">David Thompson</span>
             <span class="tc-handle">Professional reseller</span>
           </div>
         </div>
       </div>
+
+      <div class="testimonial-card">
+        <h4 class="tc-title">Saved us thousands in lost revenue</h4>
+        <p class="tc-quote">We had no idea how much we were underpricing items until Junkan's analytics showed us. The AI consistently finds 30-40% more value than our manual estimates.</p>
+        <div class="tc-author">
+          <img src="/images/avatars/avatar-6.png" alt="Rachel Adams" width="36" height="36" class="tc-avatar-img" />
+          <div class="tc-info">
+            <span class="tc-name">Rachel Adams</span>
+            <span class="tc-handle">Age UK</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PRICING / DEMO CTA ═══════ -->
+  <section class="demo-section" id="demo">
+    <div class="demo-inner reveal">
+      <div class="section-label">Get started</div>
+      <h2 class="demo-title">Ready to sell smarter?</h2>
+      <p class="demo-body">Start your free trial today — no credit card required. See how Junkan transforms every item into maximum value.</p>
+      <div class="demo-actions">
+        <a href="/contact" class="btn btn-primary">
+          Get started
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="/contact" class="btn btn-secondary">Book a demo</a>
+      </div>
+      <div class="demo-note">Free for your first 10 items · No commitment · Cancel anytime</div>
     </div>
   </section>
 
@@ -2049,6 +2067,13 @@ import Layout from '../layouts/Layout.astro';
   .tc-avatar-ai { background: var(--color-ai); }
   .tc-avatar-matcha { background: var(--color-matcha); }
   .tc-avatar-shu { background: var(--color-shu); }
+  .tc-avatar-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
   .tc-name {
     display: block;
     font-size: 13px;
@@ -2061,50 +2086,60 @@ import Layout from '../layouts/Layout.astro';
     color: var(--color-text-muted);
   }
 
-  /* CTA card in grid */
-  .tc-card-cta {
-    background: var(--color-ai);
-    border-color: var(--color-ai);
-    justify-content: center;
-    align-items: center;
+  /* Demo / Pricing CTA section */
+  .demo-section {
+    padding: 120px 48px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--color-ai);
   }
-  .tc-cta-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
+  .demo-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 640px;
+    margin: 0 auto;
   }
-  .tc-cta-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.2);
+  .demo-section .section-label {
+    color: rgba(255,255,255,0.7);
+  }
+  .demo-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(32px, 4vw, 56px);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .demo-body {
+    font-size: clamp(16px, 1.2vw, 19px);
+    font-weight: 350;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+    margin-bottom: 36px;
+  }
+  .demo-actions {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    gap: 16px;
+    margin-bottom: 20px;
   }
-  .tc-cta-title {
-    font-family: var(--font-display);
-    font-size: 17px;
-    font-weight: 600;
-    color: #fff;
-  }
-  .tc-cta-text {
-    font-size: 13px;
-    color: rgba(255,255,255,0.8);
-  }
-  .tc-cta-btn {
-    display: inline-block;
-    padding: 8px 20px;
+  .demo-actions .btn-primary {
     background: #fff;
     color: var(--color-ai);
-    border-radius: 8px;
+  }
+  .demo-actions .btn-secondary {
+    color: #fff;
+    border-color: rgba(255,255,255,0.4);
+  }
+  .demo-actions .btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+  }
+  .demo-note {
     font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    margin-top: 4px;
+    color: rgba(255,255,255,0.6);
   }
 
   /* ═══════════════════════════════════════════════════
@@ -2601,6 +2636,8 @@ import Layout from '../layouts/Layout.astro';
     .hub-logo img { width: 36px; height: 36px; padding: 4px; }
     .testimonials-section { padding: 80px 24px; }
     .testimonials-grid { grid-template-columns: 1fr; max-width: 480px; }
+    .demo-section { padding: 80px 24px; }
+    .demo-actions { flex-direction: column; }
   }
 </style>
 
