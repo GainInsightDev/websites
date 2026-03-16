@@ -519,56 +519,9 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
-      <!-- Right: Mobile phone mockups -->
+      <!-- Right: 3D phone mockup image -->
       <div class="manage-phones reveal reveal-delay-2">
-        <!-- Analytics phone -->
-        <div class="manage-phone manage-phone-back">
-          <div class="mp-notch"></div>
-          <div class="mp-screen">
-            <div class="mp-header">
-              <span class="mp-header-title">Analytics</span>
-              <span class="mp-header-period">This week ▾</span>
-            </div>
-            <div class="mp-kpis">
-              <div class="mp-kpi">
-                <span class="mp-kpi-val">£1,247</span>
-                <span class="mp-kpi-lbl">Revenue</span>
-                <span class="mp-kpi-trend">↑ 15%</span>
-              </div>
-              <div class="mp-kpi">
-                <span class="mp-kpi-val">342</span>
-                <span class="mp-kpi-lbl">Items</span>
-                <span class="mp-kpi-trend">↑ 8%</span>
-              </div>
-            </div>
-            <svg viewBox="0 0 200 50" class="mp-chart"><polyline points="0,42 33,40 66,34 100,36 133,24 166,16 200,8" fill="none" stroke="var(--color-ai)" stroke-width="2"/></svg>
-            <div class="mp-channels">
-              <div class="mp-channel"><div class="mp-ch-bar" style="width:72%"></div><span>eBay</span><strong>£897</strong></div>
-              <div class="mp-channel"><div class="mp-ch-bar mp-ch-matcha" style="width:45%"></div><span>Vinted</span><strong>£218</strong></div>
-              <div class="mp-channel"><div class="mp-ch-bar mp-ch-shu" style="width:22%"></div><span>Shop</span><strong>£132</strong></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Sold phone (front, overlapping) -->
-        <div class="manage-phone manage-phone-front">
-          <div class="mp-notch"></div>
-          <div class="mp-screen mp-screen-sold">
-            <div class="mp-sold-circle">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            </div>
-            <div class="mp-sold-title">Item Sold!</div>
-            <div class="mp-sold-amount">£24.99</div>
-            <div class="mp-sold-item">Levi's 501 Jeans</div>
-            <div class="mp-sold-channel">Sold on eBay</div>
-            <div class="mp-sold-breakdown">
-              <div class="mp-sold-row"><span>Sale price</span><span>£24.99</span></div>
-              <div class="mp-sold-row"><span>Fees</span><span>-£3.25</span></div>
-              <div class="mp-sold-row"><span>Postage</span><span>-£3.00</span></div>
-              <div class="mp-sold-row mp-sold-total"><span>Profit</span><span>£18.74</span></div>
-            </div>
-          </div>
-        </div>
+        <img src="/images/mockups/phones-3d.png" alt="Junkan mobile app showing analytics dashboard and sale confirmation screens on 3D floating phones" width="1024" height="1024" class="manage-phones-img" loading="lazy" />
       </div>
     </div>
   </section>
@@ -1739,200 +1692,17 @@ import Layout from '../layouts/Layout.astro';
     line-height: 1.5;
   }
 
-  /* Phone mockups — 3D perspective */
+  /* 3D phone mockup image */
   .manage-phones {
-    position: relative;
-    height: 520px;
-    perspective: 1200px;
-  }
-  .manage-phone {
-    width: 220px;
-    border-radius: 28px;
-    border: 3px solid #2C2C2C;
-    overflow: hidden;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.18), 0 8px 24px rgba(0,0,0,0.10);
-    position: absolute;
-    background: var(--color-background);
-    transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo);
-  }
-  .manage-phone-back {
-    top: 0;
-    left: 10%;
-    z-index: 1;
-    transform: rotateY(12deg) rotateX(2deg) translateZ(-40px);
-    transform-origin: center center;
-  }
-  .manage-phone-front {
-    top: 40px;
-    right: 5%;
-    z-index: 2;
-    transform: rotateY(-8deg) rotateX(2deg) translateZ(20px);
-    transform-origin: center center;
-  }
-  .manage-phone:hover {
-    transform: rotateY(0) rotateX(0) translateZ(30px) translateY(-4px);
-    box-shadow: 0 32px 80px rgba(0,0,0,0.22), 0 12px 32px rgba(0,0,0,0.12);
-  }
-  .mp-notch {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 18px;
-    background: #2C2C2C;
-    border-radius: 0 0 12px 12px;
-    z-index: 10;
-  }
-  .mp-screen {
-    padding: 30px 14px 14px;
-    min-height: 400px;
-    font-size: 10px;
-  }
-  .mp-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  .mp-header-title {
-    font-family: var(--font-display);
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-text);
-  }
-  .mp-header-period {
-    font-size: 10px;
-    color: var(--color-ai);
-    font-weight: 500;
-  }
-  .mp-kpis {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-  .mp-kpi {
-    flex: 1;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-  }
-  .mp-kpi-val {
-    font-family: var(--font-display);
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-text);
-    letter-spacing: -0.02em;
-  }
-  .mp-kpi-lbl {
-    font-size: 9px;
-    color: var(--color-text-muted);
-  }
-  .mp-kpi-trend {
-    font-size: 9px;
-    font-weight: 500;
-    color: var(--color-matcha);
-  }
-  .mp-chart {
-    width: 100%;
-    height: 40px;
-    margin-bottom: 12px;
-  }
-  .mp-channels {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .mp-channel {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 10px;
-  }
-  .mp-ch-bar {
-    height: 6px;
-    border-radius: 3px;
-    background: var(--color-ai);
-  }
-  .mp-ch-matcha { background: var(--color-matcha); }
-  .mp-ch-shu { background: var(--color-shu); }
-  .mp-channel span {
-    color: var(--color-text-secondary);
-    width: 36px;
-  }
-  .mp-channel strong {
-    margin-left: auto;
-    font-size: 10px;
-    color: var(--color-text);
-  }
-
-  /* Sold phone */
-  .mp-screen-sold {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding-top: 40px;
-  }
-  .mp-sold-circle {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: var(--color-matcha);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 10px;
   }
-  .mp-sold-title {
-    font-family: var(--font-display);
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: 2px;
-  }
-  .mp-sold-amount {
-    font-family: var(--font-display);
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--color-matcha);
-    letter-spacing: -0.03em;
-    margin-bottom: 4px;
-  }
-  .mp-sold-item {
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--color-text);
-    margin-bottom: 2px;
-  }
-  .mp-sold-channel {
-    font-size: 10px;
-    color: var(--color-text-muted);
-    margin-bottom: 14px;
-  }
-  .mp-sold-breakdown {
+  .manage-phones-img {
     width: 100%;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 10px;
-    padding: 10px;
-  }
-  .mp-sold-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 4px 0;
-    font-size: 10px;
-    color: var(--color-text-secondary);
-    border-bottom: 1px solid var(--color-border-subtle);
-  }
-  .mp-sold-row:last-child { border-bottom: none; }
-  .mp-sold-total {
-    font-weight: 600;
-    color: var(--color-matcha);
+    max-width: 520px;
+    height: auto;
+    object-fit: contain;
   }
 
   /* ═══════════════════════════════════════════════════
@@ -2421,10 +2191,7 @@ import Layout from '../layouts/Layout.astro';
     .manage-section { padding: 80px 24px; }
     .manage-layout { grid-template-columns: 1fr; gap: 48px; }
     .manage-features { grid-template-columns: 1fr; }
-    .manage-phones { height: auto; perspective: none; display: flex; gap: 16px; justify-content: center; }
-    .manage-phone { position: static; width: 180px; transform: none; }
-    .manage-phone:hover { transform: translateY(-4px); }
-    .manage-phone-front { top: auto; right: auto; }
+    .manage-phones-img { max-width: 100%; }
   }
 </style>
 
