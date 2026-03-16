@@ -1693,10 +1693,10 @@ import Layout from '../layouts/Layout.astro';
     line-height: 1.5;
   }
 
-  /* 3D phone mockup images */
+  /* 3D phone mockup images — grouped & overlapping */
   .manage-phones {
     position: relative;
-    height: 520px;
+    height: 560px;
   }
   .manage-phone-img {
     position: absolute;
@@ -1704,14 +1704,14 @@ import Layout from '../layouts/Layout.astro';
     object-fit: contain;
   }
   .manage-phone-back {
-    width: 55%;
+    width: 75%;
     top: 0;
-    right: 10%;
+    right: -5%;
     z-index: 1;
   }
   .manage-phone-front {
-    width: 50%;
-    top: 10%;
+    width: 68%;
+    top: 8%;
     left: 0;
     z-index: 2;
   }
@@ -2202,9 +2202,9 @@ import Layout from '../layouts/Layout.astro';
     .manage-section { padding: 80px 24px; }
     .manage-layout { grid-template-columns: 1fr; gap: 48px; }
     .manage-features { grid-template-columns: 1fr; }
-    .manage-phones { height: 360px; }
-    .manage-phone-back { width: 50%; right: 5%; }
-    .manage-phone-front { width: 45%; }
+    .manage-phones { height: 320px; }
+    .manage-phone-back { width: 65%; right: 0; }
+    .manage-phone-front { width: 58%; left: 0; }
   }
 </style>
 
