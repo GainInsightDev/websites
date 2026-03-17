@@ -135,19 +135,38 @@ import Layout from '../../layouts/Layout.astro';
 .elementor-1312 .elementor-widget-text-editor .elementor-widget-container {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 17px;
-	line-height: 1.8;
-	color: #e0e0e0;
+	line-height: 1.85;
+	color: #d0d4dc;
+	letter-spacing: 0.01em;
 }
 .elementor-1312 .elementor-widget-text-editor .elementor-widget-container p {
-	margin-bottom: 1em;
+	margin-bottom: 1.4em;
+}
+.elementor-1312 .elementor-widget-text-editor .elementor-widget-container ul {
+	margin: 1em 0 1.4em 1.5em;
+	padding: 0;
+}
+.elementor-1312 .elementor-widget-text-editor .elementor-widget-container li {
+	margin-bottom: 0.6em;
+	padding-left: 0.5em;
+}
+.elementor-1312 .elementor-widget-text-editor .elementor-widget-container strong {
+	color: #ffffff;
+	font-weight: 600;
+}
+.elementor-1312 .elementor-widget-text-editor .elementor-widget-container em {
+	color: #18abd7;
+	font-style: italic;
 }
 .elementor-1312 .elementor-widget-text-editor .elementor-widget-container h6 {
 	font-family: 'Unbounded', sans-serif;
 	font-size: 22px;
 	font-weight: 600;
-	color: #ffffff;
+	color: #18abd7;
 	margin-bottom: 16px;
-	margin-top: 8px;
+	margin-top: 32px;
+	padding-bottom: 12px;
+	border-bottom: 1px solid rgba(24, 171, 215, 0.2);
 }
 .elementor-1312 .elementor-heading-title {
 	font-family: 'Unbounded', sans-serif;
@@ -161,11 +180,15 @@ import Layout from '../../layouts/Layout.astro';
 	max-width: 100%;
 	height: auto;
 	border-radius: 8px;
+	margin: 8px 0;
 }
 .elementor-1312 .e-con.e-parent {
 	max-width: 800px;
 	margin: 0 auto;
-	padding: 24px 20px;
+	padding: 32px 24px;
+}
+.elementor-1312 .e-con.e-parent:first-child {
+	padding-top: 100px;
 }
 .elementor-1312 .e-grid.e-con.e-parent .e-con-inner {
 	display: grid;
@@ -175,6 +198,12 @@ import Layout from '../../layouts/Layout.astro';
 @media (max-width: 768px) {
 	.elementor-1312 .e-grid.e-con.e-parent .e-con-inner {
 		grid-template-columns: 1fr;
+	}
+	.elementor-1312 .e-con.e-parent {
+		padding: 20px 16px;
+	}
+	.elementor-1312 .e-con.e-parent:first-child {
+		padding-top: 80px;
 	}
 }
 </style>

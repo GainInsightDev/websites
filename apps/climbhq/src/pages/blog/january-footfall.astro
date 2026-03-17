@@ -167,32 +167,52 @@ import Layout from '../../layouts/Layout.astro';
 .elementor-1203 .elementor-widget-text-editor .elementor-widget-container {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 17px;
-	line-height: 1.8;
-	color: #e0e0e0;
+	line-height: 1.85;
+	color: #d0d4dc;
+	letter-spacing: 0.01em;
 }
 .elementor-1203 .elementor-widget-text-editor .elementor-widget-container p {
-	margin-bottom: 1em;
+	margin-bottom: 1.4em;
 }
 .elementor-1203 .elementor-widget-text-editor .elementor-widget-container ul {
-	margin: 0 0 1em 1.5em;
+	margin: 1em 0 1.4em 1.5em;
 	padding: 0;
 }
 .elementor-1203 .elementor-widget-text-editor .elementor-widget-container li {
-	margin-bottom: 0.5em;
+	margin-bottom: 0.6em;
+	padding-left: 0.5em;
 }
 .elementor-1203 .elementor-widget-text-editor .elementor-widget-container h6,
+.elementor-1203 .elementor-widget-text-editor .elementor-widget-container h3 {
+	font-family: 'Unbounded', sans-serif;
+	font-size: 22px;
+	font-weight: 600;
+	color: #18abd7;
+	margin-bottom: 16px;
+	margin-top: 32px;
+	padding-bottom: 12px;
+	border-bottom: 1px solid rgba(24, 171, 215, 0.2);
+}
 .elementor-1203 .elementor-widget-text-editor .elementor-widget-container b,
 .elementor-1203 .elementor-widget-text-editor .elementor-widget-container strong {
 	color: #ffffff;
+	font-weight: 600;
+}
+.elementor-1203 .elementor-widget-text-editor .elementor-widget-container em {
+	color: #18abd7;
+	font-style: italic;
 }
 .elementor-1203 .elementor-widget-text-editor .elementor-widget-container p > b:only-child,
 .elementor-1203 .elementor-widget-text-editor .elementor-widget-container p > strong:only-child {
 	font-family: 'Unbounded', sans-serif;
 	font-size: 22px;
 	font-weight: 600;
+	color: #18abd7;
 	display: block;
 	margin-bottom: 8px;
-	margin-top: 8px;
+	margin-top: 32px;
+	padding-bottom: 12px;
+	border-bottom: 1px solid rgba(24, 171, 215, 0.2);
 }
 .elementor-1203 .elementor-heading-title {
 	font-family: 'Unbounded', sans-serif;
@@ -206,10 +226,22 @@ import Layout from '../../layouts/Layout.astro';
 	max-width: 100%;
 	height: auto;
 	border-radius: 8px;
+	margin: 8px 0;
 }
 .elementor-1203 .e-con.e-parent {
 	max-width: 800px;
 	margin: 0 auto;
-	padding: 24px 20px;
+	padding: 32px 24px;
+}
+.elementor-1203 .e-con.e-parent:first-child {
+	padding-top: 100px;
+}
+@media (max-width: 768px) {
+	.elementor-1203 .e-con.e-parent {
+		padding: 20px 16px;
+	}
+	.elementor-1203 .e-con.e-parent:first-child {
+		padding-top: 80px;
+	}
 }
 </style>
