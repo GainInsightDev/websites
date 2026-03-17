@@ -7,6 +7,7 @@ interface Props {
 	category: string;
 	date: string;
 	readTime: string;
+	description?: string;
 	heroImage?: string;
 }
 
@@ -16,11 +17,12 @@ const {
 	category,
 	date,
 	readTime,
+	description,
 	heroImage = '/images/stock/behind-the-bloc-5.png',
 } = Astro.props;
 ---
 
-<Layout title={title} bodyClass="blog-post">
+<Layout title={title} description={description} bodyClass="blog-post">
 <article class="blog-article">
 	<header class="blog-hero" style={`background: linear-gradient(200deg, #071F33 20%, rgba(47, 36, 27, 0.78) 80%), url('${heroImage}') center/cover no-repeat;`}>
 		<div class="blog-hero-inner">
