@@ -78,13 +78,14 @@ body.elementor-kit-89 .heading-section-description {
   font-family: 'Montserrat', sans-serif;
 }
 
-/* Subtitle text: Unbounded 12px uppercase (matches WP 92633f6 typography) */
+/* Subtitle text: Montserrat 15px/500 uppercase 4px letter-spacing (matches WP computed) */
 body.elementor-kit-89 .heading-section-subtitle {
-  font-family: 'Unbounded', sans-serif;
-  font-size: 12px;
-  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
+  color: #18ABD7;
 }
 
 /* Responsive: tablet/mobile H1 size reduction */
