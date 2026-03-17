@@ -117,3 +117,14 @@ body.elementor-kit-89 .heading-section-subtitle {
 /* WP lazyload fix removed — was incorrectly using revert !important which
    overrode author stylesheets (e.g. shape-8.png on vision section).
    Inline style="background-image:none" has been stripped from HTML instead. */
+
+/* ===== Service page hero normalisation ===== */
+/* Accounting (1074) and HR (588) share the same hero image but have different
+   amounts of intro text, causing the section height to differ and the
+   background-position to appear to jump when navigating between them.
+   A shared min-height locks both heroes to the same rendered size. */
+.elementor-1074 .elementor-element.elementor-element-33ee27b3,
+.elementor-587 .elementor-element.elementor-element-33ee27b3,
+.elementor-588 .elementor-element.elementor-element-33ee27b3 {
+  min-height: 800px !important;
+}
