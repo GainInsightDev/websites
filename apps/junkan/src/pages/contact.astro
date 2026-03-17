@@ -16,19 +16,17 @@ const location = contactPage?.location || 'United Kingdom';
   description="Get in touch with the Junkan team. Request a demo of our AI-powered circular retail intelligence platform."
 >
   <!-- Hero -->
-  <section class="contact-hero">
-    <div class="contact-hero-inner">
-      <div class="section-label">Contact us</div>
-      <h1 class="contact-hero-title-delay-1">{heroTitle}</h1>
-      <p class="contact-hero-subtitle-delay-2">{heroSubtitle}</p>
-    </div>
+  <section class="section" style="padding-top: 140px; text-align: center;">
+    <div class="section-label">Contact us</div>
+    <h1 class="section-title" style="margin-left: auto; margin-right: auto;">{heroTitle}</h1>
+    <p class="section-body" style="margin-left: auto; margin-right: auto;">{heroSubtitle}</p>
   </section>
 
   <!-- Contact Content -->
-  <section class="contact-section">
+  <section class="contact-content">
     <div class="contact-grid">
       <!-- Contact Form -->
-      <div class="contact-form-wrapper">
+      <div class="card card-lg contact-form-card">
         <h2 class="contact-form-title">Request a Demo</h2>
         <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" id="contact-form">
           <input type="hidden" name="access_key" value="e16ca85f-40fa-4eb3-8c65-f1e09b381074" />
@@ -52,7 +50,10 @@ const location = contactPage?.location || 'United Kingdom';
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="4" placeholder="Tell us about your needs..."></textarea>
           </div>
-          <button type="submit" class="btn btn-primary contact-submit">Send Message</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            Send Message
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </form>
         <div id="form-success" class="form-success" style="display:none;">
           <div class="form-success-icon">&#10003;</div>
@@ -62,61 +63,49 @@ const location = contactPage?.location || 'United Kingdom';
       </div>
 
       <!-- Contact Info -->
-      <div class="contact-info-delay-1">
-        <h2 class="contact-info-title">Contact Information</h2>
+      <div class="contact-info-col">
+        <h2 class="contact-form-title">Contact Information</h2>
         <div class="info-cards">
-          <div class="info-card">
-            <div class="info-card-icon">
+          <div class="card info-card">
+            <div class="info-icon info-icon-ai">
               <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div>
-              <h3>Email</h3>
-              <a href={`mailto:${email}`}>{email}</a>
+              <h3 class="info-label">Email</h3>
+              <a href={`mailto:${email}`} class="info-value info-link">{email}</a>
             </div>
           </div>
 
           {phone && (
-            <div class="info-card">
-              <div class="info-card-icon">
+            <div class="card info-card">
+              <div class="info-icon info-icon-matcha">
                 <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
               <div>
-                <h3>Phone</h3>
-                <a href={`tel:${phone}`}>{phone}</a>
+                <h3 class="info-label">Phone</h3>
+                <a href={`tel:${phone}`} class="info-value info-link">{phone}</a>
               </div>
             </div>
           )}
 
-          <div class="info-card">
-            <div class="info-card-icon">
+          <div class="card info-card">
+            <div class="info-icon info-icon-shu">
               <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
             </div>
             <div>
-              <h3>Location</h3>
-              <p>{location}</p>
+              <h3 class="info-label">Location</h3>
+              <p class="info-value">{location}</p>
             </div>
           </div>
         </div>
 
-        <div class="why-junkan">
-          <h3>Why Junkan?</h3>
-          <ul>
-            <li>
-              <span class="why-check">&#10003;</span>
-              Process donations faster with AI assistance
-            </li>
-            <li>
-              <span class="why-check">&#10003;</span>
-              Maximise revenue across all marketplaces
-            </li>
-            <li>
-              <span class="why-check">&#10003;</span>
-              Data-driven pricing for every item
-            </li>
-            <li>
-              <span class="why-check">&#10003;</span>
-              Built specifically for charity retail
-            </li>
+        <div class="why-card">
+          <h3 class="why-title">Why Junkan?</h3>
+          <ul class="why-list">
+            <li><span class="why-check">&#10003;</span>Process donations faster with AI assistance</li>
+            <li><span class="why-check">&#10003;</span>Maximise revenue across all marketplaces</li>
+            <li><span class="why-check">&#10003;</span>Data-driven pricing for every item</li>
+            <li><span class="why-check">&#10003;</span>Built specifically for charity retail</li>
           </ul>
         </div>
       </div>
@@ -125,65 +114,30 @@ const location = contactPage?.location || 'United Kingdom';
 </Layout>
 
 <style>
-  .contact-hero {
-    padding: 140px 48px 80px;
-    text-align: center;
-    background: var(--color-text);
-    position: relative;
-    overflow: hidden;
-  }
-  .contact-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 30% 50%, rgba(75, 123, 229, 0.15) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 40% at 70% 30%, rgba(61, 166, 106, 0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .contact-hero-inner {
-    max-width: 640px;
+  /* Contact content area */
+  .contact-content {
+    padding: 0 48px 120px;
+    max-width: 1200px;
     margin: 0 auto;
-    position: relative;
-  }
-  .contact-hero .section-label {
-    color: var(--color-ai);
-  }
-  .contact-hero-title {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: clamp(36px, 5vw, 56px);
-    line-height: 1.1;
-    letter-spacing: -0.04em;
-    color: #fff;
-    margin-bottom: 16px;
-  }
-  .contact-hero-subtitle {
-    font-size: clamp(16px, 1.2vw, 19px);
-    font-weight: 350;
-    color: rgba(255, 255, 255, 0.75);
-    line-height: 1.6;
-  }
-
-  .contact-section {
-    padding: 80px 48px 120px;
-    background: var(--color-bg-deep, #ECEAE7);
   }
   .contact-grid {
-    max-width: 1000px;
-    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: start;
   }
 
-  /* Form */
+  /* Form card */
+  .contact-form-card {
+    padding: 40px;
+  }
   .contact-form-title {
     font-family: var(--font-display);
     font-size: 22px;
     font-weight: 600;
     color: var(--color-text);
     margin-bottom: 28px;
+    letter-spacing: -0.02em;
   }
   .contact-form {
     display: flex;
@@ -205,12 +159,12 @@ const location = contactPage?.location || 'United Kingdom';
     width: 100%;
     padding: 12px 16px;
     border: 1px solid var(--color-border);
-    border-radius: 10px;
-    background: var(--color-surface);
+    border-radius: var(--radius-btn, 12px);
+    background: var(--color-background);
     font-size: 14px;
     font-family: var(--font-body);
     color: var(--color-text);
-    transition: border-color 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
   .form-group input::placeholder,
   .form-group textarea::placeholder {
@@ -220,15 +174,11 @@ const location = contactPage?.location || 'United Kingdom';
   .form-group textarea:focus {
     outline: none;
     border-color: var(--color-ai);
+    box-shadow: 0 0 0 3px rgba(75, 123, 229, 0.1);
   }
   .form-group textarea {
     resize: vertical;
     min-height: 100px;
-  }
-  .contact-submit {
-    width: 100%;
-    padding: 14px;
-    font-size: 15px;
   }
 
   /* Success */
@@ -260,74 +210,64 @@ const location = contactPage?.location || 'United Kingdom';
     color: var(--color-text-muted);
   }
 
-  /* Contact Info */
-  .contact-info-title {
-    font-family: var(--font-display);
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: 28px;
-  }
+  /* Info column */
   .info-cards {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-bottom: 28px;
+    gap: 14px;
+    margin-bottom: 24px;
   }
   .info-card {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 14px;
-    padding: 20px;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 14px;
+    padding: 18px 20px;
   }
-  .info-card-icon {
+  .info-icon {
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    background: var(--color-ai-muted);
-    color: var(--color-ai);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
   }
-  .info-card h3 {
+  .info-icon-ai { background: var(--color-ai-muted); color: var(--color-ai); }
+  .info-icon-matcha { background: var(--color-matcha-muted); color: var(--color-matcha); }
+  .info-icon-shu { background: var(--color-shu-muted, rgba(217,90,80,0.08)); color: var(--color-shu); }
+  .info-label {
     font-size: 12px;
     font-weight: 500;
     color: var(--color-text-muted);
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
-  .info-card a {
-    font-size: 14px;
-    color: var(--color-ai);
-    text-decoration: none;
-  }
-  .info-card a:hover {
-    text-decoration: underline;
-  }
-  .info-card p {
+  .info-value {
     font-size: 14px;
     color: var(--color-text);
   }
+  .info-link {
+    color: var(--color-ai);
+    text-decoration: none;
+  }
+  .info-link:hover {
+    text-decoration: underline;
+  }
 
   /* Why Junkan */
-  .why-junkan {
+  .why-card {
     padding: 24px;
     background: var(--color-ai-muted);
     border: 1px solid rgba(75, 123, 229, 0.15);
-    border-radius: 14px;
+    border-radius: var(--radius-card, 16px);
   }
-  .why-junkan h3 {
+  .why-title {
     font-family: var(--font-display);
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     color: var(--color-text);
     margin-bottom: 16px;
   }
-  .why-junkan ul {
+  .why-list {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -335,25 +275,24 @@ const location = contactPage?.location || 'United Kingdom';
     flex-direction: column;
     gap: 12px;
   }
-  .why-junkan li {
+  .why-list li {
     display: flex;
     align-items: flex-start;
     gap: 10px;
     font-size: 13px;
     color: var(--color-text-secondary);
-    line-height: 1.4;
+    line-height: 1.5;
   }
   .why-check {
     color: var(--color-ai);
     font-weight: 600;
     flex-shrink: 0;
-    margin-top: 1px;
   }
 
   @media (max-width: 900px) {
-    .contact-hero { padding: 120px 24px 40px; }
-    .contact-section { padding: 0 24px 80px; }
-    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .contact-content { padding: 0 24px 80px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+    .contact-form-card { padding: 28px; }
   }
 </style>
 
@@ -364,7 +303,7 @@ const location = contactPage?.location || 'United Kingdom';
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-    const originalText = submitBtn.textContent;
+    const originalText = submitBtn.innerHTML;
     submitBtn.textContent = 'Sending...';
     submitBtn.disabled = true;
 
@@ -381,12 +320,12 @@ const location = contactPage?.location || 'United Kingdom';
       } else {
         submitBtn.textContent = 'Something went wrong. Try again.';
         submitBtn.disabled = false;
-        setTimeout(() => { submitBtn.textContent = originalText; }, 3000);
+        setTimeout(() => { submitBtn.innerHTML = originalText; }, 3000);
       }
     } catch {
       submitBtn.textContent = 'Something went wrong. Try again.';
       submitBtn.disabled = false;
-      setTimeout(() => { submitBtn.textContent = originalText; }, 3000);
+      setTimeout(() => { submitBtn.innerHTML = originalText; }, 3000);
     }
   });
 </script>
