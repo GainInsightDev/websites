@@ -480,22 +480,37 @@ import Layout from '../layouts/Layout.astro';
 
     <div class="segments-grid">
       <div class="segment-card reveal reveal-delay-2">
-        <div class="segment-tag segment-tag-ai">Charity retailers</div>
-        <div class="segment-stat segment-stat-ai">11,200+</div>
-        <h3>UK charity shops</h3>
-        <p>Turn donations into maximum charitable impact. Junkan handles the expertise gap so your staff can focus on what matters — the cause.</p>
+        <div class="segment-img">
+          <img src="/images/thrift-store.jpg" alt="Charity shop with clothing racks" width="800" height="533" loading="lazy" />
+        </div>
+        <div class="segment-body">
+          <div class="segment-tag segment-tag-ai">Charity retailers</div>
+          <div class="segment-stat segment-stat-ai">11,200+</div>
+          <h3>UK charity shops</h3>
+          <p>Turn donations into maximum charitable impact. Junkan handles the expertise gap so your staff can focus on what matters — the cause.</p>
+        </div>
       </div>
       <div class="segment-card reveal reveal-delay-3">
-        <div class="segment-tag segment-tag-matcha">Professional resellers</div>
-        <div class="segment-stat segment-stat-matcha">50/50</div>
-        <h3>Velocity meets return</h3>
-        <p>Optimise your inventory turnover with platform-specific pricing intelligence. Know exactly where each item sells best and for how much.</p>
+        <div class="segment-img">
+          <img src="/images/product-listing.jpg" alt="Professional reseller packaging items" width="800" height="533" loading="lazy" />
+        </div>
+        <div class="segment-body">
+          <div class="segment-tag segment-tag-matcha">Professional resellers</div>
+          <div class="segment-stat segment-stat-matcha">50/50</div>
+          <h3>Velocity meets return</h3>
+          <p>Optimise your inventory turnover with platform-specific pricing intelligence. Know exactly where each item sells best and for how much.</p>
+        </div>
       </div>
       <div class="segment-card reveal reveal-delay-4">
-        <div class="segment-tag segment-tag-shu">Casual sellers</div>
-        <div class="segment-stat segment-stat-shu">Unserved</div>
-        <h3>Photograph and step back</h3>
-        <p>The completely unserved market. People who have items to sell but not the time or knowledge. Junkan makes it effortless.</p>
+        <div class="segment-img">
+          <img src="/images/phone-scanning.jpg" alt="Person scanning items with phone" width="800" height="1200" loading="lazy" />
+        </div>
+        <div class="segment-body">
+          <div class="segment-tag segment-tag-shu">Casual sellers</div>
+          <div class="segment-stat segment-stat-shu">Unserved</div>
+          <h3>Photograph and step back</h3>
+          <p>The completely unserved market. People who have items to sell but not the time or knowledge. Junkan makes it effortless.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -2359,10 +2374,24 @@ import Layout from '../layouts/Layout.astro';
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: 20px;
-    padding: 40px 32px;
     position: relative;
     overflow: hidden;
     transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo);
+    display: flex;
+    flex-direction: column;
+  }
+  .segment-img {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+  }
+  .segment-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .segment-body {
+    padding: 28px 28px 32px;
   }
   .segment-card::before {
     content: '';
