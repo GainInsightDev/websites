@@ -48,13 +48,30 @@ tags: [design, brand, ux, guidelines]
 | Density | Content-rich with visual breathing room | Not marketing-sparse, not information-overloaded |
 | Motion | Subtle section reveals, hero slideshow | No flashy animations, no static-only pages |
 
+### Brand Voice
+
+**Audience:** Climbing centre owners and operators.
+
+| Attribute | Guideline | Anti-Pattern |
+|-----------|-----------|--------------|
+| Perspective | Speaking TO a climber, as a fellow climber | Not speaking AT business owners from the outside |
+| Tone | Friendly and human | Not corporate jargon, not overly casual/slangy |
+| Authority | Speak from experience and knowledge | Not lecturing, not hedging with "maybe/perhaps" |
+| Warmth | Personal, relatable, community-minded | Not cold/transactional, not salesy/pushy |
+
+**Voice examples:**
+- YES: "You know the January rush. Every centre sees it. But what happens in February tells the real story."
+- NO: "Leveraging Q1 footfall metrics to optimise customer lifetime value..."
+- YES: "We've worked with centres like yours — we get it."
+- NO: "Our solutions are designed to maximise ROI for facility operators."
+
 ### Colour Strategy
 
 **Primary Palette:**
 
 | Purpose | Token | Value | Usage |
 |---------|-------|-------|-------|
-| Cyan accent (primary) | `--accent` | `#1CABD6` | CTAs, links, highlights, nav accents, headings on dark bg |
+| Cyan accent (primary) | `--accent` | `#18ABD7` | CTAs, links, highlights, nav accents, headings on dark bg |
 | Dark navy (bg primary) | `--bg-dark` | `#03071F` | Navigation, mobile menu, darkest sections |
 | Navy (bg secondary) | `--bg-navy` | `#071F33` | Hero overlays, deep section backgrounds |
 | Dark charcoal | `--bg-charcoal` | `#2B2937` | Alternate dark sections |
@@ -79,7 +96,7 @@ tags: [design, brand, ux, guidelines]
 | Dark charcoal | `--text-dark` | `#353344` | Body text on light backgrounds |
 
 **Colour rules:**
-1. Cyan `#1CABD6` is the single brand accent colour. Use for all interactive elements, key headings, and CTAs
+1. Cyan `#18ABD7` is the single brand accent colour. Use for all interactive elements, key headings, and CTAs
 2. Maximum 3 colours visible in any section: background + text + accent
 3. Dark backgrounds dominate; light sections used sparingly for contrast
 4. Hero gradient is 200deg from `#071F33` (20%) to `#2F241BC7` (80%) over photography
@@ -138,7 +155,7 @@ tags: [design, brand, ux, guidelines]
 |----------|---------|--------|
 | Background | `#03071F` (dark navy) | `#03071F` slide-out drawer |
 | Logo | ClimbHQ SVG, left-aligned | ClimbHQ SVG, left-aligned |
-| Links | White Montserrat, bold | `#1CABD6` Unbounded 16px/500 |
+| Links | White Montserrat, bold | `#18ABD7` Unbounded 16px/500 |
 | Active state | Underline pointer animation | Current item highlight |
 | Mobile trigger | N/A | Burger icon 42x42px |
 | Mobile width | N/A | 280px slide from right |
@@ -149,8 +166,8 @@ tags: [design, brand, ux, guidelines]
 
 | Variant | Background | Text | Border | Radius |
 |---------|------------|------|--------|--------|
-| Primary CTA | `#1CABD6` | White | None | 0 (square) |
-| Secondary | Transparent | `#1CABD6` | 1px `#1CABD6` | 0 |
+| Primary CTA | `#18ABD7` | White | None | 0 (square) |
+| Secondary | Transparent | `#18ABD7` | 1px `#18ABD7` | 0 |
 | Ghost | Transparent | White | None | 0 |
 
 All buttons: Montserrat 15px, weight 500, uppercase, letter-spacing 4px.
@@ -242,7 +259,7 @@ The site follows a predominantly dark theme with occasional light sections for c
 | Services overview | `#2B2937` | White headings, `#9796A3` body |
 | Social proof | `#F2F2F2` or white | `#353344` |
 | Pricing | `#03071F` or `#071F33` | White headings, `#DBDFE6` body |
-| CTA | `#1CABD6` or dark with accent | White |
+| CTA | `#18ABD7` or dark with accent | White |
 | Footer | `#03071F` | `#DBDFE6` body, white headings |
 
 ### Hero Pattern
@@ -262,7 +279,7 @@ The site follows a predominantly dark theme with occasional light sections for c
 
 1. **Hero area:** Post title (Unbounded), date, reading time, category tag
 2. **Article body:** Max-width 720px, centred
-3. **Headings:** Cyan `#1CABD6` with bottom border separators
+3. **Headings:** Cyan `#18ABD7` with bottom border separators
 4. **Body text:** `#D0D4DC` on dark background, line-height 1.8
 5. **Pull quotes:** Large cyan text with left accent border
 6. **Insight boxes:** Dark card with cyan border for key takeaways
@@ -273,9 +290,9 @@ The site follows a predominantly dark theme with occasional light sections for c
 
 | Element | Style |
 |---------|-------|
-| Article headings | Cyan `#1CABD6`, bottom border |
+| Article headings | Cyan `#18ABD7`, bottom border |
 | Bold text | White `#FFFFFF` |
-| Italic text | Cyan `#1CABD6` |
+| Italic text | Cyan `#18ABD7` |
 | Blockquotes | Left cyan border, larger font |
 | Lists | Custom cyan bullet markers |
 
@@ -351,6 +368,7 @@ The site follows a predominantly dark theme with occasional light sections for c
 | Date | Author | Changes |
 |------|--------|---------|
 | 2026-03-17 | Holly (AI) | Initial creation — reverse-engineered from live WordPress site |
+| 2026-03-17 | Holly (AI) | Added brand voice (per Sam Beeny), standardised cyan to `#18ABD7` |
 
 ---
 
