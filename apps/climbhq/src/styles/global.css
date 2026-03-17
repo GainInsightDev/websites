@@ -22,6 +22,97 @@
     U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* ===== Font overrides to match WordPress computed styles ===== */
+
+/* Body text: Montserrat 16px/400 — matches WP .elementor-kit-89 */
+body.elementor-kit-89 {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* All headings default to Unbounded — matches WP heading typography */
+body.elementor-kit-89 h1,
+body.elementor-kit-89 h2,
+body.elementor-kit-89 h3,
+body.elementor-kit-89 h4,
+body.elementor-kit-89 h5,
+body.elementor-kit-89 h6 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 500;
+}
+
+/* H1 hero: Unbounded 70px/500 (var --e-global-typography-d7c0873) */
+body.elementor-kit-89 h1.heading-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 70px;
+  font-weight: 500;
+  line-height: 1.25em;
+}
+
+/* H2 section headings: Unbounded 24-27px/500 */
+body.elementor-kit-89 h2.heading-title {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 500;
+}
+
+/* H2 in icon boxes: Unbounded 24px/500 */
+body.elementor-kit-89 .jkit-icon-box .title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* Nav links: Montserrat 16px/500 */
+.elementor-nav-menu .elementor-item {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+}
+
+/* Body text in descriptions: Montserrat */
+body.elementor-kit-89 p,
+body.elementor-kit-89 .elementor-widget-text-editor,
+body.elementor-kit-89 .icon-box-description,
+body.elementor-kit-89 .heading-section-description {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Subtitle text: Unbounded 12px uppercase (matches WP 92633f6 typography) */
+body.elementor-kit-89 .heading-section-subtitle {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* Responsive: tablet/mobile H1 size reduction */
+@media (max-width: 1024px) {
+  body.elementor-kit-89 h1.heading-title {
+    font-size: 50px;
+  }
+}
+@media (max-width: 767px) {
+  body.elementor-kit-89 h1.heading-title {
+    font-size: 36px;
+  }
+}
+
+/* ===== Social icon circles (Issue 5) ===== */
+
+/* Ensure social icons have proper circular containers */
+.elementor-social-icon {
+  border-radius: 100px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: calc(var(--icon-size, 16px) + 2 * var(--icon-padding, 0.8em)) !important;
+  height: calc(var(--icon-size, 16px) + 2 * var(--icon-padding, 0.8em)) !important;
+  line-height: var(--icon-size, 16px) !important;
+  font-size: var(--icon-size, 16px) !important;
+}
+
 /* Force all Elementor sections to show backgrounds (replaces WP lazyload JS) */
 .e-con.e-parent:nth-of-type(n+2),
 .e-con.e-parent:nth-of-type(n+3),
