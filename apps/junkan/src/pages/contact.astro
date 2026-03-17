@@ -16,133 +16,329 @@ const location = contactPage?.location || 'United Kingdom';
   description="Get in touch with the Junkan team. Request a demo of our AI-powered circular retail intelligence platform."
 >
   <!-- Hero -->
-  <section class="hero-section bg-text text-white">
-    <div class="container">
-      <div class="max-w-3xl mx-auto text-center">
-        <h1 class="text-4xl md:text-5xl font-semibold mb-6">
-          {heroTitle}
-        </h1>
-        <p class="text-lg text-white/80 leading-relaxed max-w-2xl mx-auto">
-          {heroSubtitle}
-        </p>
-      </div>
+  <section class="contact-hero">
+    <div class="contact-hero-inner">
+      <div class="section-label reveal">Contact us</div>
+      <h1 class="contact-hero-title reveal reveal-delay-1">{heroTitle}</h1>
+      <p class="contact-hero-subtitle reveal reveal-delay-2">{heroSubtitle}</p>
     </div>
   </section>
 
   <!-- Contact Content -->
-  <section class="section">
-    <div class="container">
-      <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-        <!-- Contact Form -->
-        <div>
-          <h2 class="text-2xl font-semibold mb-6">Request a Demo</h2>
-          <form class="space-y-5" action="https://api.web3forms.com/submit" method="POST" id="contact-form">
-            <input type="hidden" name="access_key" value="e16ca85f-40fa-4eb3-8c65-f1e09b381074" />
-            <input type="hidden" name="subject" value="New Contact Form Submission — junkan.ai" />
-            <input type="hidden" name="from_name" value="Junkan Website" />
-            <!-- Honeypot spam protection -->
-            <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
-            <div>
-              <label for="name" class="block text-sm font-medium mb-2">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                class="w-full h-12 px-4 border border-border rounded-lg bg-surface text-text placeholder:text-text-muted focus:border-ai focus:outline-none transition-colors"
-                placeholder="Your name"
-              />
+  <section class="contact-section">
+    <div class="contact-grid">
+      <!-- Contact Form -->
+      <div class="contact-form-wrapper reveal">
+        <h2 class="contact-form-title">Request a Demo</h2>
+        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+          <input type="hidden" name="access_key" value="e16ca85f-40fa-4eb3-8c65-f1e09b381074" />
+          <input type="hidden" name="subject" value="New Contact Form Submission — junkan.ai" />
+          <input type="hidden" name="from_name" value="Junkan Website" />
+          <input type="checkbox" name="botcheck" style="display:none" />
+
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="you@organisation.org" />
+          </div>
+          <div class="form-group">
+            <label for="organisation">Organisation</label>
+            <input type="text" id="organisation" name="organisation" placeholder="Your charity or organisation" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell us about your needs..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary contact-submit">Send Message</button>
+        </form>
+        <div id="form-success" class="form-success" style="display:none;">
+          <div class="form-success-icon">&#10003;</div>
+          <div class="form-success-title">Message Sent!</div>
+          <p class="form-success-text">Thank you for reaching out. We'll get back to you shortly.</p>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="contact-info reveal reveal-delay-1">
+        <h2 class="contact-info-title">Contact Information</h2>
+        <div class="info-cards">
+          <div class="info-card">
+            <div class="info-card-icon">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div>
-              <label for="email" class="block text-sm font-medium mb-2">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                class="w-full h-12 px-4 border border-border rounded-lg bg-surface text-text placeholder:text-text-muted focus:border-ai focus:outline-none transition-colors"
-                placeholder="you@organisation.org"
-              />
+              <h3>Email</h3>
+              <a href={`mailto:${email}`}>{email}</a>
+            </div>
+          </div>
+
+          {phone && (
+            <div class="info-card">
+              <div class="info-card-icon">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <h3>Phone</h3>
+                <a href={`tel:${phone}`}>{phone}</a>
+              </div>
+            </div>
+          )}
+
+          <div class="info-card">
+            <div class="info-card-icon">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
             </div>
             <div>
-              <label for="organisation" class="block text-sm font-medium mb-2">Organisation</label>
-              <input
-                type="text"
-                id="organisation"
-                name="organisation"
-                class="w-full h-12 px-4 border border-border rounded-lg bg-surface text-text placeholder:text-text-muted focus:border-ai focus:outline-none transition-colors"
-                placeholder="Your charity or organisation"
-              />
+              <h3>Location</h3>
+              <p>{location}</p>
             </div>
-            <div>
-              <label for="message" class="block text-sm font-medium mb-2">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                class="w-full px-4 py-3 border border-border rounded-lg bg-surface text-text placeholder:text-text-muted focus:border-ai focus:outline-none transition-colors resize-y"
-                placeholder="Tell us about your needs..."
-              ></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary w-full">
-              Send Message
-            </button>
-          </form>
-          <!-- Success message -->
-          <div id="form-success" class="hidden text-center py-8">
-            <div class="text-matcha text-xl font-semibold mb-2">Message Sent!</div>
-            <p class="text-text-muted">Thank you for reaching out. We'll get back to you shortly.</p>
           </div>
         </div>
 
-        <!-- Contact Info -->
-        <div>
-          <h2 class="text-2xl font-semibold mb-6">Contact Information</h2>
-          <div class="space-y-6">
-            <div class="card">
-              <h3 class="text-sm font-medium text-text-muted mb-1">Email</h3>
-              <a href={`mailto:${email}`} class="text-ai hover:underline">{email}</a>
-            </div>
-
-            {phone && (
-              <div class="card">
-                <h3 class="text-sm font-medium text-text-muted mb-1">Phone</h3>
-                <a href={`tel:${phone}`} class="text-ai hover:underline">{phone}</a>
-              </div>
-            )}
-
-            <div class="card">
-              <h3 class="text-sm font-medium text-text-muted mb-1">Location</h3>
-              <p>{location}</p>
-            </div>
-
-            <div class="card bg-ai-muted border-ai/20">
-              <h3 class="text-sm font-medium mb-2">Why Junkan?</h3>
-              <ul class="space-y-2 text-sm text-text-muted">
-                <li class="flex items-start gap-2">
-                  <span class="text-ai mt-0.5">&#10003;</span>
-                  <span>Process donations faster with AI assistance</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-ai mt-0.5">&#10003;</span>
-                  <span>Maximise revenue across all marketplaces</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-ai mt-0.5">&#10003;</span>
-                  <span>Data-driven pricing for every item</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-ai mt-0.5">&#10003;</span>
-                  <span>Built specifically for charity retail</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+        <div class="why-junkan">
+          <h3>Why Junkan?</h3>
+          <ul>
+            <li>
+              <span class="why-check">&#10003;</span>
+              Process donations faster with AI assistance
+            </li>
+            <li>
+              <span class="why-check">&#10003;</span>
+              Maximise revenue across all marketplaces
+            </li>
+            <li>
+              <span class="why-check">&#10003;</span>
+              Data-driven pricing for every item
+            </li>
+            <li>
+              <span class="why-check">&#10003;</span>
+              Built specifically for charity retail
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 </Layout>
+
+<style>
+  .contact-hero {
+    padding: 140px 48px 60px;
+    text-align: center;
+  }
+  .contact-hero-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .contact-hero-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    color: var(--color-text);
+    margin-bottom: 16px;
+  }
+  .contact-hero-subtitle {
+    font-size: clamp(16px, 1.2vw, 19px);
+    font-weight: 350;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .contact-section {
+    padding: 0 48px 120px;
+  }
+  .contact-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+
+  /* Form */
+  .contact-form-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 28px;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .form-group label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    background: var(--color-surface);
+    font-size: 14px;
+    font-family: var(--font-body);
+    color: var(--color-text);
+    transition: border-color 0.2s ease;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--color-text-muted);
+  }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-ai);
+  }
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  .contact-submit {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  /* Success */
+  .form-success {
+    text-align: center;
+    padding: 48px 0;
+  }
+  .form-success-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-matcha);
+    color: #fff;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+  }
+  .form-success-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 8px;
+  }
+  .form-success-text {
+    font-size: 14px;
+    color: var(--color-text-muted);
+  }
+
+  /* Contact Info */
+  .contact-info-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 28px;
+  }
+  .info-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+  }
+  .info-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--color-ai-muted);
+    color: var(--color-ai);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .info-card h3 {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    margin-bottom: 4px;
+  }
+  .info-card a {
+    font-size: 14px;
+    color: var(--color-ai);
+    text-decoration: none;
+  }
+  .info-card a:hover {
+    text-decoration: underline;
+  }
+  .info-card p {
+    font-size: 14px;
+    color: var(--color-text);
+  }
+
+  /* Why Junkan */
+  .why-junkan {
+    padding: 24px;
+    background: var(--color-ai-muted);
+    border: 1px solid rgba(75, 123, 229, 0.15);
+    border-radius: 14px;
+  }
+  .why-junkan h3 {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 16px;
+  }
+  .why-junkan ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .why-junkan li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+  }
+  .why-check {
+    color: var(--color-ai);
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  @media (max-width: 900px) {
+    .contact-hero { padding: 120px 24px 40px; }
+    .contact-section { padding: 0 24px 80px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+</style>
 
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement;
@@ -163,21 +359,17 @@ const location = contactPage?.location || 'United Kingdom';
 
       if (response.ok) {
         form.style.display = 'none';
-        if (successDiv) successDiv.classList.remove('hidden');
+        if (successDiv) successDiv.style.display = 'block';
         form.reset();
       } else {
         submitBtn.textContent = 'Something went wrong. Try again.';
         submitBtn.disabled = false;
-        setTimeout(() => {
-          submitBtn.textContent = originalText;
-        }, 3000);
+        setTimeout(() => { submitBtn.textContent = originalText; }, 3000);
       }
     } catch {
       submitBtn.textContent = 'Something went wrong. Try again.';
       submitBtn.disabled = false;
-      setTimeout(() => {
-        submitBtn.textContent = originalText;
-      }, 3000);
+      setTimeout(() => { submitBtn.textContent = originalText; }, 3000);
     }
   });
 </script>
