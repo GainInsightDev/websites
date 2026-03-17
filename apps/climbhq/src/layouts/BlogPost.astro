@@ -24,7 +24,7 @@ const {
 
 <Layout title={title} description={description} bodyClass="blog-post">
 <article class="blog-article">
-	<header class="blog-hero" style={`background: linear-gradient(200deg, #071F33 20%, rgba(47, 36, 27, 0.78) 80%), url('${heroImage}') center/cover no-repeat;`}>
+	<header class="blog-hero" style={`background: linear-gradient(180deg, rgba(7,31,51,0.82) 0%, rgba(3,7,31,0.93) 65%, #03071F 100%), url('${heroImage}') center/cover no-repeat;`}>
 		<div class="blog-hero-inner">
 			<span class="blog-category">{category}</span>
 			<h1>{heroTitle}</h1>
@@ -129,7 +129,7 @@ const {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
 	line-height: 1.85;
-	color: #d0d4dc;
+	color: #e0e4ec;
 	margin-bottom: 1.3em;
 }
 .blog-content strong {
@@ -147,7 +147,7 @@ const {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
 	line-height: 1.85;
-	color: #d0d4dc;
+	color: #e0e4ec;
 	margin-bottom: 0.5em;
 	padding-left: 24px;
 	position: relative;
@@ -232,37 +232,48 @@ const {
 
 /* Team tip sections */
 .blog-team-tip {
-	background: rgba(24, 171, 215, 0.04);
-	border-radius: 8px;
-	padding: 32px 28px;
+	background: rgba(255, 162, 105, 0.05);
+	border: 1px solid rgba(255, 162, 105, 0.15);
+	border-left: 4px solid rgba(255, 162, 105, 0.5);
+	border-radius: 0 8px 8px 0;
+	padding: 28px 28px 28px 24px;
 	margin-bottom: 48px;
 }
-.blog-tip-header {
+.blog-tip-body {
 	display: flex;
-	align-items: center;
-	gap: 14px;
-	margin-bottom: 16px;
+	gap: 24px;
+	align-items: flex-start;
 }
 .blog-tip-portrait {
-	width: 52px;
-	height: 52px;
+	width: 90px;
+	height: 90px;
 	border-radius: 50%;
 	object-fit: cover;
 	object-position: center top;
-	border: 2px solid rgba(255, 162, 105, 0.5);
+	border: 3px solid rgba(255, 162, 105, 0.5);
 	flex-shrink: 0;
+	margin-top: 4px;
 }
-.blog-tip-header .blog-tip-label {
-	margin-bottom: 0 !important;
+.blog-tip-content {
+	flex: 1;
+}
+.blog-tip-content h2 {
+	font-size: 20px !important;
+	color: #FFA269 !important;
+	border-bottom: 1px solid rgba(255, 162, 105, 0.2) !important;
+	padding-bottom: 8px !important;
+	margin-bottom: 12px !important;
+	margin-top: 8px !important;
 }
 .blog-tip-label {
 	font-family: 'Unbounded', sans-serif;
-	font-size: 12px;
+	font-size: 11px;
 	font-weight: 400;
 	letter-spacing: 3px;
 	text-transform: uppercase;
 	color: #FFA269;
-	margin-bottom: 16px !important;
+	margin-bottom: 4px !important;
+	opacity: 0.8;
 }
 
 /* CTA section */
@@ -328,9 +339,25 @@ const {
 	}
 	.blog-insight,
 	.blog-coming-next,
-	.blog-team-tip,
 	.blog-cta-section {
 		padding: 20px;
+	}
+	.blog-team-tip {
+		padding: 20px 20px 20px 16px;
+	}
+	.blog-tip-body {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+	.blog-tip-portrait {
+		width: 80px;
+		height: 80px;
+		margin-top: 0;
+		margin-bottom: 8px;
+	}
+	.blog-tip-content h2 {
+		font-size: 18px !important;
 	}
 }
 </style>
