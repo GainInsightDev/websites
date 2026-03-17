@@ -126,12 +126,28 @@ const location = contactPage?.location || 'United Kingdom';
 
 <style>
   .contact-hero {
-    padding: 140px 48px 60px;
+    padding: 140px 48px 80px;
     text-align: center;
+    background: var(--color-text);
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 30% 50%, rgba(75, 123, 229, 0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 70% 30%, rgba(61, 166, 106, 0.08) 0%, transparent 70%);
+    pointer-events: none;
   }
   .contact-hero-inner {
     max-width: 640px;
     margin: 0 auto;
+    position: relative;
+  }
+  .contact-hero .section-label {
+    color: var(--color-ai);
   }
   .contact-hero-title {
     font-family: var(--font-display);
@@ -139,18 +155,19 @@ const location = contactPage?.location || 'United Kingdom';
     font-size: clamp(36px, 5vw, 56px);
     line-height: 1.1;
     letter-spacing: -0.04em;
-    color: var(--color-text);
+    color: #fff;
     margin-bottom: 16px;
   }
   .contact-hero-subtitle {
     font-size: clamp(16px, 1.2vw, 19px);
     font-weight: 350;
-    color: var(--color-text-secondary);
+    color: rgba(255, 255, 255, 0.75);
     line-height: 1.6;
   }
 
   .contact-section {
-    padding: 0 48px 120px;
+    padding: 80px 48px 120px;
+    background: var(--color-bg-deep, #ECEAE7);
   }
   .contact-grid {
     max-width: 1000px;
