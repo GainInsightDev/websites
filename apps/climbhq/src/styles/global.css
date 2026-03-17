@@ -63,11 +63,11 @@ body.elementor-kit-89 .jkit-icon-box .title {
   font-weight: 500;
 }
 
-/* Nav links: Montserrat 16px/500 */
+/* Nav links: Montserrat 16px/700 — matches WP computed font-weight */
 .elementor-nav-menu .elementor-item {
   font-family: 'Montserrat', sans-serif !important;
   font-size: 16px !important;
-  font-weight: 500 !important;
+  font-weight: 700 !important;
 }
 
 /* Body text in descriptions: Montserrat */
@@ -114,10 +114,6 @@ body.elementor-kit-89 .heading-section-subtitle {
   font-size: var(--icon-size, 16px) !important;
 }
 
-/* Force all Elementor sections to show backgrounds (replaces WP lazyload JS) */
-.e-con.e-parent:nth-of-type(n+2),
-.e-con.e-parent:nth-of-type(n+3),
-.e-con.e-parent:nth-of-type(n+4) {
-  /* Override WP's lazy background-image:none rule */
-  background-image: revert !important;
-}
+/* WP lazyload fix removed — was incorrectly using revert !important which
+   overrode author stylesheets (e.g. shape-8.png on vision section).
+   Inline style="background-image:none" has been stripped from HTML instead. */

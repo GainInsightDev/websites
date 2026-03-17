@@ -711,30 +711,6 @@ We’ll create engaging blogs, articles, and downloadable resources tailored to 
     z-index: 2;
   }
 
-  /* ===== Torn paper / section dividers ===== */
-  /* Applied as ::after pseudo-elements on parent sections to avoid gaps */
-  .elementor-95 > .e-con.e-parent {
-    position: relative;
-  }
-  .elementor-95 > .e-con.e-parent::after {
-    content: '';
-    position: absolute;
-    bottom: -30px;
-    left: 0;
-    right: 0;
-    height: 60px;
-    z-index: 10;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 60' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 L0,35 Q50,60 100,38 T200,45 T300,30 T400,42 T500,35 T600,48 T700,32 T800,40 T900,28 T1000,42 T1100,35 T1200,40 L1200,0 Z' fill='%2303071F'/%3E%3C/svg%3E");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-  }
-  /* Alternate fill colour for odd sections */
-  .elementor-95 > .e-con.e-parent:nth-child(odd)::after {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 60' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 L0,30 Q60,55 120,35 T240,48 T360,28 T480,45 T600,32 T720,50 T840,30 T960,42 T1080,35 T1200,45 L1200,0 Z' fill='%232B2937'/%3E%3C/svg%3E");
-  }
-  /* No divider on the last section (before footer) */
-  .elementor-95 > .e-con.e-parent:last-child::after {
-    display: none;
-  }
+  /* ===== Section dividers removed ===== */
+  /* WordPress uses negative margins for section overlap, not torn-paper dividers */
 </style>
