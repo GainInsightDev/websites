@@ -1,153 +1,230 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+
+const posts = [
+  {
+    href: '/blog/march-consistency-check',
+    title: 'The March Consistency Check',
+    date: 'March 17, 2026',
+    excerpt: 'As Q1 comes to an end, March is a good moment to pause and ask three simple questions about what\'s predictable, where people linger, and what quietly faded.',
+    image: '/images/stock/rear-view-athlete-climbing.jpg',
+    imageAlt: 'Climber on wall',
+  },
+  {
+    href: '/blog/campfire-effect',
+    title: 'The Campfire Effect: How Belonging Is Built in Climbing Centres',
+    date: 'February 6, 2026',
+    excerpt: 'The New Year rush fades, routines start to settle, and climbing centres begin to see what actually sticks. Here\'s how the best centres build belonging that lasts.',
+    image: '/images/stock/climbing-in-gym.jpg',
+    imageAlt: 'Community climbing in a gym',
+  },
+  {
+    href: '/blog/january-footfall',
+    title: 'January Footfall Is Easy. Turning It Into Long-Term Performance Isn\'t.',
+    date: 'January 16, 2026',
+    excerpt: 'January is usually busy for climbing centres. New Year motivation brings lots of people trying climbing for the first time. The question is — how many come back?',
+    image: '/images/stock/young-woman-bouldering-overhanging.jpg',
+    imageAlt: 'Woman bouldering on overhanging wall',
+  },
+];
 ---
 
-<Layout title="Blog — ClimbHQ" bodyClass="elementor-page-1195">
-				<div data-elementor-type="wp-page" data-elementor-id="1195" class="elementor elementor-1195" data-elementor-post-type="page">
-				<div class="elementor-element elementor-element-22a6b5b e-flex e-con-boxed e-con e-parent" data-id="22a6b5b" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-				<div class="elementor-element elementor-element-1dbf8c7 elementor-widget elementor-widget-image" data-id="1dbf8c7" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
-				<div class="elementor-widget-container">
-															<img decoding="async" width="2240" height="1260" src="/images/stock/behind-the-bloc-5.png" class="attachment-full size-full wp-image-1286" alt="" />															</div>
-				</div>
-				<div class="elementor-element elementor-element-dc6eed0 tpg-wrapper-align-left img_hover_animation_img_no_effect meta-visibility-show section-title-style-style1 title_position_default title_hover_border_default title-default meta_position_default readmore-btn-default-style grid-hover-overlay-type-always tpg-el-box-border-enable tpg-border-bottom-disable elementor-widget elementor-widget-tpg-grid-layout" data-id="dc6eed0" data-element_type="widget" data-e-type="widget" data-widget_type="tpg-grid-layout.default">
-				<div class="elementor-widget-container">
-							<div class="rt-container-fluid rt-tpg-container tpg-el-main-wrapper clearfix grid-layout1-main "
-			 id="rt-tpg-container-3223166672"
-			 data-layout="grid-layout1"
-			 data-grid-style="tpg-full-height"
-			 data-sc-id="elementor"
-			 data-el-settings=''
-			 data-el-query=''
-			 data-el-path=''
-		>
-						<div class='tpg-header-wrapper '>
-				
-        <div class="tpg-widget-heading-wrapper rt-clear heading-style1 ">
-            <span class="tpg-widget-heading-line line-left"></span>
-			<h2 class='tpg-widget-heading'>
-			
-				                    <span>
-						Climb HQ Blogs					</span>
-					
-							</h2>            <span class="tpg-widget-heading-line line-right"></span>
+<Layout title="Blog — ClimbHQ" bodyClass="climbhq-blog-index">
 
-			
-        </div>
-
-		
-					</div>
-
-			<div data-title="Loading ..." class="rt-row rt-content-loader grid-layout1 grid-behaviour tpg-full-height grid_layout_wrapper">
-				<div class="rt-col-md-4 rt-col-sm-6 rt-col-xs-12 img_no_effect rt-grid-item post-1400 post type-post status-publish format-standard hentry category-uncategorized"        data-id="1400">
-    <div class="rt-holder tpg-post-holder ">
-        <div class="rt-detail rt-el-content-wrapper">
-			                <div class="rt-img-holder tpg-el-image-wrap has-no-thumbnail">
-					<a data-id="1400" href="/blog/march-consistency-check" class="tpg-post-link" target="_self">
-		</a>
-		        <div class="overlay grid-hover-content"></div>
-		                </div>
-
-			<div class="entry-title-wrapper"><h3 class="entry-title"><a data-id="1400" href="/blog/march-consistency-check" class="tpg-post-link" target="_self">The March Consistency Check</a></h3></div>
-			                <div class="post-meta-tags rt-el-post-meta">
-					            <span class='date'>
-				<i class='flaticon-calendar '></i>				                    <a href="/blog/">
-					March 17, 2026				</a>
-							</span>
-			                </div>
-
-
-			                <div class="tpg-excerpt tpg-el-excerpt">
-					                        <div class="tpg-excerpt-inner">
-							The March Consistency Check. As Q1 comes to an end, March is a good moment to pause and ask three simple questions about what's predictable, where people linger, and what quietly faded...                        </div>
-										                </div>
-
-			        <div class="post-footer">
-            <div class="post-footer">
-                <div class="read-more">
-					<a data-id="1400" href="/blog/march-consistency-check" class="tpg-post-link" target="_self">Read More</a>                </div>
-            </div>
-        </div>
-		        </div>
+  <!-- Hero -->
+  <section class="blog-hero">
+    <div class="blog-hero-inner">
+      <p class="blog-hero-label">Insights &amp; Ideas</p>
+      <h1 class="blog-hero-title">The ClimbHQ Blog</h1>
+      <p class="blog-hero-sub">Practical thinking for climbing centre owners — from the people who work with them every day.</p>
     </div>
-</div>
-				<div class="rt-col-md-4 rt-col-sm-6 rt-col-xs-12 img_no_effect rt-grid-item post-1312 post type-post status-publish format-standard hentry category-uncategorized"        data-id="1312">
-    <div class="rt-holder tpg-post-holder ">
-        <div class="rt-detail rt-el-content-wrapper">
-			                <div class="rt-img-holder tpg-el-image-wrap has-no-thumbnail">
-					<a data-id="1312" href="/blog/campfire-effect" class="tpg-post-link" target="_self">		
-		</a>
-		        <div class="overlay grid-hover-content"></div>
-		                </div>
-			
-			<div class="entry-title-wrapper"><h3 class="entry-title"><a data-id="1312" href="/blog/campfire-effect" class="tpg-post-link" target="_self">The Campfire Effect: How Belonging Is Built in Climbing Centres</a></h3></div>
-			                <div class="post-meta-tags rt-el-post-meta">
-					            <span class='date'>
-				<i class='flaticon-calendar '></i>				                    <a href="/blog/">
-					February 6, 2026				</a>
-							</span>
-			                </div>
-			
+  </section>
 
-			                <div class="tpg-excerpt tpg-el-excerpt">
-					                        <div class="tpg-excerpt-inner">
-							The Campfire Effect: How Belonging Is Built in Climbing Centres January is busy.&nbsp; February is different. The New Year rush fades, routines start to settle, and climbing centres begin to see what...                        </div>
-										                </div>
-			
-			        <div class="post-footer">
-            <div class="post-footer">
-                <div class="read-more">
-					<a data-id="1312" href="/blog/campfire-effect" class="tpg-post-link" target="_self">Read More</a>                </div>
+  <!-- Post grid -->
+  <section class="blog-grid-section">
+    <div class="blog-grid-container">
+      <div class="blog-grid">
+        {posts.map((post) => (
+          <article class="blog-card">
+            <a href={post.href} class="blog-card-image-link">
+              <img
+                src={post.image}
+                alt={post.imageAlt}
+                width="800"
+                height="450"
+                loading="lazy"
+                class="blog-card-image"
+              />
+            </a>
+            <div class="blog-card-body">
+              <p class="blog-card-date">{post.date}</p>
+              <h2 class="blog-card-title">
+                <a href={post.href}>{post.title}</a>
+              </h2>
+              <p class="blog-card-excerpt">{post.excerpt}</p>
+              <a href={post.href} class="blog-card-cta">Read More</a>
             </div>
-        </div>
-		        </div>
+          </article>
+        ))}
+      </div>
     </div>
-</div>
-<div class="rt-col-md-4 rt-col-sm-6 rt-col-xs-12 img_no_effect rt-grid-item post-1203 post type-post status-publish format-standard hentry category-uncategorized"        data-id="1203">
-    <div class="rt-holder tpg-post-holder ">
-        <div class="rt-detail rt-el-content-wrapper">
-			                <div class="rt-img-holder tpg-el-image-wrap has-no-thumbnail">
-					<a data-id="1203" href="/blog/january-footfall" class="tpg-post-link" target="_self">		
-		</a>
-		        <div class="overlay grid-hover-content"></div>
-		                </div>
-			
-			<div class="entry-title-wrapper"><h3 class="entry-title"><a data-id="1203" href="/blog/january-footfall" class="tpg-post-link" target="_self">January Footfall Is Easy. Turning It Into Long-Term Performance Isn’t.</a></h3></div>
-			                <div class="post-meta-tags rt-el-post-meta">
-					            <span class='date'>
-				<i class='flaticon-calendar '></i>				                    <a href="/blog/">
-					January 16, 2026				</a>
-							</span>
-			                </div>
-			
-
-			                <div class="tpg-excerpt tpg-el-excerpt">
-					                        <div class="tpg-excerpt-inner">
-							January Footfall Is Easy. Turning It Into Long-Term Performance Isn’t. January is usually busy for climbing centres. New Year motivation and lots of people trying climbing for the first time. On the...                        </div>
-										                </div>
-			
-			        <div class="post-footer">
-            <div class="post-footer">
-                <div class="read-more">
-					<a data-id="1203" href="/blog/january-footfall" class="tpg-post-link" target="_self">Read More</a>                </div>
-            </div>
-        </div>
-		        </div>
-    </div>
-</div>
-			</div>
-			
-		</div>
-						</div>
-				</div>
-					</div>
-				</div>
-				</div>
-		
-		
-			</div>
-
-	
-</main>
+  </section>
 
 </Layout>
+
+<style>
+  /* Hero */
+  .blog-hero {
+    background: #03071F;
+    padding: 100px 24px 80px;
+    text-align: center;
+    border-bottom: 1px solid rgba(24, 171, 215, 0.15);
+  }
+  .blog-hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .blog-hero-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #18ABD7;
+    margin: 0 0 16px;
+  }
+  .blog-hero-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 20px;
+    line-height: 1.2;
+  }
+  .blog-hero-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: #9796A3;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .blog-hero { padding: 72px 20px 60px; }
+    .blog-hero-title { font-size: 32px; }
+  }
+
+  /* Grid section */
+  .blog-grid-section {
+    background: #071F33;
+    padding: 80px 24px 100px;
+  }
+  .blog-grid-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  @media (max-width: 1024px) {
+    .blog-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .blog-grid { grid-template-columns: 1fr; }
+    .blog-grid-section { padding: 60px 20px 80px; }
+  }
+
+  /* Card */
+  .blog-card {
+    background: #2B2937;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .blog-card:hover {
+    border-color: rgba(24, 171, 215, 0.4);
+    transform: translateY(-3px);
+  }
+
+  .blog-card-image-link {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+  }
+  .blog-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .blog-card:hover .blog-card-image {
+    transform: scale(1.04);
+  }
+
+  .blog-card-body {
+    padding: 28px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .blog-card-date {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #18ABD7;
+    margin: 0 0 12px;
+  }
+
+  .blog-card-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin: 0 0 16px;
+  }
+  .blog-card-title a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .blog-card-title a:hover {
+    color: #18ABD7;
+  }
+
+  .blog-card-excerpt {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #9796A3;
+    line-height: 1.7;
+    margin: 0 0 24px;
+    flex: 1;
+  }
+
+  .blog-card-cta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #18ABD7;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(24, 171, 215, 0.4);
+    padding-bottom: 2px;
+    align-self: flex-start;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .blog-card-cta:hover {
+    border-color: #18ABD7;
+    color: #ffffff;
+  }
+</style>
