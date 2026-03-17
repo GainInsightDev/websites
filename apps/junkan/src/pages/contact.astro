@@ -24,6 +24,9 @@ const location = contactPage?.location || 'United Kingdom';
 
   <!-- Contact Content -->
   <section class="contact-content">
+    <div class="contact-enso">
+      <img src="/images/logos/junkan_enso.png" alt="" width="500" height="500" aria-hidden="true" />
+    </div>
     <div class="contact-grid">
       <!-- Contact Form -->
       <div class="card card-lg contact-form-card">
@@ -119,12 +122,32 @@ const location = contactPage?.location || 'United Kingdom';
     padding: 0 48px 120px;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-enso {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    pointer-events: none;
+    opacity: 0.06;
+    z-index: 0;
+  }
+  .contact-enso img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
   .contact-grid {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
     gap: 48px;
     align-items: start;
+    position: relative;
+    z-index: 1;
   }
 
   /* Form card */
