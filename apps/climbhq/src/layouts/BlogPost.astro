@@ -1,0 +1,316 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+	title: string;
+	heroTitle: string;
+	category: string;
+	date: string;
+	readTime: string;
+	heroImage?: string;
+}
+
+const {
+	title,
+	heroTitle,
+	category,
+	date,
+	readTime,
+	heroImage = '/images/stock/behind-the-bloc-5.png',
+} = Astro.props;
+---
+
+<Layout title={title} bodyClass="blog-post">
+<article class="blog-article">
+	<header class="blog-hero" style={`background: linear-gradient(200deg, #071F33 20%, rgba(47, 36, 27, 0.78) 80%), url('${heroImage}') center/cover no-repeat;`}>
+		<div class="blog-hero-inner">
+			<span class="blog-category">{category}</span>
+			<h1>{heroTitle}</h1>
+			<div class="blog-meta">
+				<time>{date}</time>
+				<span class="blog-meta-sep">&middot;</span>
+				<span>{readTime}</span>
+			</div>
+		</div>
+	</header>
+
+	<div class="blog-content">
+		<slot />
+	</div>
+</article>
+</Layout>
+
+<style>
+/* Blog article layout */
+.blog-article {
+	max-width: 100%;
+	margin: 0 auto;
+	background: #03071F;
+	color: #d0d4dc;
+}
+
+/* Hero section */
+.blog-hero {
+	padding: 140px 24px 80px;
+	text-align: center;
+}
+.blog-hero-inner {
+	max-width: 720px;
+	margin: 0 auto;
+}
+.blog-category {
+	display: inline-block;
+	font-family: 'Unbounded', sans-serif;
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	color: #18ABD7;
+	margin-bottom: 24px;
+	padding: 6px 16px;
+	border: 1px solid rgba(24, 171, 215, 0.3);
+	border-radius: 2px;
+}
+.blog-hero h1 {
+	font-family: 'Unbounded', sans-serif;
+	font-size: clamp(28px, 4vw, 40px);
+	font-weight: 500;
+	color: #ffffff;
+	line-height: 1.3;
+	margin-bottom: 24px;
+}
+.blog-meta {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	color: #9796A3;
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+}
+
+/* Content area */
+.blog-content {
+	max-width: 720px;
+	margin: 0 auto;
+	padding: 48px 24px 80px;
+}
+
+/* Lead paragraph */
+.blog-lead {
+	font-size: 19px;
+	line-height: 1.9;
+	color: #d0d4dc;
+	margin-bottom: 32px;
+	padding-bottom: 32px;
+	border-bottom: 1px solid rgba(24, 171, 215, 0.15);
+}
+.blog-lead p {
+	margin-bottom: 1em;
+}
+
+/* Section headings */
+.blog-content section {
+	margin-bottom: 48px;
+}
+.blog-content h2 {
+	font-family: 'Unbounded', sans-serif;
+	font-size: 32px;
+	font-weight: 500;
+	color: #18ABD7;
+	margin-bottom: 20px;
+	padding-bottom: 12px;
+	border-bottom: 1px solid rgba(24, 171, 215, 0.2);
+}
+
+/* Body text */
+.blog-content p {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	line-height: 1.85;
+	color: #d0d4dc;
+	margin-bottom: 1.3em;
+}
+.blog-content strong {
+	color: #ffffff;
+	font-weight: 600;
+}
+
+/* Lists */
+.blog-content ul {
+	margin: 1em 0 1.5em 0;
+	padding: 0;
+	list-style: none;
+}
+.blog-content li {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	line-height: 1.85;
+	color: #d0d4dc;
+	margin-bottom: 0.5em;
+	padding-left: 24px;
+	position: relative;
+}
+.blog-content li::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 11px;
+	width: 8px;
+	height: 8px;
+	background: #18ABD7;
+	border-radius: 50%;
+}
+.blog-signal-list li {
+	font-size: 18px;
+	font-style: italic;
+	color: #ffffff;
+}
+.blog-signal-list li::before {
+	background: #FFA269;
+}
+
+/* Pull quotes */
+.blog-pullquote {
+	font-family: 'Unbounded', sans-serif;
+	font-size: clamp(20px, 3vw, 26px);
+	font-weight: 500;
+	color: #18ABD7;
+	line-height: 1.5;
+	border-left: 4px solid #18ABD7;
+	padding: 24px 0 24px 32px;
+	margin: 40px 0;
+	background: rgba(24, 171, 215, 0.08);
+	border-radius: 0 8px 8px 0;
+}
+
+/* Insight boxes */
+.blog-insight {
+	background: rgba(24, 171, 215, 0.12);
+	border: 1px solid rgba(24, 171, 215, 0.25);
+	border-left: 4px solid #18ABD7;
+	border-radius: 0 8px 8px 0;
+	padding: 24px 28px;
+	margin: 32px 0;
+}
+.blog-insight-label {
+	font-family: 'Unbounded', sans-serif;
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: #18ABD7;
+	margin-bottom: 8px !important;
+}
+.blog-insight p:last-child {
+	margin-bottom: 0 !important;
+	color: #ffffff;
+	font-size: 18px;
+}
+
+/* Images */
+.blog-image {
+	margin: 40px 0;
+}
+.blog-image img {
+	width: 100%;
+	height: auto;
+	border-radius: 8px;
+}
+.blog-image-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 16px;
+	margin: 40px 0;
+}
+.blog-image-grid img {
+	width: 100%;
+	height: auto;
+	border-radius: 8px;
+}
+
+/* Team tip sections */
+.blog-team-tip {
+	background: rgba(24, 171, 215, 0.04);
+	border-radius: 8px;
+	padding: 32px 28px;
+	margin-bottom: 48px;
+}
+.blog-tip-label {
+	font-family: 'Unbounded', sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	color: #FFA269;
+	margin-bottom: 16px !important;
+}
+
+/* CTA section */
+.blog-cta-section {
+	background: rgba(24, 171, 215, 0.08);
+	border: 1px solid rgba(24, 171, 215, 0.2);
+	border-radius: 8px;
+	padding: 32px 28px;
+}
+.blog-cta-section h2 {
+	color: #ffffff;
+}
+
+/* Coming next section */
+.blog-coming-next {
+	background: rgba(255, 162, 105, 0.12);
+	border: 1px solid rgba(255, 162, 105, 0.25);
+	border-left: 4px solid #FFA269;
+	border-radius: 0 8px 8px 0;
+	padding: 24px 28px;
+	margin: 48px 0;
+}
+.blog-coming-next h2 {
+	color: #FFA269;
+	border-bottom-color: rgba(255, 162, 105, 0.2);
+	font-size: 20px;
+	margin-top: 0;
+}
+.blog-coming-next p:last-child {
+	margin-bottom: 0;
+}
+
+/* CTA button */
+.blog-cta {
+	margin-top: 48px;
+	text-align: center;
+}
+.blog-cta img {
+	width: 100%;
+	max-width: 600px;
+	height: auto;
+	border-radius: 8px;
+	transition: transform 0.2s ease;
+}
+.blog-cta img:hover {
+	transform: scale(1.02);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+	.blog-hero {
+		padding: 100px 16px 60px;
+	}
+	.blog-content {
+		padding: 32px 16px 60px;
+	}
+	.blog-pullquote {
+		padding: 20px 0 20px 20px;
+		margin: 32px 0;
+	}
+	.blog-image-grid {
+		grid-template-columns: 1fr;
+	}
+	.blog-insight,
+	.blog-coming-next,
+	.blog-team-tip,
+	.blog-cta-section {
+		padding: 20px;
+	}
+}
+</style>
