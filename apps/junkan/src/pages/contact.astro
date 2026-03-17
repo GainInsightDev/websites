@@ -16,17 +16,19 @@ const location = contactPage?.location || 'United Kingdom';
   description="Get in touch with the Junkan team. Request a demo of our AI-powered circular retail intelligence platform."
 >
   <!-- Hero -->
-  <section class="section" style="padding-top: 140px; text-align: center;">
-    <div class="section-label">Contact us</div>
-    <h1 class="section-title" style="margin-left: auto; margin-right: auto;">{heroTitle}</h1>
-    <p class="section-body" style="margin-left: auto; margin-right: auto;">{heroSubtitle}</p>
+  <section class="contact-hero">
+    <div class="contact-hero-enso">
+      <img src="/images/logos/junkan_enso.png" alt="" width="400" height="400" aria-hidden="true" />
+    </div>
+    <div class="contact-hero-inner">
+      <div class="section-label" style="color: rgba(255,255,255,0.7);">Contact us</div>
+      <h1 class="contact-hero-title">{heroTitle}</h1>
+      <p class="contact-hero-subtitle">{heroSubtitle}</p>
+    </div>
   </section>
 
   <!-- Contact Content -->
   <section class="contact-content">
-    <div class="contact-enso">
-      <img src="/images/logos/junkan_enso.png" alt="" width="500" height="500" aria-hidden="true" />
-    </div>
     <div class="contact-grid">
       <!-- Contact Form -->
       <div class="card card-lg contact-form-card">
@@ -117,6 +119,52 @@ const location = contactPage?.location || 'United Kingdom';
 </Layout>
 
 <style>
+  /* Hero — blue background with enso overlay */
+  .contact-hero {
+    padding: 140px 48px 80px;
+    text-align: center;
+    background: var(--color-ai);
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-hero-enso {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    pointer-events: none;
+    opacity: 0.1;
+  }
+  .contact-hero-enso img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+  .contact-hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .contact-hero-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .contact-hero-subtitle {
+    font-size: clamp(16px, 1.2vw, 19px);
+    font-weight: 350;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+  }
+
   /* Contact content area */
   .contact-content {
     padding: 0 48px 120px;
@@ -124,22 +172,6 @@ const location = contactPage?.location || 'United Kingdom';
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-  }
-  .contact-enso {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 500px;
-    pointer-events: none;
-    opacity: 0.06;
-    z-index: 0;
-  }
-  .contact-enso img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
   }
   .contact-grid {
     display: grid;
