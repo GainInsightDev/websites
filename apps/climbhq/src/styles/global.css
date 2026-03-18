@@ -128,3 +128,21 @@ body.elementor-kit-89 .heading-section-subtitle {
 .elementor-588 .elementor-element.elementor-element-33ee27b3 {
   min-height: 800px !important;
 }
+
+/* Marketing page: add torn-paper divider below hero.
+   Apply shape-8 to the "How we support you" section background (same technique
+   as HR page uses on its pricing section 4b332198). */
+.elementor-587 .elementor-element.elementor-element-65f92d80:not(.elementor-motion-effects-element-type-background),
+.elementor-587 .elementor-element.elementor-element-65f92d80 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+  background-image: url("/images/bg/shape-8.png") !important;
+  background-position: top center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+}
+
+/* Accounting hero: use a different image from HR (both defaulted to hr-services-hero) */
+.elementor-1074 .elementor-element.elementor-element-33ee27b3:not(.elementor-motion-effects-element-type-background),
+.elementor-1074 .elementor-element.elementor-element-33ee27b3 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+  background-image: url("/images/bg/woman-climbing-indoor.jpg") !important;
+  background-position: center 30% !important;
+}
