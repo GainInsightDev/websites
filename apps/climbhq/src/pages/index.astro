@@ -195,11 +195,11 @@ import Layout from '../layouts/Layout.astro';
   z-index: 2;
 }
 .home-values-grid {
-  max-width: 1100px;
+  max-width: 600px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 .value-card {
   display: flex;
@@ -424,7 +424,7 @@ import Layout from '../layouts/Layout.astro';
     padding: 160px 24px 140px;
   }
   .home-values-grid {
-    grid-template-columns: 1fr;
+    max-width: 100%;
   }
   .home-why-grid {
     grid-template-columns: 1fr;
