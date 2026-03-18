@@ -24,7 +24,7 @@ const {
 
 <Layout title={title} description={description} bodyClass="blog-post">
 <article class="blog-article">
-	<header class="blog-hero" style={`background: linear-gradient(180deg, rgba(7,31,51,0.82) 0%, rgba(3,7,31,0.93) 65%, #03071F 100%), url('${heroImage}') center/cover no-repeat;`}>
+	<header class="blog-hero" style={`background: linear-gradient(180deg, rgba(7,31,51,0.55) 0%, rgba(3,7,31,0.75) 60%, #03071F 100%), url('${heroImage}') center/cover no-repeat;`}>
 		<div class="blog-hero-inner">
 			<span class="blog-category">{category}</span>
 			<h1>{heroTitle}</h1>
@@ -42,13 +42,13 @@ const {
 </article>
 </Layout>
 
-<style>
+<style is:global>
 /* Blog article layout */
 .blog-article {
 	max-width: 100%;
 	margin: 0 auto;
 	background: #03071F;
-	color: #d0d4dc;
+	color: #e8eaef;
 }
 
 /* Hero section */
@@ -67,7 +67,7 @@ const {
 	font-weight: 500;
 	letter-spacing: 3px;
 	text-transform: uppercase;
-	color: #18ABD7;
+	color: #5ED4F5;
 	margin-bottom: 24px;
 	padding: 6px 16px;
 	border: 1px solid rgba(24, 171, 215, 0.3);
@@ -84,7 +84,7 @@ const {
 .blog-meta {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 14px;
-	color: #9796A3;
+	color: #b8b7c4;
 	display: flex;
 	justify-content: center;
 	gap: 12px;
@@ -101,7 +101,7 @@ const {
 .blog-lead {
 	font-size: 19px;
 	line-height: 1.9;
-	color: #d0d4dc;
+	color: #eef0f4;
 	margin-bottom: 32px;
 	padding-bottom: 32px;
 	border-bottom: 1px solid rgba(24, 171, 215, 0.15);
@@ -115,13 +115,13 @@ const {
 	margin-bottom: 48px;
 }
 .blog-content h2 {
-	font-family: 'Unbounded', sans-serif;
-	font-size: 32px;
-	font-weight: 500;
-	color: #18ABD7;
+	font-family: 'Unbounded', sans-serif !important;
+	font-size: 28px !important;
+	font-weight: 700 !important;
+	color: #ffffff !important;
 	margin-bottom: 20px;
 	padding-bottom: 12px;
-	border-bottom: 1px solid rgba(24, 171, 215, 0.2);
+	border-bottom: 1px solid rgba(94, 212, 245, 0.25);
 }
 
 /* Body text */
@@ -129,7 +129,7 @@ const {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
 	line-height: 1.85;
-	color: #e0e4ec;
+	color: #eef0f4;
 	margin-bottom: 1.3em;
 }
 .blog-content strong {
@@ -147,7 +147,7 @@ const {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
 	line-height: 1.85;
-	color: #e0e4ec;
+	color: #eef0f4;
 	margin-bottom: 0.5em;
 	padding-left: 24px;
 	position: relative;
@@ -159,7 +159,7 @@ const {
 	top: 11px;
 	width: 8px;
 	height: 8px;
-	background: #18ABD7;
+	background: #5ED4F5;
 	border-radius: 50%;
 }
 .blog-signal-list li {
@@ -174,11 +174,11 @@ const {
 /* Pull quotes */
 .blog-pullquote {
 	font-family: 'Unbounded', sans-serif;
-	font-size: clamp(20px, 3vw, 26px);
-	font-weight: 500;
-	color: #18ABD7;
+	font-size: clamp(20px, 3vw, 26px) !important;
+	font-weight: 600 !important;
+	color: #ffffff !important;
 	line-height: 1.5;
-	border-left: 4px solid #18ABD7;
+	border-left: 4px solid #5ED4F5;
 	padding: 24px 0 24px 32px;
 	margin: 40px 0;
 	background: rgba(24, 171, 215, 0.08);
@@ -189,7 +189,7 @@ const {
 .blog-insight {
 	background: rgba(24, 171, 215, 0.12);
 	border: 1px solid rgba(24, 171, 215, 0.25);
-	border-left: 4px solid #18ABD7;
+	border-left: 4px solid #5ED4F5;
 	border-radius: 0 8px 8px 0;
 	padding: 24px 28px;
 	margin: 32px 0;
@@ -200,7 +200,7 @@ const {
 	font-weight: 600;
 	letter-spacing: 2px;
 	text-transform: uppercase;
-	color: #18ABD7;
+	color: #5ED4F5;
 	margin-bottom: 8px !important;
 }
 .blog-insight p:last-child {
@@ -258,7 +258,9 @@ const {
 	flex: 1;
 }
 .blog-tip-content h2 {
+	font-family: 'Unbounded', sans-serif !important;
 	font-size: 20px !important;
+	font-weight: 700 !important;
 	color: #FFA269 !important;
 	border-bottom: 1px solid rgba(255, 162, 105, 0.2) !important;
 	padding-bottom: 8px !important;
