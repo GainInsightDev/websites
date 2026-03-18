@@ -118,7 +118,7 @@ const {
 	font-family: 'Unbounded', sans-serif !important;
 	font-size: 28px !important;
 	font-weight: 700 !important;
-	color: #ffffff !important;
+	color: #5ED4F5 !important;
 	margin-bottom: 20px;
 	padding-bottom: 12px;
 	border-bottom: 1px solid rgba(94, 212, 245, 0.25);
@@ -242,17 +242,16 @@ const {
 .blog-tip-body {
 	display: flex;
 	gap: 24px;
-	align-items: flex-start;
+	align-items: stretch;
 }
 .blog-tip-portrait {
-	width: 90px;
-	height: 90px;
-	border-radius: 50%;
+	width: 100px;
+	min-height: 100%;
+	border-radius: 8px;
 	object-fit: cover;
 	object-position: center top;
 	border: 3px solid rgba(255, 162, 105, 0.5);
 	flex-shrink: 0;
-	margin-top: 4px;
 }
 .blog-tip-content {
 	flex: 1;
@@ -353,9 +352,11 @@ const {
 		text-align: center;
 	}
 	.blog-tip-portrait {
-		width: 80px;
-		height: 80px;
-		margin-top: 0;
+		width: 100%;
+		max-width: 120px;
+		height: 120px;
+		min-height: auto;
+		border-radius: 8px;
 		margin-bottom: 8px;
 	}
 	.blog-tip-content h2 {
