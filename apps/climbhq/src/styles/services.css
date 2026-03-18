@@ -8,7 +8,7 @@
   background-size: cover;
   padding: 200px 24px 170px;
   text-align: center;
-  margin-bottom: -4.5%;
+  margin-bottom: -8%;
   position: relative;
   z-index: 1;
 }
@@ -35,9 +35,10 @@
 
 /* Support section (services overview) */
 .service-support {
-  background: url('/images/bg/shape-8.png') top center / contain no-repeat,
-    linear-gradient(180deg, rgba(43, 41, 55, 0.95) 0%, #03071F 100%);
-  padding: 80px 24px;
+  background: url('/images/bg/shape-8.png') top center / 100% auto no-repeat,
+    linear-gradient(180deg, #071F33 0%, #03071F 15%);
+  padding: 60px 24px 80px;
+  margin-top: -1px;
   position: relative;
   z-index: 2;
 }
@@ -136,9 +137,12 @@
 
 /* Pricing section */
 .pricing-section {
-  background: url('/images/bg/shape-8.png') top center / contain no-repeat,
-    #03071F;
+  background: url('/images/bg/shape-8.png') top center / 100% auto no-repeat,
+    linear-gradient(180deg, #071F33 0%, #03071F 15%);
   padding: 60px 24px 80px;
+  margin-top: -1px;
+  position: relative;
+  z-index: 2;
 }
 .pricing-grid {
   max-width: 1200px;
