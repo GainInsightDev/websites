@@ -1,4 +1,4 @@
-/* Unbounded font (headings) — self-hosted from WordPress */
+/* Unbounded font (headings) — self-hosted */
 @font-face {
   font-family: 'Unbounded';
   font-style: normal;
@@ -10,7 +10,7 @@
     U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* Montserrat font (body/nav) — self-hosted from WordPress */
+/* Montserrat font (body/nav) — self-hosted */
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
@@ -22,127 +22,49 @@
     U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* ===== Font overrides to match WordPress computed styles ===== */
+/* ===== Global reset & defaults ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-/* Body text: Montserrat 16px/400 — matches WP .elementor-kit-89 */
-body.elementor-kit-89 {
-  font-family: 'Montserrat', sans-serif !important;
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-weight: 400;
+  color: #9796A3;
+  background: #03071F;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* All headings default to Unbounded — matches WP heading typography */
-body.elementor-kit-89 h1,
-body.elementor-kit-89 h2,
-body.elementor-kit-89 h3,
-body.elementor-kit-89 h4,
-body.elementor-kit-89 h5,
-body.elementor-kit-89 h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Unbounded', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
+  color: #ffffff;
 }
 
-/* H1 hero: Unbounded 70px/500 (var --e-global-typography-d7c0873) */
-body.elementor-kit-89 h1.heading-title {
-  font-family: 'Unbounded', sans-serif;
-  font-size: 70px;
-  font-weight: 500;
-  line-height: 1.25em;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-/* H2 section headings: Unbounded 24-27px/500 */
-body.elementor-kit-89 h2.heading-title {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 500;
+img {
+  max-width: 100%;
+  height: auto;
 }
 
-/* H2 in icon boxes: Unbounded 24px/500 */
-body.elementor-kit-89 .jkit-icon-box .title {
-  font-family: 'Unbounded', sans-serif;
-  font-size: 24px;
-  font-weight: 500;
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #5ED4F5;
+  color: #03071F;
+  padding: 8px;
+  z-index: 100001;
 }
-
-/* Nav links: Montserrat 16px/700 — matches WP computed font-weight */
-.elementor-nav-menu .elementor-item {
-  font-family: 'Montserrat', sans-serif !important;
-  font-size: 16px !important;
-  font-weight: 700 !important;
-}
-
-/* Body text in descriptions: Montserrat */
-body.elementor-kit-89 p,
-body.elementor-kit-89 .elementor-widget-text-editor,
-body.elementor-kit-89 .icon-box-description,
-body.elementor-kit-89 .heading-section-description {
-  font-family: 'Montserrat', sans-serif;
-}
-
-/* Subtitle text: Montserrat 15px/500 uppercase 4px letter-spacing (matches WP computed) */
-body.elementor-kit-89 .heading-section-subtitle {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  color: #18ABD7;
-}
-
-/* Responsive: tablet/mobile H1 size reduction */
-@media (max-width: 1024px) {
-  body.elementor-kit-89 h1.heading-title {
-    font-size: 50px;
-  }
-}
-@media (max-width: 767px) {
-  body.elementor-kit-89 h1.heading-title {
-    font-size: 36px;
-  }
-}
-
-/* ===== Social icon circles (Issue 5) ===== */
-
-/* Ensure social icons have proper circular containers */
-.elementor-social-icon {
-  border-radius: 100px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: calc(var(--icon-size, 16px) + 2 * var(--icon-padding, 0.8em)) !important;
-  height: calc(var(--icon-size, 16px) + 2 * var(--icon-padding, 0.8em)) !important;
-  line-height: var(--icon-size, 16px) !important;
-  font-size: var(--icon-size, 16px) !important;
-}
-
-/* WP lazyload fix removed — was incorrectly using revert !important which
-   overrode author stylesheets (e.g. shape-8.png on vision section).
-   Inline style="background-image:none" has been stripped from HTML instead. */
-
-/* ===== Service page hero normalisation ===== */
-/* Accounting (1074) and HR (588) share the same hero image but have different
-   amounts of intro text, causing the section height to differ and the
-   background-position to appear to jump when navigating between them.
-   A shared min-height locks both heroes to the same rendered size. */
-.elementor-1074 .elementor-element.elementor-element-33ee27b3,
-.elementor-587 .elementor-element.elementor-element-33ee27b3,
-.elementor-588 .elementor-element.elementor-element-33ee27b3 {
-  min-height: 800px !important;
-}
-
-/* Marketing page: add torn-paper divider below hero.
-   Apply shape-8 to the "How we support you" section background (same technique
-   as HR page uses on its pricing section 4b332198). */
-.elementor-587 .elementor-element.elementor-element-65f92d80:not(.elementor-motion-effects-element-type-background),
-.elementor-587 .elementor-element.elementor-element-65f92d80 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
-  background-image: url("/images/bg/shape-8.png") !important;
-  background-position: top center !important;
-  background-repeat: no-repeat !important;
-  background-size: contain !important;
-}
-
-/* Accounting hero: use a different image from HR (both defaulted to hr-services-hero) */
-.elementor-1074 .elementor-element.elementor-element-33ee27b3:not(.elementor-motion-effects-element-type-background),
-.elementor-1074 .elementor-element.elementor-element-33ee27b3 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
-  background-image: url("/images/bg/woman-climbing-indoor.jpg") !important;
-  background-position: center 30% !important;
+.skip-link:focus {
+  top: 0;
 }

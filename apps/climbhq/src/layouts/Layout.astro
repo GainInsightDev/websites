@@ -2,7 +2,6 @@
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-import '../styles/elementor.css';
 
 interface Props {
   title?: string;
@@ -21,9 +20,6 @@ const {
 const siteUrl = 'https://climbhq.co.uk';
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
 const ogImageUrl = new URL(ogImage, siteUrl).href;
-
-// WordPress body classes needed for Elementor CSS selectors
-const wpBodyClasses = `elementor-default elementor-template-full-width elementor-kit-89 elementor-page ${bodyClass}`.trim();
 ---
 
 <!DOCTYPE html>
@@ -95,26 +91,13 @@ const wpBodyClasses = `elementor-default elementor-template-full-width elementor
     <link rel="preload" href="/fonts/unbounded-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/montserrat-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- Font Awesome for Elementor icons -->
+    <!-- Font Awesome (social icons, email icon) -->
     <link rel="stylesheet" href="/css/font-awesome-all.min.css" />
-    <link rel="stylesheet" href="/css/elementor-icons.min.css" />
 
-    <!-- JEG Elementor Kit (icon boxes, headings, mailchimp widgets) -->
-    <link rel="stylesheet" href="/css/jeg-main.css" />
+    <!-- JKit icons (vision/mission, star ratings) -->
     <link rel="stylesheet" href="/css/jkiticon.css" />
-
-    <!-- Elementor widget-specific CSS -->
-    <link rel="stylesheet" href="/css/widget-icon-list.min.css" />
-    <link rel="stylesheet" href="/css/widget-heading.min.css" />
-    <link rel="stylesheet" href="/css/widget-image.min.css" />
-    <link rel="stylesheet" href="/css/widget-image-box.min.css" />
-    <link rel="stylesheet" href="/css/widget-divider.min.css" />
-    <link rel="stylesheet" href="/css/widget-social-icons.min.css" />
-    <link rel="stylesheet" href="/css/widget-spacer.min.css" />
-    <link rel="stylesheet" href="/css/widget-form.min.css" />
-    <link rel="stylesheet" href="/css/widget-nav-menu.min.css" />
   </head>
-  <body class={wpBodyClasses}>
+  <body class={bodyClass}>
     <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 
     <Navbar />
@@ -123,12 +106,5 @@ const wpBodyClasses = `elementor-default elementor-template-full-width elementor
 
     <Footer />
 
-    <!-- Lazyload backgrounds — replaces WP's IntersectionObserver script -->
-    <script>
-      // Mark all Elementor parent containers as lazyloaded (WP does this via JS)
-      document.querySelectorAll('.e-con.e-parent:not(.e-lazyloaded)').forEach(el => {
-        el.classList.add('e-lazyloaded');
-      });
-    </script>
   </body>
 </html>
