@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juncta — Brand Guidelines</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600;700&family=Geist+Mono&display=swap');
+
+    :root {
+      --slate-dark: #2C3038;
+      --slate-mid: #4A4F5C;
+      --stone: #8B8A85;
+      --sage: #A8AFA4;
+      --warm-stone: #C9C5BC;
+      --sand: #E8E5DF;
+      --cream: #F4F3F0;
+      --near-white: #FAFAF8;
+      --accent: #C94A1E;
+      --text: #2C3038;
+      --text-mid: #6B6E75;
+      --text-light: #9B9DA3;
+      --surface: #FFFFFF;
+      --border: #E8E5DF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--near-white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Layout */
+    .page { max-width: 960px; margin: 0 auto; padding: 80px 48px; }
+    section { margin-bottom: 80px; }
+    h1 { font-size: 48px; font-weight: 700; line-height: 1.12; margin-bottom: 16px; }
+    h2 { font-size: 28px; font-weight: 700; margin-bottom: 24px; border-bottom: 1px solid var(--sand); padding-bottom: 12px; }
+    h3 { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--slate-mid); }
+    p { margin-bottom: 16px; color: var(--text-mid); font-size: 15px; line-height: 1.7; }
+    .subtitle { font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--text-light); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+
+    /* Header */
+    .header {
+      background: var(--slate-dark);
+      padding: 80px 48px;
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .header-logo { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 24px; }
+    .header h1 { color: var(--near-white); font-size: 14px; font-family: 'Geist Mono', monospace; letter-spacing: 4px; font-weight: 400; }
+    .header .doc-title { color: var(--warm-stone); font-size: 32px; font-weight: 700; font-family: 'Inter', sans-serif; letter-spacing: -0.5px; }
+    .header .doc-version { color: var(--stone); font-size: 12px; font-family: 'Geist Mono', monospace; margin-top: 16px; }
+
+    /* Colour swatches */
+    .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .swatch {
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .swatch-color { height: 80px; }
+    .swatch-info { padding: 10px 12px; background: var(--surface); }
+    .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+    .swatch-hex { font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--text-light); }
+
+    /* Typography samples */
+    .type-sample { margin-bottom: 24px; padding: 24px; border: 1px solid var(--border); background: var(--surface); }
+    .type-label { font-family: 'Geist Mono', monospace; font-size: 10px; color: var(--text-light); letter-spacing: 0.5px; margin-bottom: 8px; }
+    .type-display { margin-bottom: 4px; }
+
+    /* Component examples */
+    .component-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 24px; }
+    .example-box { padding: 32px; border: 1px solid var(--border); background: var(--surface); margin-bottom: 24px; }
+    .example-dark { background: var(--slate-dark); border-color: var(--slate-mid); }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px; text-decoration: none; cursor: pointer; border: none; }
+    .btn-primary { padding: 14px 32px; background: var(--text); color: var(--surface); }
+    .btn-secondary { padding: 14px 24px; background: transparent; color: var(--text-mid); border: 1px solid var(--warm-stone); }
+    .btn-cta { padding: 14px 36px; background: var(--near-white); color: var(--slate-dark); font-weight: 700; font-size: 14px; }
+
+    /* Logo construction */
+    .logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 24px; }
+    .logo-cell { padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; border: 1px solid var(--border); min-height: 160px; }
+    .logo-cell.dark { background: var(--slate-dark); border-color: var(--slate-mid); }
+    .logo-cell.light { background: var(--near-white); }
+    .logo-cell.cream { background: var(--cream); }
+    .logo-caption { font-family: 'Geist Mono', monospace; font-size: 10px; color: var(--text-light); text-align: center; }
+    .logo-cell.dark .logo-caption { color: var(--stone); }
+
+    /* Spacing/grid */
+    .spacing-demo { display: flex; gap: 12px; align-items: flex-end; margin-bottom: 24px; }
+    .spacing-block { background: var(--accent); opacity: 0.2; }
+    .spacing-label { font-family: 'Geist Mono', monospace; font-size: 10px; color: var(--text-light); text-align: center; margin-top: 4px; }
+
+    /* Grid pattern demo */
+    .grid-demo {
+      height: 120px;
+      background-image: linear-gradient(rgba(201,197,188,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,197,188,0.06) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-color: var(--cream);
+      border: 1px solid var(--border);
+      margin-bottom: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .grid-demo-label { font-family: 'Geist Mono', monospace; font-size: 10px; color: var(--text-light); }
+
+    /* Do / Don't */
+    .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .do-box, .dont-box { padding: 20px; border: 2px solid; }
+    .do-box { border-color: var(--sage); }
+    .dont-box { border-color: var(--accent); }
+    .do-box h4 { color: var(--sage); font-size: 12px; font-family: 'Geist Mono', monospace; letter-spacing: 1px; margin-bottom: 8px; }
+    .dont-box h4 { color: var(--accent); font-size: 12px; font-family: 'Geist Mono', monospace; letter-spacing: 1px; margin-bottom: 8px; }
+    .do-box p, .dont-box p { font-size: 13px; margin: 0; }
+
+    /* Table */
+    table { width: 100%; border-collapse: collapse; margin-bottom: 24px; font-size: 13px; }
+    th { text-align: left; padding: 10px 16px; background: var(--cream); font-weight: 600; font-size: 12px; border-bottom: 1px solid var(--border); }
+    td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+    td code { font-family: 'Geist Mono', monospace; font-size: 12px; background: var(--cream); padding: 2px 6px; }
+
+    /* Chat bubble demo */
+    .chat-demo { max-width: 320px; display: flex; flex-direction: column; gap: 8px; }
+    .chat-bubble { border-radius: 12px; padding: 10px 14px; font-size: 12px; line-height: 1.7; }
+    .chat-ai { background: var(--cream); }
+    .chat-user { background: var(--sand); align-self: flex-end; }
+    .entity-ref { font-weight: 700; color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .page { padding: 40px 24px; }
+      .header { padding: 60px 24px; }
+      .swatch-grid { grid-template-columns: repeat(2, 1fr); }
+      .logo-grid { grid-template-columns: 1fr; }
+      .do-dont { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-logo">
+    <svg width="42" height="18" viewBox="0 0 21.84 10.08" aria-hidden="true">
+      <path d="M0,0 H10.08 V3.488 H7.056 V6.592 H10.08 V10.08 H0 Z" fill="#C94A1E"/>
+      <path d="M11.16,0 V3.488 H14.184 V0 H21.84 V10.08 H14.184 V6.592 H11.16 V10.08 Z" fill="#C94A1E"/>
+    </svg>
+    <h1>JUNCTA</h1>
+  </div>
+  <div class="doc-title">Brand Guidelines</div>
+  <div class="doc-version">Version 1.0 — March 2026</div>
+</div>
+
+<div class="page">
+
+  <!-- 1. BRAND OVERVIEW -->
+  <section>
+    <h2>1. Brand Overview</h2>
+    <h3>What is Juncta?</h3>
+    <p>Juncta is an AI project management tool that takes on the cognitive work of planning, organising, and managing — so users can focus on judgment, relationships, and decisions. The name comes from Latin <em>jungere</em> — to join, to connect.</p>
+
+    <h3>Brand Personality</h3>
+    <p>Juncta's brand is <strong>precise, understated, and trustworthy</strong>. The visual language draws from architectural and engineering aesthetics — clean grids, deliberate spacing, monospace labels. It avoids flashy gradients, bold colours, and tech-startup clichés. The accent colour (burnt orange) is used sparingly for emphasis, not decoration.</p>
+
+    <h3>Tagline</h3>
+    <p style="font-size: 24px; font-weight: 700; color: var(--warm-stone); margin-bottom: 8px;">AI proposes. Humans decide.</p>
+    <p>Secondary: "You don't manage projects <em>in</em> Juncta. You manage them <em>with</em> it."</p>
+  </section>
+
+  <!-- 2. LOGO -->
+  <section>
+    <h2>2. Logo</h2>
+    <p>The Juncta logo is an interlocking block mark — two rectangular forms joined by a notch. It represents connection, structure, and the interlock between human judgment and AI capability.</p>
+
+    <h3>Logo Variants</h3>
+    <div class="logo-grid">
+      <div class="logo-cell light">
+        <svg width="42" height="18" viewBox="0 0 21.84 10.08">
+          <path d="M0,0 H10.08 V3.488 H7.056 V6.592 H10.08 V10.08 H0 Z" fill="#C94A1E"/>
+          <path d="M11.16,0 V3.488 H14.184 V0 H21.84 V10.08 H14.184 V6.592 H11.16 V10.08 Z" fill="#C94A1E"/>
+        </svg>
+        <span class="logo-caption">Accent on light</span>
+      </div>
+      <div class="logo-cell dark">
+        <svg width="42" height="18" viewBox="0 0 21.84 10.08">
+          <path d="M0,0 H10.08 V3.488 H7.056 V6.592 H10.08 V10.08 H0 Z" fill="#C94A1E"/>
+          <path d="M11.16,0 V3.488 H14.184 V0 H21.84 V10.08 H14.184 V6.592 H11.16 V10.08 Z" fill="#C94A1E"/>
+        </svg>
+        <span class="logo-caption">Accent on dark</span>
+      </div>
+      <div class="logo-cell cream">
+        <svg width="42" height="18" viewBox="0 0 21.84 10.08">
+          <path d="M0,0 H10.08 V3.488 H7.056 V6.592 H10.08 V10.08 H0 Z" fill="#8B8A85"/>
+          <path d="M11.16,0 V3.488 H14.184 V0 H21.84 V10.08 H14.184 V6.592 H11.16 V10.08 Z" fill="#8B8A85"/>
+        </svg>
+        <span class="logo-caption">Stone (muted)</span>
+      </div>
+    </div>
+
+    <h3>Logo + Wordmark</h3>
+    <div class="logo-grid">
+      <div class="logo-cell light" style="flex-direction: row;">
+        <svg width="28" height="12" viewBox="0 0 21.84 10.08">
+          <path d="M0,0 H10.08 V3.488 H7.056 V6.592 H10.08 V10.08 H0 Z" fill="#C94A1E"/>
+          <path d="M11.16,0 V3.488 H14.184 V0 H21.84 V10.08 H14.184 V6.592 H11.16 V10.08 Z" fill="#C94A1E"/>
+        </svg>
+        <span style="font-family: 'Geist Mono', monospace; font-size: 14px; color: var(--text-mid); letter-spacing: 2px;">JUNCTA</span>
+      </div>
+      <div class="logo-cell dark" style="flex-direction: row;">
+        <svg width="48" height="20" viewBox="0 0 21.84 10.08">
+          <path d="M0,0 H10.08 V3.488 H7.056 V6.592 H10.08 V10.08 H0 Z" fill="#C94A1E"/>
+          <path d="M11.16,0 V3.488 H14.184 V0 H21.84 V10.08 H14.184 V6.592 H11.16 V10.08 Z" fill="#C94A1E"/>
+        </svg>
+        <span style="font-family: 'Geist Mono', monospace; font-size: 32px; color: var(--near-white); letter-spacing: 4px;">JUNCTA</span>
+      </div>
+    </div>
+
+    <h3>Clear Space &amp; Minimum Size</h3>
+    <p>Maintain clear space equal to the height of one logo block on all sides. Minimum size: 20px height for digital, 8mm for print.</p>
+
+    <div class="do-dont">
+      <div class="do-box">
+        <h4>✓ DO</h4>
+        <p>Use on solid backgrounds (light, dark, or cream). Pair with Geist Mono wordmark. Maintain aspect ratio.</p>
+      </div>
+      <div class="dont-box">
+        <h4>✗ DON'T</h4>
+        <p>Place on busy backgrounds. Stretch, rotate, or add effects. Change the notch proportions. Use colours other than accent, stone, or white.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. COLOUR PALETTE -->
+  <section>
+    <h2>3. Colour Palette</h2>
+
+    <h3>Primary Accent</h3>
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background: #C94A1E;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Burnt Orange</div>
+          <div class="swatch-hex">#C94A1E</div>
+        </div>
+      </div>
+    </div>
+    <p>Used sparingly for: logo mark, entity references in UI, active states, and focused emphasis. Never as a background fill or large surface colour.</p>
+
+    <h3>Neutral Scale</h3>
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background: #2C3038;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Slate Dark</div>
+          <div class="swatch-hex">#2C3038</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #4A4F5C;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Slate Mid</div>
+          <div class="swatch-hex">#4A4F5C</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #8B8A85;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Stone</div>
+          <div class="swatch-hex">#8B8A85</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #A8AFA4;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Sage</div>
+          <div class="swatch-hex">#A8AFA4</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #C9C5BC;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Warm Stone</div>
+          <div class="swatch-hex">#C9C5BC</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #E8E5DF;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Sand</div>
+          <div class="swatch-hex">#E8E5DF</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #F4F3F0;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Cream</div>
+          <div class="swatch-hex">#F4F3F0</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #FAFAF8; border-bottom: 1px solid #E8E5DF;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Near White</div>
+          <div class="swatch-hex">#FAFAF8</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Semantic Colours</h3>
+    <table>
+      <thead>
+        <tr><th>Role</th><th>Token</th><th>Value</th><th>Usage</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Background</td><td><code>--color-background</code></td><td>#FAFAF8</td><td>Page background</td></tr>
+        <tr><td>Surface</td><td><code>--color-surface</code></td><td>#FFFFFF</td><td>Cards, panels, modals</td></tr>
+        <tr><td>Text</td><td><code>--color-text</code></td><td>#2C3038</td><td>Headings, primary text</td></tr>
+        <tr><td>Text Mid</td><td><code>--color-text-mid</code></td><td>#6B6E75</td><td>Body text, descriptions</td></tr>
+        <tr><td>Text Light</td><td><code>--color-text-light</code></td><td>#9B9DA3</td><td>Labels, captions, metadata</td></tr>
+        <tr><td>Accent</td><td><code>--color-accent</code></td><td>#C94A1E</td><td>Entity refs, active states</td></tr>
+        <tr><td>Border</td><td><code>--color-border</code></td><td>#E8E5DF</td><td>Dividers, card borders</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Status Colours (UI-specific)</h3>
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background: #C94A1E;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Alert / Risk</div>
+          <div class="swatch-hex">#C94A1E</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #C9A84C;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">At Risk / Warning</div>
+          <div class="swatch-hex">#C9A84C</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #8B8A85;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Shifted / Neutral</div>
+          <div class="swatch-hex">#8B8A85</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. TYPOGRAPHY -->
+  <section>
+    <h2>4. Typography</h2>
+
+    <h3>Font Stack</h3>
+    <table>
+      <thead>
+        <tr><th>Role</th><th>Font</th><th>Weight</th><th>Usage</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Body / Display</td><td>Inter</td><td>300–700</td><td>All text content — headings, body, buttons</td></tr>
+        <tr><td>Monospace</td><td>Geist Mono</td><td>400</td><td>Labels, section numbers, wordmark, metadata</td></tr>
+      </tbody>
+    </table>
+    <p>Fonts are self-hosted as WOFF2. Do not use Google Fonts CDN — it causes visible FOUT (Flash of Unstyled Text).</p>
+
+    <h3>Type Scale</h3>
+    <div class="type-sample">
+      <div class="type-label">HERO TITLE — Inter 700, 44px, line-height 1.12</div>
+      <div class="type-display" style="font-size: 44px; font-weight: 700; line-height: 1.12;">You don't manage projects <em>in</em> Juncta.</div>
+    </div>
+    <div class="type-sample">
+      <div class="type-label">SECTION TITLE — Inter 700, 36px, line-height 1.12</div>
+      <div class="type-display" style="font-size: 36px; font-weight: 700; line-height: 1.12;">Not a dashboard. A dialogue.</div>
+    </div>
+    <div class="type-sample">
+      <div class="type-label">SECTION BODY — Inter 400, 15px, line-height 1.7</div>
+      <div class="type-display" style="font-size: 15px; line-height: 1.7; color: var(--text-mid); max-width: 560px;">An AI that takes on the cognitive work of planning, organising, and managing — so you can focus on judgment, relationships, and decisions.</div>
+    </div>
+    <div class="type-sample">
+      <div class="type-label">SECTION LABEL — Geist Mono 400, 10px, letter-spacing 1px</div>
+      <div class="type-display" style="font-family: 'Geist Mono', monospace; font-size: 10px; color: var(--text-light); letter-spacing: 1px;">01 — THE SHIFT</div>
+    </div>
+    <div class="type-sample">
+      <div class="type-label">NAVIGATION — Inter 450, 13px</div>
+      <div class="type-display" style="font-size: 13px; font-weight: 450; color: var(--text-mid);">Vision&nbsp;&nbsp;&nbsp;&nbsp;Features&nbsp;&nbsp;&nbsp;&nbsp;How it works&nbsp;&nbsp;&nbsp;&nbsp;Early access</div>
+    </div>
+    <div class="type-sample">
+      <div class="type-label">BUTTON — Inter 700, 14px</div>
+      <div class="type-display" style="font-size: 14px; font-weight: 700;">Request early access</div>
+    </div>
+  </section>
+
+  <!-- 5. SPACING & GRID -->
+  <section>
+    <h2>5. Spacing &amp; Grid</h2>
+
+    <h3>Base Unit</h3>
+    <p>Spacing follows an 8px base unit. Common values: 8, 12, 16, 20, 24, 32, 48, 64, 80, 120px.</p>
+
+    <h3>Section Spacing</h3>
+    <table>
+      <thead>
+        <tr><th>Element</th><th>Desktop</th><th>Mobile (≤900px)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Section padding</td><td><code>120px 64px</code></td><td><code>80px 24px</code></td></tr>
+        <tr><td>Max content width</td><td><code>1000–1200px</code></td><td>Full width</td></tr>
+        <tr><td>Nav height</td><td><code>64px</code></td><td><code>64px</code></td></tr>
+        <tr><td>Nav padding</td><td><code>0 64px</code></td><td><code>0 24px</code></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Grid Background Pattern</h3>
+    <p>Sections use a subtle grid background overlay. Three opacity tiers are available:</p>
+    <div class="grid-demo">
+      <span class="grid-demo-label">grid-bg — 32px grid, 6% opacity</span>
+    </div>
+    <div class="grid-demo" style="background-image: linear-gradient(rgba(201,197,188,0.047) 1px, transparent 1px), linear-gradient(90deg, rgba(201,197,188,0.047) 1px, transparent 1px); background-size: 32px 32px;">
+      <span class="grid-demo-label">grid-bg-light — 32px grid, 4.7% opacity</span>
+    </div>
+    <div class="grid-demo" style="background-image: linear-gradient(rgba(201,197,188,0.094) 1px, transparent 1px), linear-gradient(90deg, rgba(201,197,188,0.094) 1px, transparent 1px); background-size: 24px 24px;">
+      <span class="grid-demo-label">grid-bg-dense — 24px grid, 9.4% opacity</span>
+    </div>
+  </section>
+
+  <!-- 6. COMPONENTS -->
+  <section>
+    <h2>6. Components</h2>
+
+    <h3>Buttons</h3>
+    <p>Buttons have square corners (no border-radius). Three variants:</p>
+    <div class="example-box">
+      <div class="component-row">
+        <button class="btn btn-primary">Primary — dark bg</button>
+        <button class="btn btn-secondary">Secondary — outline</button>
+      </div>
+    </div>
+    <div class="example-box example-dark">
+      <div class="component-row">
+        <a class="btn btn-cta" style="text-decoration: none;">CTA — light on dark</a>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Variant</th><th>Background</th><th>Text</th><th>Border</th><th>Context</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Primary</td><td>#2C3038</td><td>#FFFFFF</td><td>None</td><td>Light backgrounds</td></tr>
+        <tr><td>Secondary</td><td>Transparent</td><td>#6B6E75</td><td>#C9C5BC</td><td>Light backgrounds</td></tr>
+        <tr><td>CTA</td><td>#FAFAF8</td><td>#2C3038</td><td>None</td><td>Dark footer/hero</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Cards</h3>
+    <div class="example-box">
+      <div style="background: var(--surface); border: 1px solid var(--border); padding: 24px; box-shadow: 0 1px 3px rgba(44,48,56,0.06); max-width: 320px;">
+        <div style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">Card Title</div>
+        <div style="font-size: 13px; color: var(--text-mid); line-height: 1.7;">Cards use white background, sand border, and a subtle card shadow. Square corners, consistent with the brand's architectural aesthetic.</div>
+      </div>
+    </div>
+
+    <h3>Chat Bubbles</h3>
+    <p>Chat UI uses rounded bubbles (12px radius — the only rounded element in the design system). AI messages use cream; user messages use sand.</p>
+    <div class="example-box">
+      <div class="chat-demo">
+        <div class="chat-bubble chat-ai"><span class="entity-ref">@Marcus</span> is overallocated next week. Move the backend review?</div>
+        <div class="chat-bubble chat-user">Yes, shift it to Thursday.</div>
+        <div class="chat-bubble chat-ai">Done. <span class="entity-ref">Backend review</span> moved to Thursday. No conflicts.</div>
+      </div>
+    </div>
+
+    <h3>Section Labels</h3>
+    <p>Each section is numbered with a Geist Mono label. Format: <code>NN — TITLE</code></p>
+    <div class="example-box">
+      <div style="font-family: 'Geist Mono', monospace; font-size: 10px; color: var(--text-light); letter-spacing: 1px;">04 — CAUSE AND EFFECT</div>
+    </div>
+  </section>
+
+  <!-- 7. MOTION & ANIMATION -->
+  <section>
+    <h2>7. Motion &amp; Animation</h2>
+    <h3>Easing Curves</h3>
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Value</th><th>Usage</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Expo out</td><td><code>cubic-bezier(0.16, 1, 0.3, 1)</code></td><td>Scroll reveals, transitions</td></tr>
+        <tr><td>Spring</td><td><code>cubic-bezier(0.34, 1.56, 0.64, 1)</code></td><td>Button hover, interactive elements</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Scroll Reveal</h3>
+    <p>Elements fade in from 24px below with 0.8s duration on intersection. Staggered delays available: 0.1s, 0.2s, 0.3s, 0.4s. The reveal style is subtle and professional — no bouncing, sliding, or dramatic entrances.</p>
+
+    <h3>Navbar</h3>
+    <p>The navbar uses a frosted glass effect: <code>backdrop-filter: blur(20px) saturate(1.8)</code>. Background shifts from 72% to 92% opacity on scroll, with a border appearing at 20px scroll depth.</p>
+  </section>
+
+  <!-- 8. TONE OF VOICE -->
+  <section>
+    <h2>8. Tone of Voice</h2>
+    <h3>Writing Principles</h3>
+    <table>
+      <thead>
+        <tr><th>Principle</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Precise</strong></td><td>Say what we mean. Avoid vague claims. "Juncta walks the dependency graph" not "Juncta helps with dependencies."</td></tr>
+        <tr><td><strong>Confident, not boastful</strong></td><td>State capabilities directly. No superlatives. No "revolutionary" or "game-changing."</td></tr>
+        <tr><td><strong>Conversational authority</strong></td><td>Write as a knowledgeable peer, not a sales deck. Short sentences. Active voice.</td></tr>
+        <tr><td><strong>Human-centred</strong></td><td>The human makes the decisions. Juncta proposes, organises, computes. Never "Juncta decides."</td></tr>
+      </tbody>
+    </table>
+
+    <div class="do-dont">
+      <div class="do-box">
+        <h4>✓ DO</h4>
+        <p>"Not notifications. Computation."</p>
+        <p>"You bring domain knowledge. Juncta brings methodology and memory."</p>
+        <p>"An experienced peer who works for you."</p>
+      </div>
+      <div class="dont-box">
+        <h4>✗ DON'T</h4>
+        <p>"The most powerful AI project management platform ever built."</p>
+        <p>"Juncta revolutionizes how teams collaborate."</p>
+        <p>"Let AI take over your project management."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. SHADOWS -->
+  <section>
+    <h2>9. Elevation &amp; Shadows</h2>
+    <table>
+      <thead>
+        <tr><th>Token</th><th>Value</th><th>Usage</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>--shadow-card</code></td><td>0 1px 3px rgba(44,48,56,0.06)</td><td>Cards, resting state</td></tr>
+        <tr><td><code>--shadow-card-lg</code></td><td>0 4px 12px rgba(44,48,56,0.08)</td><td>Elevated cards, hover states</td></tr>
+        <tr><td>Button hover</td><td>0 8px 24px rgba(44,48,56,0.2)</td><td>Primary button hover lift</td></tr>
+      </tbody>
+    </table>
+    <p>Shadows are subtle and warm-toned (using slate-dark as the shadow colour base). The brand avoids harsh black shadows.</p>
+  </section>
+
+  <!-- 10. FAVICON & META -->
+  <section>
+    <h2>10. Digital Assets</h2>
+    <table>
+      <thead>
+        <tr><th>Asset</th><th>Format</th><th>Dimensions</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Favicon</td><td>SVG</td><td>Any</td><td>Logo mark in accent colour</td></tr>
+        <tr><td>OG Image</td><td>PNG</td><td>1200 × 630</td><td>Dark bg, centred logo + wordmark + tagline</td></tr>
+        <tr><td>Logo (inline SVG)</td><td>SVG</td><td>Proportional</td><td>Generated via component — blocks + notch</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Footer -->
+  <div style="margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--sand); display: flex; justify-content: space-between; align-items: center;">
+    <div style="font-family: 'Geist Mono', monospace; font-size: 10px; color: var(--stone);">JUNCTA BRAND GUIDELINES v1.0</div>
+    <div style="font-family: 'Geist Mono', monospace; font-size: 10px; color: var(--stone);">© 2026</div>
+  </div>
+
+</div>
+
+</body>
+</html>
