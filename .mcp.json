@@ -2,6 +2,24 @@
   "mcpServers": {
     "figma": {
       "url": "https://mcp.figma.com/mcp"
+    },
+    "Sanity": {
+      "type": "http",
+      "url": "https://mcp.sanity.io",
+      "headers": {
+        "Authorization": "Bearer ${SANITY_TOKEN}"
+      }
+    },
+    "freepik": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://api.freepik.com/mcp",
+        "--header",
+        "x-freepik-api-key:${FREEPIK_API_KEY}"
+      ],
+      "transport": "stdio"
     }
   }
 }
