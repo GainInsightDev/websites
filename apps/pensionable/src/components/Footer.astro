@@ -4,7 +4,7 @@
 // variant verbatim, selected by the `page` prop, so each route keeps parity with
 // its source HTML. Footer styling lives in each page's own <style> block.
 interface Props {
-  page?: "index" | "how-it-works" | "solutions" | "trust-and-safety" | "legal";
+  page?: "index" | "solutions" | "trust-and-safety" | "legal";
 }
 const { page = "index" } = Astro.props;
 ---
@@ -27,38 +27,16 @@ const { page = "index" } = Astro.props;
     </div>
   </footer>
 )}
-{page === "how-it-works" && (
-  <footer role="contentinfo">
-    <div class="container">
-      <div class="footer-inner">
-        <a href="/" class="footer-logo">pensionable.ai</a>
-        <ul class="footer-links">
-          <li><a href="/how-it-works">How it works</a></li>
-          <li><a href="/trust-and-safety">Trust &amp; Safety</a></li>
-          <li><a href="/#challenge">Contact</a></li>
-          <li><a href="#">Privacy</a></li>
-        </ul>
-        <div class="footer-right">
-          <span>Built for the pensions industry.</span>
-          <span style="opacity:0.35">·</span>
-          <span>Dev by <a href="https://maiaa.ai" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;opacity:0.5;transition:opacity 0.2s" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='0.5'">maiaa.ai</a></span>
-          <span style="opacity:0.35">·</span>
-          <span style="display:inline-flex;align-items:center;gap:0.4rem"><span class="live-dot" aria-hidden="true"></span>System live</span>
-        </div>
-      </div>
-    </div>
-  </footer>
-)}
 {page === "trust-and-safety" && (
   <footer role="contentinfo">
     <div class="container">
       <div class="footer-inner">
         <a href="/" class="footer-logo">PensionAble.ai</a>
         <ul class="footer-links">
-          <li><a href="/how-it-works">How it works</a></li>
+          <li><a href="/solutions">Solutions</a></li>
           <li><a href="/trust-and-safety">Trust &amp; Safety</a></li>
           <li><a href="/#challenge">Contact</a></li>
-          <li><a href="#">Privacy</a></li>
+          <li><a href="/legal">Privacy</a></li>
         </ul>
         <div class="footer-right">
           <span>Built for the pensions industry.</span>

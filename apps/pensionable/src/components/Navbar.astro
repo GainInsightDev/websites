@@ -4,7 +4,7 @@
 // site" nav). We reproduce each variant verbatim, selected by the `page` prop,
 // so each route keeps pixel-perfect parity with its source HTML.
 interface Props {
-  page?: "index" | "how-it-works" | "solutions" | "trust-and-safety" | "legal";
+  page?: "index" | "solutions" | "trust-and-safety" | "legal";
 }
 const { page = "index" } = Astro.props;
 ---
@@ -78,30 +78,6 @@ const { page = "index" } = Astro.props;
       <a href="/intelligence/">Intelligence</a>
       <a href="/#challenge">Contact</a>
       <a href="/#challenge" class="btn-nav-primary">Request a demo</a>
-    </div>
-  </Fragment>
-)}
-{page === "how-it-works" && (
-  <Fragment>
-    <nav role="navigation" aria-label="Main navigation">
-      <a href="/" class="nav-logo">PensionAble.ai</a>
-      <ul class="nav-links" role="menubar">
-        <li><a href="/how-it-works" class="active" role="menuitem">How it works</a></li>
-        <li><a href="/trust-and-safety" role="menuitem">Trust &amp; Safety</a></li>
-        <li><a href="/#challenge" role="menuitem">Contact</a></li>
-      </ul>
-      <div class="nav-cta" style="display:flex;align-items:center;gap:0.75rem">
-        <a href="/#challenge" class="btn-primary">Request a demo</a>
-        <button class="nav-hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </nav>
-    <div id="mobile-nav" aria-label="Mobile navigation">
-      <a href="/how-it-works">How it works</a>
-      <a href="/trust-and-safety">Trust &amp; Safety</a>
-      <a href="/#challenge">Contact</a>
-      <a href="/#challenge" class="btn-primary">Request a demo</a>
     </div>
   </Fragment>
 )}
