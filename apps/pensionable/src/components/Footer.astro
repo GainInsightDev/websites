@@ -1,35 +1,76 @@
 ---
-const currentYear = new Date().getFullYear();
+// Shared footer. The source site uses slightly different footer markup per page
+// (link sets, the "footer-right" block vs a copyright line). We reproduce each
+// variant verbatim, selected by the `page` prop, so each route keeps parity with
+// its source HTML. Footer styling lives in each page's own <style> block.
+interface Props {
+  page?: "index" | "solutions" | "trust-and-safety" | "legal";
+}
+const { page = "index" } = Astro.props;
 ---
-
-<footer class="bg-navy text-white py-12">
-  <div class="container mx-auto px-4">
-    <div class="grid md:grid-cols-3 gap-8">
-      <div>
-        <h3 class="text-lg font-bold text-white mb-4">pensionable.ai</h3>
-        <p class="text-gray-300 text-sm">AI-powered pension administration solutions. Automated reasoning, intelligent data processing, and expert consulting for pension schemes.</p>
-      </div>
-      <div>
-        <h3 class="text-lg font-bold text-white mb-4">Quick Links</h3>
-        <nav aria-label="Footer navigation">
-          <ul class="space-y-2 text-sm">
-            <li><a href="/solutions" class="text-gray-300 hover:text-teal transition-colors">Solutions</a></li>
-            <li><a href="/technology" class="text-gray-300 hover:text-teal transition-colors">Technology</a></li>
-            <li><a href="/team" class="text-gray-300 hover:text-teal transition-colors">Team</a></li>
-            <li><a href="/contact" class="text-gray-300 hover:text-teal transition-colors">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-      <div>
-        <h3 class="text-lg font-bold text-white mb-4">Contact</h3>
-        <ul class="space-y-2 text-sm text-gray-300">
-          <li>Liverpool, United Kingdom</li>
-          <li><a href="mailto:info@pensionable.ai" class="hover:text-teal transition-colors">info@pensionable.ai</a></li>
+{page === "index" && (
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="/" class="footer-logo">PensionAble.ai</a>
+        <ul class="footer-links">
+          <li><a href="/solutions">Solutions</a></li>
+          <li><a href="/intelligence/">Intelligence</a></li>
+          <li><a href="mailto:hello@pensionable.ai">Contact</a></li>
         </ul>
+        <div class="footer-right">
+          <span>Built for the pensions industry.</span>
+          <span style="opacity:0.35">·</span>
+          <span>Dev by <a href="https://maiaa.ai" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;opacity:0.5;transition:opacity 0.2s" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='0.5'">maiaa.ai</a></span>
+        </div>
       </div>
     </div>
-    <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
-      <p>&copy; {currentYear} pensionable.ai. All rights reserved.</p>
+  </footer>
+)}
+{page === "trust-and-safety" && (
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="/" class="footer-logo">PensionAble.ai</a>
+        <ul class="footer-links">
+          <li><a href="/solutions">Solutions</a></li>
+          <li><a href="/trust-and-safety">Trust &amp; Safety</a></li>
+          <li><a href="/#challenge">Contact</a></li>
+          <li><a href="/legal">Privacy</a></li>
+        </ul>
+        <div class="footer-right">
+          <span>Built for the pensions industry.</span>
+          <span style="opacity:0.35">·</span>
+          <span>Dev by <a href="https://maiaa.ai" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;opacity:0.5;transition:opacity 0.2s" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='0.5'">maiaa.ai</a></span>
+          <span style="opacity:0.35">·</span>
+          <span style="display:inline-flex;align-items:center;gap:0.4rem"><span class="live-dot" aria-hidden="true"></span>System live</span>
+        </div>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
+)}
+{page === "solutions" && (
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <a href="/" class="footer-logo">PensionAble.ai</a>
+        <ul class="footer-links" role="list">
+          <li><a href="/solutions">Solutions</a></li>
+          <li><a href="/intelligence/">Intelligence</a></li>
+          <li><a href="/#challenge">Contact</a></li>
+        </ul>
+        <p class="footer-copy">&copy; 2026 PensionAble.ai. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+)}
+{page === "legal" && (
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <a href="/" class="footer-logo">PensionAble.ai</a>
+        <p class="footer-copy">&copy; 2026 PensionAble.ai. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+)}

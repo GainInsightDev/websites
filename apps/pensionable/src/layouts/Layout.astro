@@ -1,56 +1,115 @@
 ---
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 
 interface Props {
   title?: string;
   description?: string;
-  ogImage?: string;
+  page?: "index" | "solutions" | "trust-and-safety" | "legal";
 }
 
 const {
-  title = 'pensionable.ai | Intelligent Pension Solutions',
-  description = 'AI-powered pension administration solutions. Automated reasoning, intelligent data processing, and expert consulting for pension schemes.',
-  ogImage = '/images/og-default.png',
+  title = "pensionable.ai — Diorama · Pension Calculation Engine",
+  description = "Diorama turns trust deeds, factor tables, and worked examples into a working, auditable pension calculation engine. Weeks, not months. Every figure traceable to the rule that authorises it.",
+  page = "index",
 } = Astro.props;
 
-const canonicalUrl = new URL(Astro.url.pathname, 'https://pensionable.ai').href;
+const canonical = new URL(Astro.url.pathname, "https://pensionable.ai").href;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalUrl} />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="pensionable.ai — From source material to working engine." />
+  <meta property="og:description" content="Diorama turns trust deeds, factor tables, and worked examples into a working, auditable pension calculation engine." />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content="https://pensionable.ai/og-image.png" />
+  <meta property="og:site_name" content="pensionable.ai" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="pensionable.ai — From source material to working engine." />
+  <meta name="twitter:description" content="Diorama turns trust deeds, factor tables, and worked examples into a working, auditable pension calculation engine." />
+  <meta name="twitter:image" content="https://pensionable.ai/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="canonical" href={canonical} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://pensionable.ai/#org",
+        "name": "pensionable.ai",
+        "url": "https://pensionable.ai",
+        "logo": "https://pensionable.ai/og-image.png",
+        "description": "AI-powered pension calculation, communications and processing — built for UK defined benefit schemes.",
+        "sameAs": []
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://pensionable.ai/#website",
+        "url": "https://pensionable.ai",
+        "name": "pensionable.ai",
+        "publisher": { "@id": "https://pensionable.ai/#org" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://pensionable.ai/#diorama",
+        "name": "Diorama",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "Diorama converts UK pension scheme governing documents into a working, auditable calculation engine. Every figure is traceable to the rule that authorises it.",
+        "url": "https://pensionable.ai",
+        "publisher": { "@id": "https://pensionable.ai/#org" }
+      }
+    ]
+  })} />
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js" is:inline></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" is:inline></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" is:inline></script>
+  <link rel="stylesheet" href="/nav.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <slot name="head" />
+</head>
+<body>
+<Navbar page={page} />
+<slot />
+<Footer page={page} />
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:site_name" content="pensionable.ai" />
+<script is:inline>
+  // Mobile nav toggle (shared across all pages)
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', String(open));
+    });
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
-
-    <!-- Self-hosted fonts (eliminates FOUT from Google Fonts CDN) -->
-    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
-  </head>
-  <body>
-    <Navbar />
-    <main class="pt-[70px]">
-      <slot />
-    </main>
-    <Footer />
-  </body>
+  // IntersectionObserver — fade-up sections (shared across all pages)
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        fadeObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+</script>
+</body>
 </html>
